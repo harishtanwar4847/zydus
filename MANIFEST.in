@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include zydus *.css
+recursive-include zydus *.csv
+recursive-include zydus *.html
+recursive-include zydus *.ico
+recursive-include zydus *.js
+recursive-include zydus *.json
+recursive-include zydus *.md
+recursive-include zydus *.png
+recursive-include zydus *.py
+recursive-include zydus *.svg
+recursive-include zydus *.txt
+recursive-exclude zydus *.pyc

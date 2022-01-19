@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-09-20 10:01:33.599954",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "project_name",
+  "project_type",
+  "status",
+  "department",
+  "customer",
+  "column_break_4",
+  "attach_documents_url",
+  "attach_documents_url_2_optional",
+  "attach_documents_url_3_optional",
+  "select_your_document_4_optional",
+  "select_your_document_5_optional",
+  "route"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "KMS-.PROJ-.####"
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_type",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project Type",
+   "options": "Project Type"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Open\nCompleted\nIn Progress\nCancelled"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "attach_documents_url",
+   "fieldtype": "Link",
+   "label": "Select Your Document 1",
+   "options": "KMS File",
+   "reqd": 1
+  },
+  {
+   "fieldname": "attach_documents_url_2_optional",
+   "fieldtype": "Link",
+   "label": "Select Your Document 2 (Optional)",
+   "options": "KMS File"
+  },
+  {
+   "fieldname": "attach_documents_url_3_optional",
+   "fieldtype": "Link",
+   "label": "Select Your Document 3 (Optional)",
+   "options": "KMS File"
+  },
+  {
+   "fieldname": "select_your_document_4_optional",
+   "fieldtype": "Link",
+   "label": "Select Your Document 4 (Optional)",
+   "options": "KMS File"
+  },
+  {
+   "fieldname": "select_your_document_5_optional",
+   "fieldtype": "Link",
+   "label": "Select Your Document 5 (Optional)",
+   "options": "KMS File"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-10-08 19:19:03.509937",
+ "modified_by": "Administrator",
+ "module": "KMS",
+ "name": "KMS Project",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "kms-projects",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "project_name",
+ "track_changes": 1
+}
