@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "autoname": "project:{#####} [NC:upper]",
+ "creation": "2022-03-11 14:32:25.451219",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "brand",
+  "month",
+  "year",
+  "description",
+  "agency",
+  "project_type",
+  "target_group",
+  "markets",
+  "business_problems",
+  "reseach_objectives",
+  "title",
+  "result",
+  "learning",
+  "actions",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "brand",
+   "options": "Brand"
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "month",
+   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "year"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "description"
+  },
+  {
+   "fieldname": "agency",
+   "fieldtype": "Link",
+   "label": "agency",
+   "options": "Agency"
+  },
+  {
+   "fieldname": "project_type",
+   "fieldtype": "Link",
+   "label": "project_type",
+   "options": "Project type"
+  },
+  {
+   "fieldname": "target_group",
+   "fieldtype": "Data",
+   "label": "target_group"
+  },
+  {
+   "fieldname": "markets",
+   "fieldtype": "Table MultiSelect",
+   "label": "markets",
+   "options": "Market"
+  },
+  {
+   "fieldname": "business_problems",
+   "fieldtype": "Small Text",
+   "label": "business_problems"
+  },
+  {
+   "fieldname": "reseach_objectives",
+   "fieldtype": "Data",
+   "label": "reseach_objectives"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Data",
+   "label": "result"
+  },
+  {
+   "fieldname": "learning",
+   "fieldtype": "Long Text",
+   "label": "learning"
+  },
+  {
+   "fieldname": "actions",
+   "fieldtype": "Data",
+   "label": "actions"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Project",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-03-15 16:06:51.529843",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Project",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
+}
