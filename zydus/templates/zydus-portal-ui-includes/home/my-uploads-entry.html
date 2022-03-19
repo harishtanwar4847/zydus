@@ -1,0 +1,19 @@
+<div class="my-upload" style="border-color: {{my_upload.color}};">
+    <button type="button" class="btn btn-link p-0 fav-button">
+        <i class="bi bi-heart"></i>
+    </button>
+    <h3 class="brand">{{my_upload.brand}}</h3>
+    <div class="title">{{my_upload.title}}</div>
+    <div class="subtitle">{{my_upload.month_year}}</div>
+    <div class="subtitle">{{my_upload.number_of_files}} {% if my_upload.number_of_files > 1%} files {% else %} file {% endif %}</div>
+    <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">View</a></li>
+        <li>
+            <a class="dropdown-item" href="#">Download</a>
+        </li>
+    </ul>
+</div>
