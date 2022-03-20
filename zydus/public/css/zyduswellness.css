@@ -1270,6 +1270,9 @@ body {
   border-radius: 0px;
   padding: 12px;
 }
+.modal-action-btns .btn-link:last-child {
+  border-bottom-color: transparent;
+}
 .saved-nav-wrap {
   width: calc(100vw - 390px);
 }
