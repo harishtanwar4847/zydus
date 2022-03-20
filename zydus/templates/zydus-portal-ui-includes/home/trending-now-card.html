@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-6 col-lg-4 col-md-6">
+<div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
     <div class="trending-product-card" style="border-color: {{trending_now.color}}">
         <div class="d-flex align-items-start justify-content-between">
             <button type="button" class="btn btn-link p-0 fav-button">
