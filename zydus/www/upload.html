@@ -261,43 +261,7 @@
                 <form class="custom-form project-form">
                     <div class="row gx-3 gy-3 mt-md-3">
                         <div class="col-12 col-lg-6 col-xl-4">
-                            <div class="drop-zone">
-                                <span class="drop-zone__prompt">
-                                    <img src="/assets/zydus/images/upload.svg">
-                                    <div>Drop files for upload</div>
-                                    <div>or</div>
-                                    <a class="btn btn-link p-0" href="#">browse</a>
-                                </span>
-                                <input type="file" name="myFile" class="drop-zone__input">
-                            </div>
-                            <div class="drop-zone-file-list d-none">
-                                <div class="file-list-wrapper">
-                                    <div class="file-list">
-                                        <div class="file-list-item">
-                                            <img src="/assets/zydus/images/pdf.png" class="img-fluid">
-                                            <span class="file-name">name.pdf</span>
-                                            <button class="btn btn-link">view</button>
-                                            <button class="btn btn-link p-0">
-                                                <img src="/assets/zydus/images/download.svg" class="img-fluid">
-                                            </button>
-                                        </div>
-                                        <div class="file-list-item">
-                                            <img src="/assets/zydus/images/pdf.png" class="img-fluid">
-                                            <span class="file-name">name.pdf</span>
-                                            <button class="btn btn-link">view</button>
-                                            <button class="btn btn-link p-0">
-                                                <img src="/assets/zydus/images/download.svg" class="img-fluid">
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <small class="text-muted">
-                                                <i class="bi bi-plus-lg me-1"></i>drag or
-                                                <a href="#" class="text-primary">browse</a>
-                                                another document</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="dropzone" id="upload-saved-projects-dropzone"></div>
                         </div>
                         <div class="col-12 col-lg-6 col-xl-8">
                             <div
@@ -474,6 +438,21 @@
     };
 
     Dropzone.options.uploadDataSheetDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 2, // MB
+        url: '/api/method/upload_file',
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        }
+    };
+
+    Dropzone.options.uploadSavedProjectsDropzone = { // camelized version of the `id`
         paramName: "file", // The name that will be used to transfer the file
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
