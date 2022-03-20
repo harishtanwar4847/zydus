@@ -148,15 +148,7 @@
                 <div class="row gx-3 gy-3 mt-md-3">
                     <div class="col-12 col-lg-6 px-md-5">
                         <div class="p-xxl-5 h-100 d-flex align-items-center">
-                            <div class="drop-zone">
-                                <span class="drop-zone__prompt">
-                                    <img src="/assets/zydus/images/upload.svg">
-                                    <div>Drop files for upload</div>
-                                    <div>or</div>
-                                    <a class="btn btn-link p-0" href="#">browse</a>
-                                </span>
-                                <input type="file" name="myFile" class="drop-zone__input">
-                            </div>
+                            <div class="dropzone" id="upload-data-sheet-dropzone"></div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 px-lg-5">
@@ -467,6 +459,21 @@
 <script src="https://unpkg.com/dropzone@5.9.3/dist/min/dropzone.min.js"></script>
 <script>
     Dropzone.options.uploadProjectDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 2, // MB
+        url: '/api/method/upload_file',
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        }
+    };
+
+    Dropzone.options.uploadDataSheetDropzone = { // camelized version of the `id`
         paramName: "file", // The name that will be used to transfer the file
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
