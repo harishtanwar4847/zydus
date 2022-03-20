@@ -1,0 +1,22 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Trending Now{% endblock %}
+{% block content%}
+<div class="row">
+    <div class="col-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area" style="max-height: calc(100vh - 78px); overflow: auto;">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex aling-items-baseline">
+                <a href="/home" class="btn ps-0 btn-link view-all-link me-1">
+                    <i class="bi bi-chevron-left"></i>
+                    back
+                </a>
+                <h2 class="section-title">Trending Now</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for trending_now in trending_now_list %}
+            {% include "templates/zydus-portal-ui-includes/home/trending-now-card.html" %}
+            {% endfor%}
+        </div>
+    </div>
+</div>
+{% endblock %}
