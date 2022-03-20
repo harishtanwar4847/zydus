@@ -26,7 +26,6 @@ def get_context(context):
         {"active": True, "owner": "guest", "modified_by": "Administrator", "title": "Urgent", "description": "Send the client list", "date": "2022-03-21"},
         {"active": False, "owner": "guest", "modified_by": "guest", "title": "Urgent", "description": "Send the client list", "date": "2022-03-20"},
         {"active": True, "owner": "guest", "modified_by": "guest", "title": "Urgent", "description": "Send the client list", "date": "2022-03-31"},
-        {"active": True, "owner": "guest", "modified_by": "guest", "title": "Urgent", "description": "Send the client list", "date": "2022-03-31"},
     ]
 
     # due_by calculation
