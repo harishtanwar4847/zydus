@@ -1,0 +1,37 @@
+<div class="reminder {% if reminder.active %} active {% endif %}">
+    <div>
+        <img src="{% if reminder.active %} /assets/zydus/images/reminder-filled.svg {% else %} /assets/zydus/images/reminder-outline.svg {% endif %}" />
+    </div>
+    <div>
+        <div>
+            <span class="reminder-sender">{% if reminder.modified_by == "Administrator" %} admin {% else %} me {% endif %}:</span>
+            <span class="reminder-title">{{reminder.title}}</span>
+        </div>
+        <div class="reminder-content mt-2">{{reminder.description}}</div>
+    </div>
+    <div class="reminder-time">{{ reminder.due_by }}</div>
+    <div class="reminder-actions mt-3">
+        {% if reminder.owner == reminder.modified_by %}
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Snooze
+            </button>
+            <div class="dropdown-menu">
+                <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <a class="dropdown-item" href="#">Action</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        <button class="btn">Done</button>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <link rel="icon" type="image/png" href="/assets/zydus/images/favicon.png" />
+  <meta name="author" content="" />
+  <link href="/assets/zydus/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/zydus/css/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="/assets/zydus/css/zyduswellness.css" rel="stylesheet" />
+  <title>{% block title %}{% endblock %} - Zydus Wellness</title>
+
+  <!-- frappe stuff -->
+  <script>
+    window.frappe = {};
+    frappe.ready_events = [];
+    frappe.ready = function (fn) {
+      frappe.ready_events.push(fn);
+    }
+    window.dev_server = {{ dev_server }};
+    window.socketio_port = {{ (frappe.socketio_port or 'null') }};
+    window.show_language_picker = {{ show_language_picker }};
+    window.is_chat_enabled = {{ chat_enable }};
+  </script>
+  <!-- csrf_token -->
+</head>
+
+<body>
+  <div class="page-wrapper" id="wrapper">
+    {% include "templates/zydus-portal-ui-includes/sidebar.html" %}
+
+    <div id="content-wrapper" class="main">
+      <div class="container-fluid">
+        {% include "templates/zydus-portal-ui-includes/navbar.html" %}
+        {% block content%}{% endblock %}
+      </div>
+    </div>
+  </div>
+  <!-- frappe js -->
+  <script type="text/javascript" src="/assets/js/frappe-web.min.js?ver={{ build_version }}"></script>
+  <script src="/assets/zydus/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/zydus/js/jquery.min.js"></script>
+  <script src="/assets/zydus/js/zyduswellness.js"></script>
+</body>
+
+</html>

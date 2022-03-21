@@ -1,0 +1,485 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Upload{% endblock %}
+{% block content%}
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5.9.3/dist/min/dropzone.min.css" type="text/css" />
+<div class="row upload">
+    <div class="col-lg-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5">
+        <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-link active" id="nav-project-link" data-bs-toggle="tab" href="#nav-project-content" role="tab"
+                aria-controls="nav-project" aria-selected="true">Upload Project</a>
+            <a class="nav-link" id="nav-data-link" data-bs-toggle="tab" href="#nav-data-content" role="tab"
+                aria-controls="nav-data" aria-selected="false">Upload Data Sheet</a>
+
+            <a class="nav-link" id="nav-saved-link" data-bs-toggle="tab" href="#nav-saved-content" role="tab"
+                aria-controls="nav-saved" aria-selected="false">Saved</a>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
+                aria-labelledby="nav-project-link">
+                <form class="custom-form project-form">
+                    <div class="row gx-3 gy-3 mt-md-3">
+                        <div class="col-12 col-lg-6 col-xl-4">
+                            <div class="dropzone" id="upload-project-dropzone"></div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-8">
+                            <div
+                                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3">
+                                <h2 class="title">Project Details</h2>
+                                <div class="text-primary">
+                                    <small class="me-2">
+                                        **mandatory to fill to save
+                                    </small>
+                                    <small class="me-2"> *to fill to submit </small>
+                                </div>
+                            </div>
+                            <div class="row gx-3 gy-3">
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                                    <label>
+                                        Brand
+                                        <sup class="text-primary">**</sup>
+                                    </label>
+                                    <select class="form-select is-valid">
+                                        <option selected="" disabled="">
+                                            Choose the brand name
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                                    <label>
+                                        Project name
+                                        <sup class="text-primary">**</sup>
+                                    </label>
+                                    <input class="form-control is-invalid" placeholder="Enter the title of the project">
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                                    <label>
+                                        Date of Project
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="row gx-3 gy-3">
+                                        <div class="col-6 col-xxl-8">
+                                            <select class="form-select">
+                                                <option selected="" disabled="">Month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-xxl-4">
+                                            <select class="form-select">
+                                                <option selected="" disabled="">Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                                    <label>
+                                        Agency
+                                        <sup class="text-primary"> * </sup>
+                                    </label>
+                                    <input class="form-control is-valid" placeholder="Enter the name of the agency">
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                                    <label>
+                                        Project Type
+                                        <sup>*</sup>
+                                    </label>
+                                    <input class="form-control" placeholder="Enter the project type">
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                                    <label> Tags </label>
+                                    <input class="form-control" placeholder="Add tags for the project">
+                                </div>
+                                <div class="col-12">
+                                    <label>Description</label>
+                                    <input class="form-control"
+                                        placeholder="Enter one liner description of the project">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>Target Group</label>
+                            <input class="form-control"
+                                placeholder="Include demographic, usage and attitudinal target group">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>
+                                Markets
+                                <sup class="text-primary">*</sup>
+                            </label>
+                            <input class="form-control" placeholder="Mention markets with sample sizes">
+                        </div>
+                        <div class="col-12">
+                            <label> Business Problems </label>
+                            <input class="form-control"
+                                placeholder="Enter a short description of the business issue to be solved">
+                        </div>
+                        <div class="col-12">
+                            <label> Research Objective </label>
+                            <input class="form-control" placeholder="Mention what we need from the research">
+                        </div>
+                        <div class="col-12">
+                            <label> Result </label>
+                            <input class="form-control"
+                                placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
+                        </div>
+                        <div class="col-12">
+                            <label> Learnings </label>
+                            <textarea class="form-control"
+                                placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
+                                rows="6"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label> Actions </label>
+                            <input class="form-control"
+                                placeholder="Mention the business decisions/actions taken basis insights from the study">
+                        </div>
+                        <div class="col-12 text-end action-btns mb-4">
+                            <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#saveModal"
+                                type="button">
+                                Save for later
+                            </button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal"
+                                type="button">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
+                <div class="row gx-3 gy-3 mt-md-3">
+                    <div class="col-12 col-lg-6 px-md-5">
+                        <div class="p-xxl-5 h-100 d-flex align-items-center">
+                            <div class="dropzone" id="upload-data-sheet-dropzone"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 px-lg-5">
+                        <form class="custom-form project-form">
+                            <div
+                                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3 mt-3 mt-md-0">
+                                <h2 class="title">Project Details</h2>
+                                <div class="text-primary">
+                                    <small class="me-2">
+                                        **mandatory to fill to save
+                                    </small>
+                                    <small class="me-2"> *to fill to submit </small>
+                                </div>
+                            </div>
+                            <div class="row gx-3 gy-3 mt-lg-4">
+                                <div class="col-12">
+                                    <label>
+                                        Brand
+                                        <sup class="text-primary">**</sup>
+                                    </label>
+                                    <select class="form-select is-valid">
+                                        <option selected="" disabled="">
+                                            Choose the brand name
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        Data Sheet name
+                                        <sup class="text-primary">*</sup>
+                                    </label>
+                                    <input class="form-control" placeholder="Enter the title of the data">
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        Date of Project
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="row gx-3 gy-3">
+                                        <div class="col-6 col-xxl-8">
+                                            <select class="form-select">
+                                                <option selected="" disabled="">Month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-xxl-4">
+                                            <select class="form-select">
+                                                <option selected="" disabled="">Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        Agency
+                                        <sup class="text-primary"> * </sup>
+                                    </label>
+                                    <input class="form-control" placeholder="Enter the name of the agency">
+                                </div>
+                                <div class="col-12">
+                                    <label>
+                                        Data Type
+                                        <sup class="text-primary"> * </sup>
+                                    </label>
+                                    <input class="form-control" placeholder="Enter the data type">
+                                </div>
+                                <div class="col-12">
+                                    <label> Tags </label>
+                                    <input class="form-control" placeholder="Add tags for the data">
+                                </div>
+                                <div class="col-12">
+                                    <label> Description </label>
+                                    <textarea class="form-control"
+                                        placeholder="Enter one liner description of the data"></textarea>
+                                </div>
+                                <div class="col-12 text-end action-btns mt-5">
+                                    <button class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="nav-saved-content" role="tabpanel" aria-labelledby="nav-saved-link">
+                <div class="saved-nav-wrap">
+                    <ul class="nav nav-pills saved-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">client list (sugarfree)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">file (nutralite)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">sales 21 (nycil)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">marketing stategies ‘22 (everyuth)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">file sample 23 (sugar lite)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">file sample 40 (glucon-d)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">file sample 40 (glucon-d)</a>
+                        </li>
+                    </ul>
+                </div>
+                <form class="custom-form project-form">
+                    <div class="row gx-3 gy-3 mt-md-3">
+                        <div class="col-12 col-lg-6 col-xl-4">
+                            <div class="dropzone" id="upload-saved-projects-dropzone"></div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-8">
+                            <div
+                                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3">
+                                <h2 class="title">Project Details</h2>
+                                <div class="text-primary">
+                                    <small class="me-2">
+                                        **mandatory to fill to save
+                                    </small>
+                                    <small class="me-2"> *to fill to submit </small>
+                                </div>
+                            </div>
+                            <div class="row gx-3 gy-3">
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                                    <label>
+                                        Brand
+                                        <sup class="text-primary">**</sup>
+                                    </label>
+                                    <select class="form-select is-valid">
+                                        <option selected="" disabled="">
+                                            Choose the brand name
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                                    <label>
+                                        Project name
+                                        <sup class="text-primary">**</sup>
+                                    </label>
+                                    <input class="form-control is-invalid" placeholder="Enter the title of the project">
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                                    <label>
+                                        Date of Project
+                                        <sup>*</sup>
+                                    </label>
+                                    <div class="row gx-3 gy-3">
+                                        <div class="col-6 col-xxl-8">
+                                            <select class="form-select">
+                                                <option selected="" disabled="">Month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 col-xxl-4">
+                                            <select class="form-select">
+                                                <option selected="" disabled="">Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                                    <label>
+                                        Agency
+                                        <sup class="text-primary"> * </sup>
+                                    </label>
+                                    <input class="form-control is-valid" placeholder="Enter the name of the agency">
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                                    <label>
+                                        Project Type
+                                        <sup>*</sup>
+                                    </label>
+                                    <input class="form-control" placeholder="Enter the project type">
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                                    <label> Tags </label>
+                                    <input class="form-control" placeholder="Add tags for the project">
+                                </div>
+                                <div class="col-12">
+                                    <label>Description</label>
+                                    <input class="form-control"
+                                        placeholder="Enter one liner description of the project">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>Target Group</label>
+                            <input class="form-control"
+                                placeholder="Include demographic, usage and attitudinal target group">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>
+                                Markets
+                                <sup class="text-primary">*</sup>
+                            </label>
+                            <input class="form-control" placeholder="Mention markets with sample sizes">
+                        </div>
+                        <div class="col-12">
+                            <label> Business Problems </label>
+                            <input class="form-control"
+                                placeholder="Enter a short description of the business issue to be solved">
+                        </div>
+                        <div class="col-12">
+                            <label> Research Objective </label>
+                            <input class="form-control" placeholder="Mention what we need from the research">
+                        </div>
+                        <div class="col-12">
+                            <label> Result </label>
+                            <input class="form-control"
+                                placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
+                        </div>
+                        <div class="col-12">
+                            <label> Learnings </label>
+                            <textarea class="form-control"
+                                placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
+                                rows="6"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label> Actions </label>
+                            <input class="form-control"
+                                placeholder="Mention the business decisions/actions taken basis insights from the study">
+                        </div>
+                        <div class="col-12 text-end action-btns mb-4">
+                            <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#saveModal"
+                                type="button">
+                                Save for later
+                            </button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal"
+                                type="button">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Project Successfully Uploaded</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button class="btn btn-link text-white">Go to saved</button>
+                    <button class="btn btn-link text-white">Go to upload</button>
+                    <button class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Project Successfully Saved</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button class="btn btn-link text-white">Go to saved</button>
+                    <button class="btn btn-link text-white">Go to upload</button>
+                    <button class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/dropzone@5.9.3/dist/min/dropzone.min.js"></script>
+<script>
+    Dropzone.options.uploadProjectDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 2, // MB
+        url: '/api/method/upload_file',
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        }
+    };
+
+    Dropzone.options.uploadDataSheetDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 2, // MB
+        url: '/api/method/upload_file',
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        }
+    };
+
+    Dropzone.options.uploadSavedProjectsDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 2, // MB
+        url: '/api/method/upload_file',
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        }
+    };
+
+    // how to get uploaded files from particular dropzone
+    // var dropzone = Dropzone.forElement('#upload-project-dropzone')
+    // var uploaded_files = dropzone.getAcceptedFiles()
+    // uploaded_files.forEach(x => {
+    //     // getting xhr response of file upload api hit
+    //     console.log(x.xhr.response)
+
+    //     // getting name of File Document created
+    //     var a = JSON.parse(x.xhr.response)
+    //     console.log(a.message.name)
+    // })
+
+    // how to remove all files from particular dropzone
+    // Dropzone.forElement('#upload-project-dropzone').removeAllFiles()
+</script>
+{% endblock %}

@@ -1,0 +1,25 @@
+<div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
+    <div class="trending-product-card" style="border-color: {{trending_now.color}}">
+        <div class="d-flex align-items-start justify-content-between">
+            <button type="button" class="btn btn-link p-0 fav-button">
+                <i class="bi bi-heart"></i>
+            </button>
+            <div class="brand-logo-wrap">
+                <img src="{{trending_now.logo}}" class="img-fluid" />
+            </div>
+        </div>
+        <div class="title-wrap">
+            <h3>{{trending_now.title}}</h3>
+        </div>
+        <div class="subtitle">{{trending_now.month_year}}</div>
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="subtitle">{{trending_now.number_of_files}} {% if trending_now.number_of_files > 1%} files {% else %} file {% endif %}</div>
+            <div class="d-flex align-items-center justify-content-end actions">
+                <button class="btn btn-link">view</button>
+                <button class="btn btn-link p-0">
+                    <img src="/assets/zydus/images/download.svg" class="img-fluid" />
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
