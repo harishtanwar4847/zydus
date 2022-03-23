@@ -1,21 +1,10 @@
 import frappe
+import zydus
 
 def get_context(context):
-    context['trending_now_list'] = [
-        {"color": "#4F9DD9", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF0000", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 2, "four_columns": True},
-        {"color": "#00FF00", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 3, "four_columns": True},
-        {"color": "#0000FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#000000", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True}, 
-        {"color": "#4F9DD9", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF0000", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 2, "four_columns": True},
-        {"color": "#00FF00", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 3, "four_columns": True},
-        {"color": "#0000FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True},
-        {"color": "#000000", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1, "four_columns": True}, 
-    ]
+    context['trending_now_list'] = frappe.db.sql(""" select B.color,B.brand_logo,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P  left join `tabBrand` as B 
+    on P.brand = B.name left join `tabView Log` as V on V.reference_name=P.name group by P.name order by count(V.reference_name) desc limit 16 """,as_dict=True)
+   
+    for trending_now in context['trending_now_list']:
+        trending_now['number_of_files'] = 8
+        trending_now["four_columns"]=True

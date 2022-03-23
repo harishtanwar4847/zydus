@@ -1,6 +1,6 @@
 {
  "actions": [],
- "autoname": "format:Datasheet{#####} [NC:upper]",
+ "autoname": "format:Datasheet{#####} ",
  "creation": "2022-03-11 14:12:48.018887",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -20,21 +20,21 @@
    "fieldname": "brand",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "brand",
+   "label": "Brand",
    "options": "Brand"
   },
   {
    "fieldname": "title",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Datasheet_name",
+   "label": "Datasheet Name",
    "reqd": 1
   },
   {
    "fieldname": "month",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "month",
+   "label": "Month",
    "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
    "reqd": 1
   },
@@ -42,25 +42,25 @@
    "fieldname": "year",
    "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "year",
+   "label": "Year",
    "reqd": 1
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "description"
+   "label": "Description"
   },
   {
    "fieldname": "agency",
    "fieldtype": "Link",
-   "label": "agency",
+   "label": "Agency",
    "options": "Agency",
    "reqd": 1
   },
   {
    "fieldname": "data_type",
    "fieldtype": "Link",
-   "label": "data_type",
+   "label": "Data Type",
    "options": "Data Type",
    "reqd": 1
   },
@@ -77,10 +77,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-15 16:06:51.349172",
+ "modified": "2022-03-21 17:17:05.036043",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Datasheet",
+ "name_case": "UPPER CASE",
  "owner": "Administrator",
  "permissions": [
   {

@@ -2,14 +2,16 @@ import frappe
 import zydus
 
 def get_context(context):
-    context['trending_now_list'] = [
-        {"color": "#4F9DD9", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1},
-        {"color": "#FF0000", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 2},
-        {"color": "#00FF00", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 3},
-        {"color": "#0000FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1},
-        {"color": "#FF00FF", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1},
-        {"color": "#000000", "logo": "/assets/zydus/images/company_logo.png", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1}, 
-    ]
+
+    
+    context['trending_now_list'] = frappe.db.sql(""" select B.color,B.brand_logo,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P  left join `tabBrand` as B 
+    on P.brand = B.name left join `tabView Log` as V on V.reference_name=P.name group by P.name order by count(V.reference_name) desc limit 6 """,as_dict=True)
+   
+    for trending_now_list in context['trending_now_list']:
+        trending_now_list['number_of_files'] = 8
+        print(trending_now_list)
+    
+
 
     context['my_uploads'] = [
         {"color": "#4F9DD9", "brand": "Everyuth", "title": "Digital Maketing - Facebook", "month_year": "Jan 2022", "number_of_files": 1},

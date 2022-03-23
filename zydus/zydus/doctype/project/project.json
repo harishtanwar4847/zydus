@@ -1,6 +1,5 @@
 {
  "actions": [],
- "autoname": "project:{#####} [NC:upper]",
  "creation": "2022-03-11 14:32:25.451219",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -26,57 +25,57 @@
   {
    "fieldname": "brand",
    "fieldtype": "Link",
-   "label": "brand",
+   "label": "Brand",
    "options": "Brand"
   },
   {
    "fieldname": "month",
    "fieldtype": "Select",
-   "label": "month",
+   "label": "Month",
    "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
   },
   {
    "fieldname": "year",
    "fieldtype": "Int",
-   "label": "year"
+   "label": "Year"
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "description"
+   "label": "Description"
   },
   {
    "fieldname": "agency",
    "fieldtype": "Link",
-   "label": "agency",
+   "label": "Agency",
    "options": "Agency"
   },
   {
    "fieldname": "project_type",
    "fieldtype": "Link",
-   "label": "project_type",
-   "options": "Project type"
+   "label": "Project type",
+   "options": "Project Type"
   },
   {
    "fieldname": "target_group",
    "fieldtype": "Data",
-   "label": "target_group"
+   "label": "Target Group"
   },
   {
    "fieldname": "markets",
    "fieldtype": "Table MultiSelect",
-   "label": "markets",
+   "label": "Markets",
    "options": "Market"
   },
   {
    "fieldname": "business_problems",
    "fieldtype": "Small Text",
-   "label": "business_problems"
+   "label": "Business Problems"
   },
   {
    "fieldname": "reseach_objectives",
    "fieldtype": "Data",
-   "label": "reseach_objectives"
+   "label": "Reseach objectives"
   },
   {
    "fieldname": "title",
@@ -88,17 +87,17 @@
   {
    "fieldname": "result",
    "fieldtype": "Data",
-   "label": "result"
+   "label": "Result"
   },
   {
    "fieldname": "learning",
    "fieldtype": "Long Text",
-   "label": "learning"
+   "label": "Learning"
   },
   {
    "fieldname": "actions",
    "fieldtype": "Data",
-   "label": "actions"
+   "label": "Actions"
   },
   {
    "fieldname": "amended_from",
@@ -113,7 +112,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-15 16:06:51.529843",
+ "modified": "2022-03-21 16:17:28.600944",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",

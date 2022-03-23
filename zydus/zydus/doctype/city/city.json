@@ -1,7 +1,7 @@
 {
  "actions": [],
  "autoname": "field:city_name",
- "creation": "2022-03-11 13:53:06.616129",
+ "creation": "2022-03-21 15:44:44.461513",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -13,14 +13,14 @@
    "fieldname": "city_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "city_name",
+   "label": "City Name",
    "reqd": 1,
    "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-15 16:06:51.863037",
+ "modified": "2022-03-21 15:45:17.807916",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "City",
