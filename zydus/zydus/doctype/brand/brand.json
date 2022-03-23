@@ -15,7 +15,7 @@
    "fieldname": "brand_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "brand_name",
+   "label": "Brand Name",
    "reqd": 1,
    "unique": 1
   },
@@ -23,17 +23,17 @@
    "fieldname": "color",
    "fieldtype": "Color",
    "in_list_view": 1,
-   "label": "color"
+   "label": "Color"
   },
   {
    "fieldname": "brand_logo",
    "fieldtype": "Attach Image",
-   "label": "brand_logo"
+   "label": "Brand Logo"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-22 16:35:59.781385",
+ "modified": "2022-03-21 13:10:28.870212",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Brand",
