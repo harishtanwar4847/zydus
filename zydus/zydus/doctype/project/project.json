@@ -1,6 +1,5 @@
 {
  "actions": [],
- "autoname": "project:{#####} [NC:upper]",
  "creation": "2022-03-11 14:32:25.451219",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -113,7 +112,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-15 16:06:51.529843",
+ "modified": "2022-03-22 16:25:43.742333",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
