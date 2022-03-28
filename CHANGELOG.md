@@ -1,3 +1,6 @@
+#[v0.1.3-dev] - 2022-03-28
+-[ home page complete](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/5)
+
 # [v0.1.2-dev] - 2022-03-23
 - [trending now logic complete[without no of file]](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/3)
 
