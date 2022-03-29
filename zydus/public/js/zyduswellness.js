@@ -71,3 +71,8 @@ window.onload = function () {
 window.onresize = function () {
   adjustScrollableAreaHeight();
 };
+function logout() {
+  $.get('/api/method/logout', function() {
+    location.href = '/login'
+  })
+}

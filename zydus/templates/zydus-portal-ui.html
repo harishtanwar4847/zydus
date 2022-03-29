@@ -33,6 +33,7 @@
 </head>
 
 <body>
+  {% if access_allowed %}
   <div class="page-wrapper" id="wrapper">
     {% include "templates/zydus-portal-ui-includes/sidebar.html" %}
 
@@ -43,6 +44,22 @@
       </div>
     </div>
   </div>
+  {% else %}
+  <div class="login-page">
+    <div class="login-box partial-login-box">
+      <div class="text-center">
+        <img src="/assets/zydus/images/info-circle.svg" alt="">
+      </div>
+      {% if roles == ['Guest'] %}
+        <h1>Kindly login to access the portal</h1>
+        <button onclick="location.href = '/login'" class="btn btn-secondary w-100">Login</button>
+      {% else %}
+        <h1>The portal is not yet accessible to you</h1>
+        <button onclick="logout()" class="btn btn-secondary w-100">Logout</button>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
   <!-- frappe js -->
   <script type="text/javascript" src="/assets/js/frappe-web.min.js?ver={{ build_version }}"></script>
   <script src="/assets/zydus/js/bootstrap.bundle.min.js"></script>
