@@ -1,3 +1,6 @@
+#[v0.1.4-dev] - 2022-03-29
+- [Homepage functionalities | Access not allowed | Logout](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/6)
+
 #[v0.1.3-dev] - 2022-03-28
 -[ home page complete](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/5)
 
