@@ -148,7 +148,7 @@
                     data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                     <div class="d-flex align-items-center justify-content-end">
                         <div class="profile-info">
-                            <div>Jennifer A. Green</div>
+                            <div>{{ frappe.get_fullname() }}</div>
                             <div class="designation">Designation</div>
                         </div>
                         <div class="profile-pic online">
@@ -168,7 +168,7 @@
                         <a class="dropdown-item" href="#">Notifications</a>
                     </li>
                     <li>
-                        <a class="dropdown-item logout" href="#">Logout</a>
+                        <a class="dropdown-item logout" onclick="event.preventDefault(); logout()" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
