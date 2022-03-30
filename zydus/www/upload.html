@@ -39,7 +39,7 @@
                                         Brand
                                         <sup class="text-primary">**</sup>
                                     </label>
-                                    <select class="form-select is-valid">
+                                    <select name="brand" class="form-select is-valid">
                                         <option selected="" disabled="">
                                             Choose the brand name
                                         </option>
@@ -59,12 +59,24 @@
                                     </label>
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6 col-xxl-8">
-                                            <select class="form-select">
+                                            <select name="month" class="form-select">
                                                 <option selected="" disabled="">Month</option>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-xxl-4">
-                                            <select class="form-select">
+                                            <select name="year" class="form-select">
                                                 <option selected="" disabled="">Year</option>
                                             </select>
                                         </div>
@@ -86,7 +98,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-7">
                                     <label> Tags </label>
-                                    <input class="form-control" placeholder="Add tags for the project">
+                                    <input class="form-control" data-type="tags" placeholder="Add tags for the project">
                                 </div>
                                 <div class="col-12">
                                     <label>Description</label>
@@ -170,7 +182,7 @@
                                         Brand
                                         <sup class="text-primary">**</sup>
                                     </label>
-                                    <select class="form-select is-valid">
+                                    <select name="brand" class="form-select is-valid">
                                         <option selected="" disabled="">
                                             Choose the brand name
                                         </option>
@@ -190,12 +202,24 @@
                                     </label>
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6 col-xxl-8">
-                                            <select class="form-select">
+                                            <select name="month" class="form-select">
                                                 <option selected="" disabled="">Month</option>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-xxl-4">
-                                            <select class="form-select">
+                                            <select name="year" class="form-select">
                                                 <option selected="" disabled="">Year</option>
                                             </select>
                                         </div>
@@ -217,7 +241,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label> Tags </label>
-                                    <input class="form-control" placeholder="Add tags for the data">
+                                    <input class="form-control" data-type="tags" placeholder="Add tags for the data">
                                 </div>
                                 <div class="col-12">
                                     <label> Description </label>
@@ -281,7 +305,7 @@
                                         Brand
                                         <sup class="text-primary">**</sup>
                                     </label>
-                                    <select class="form-select is-valid">
+                                    <select name="brand" class="form-select is-valid">
                                         <option selected="" disabled="">
                                             Choose the brand name
                                         </option>
@@ -301,12 +325,24 @@
                                     </label>
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6 col-xxl-8">
-                                            <select class="form-select">
+                                            <select name="month" class="form-select">
                                                 <option selected="" disabled="">Month</option>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
                                             </select>
                                         </div>
                                         <div class="col-6 col-xxl-4">
-                                            <select class="form-select">
+                                            <select name="" class="form-select">
                                                 <option selected="" disabled="">Year</option>
                                             </select>
                                         </div>
@@ -328,7 +364,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-7">
                                     <label> Tags </label>
-                                    <input class="form-control" placeholder="Add tags for the project">
+                                    <input class="form-control" data-type="tags" placeholder="Add tags for the project">
                                 </div>
                                 <div class="col-12">
                                     <label>Description</label>
@@ -484,5 +520,19 @@
 
     // how to remove all files from particular dropzone
     // Dropzone.forElement('#upload-project-dropzone').removeAllFiles()
+    
+    // creating options for 25 years in the past
+    var currentYear = new Date().getFullYear()
+    for(var i = 1; i <= 25; i++) {
+        $('select[name=year]').append('<option value="'+currentYear+'">'+currentYear+'</option>')
+        currentYear--;
+    }
+
+    // populating brands
+    var brands = {{brands}}
+    for(var i = 0; i < brands.length; i++) {
+        var brand = brands[i]
+        $('select[name=brand]').append('<option value="'+brand+'">'+brand+'</option>')
+    }
 </script>
 {% endblock %}
