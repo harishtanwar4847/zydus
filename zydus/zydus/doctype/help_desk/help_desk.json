@@ -1,6 +1,5 @@
 {
  "actions": [],
- "autoname": "field:full_name",
  "creation": "2022-03-30 19:14:47.382653",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -49,7 +48,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-30 19:34:32.490649",
+ "modified": "2022-03-31 20:56:57.765018",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Help Desk",
