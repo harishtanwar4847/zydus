@@ -17,7 +17,9 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
                 aria-labelledby="nav-project-link">
-                <form class="custom-form project-form">
+                <form id="upload-project-form" class="custom-form project-form">
+                    <input type="hidden" name="docstatus">
+                    <input type="hidden" name="doctype" value="Project">
                     <div class="row gx-3 gy-3 mt-md-3">
                         <div class="col-12 col-lg-6 col-xl-4">
                             <div class="dropzone" id="upload-project-dropzone"></div>
@@ -39,7 +41,7 @@
                                         Brand
                                         <sup class="text-primary">**</sup>
                                     </label>
-                                    <select name="brand" class="form-select is-valid">
+                                    <select name="brand" class="form-select" required>
                                         <option selected="" disabled="">
                                             Choose the brand name
                                         </option>
@@ -50,7 +52,7 @@
                                         Project name
                                         <sup class="text-primary">**</sup>
                                     </label>
-                                    <input class="form-control is-invalid" placeholder="Enter the title of the project">
+                                    <input name="title" class="form-control" placeholder="Enter the title of the project" required>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                                     <label>
@@ -59,8 +61,8 @@
                                     </label>
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6 col-xxl-8">
-                                            <select name="month" class="form-select">
-                                                <option selected="" disabled="">Month</option>
+                                            <select name="month" class="form-select" required>
+                                                <option selected disabled>Month</option>
                                                 <option value="January">January</option>
                                                 <option value="February">February</option>
                                                 <option value="March">March</option>
@@ -76,8 +78,8 @@
                                             </select>
                                         </div>
                                         <div class="col-6 col-xxl-4">
-                                            <select name="year" class="form-select">
-                                                <option selected="" disabled="">Year</option>
+                                            <select name="year" class="form-select" required>
+                                                <option selected disabled>Year</option>
                                             </select>
                                         </div>
                                     </div>
@@ -87,14 +89,22 @@
                                         Agency
                                         <sup class="text-primary"> * </sup>
                                     </label>
-                                    <input class="form-control is-valid" placeholder="Enter the name of the agency">
+                                    <select name="agency" class="form-select">
+                                        <option selected="" disabled="">
+                                            Choose the agency
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                                     <label>
                                         Project Type
                                         <sup>*</sup>
                                     </label>
-                                    <input class="form-control" placeholder="Enter the project type">
+                                    <select name="project_type" class="form-select">
+                                        <option selected="" disabled="">
+                                            Choose the project type
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-7">
                                     <label> Tags </label>
@@ -102,14 +112,14 @@
                                 </div>
                                 <div class="col-12">
                                     <label>Description</label>
-                                    <input class="form-control"
+                                    <input name="description" class="form-control"
                                         placeholder="Enter one liner description of the project">
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <label>Target Group</label>
-                            <input class="form-control"
+                            <input name="target_group" class="form-control"
                                 placeholder="Include demographic, usage and attitudinal target group">
                         </div>
                         <div class="col-12 col-md-6">
@@ -117,40 +127,38 @@
                                 Markets
                                 <sup class="text-primary">*</sup>
                             </label>
-                            <input class="form-control" placeholder="Mention markets with sample sizes">
+                            <input name="markets" class="form-control" placeholder="Mention markets with sample sizes">
                         </div>
                         <div class="col-12">
                             <label> Business Problems </label>
-                            <input class="form-control"
+                            <input name="business_problems" class="form-control"
                                 placeholder="Enter a short description of the business issue to be solved">
                         </div>
                         <div class="col-12">
                             <label> Research Objective </label>
-                            <input class="form-control" placeholder="Mention what we need from the research">
+                            <input name="research_objectives" class="form-control" placeholder="Mention what we need from the research">
                         </div>
                         <div class="col-12">
                             <label> Result </label>
-                            <input class="form-control"
+                            <input name="result" class="form-control"
                                 placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
                         </div>
                         <div class="col-12">
                             <label> Learnings </label>
-                            <textarea class="form-control"
+                            <textarea name="learnings" class="form-control"
                                 placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
                                 rows="6"></textarea>
                         </div>
                         <div class="col-12">
                             <label> Actions </label>
-                            <input class="form-control"
+                            <input name="actions" class="form-control"
                                 placeholder="Mention the business decisions/actions taken basis insights from the study">
                         </div>
                         <div class="col-12 text-end action-btns mb-4">
-                            <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#saveModal"
-                                type="button">
+                            <button class="btn btn-secondary me-2" type="button" onclick="saveUploadForm()">
                                 Save for later
                             </button>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal"
-                                type="button">
+                            <button class="btn btn-primary" type="button" onclick="submitUploadForm()">
                                 Submit
                             </button>
                         </div>
@@ -230,7 +238,11 @@
                                         Agency
                                         <sup class="text-primary"> * </sup>
                                     </label>
-                                    <input class="form-control" placeholder="Enter the name of the agency">
+                                    <select name="agency" class="form-select" required>
+                                        <option selected="" disabled="">
+                                            Choose the agency
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-12">
                                     <label>
@@ -353,14 +365,22 @@
                                         Agency
                                         <sup class="text-primary"> * </sup>
                                     </label>
-                                    <input class="form-control is-valid" placeholder="Enter the name of the agency">
+                                    <select name="agency" class="form-select">
+                                        <option selected="" disabled="">
+                                            Choose the agency
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                                     <label>
                                         Project Type
                                         <sup>*</sup>
                                     </label>
-                                    <input class="form-control" placeholder="Enter the project type">
+                                    <select name="project_type" class="form-select">
+                                        <option selected="" disabled="">
+                                            Choose the project_type
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-12 col-xl-7">
                                     <label> Tags </label>
@@ -426,22 +446,22 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content bg-primary">
             <div class="modal-body text-center">
                 <img src="/assets/zydus/images/modal_check.svg">
                 <div class="text-white mt-1">Project Successfully Uploaded</div>
                 <div class="mt-4 d-flex flex-column modal-action-btns px-4">
-                    <button class="btn btn-link text-white">Go to saved</button>
-                    <button class="btn btn-link text-white">Go to upload</button>
-                    <button class="btn btn-link text-white">Go to home</button>
+                    <button onclick="location.reload()" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.reload()" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;"
+<div class="modal fade" id="saveModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
     aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content bg-primary">
@@ -449,9 +469,9 @@
                 <img src="/assets/zydus/images/modal_check.svg">
                 <div class="text-white mt-1">Project Successfully Saved</div>
                 <div class="mt-4 d-flex flex-column modal-action-btns px-4">
-                    <button class="btn btn-link text-white">Go to saved</button>
-                    <button class="btn btn-link text-white">Go to upload</button>
-                    <button class="btn btn-link text-white">Go to home</button>
+                    <button onclick="location.reload()" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.reload()" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
                 </div>
             </div>
         </div>
@@ -460,6 +480,7 @@
 <script src="https://unpkg.com/dropzone@5.9.3/dist/min/dropzone.min.js"></script>
 <script src="/assets/zydus/js/tagify.min.js"></script>
 <script src="/assets/zydus/js/tagify.polyfills.min.js"></script>
+<script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     Dropzone.options.uploadProjectDropzone = { // camelized version of the `id`
         paramName: "file", // The name that will be used to transfer the file
@@ -533,6 +554,124 @@
     for(var i = 0; i < brands.length; i++) {
         var brand = brands[i]
         $('select[name=brand]').append('<option value="'+brand+'">'+brand+'</option>')
+    }
+
+    // populating agencies
+    var agencies = {{agencies}}
+    for(var i = 0; i < agencies.length; i++) {
+        var agency = agencies[i]
+        $('select[name=agency]').append('<option value="'+agency+'">'+agency+'</option>')
+    }
+
+    // populating project_types
+    var project_types = {{project_types}}
+    for(var i = 0; i < project_types.length; i++) {
+        var project_type = project_types[i]
+        $('select[name=project_type]').append('<option value="'+project_type+'">'+project_type+'</option>')
+    }
+
+    // Jquery Validator Defaults
+    $.validator.setDefaults({
+        validClass: 'is-valid',
+        errorClass: 'is-invalid'
+    });
+
+    // Form validations
+    $('#upload-project-form').validate({
+        submitHandler: function(form) {
+            var dataArr = $(form).serializeArray()
+            var obj = {}
+            dataArr.forEach(x => {
+                if(x.name == 'docstatus') {
+                    x.value = parseInt(x.value)
+                }
+                obj[x.name] = x.value
+            })
+
+            $.ajax({
+                url: '/api/resource/Project',
+                method: 'POST',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+
+                    // adding tags to created document
+                    var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val())
+                    var tags = tagsArr.map(x => x.value)
+                    $.ajax({
+                        url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            tags: JSON.stringify(tags),
+                            dt: 'Project',
+                            docs: JSON.stringify([res.data.name])
+                        }
+                    })
+
+                    // adding attachments to created document
+                    var dropzone = Dropzone.forElement('#upload-project-dropzone')
+                    var uploaded_files = dropzone.getAcceptedFiles()
+                    var uploaded_file_names = uploaded_files.map(x => {
+                        // returning name of File Document created
+                        var a = JSON.parse(x.xhr.response)
+                        return a.message.name
+                    })
+                    $.ajax({
+                        url: '/api/method/frappe.utils.file_manager.add_attachments',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            doctype: 'Project',
+                            name: res.data.name,
+                            attachments: JSON.stringify(uploaded_file_names)
+                        }
+                    })
+
+                    // form house keeping
+                    $('#upload-project-dropzone').trigger('reset')
+                    Dropzone.forElement('#upload-project-dropzone').removeAllFiles()
+
+                    // show modal
+                    $('#saveModal').modal('show')
+                }
+            })
+        }
+    })
+
+    function saveUploadForm() {
+        // resetting form
+        $('#upload-project-form').validate().resetForm()
+        
+        // setting submit inputs as not required
+        $('#upload-project-form [name=agency]').attr('required', false)
+        $('#upload-project-form [name=project_type]').attr('required', false)
+        $('#upload-project-form [name=markets]').attr('required', false)
+        $('#upload-project-form [name=docstatus]').val(0)
+
+        $('#upload-project-form').submit()
+    }
+
+    function submitUploadForm() {
+        // resetting form
+        $('#upload-project-form').validate().resetForm()
+        
+        // setting submit inputs as required
+        $('#upload-project-form [name=agency]').attr('required', true)
+        $('#upload-project-form [name=project_type]').attr('required', true)
+        $('#upload-project-form [name=markets]').attr('required', true)
+        $('#upload-project-form [name=docstatus]').val(1)
+
+        $('#upload-project-form').submit()
     }
 </script>
 {% endblock %}

@@ -63,7 +63,7 @@ window.onload = function () {
   //Initialize Tag Input
   var input = document.querySelectorAll("input[data-type=tags]");
   if (typeof Tagify !== "undefined") {
-    input.forEach(x => new Tagify(input));
+    input.forEach(x => new Tagify(x));
   }
   adjustScrollableAreaHeight();
 };

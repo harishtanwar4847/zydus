@@ -8,3 +8,5 @@ def get_context(context):
 
     if context['access_allowed']:
         context['brands'] = [brand.name for brand in frappe.get_list('Brand')]
+        context['agencies'] = [agency.name for agency in frappe.get_list('Agency')]
+        context['project_types'] = [project_type.name for project_type in frappe.get_list('Project Type')]
