@@ -9,5 +9,5 @@ def get_context(context):
     context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
 
     if context['access_allowed']:
-        context['FAQs'] = frappe.db.sql("""select name,question,answers from `tabAdd FAQ`""",as_dict=1)      
+        context['faqs'] = frappe.db.sql("""select name,question,answers from `tabAdd FAQ`""",as_dict=1)      
             
