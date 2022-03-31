@@ -1,0 +1,165 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Home{% endblock %}
+{% block content%}
+<div class="row">
+    <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
+        style="max-height: calc(100vh - 63px); overflow: auto;">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="section-title">Help Desk</h2>
+        </div>
+
+        <div>
+            {% for help_desk in Help_Desk%}
+            <div class="heldesk-1">           
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="profile-name">
+                            {{help_desk.full_name}}
+                        </div>
+                        <br>
+                        <div class="designation">
+                            {{help_desk.designation}}
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-8">
+                        <div class="contact-email mb-3 d-flex ">
+                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
+                            {{help_desk.email}}
+                        </div>
+
+                        <div class="contact-number  d-flex  mb-3">
+                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
+                            {{help_desk.mobile_number}}
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-4 text-center">
+                         <input type="hidden" value={{help_desk.email}} id="myInput" >   
+                        <button onclick="copyEmail()"><a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a></button>
+                        <br> 
+                         <input type="hidden" value={{help_desk.mobile_number}} id="myInput1">   
+                        <button onclick="copyPhone()"><a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a></button>
+     
+                         <script>
+                            function copyEmail() {
+                                
+                                var copyText = document.getElementById('myInput')
+                                copyText.select();
+                                document.execCommand('copy')
+                                alert('Copied Text'+ "  " + copyText.value)      
+                            }
+                            function copyPhone() {
+                                
+                                var copyText1 = document.getElementById('myInput1')
+                                copyText1.select();
+                                document.execCommand('copy')
+                                alert('Copied Text'+"  "+copyText1.value)                                                          
+                            }
+                        </script>
+                        <!-- <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                        <br>
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a> -->
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+             <!-- <div class="heldesk-2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="profile-name">
+                            Profile // Name
+                        </div>
+                        <br>
+                        <div class="designation">
+                            Designation
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-8">
+                        <div class="contact-email mb-3 d-flex ">
+                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
+                            emailid.123@zyduswellness.com
+                        </div>
+
+                        <div class="contact-number  d-flex  mb-3">
+                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
+                            +99 9999999999
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-4 text-center">
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                        <br>
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="heldesk-3">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="profile-name">
+                            Profile // Name
+                        </div>
+                        <br>
+                        <div class="designation">
+                            Designation
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-8">
+                        <div class="contact-email mb-3 d-flex ">
+                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
+                            emailid.123@zyduswellness.com
+                        </div>
+
+                        <div class="contact-number  d-flex  mb-3">
+                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
+                            +99 9999999999
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-4 text-center">
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                        <br>
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="heldesk-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="profile-name">
+                            Profile // Name
+                        </div>
+                        <br>
+                        <div class="designation">
+                            Designation
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-8">
+                        <div class="contact-email mb-3 d-flex ">
+                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
+                            emailid.123@zyduswellness.com
+                        </div>
+
+                        <div class="contact-number  d-flex  mb-3">
+                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
+                            +99 9999999999
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-4 text-center">
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                        <br>
+                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>  -->
+
+            {% endfor %}
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}
