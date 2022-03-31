@@ -6,7 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "question",
-  "answers"
+  "answer"
  ],
  "fields": [
   {
@@ -17,19 +17,19 @@
    "reqd": 1
   },
   {
-   "fieldname": "answers",
+   "fieldname": "answer",
    "fieldtype": "Small Text",
    "in_list_view": 1,
-   "label": "Answers",
+   "label": "Answer",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-30 19:04:24.109495",
+ "modified": "2022-03-31 20:47:50.056745",
  "modified_by": "Administrator",
  "module": "Zydus",
- "name": "Add FAQ",
+ "name": "FAQ",
  "owner": "Administrator",
  "permissions": [
   {
