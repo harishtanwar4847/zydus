@@ -93,5 +93,7 @@
   </div>
 </ul>
 <script>
-  document.querySelector('.nav-item .nav-link[href^="' + location.pathname + '"]').classList.add('active')
+  setTimeout(function() {
+    document.querySelector('.nav-item .nav-link[href^="' + location.pathname + '"]').classList.add('active')
+  }, 500)
 </script>
