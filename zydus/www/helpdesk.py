@@ -10,7 +10,7 @@ def get_context(context):
     context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
 
     if context['access_allowed']:
-         context['Help_Desk'] =frappe.db.sql("""select full_name,designation,email,mobile_number from `tabHelp Desk` """,as_dict=True)
+         context['helpdesk_entries'] = frappe.get_all('Help Desk', fields=['full_name', 'designation', 'email', 'mobile_number'])
         
              
          
