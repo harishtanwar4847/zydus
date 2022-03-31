@@ -10,7 +10,8 @@
 
         <div>
             {% for helpdesk in helpdesk_entries %}
-            <div class="heldesk-{{loop.index % 4}}">
+	    {% set index = loop.index % 4 %}
+            <div class="heldesk-{{ 4 if index == 0 else index }}">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="profile-name">
