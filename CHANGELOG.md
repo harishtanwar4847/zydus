@@ -1,6 +1,9 @@
+#[v0.1.6-dev] - 2022-03-31
+- [upload project page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/10)
+
 #[v0.1.5-dev] - 2022-03-31
 - [faq and trending now page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/8)
-- [Helpdesk Modification ] (https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/9)
+- [Helpdesk Modification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/9)
 
 #[v0.1.4-dev] - 2022-03-29
 - [Homepage functionalities | Access not allowed | Logout](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/6)
