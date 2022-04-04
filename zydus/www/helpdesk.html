@@ -9,26 +9,28 @@
         </div>
 
         <div>
-            <div class="heldesk-1">
+            {% for helpdesk in helpdesk_entries %}
+	    {% set index = loop.index % 4 %}
+            <div class="heldesk-{{ 4 if index == 0 else index }}">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 mb-4">
                         <div class="profile-name">
-                            Profile // Name
+                            {{helpdesk.full_name}}
                         </div>
                         <br>
                         <div class="designation">
-                            Designation
+                            {{helpdesk.designation}}
                         </div>
                     </div>
                     <div class="col-lg-5 col-8">
                         <div class="contact-email mb-3 d-flex ">
                             <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
-                            emailid.123@zyduswellness.com
+                            {{helpdesk.email}}
                         </div>
 
                         <div class="contact-number  d-flex  mb-3">
                             <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
-                            +99 9999999999
+                            {{helpdesk.mobile_number}}
                         </div>
                     </div>
                     <div class="col-lg-1 col-4 text-center">
@@ -38,103 +40,8 @@
                     </div>
                 </div>
             </div>
-            <div class="heldesk-2">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 mb-4">
-                        <div class="profile-name">
-                            Profile // Name
-                        </div>
-                        <br>
-                        <div class="designation">
-                            Designation
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-8">
-                        <div class="contact-email mb-3 d-flex ">
-                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
-                            emailid.123@zyduswellness.com
-                        </div>
-
-                        <div class="contact-number  d-flex  mb-3">
-                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
-                            +99 9999999999
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-4 text-center">
-                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
-                        <br>
-                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="heldesk-3">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 mb-4">
-                        <div class="profile-name">
-                            Profile // Name
-                        </div>
-                        <br>
-                        <div class="designation">
-                            Designation
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-8">
-                        <div class="contact-email mb-3 d-flex ">
-                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
-                            emailid.123@zyduswellness.com
-                        </div>
-
-                        <div class="contact-number  d-flex  mb-3">
-                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
-                            +99 9999999999
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-4 text-center">
-                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
-                        <br>
-                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="heldesk-4">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 mb-4">
-                        <div class="profile-name">
-                            Profile // Name
-                        </div>
-                        <br>
-                        <div class="designation">
-                            Designation
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-8">
-                        <div class="contact-email mb-3 d-flex ">
-                            <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
-                            emailid.123@zyduswellness.com
-                        </div>
-
-                        <div class="contact-number  d-flex  mb-3">
-                            <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
-                            +99 9999999999
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-4 text-center">
-                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
-                        <br>
-                        <a href="#"><img src="/assets/zydus/images/copy_icon.png" alt="" class="img-fluid"></a>
-                    </div>
-                </div>
-            </div>
-
-
-
+            {% endfor %}
         </div>
-
-
-
-
-
-
     </div>
 </div>
 {% endblock %}

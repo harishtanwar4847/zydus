@@ -14,10 +14,10 @@
   "target_group",
   "markets",
   "business_problems",
-  "reseach_objectives",
+  "research_objectives",
   "title",
   "result",
-  "learning",
+  "learnings",
   "actions",
   "amended_from"
  ],
@@ -73,11 +73,6 @@
    "label": "Business Problems"
   },
   {
-   "fieldname": "reseach_objectives",
-   "fieldtype": "Data",
-   "label": "Reseach objectives"
-  },
-  {
    "fieldname": "title",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -88,11 +83,6 @@
    "fieldname": "result",
    "fieldtype": "Data",
    "label": "Result"
-  },
-  {
-   "fieldname": "learning",
-   "fieldtype": "Long Text",
-   "label": "Learning"
   },
   {
    "fieldname": "actions",
@@ -107,12 +97,22 @@
    "options": "Project",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "learnings",
+   "fieldtype": "Long Text",
+   "label": "Learnings"
+  },
+  {
+   "fieldname": "research_objectives",
+   "fieldtype": "Data",
+   "label": "Research objectives"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-21 16:17:28.600944",
+ "modified": "2022-03-31 15:25:06.593468",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",

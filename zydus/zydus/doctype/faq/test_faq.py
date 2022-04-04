@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestAddFAQ(unittest.TestCase):
+class TestFAQ(unittest.TestCase):
 	pass

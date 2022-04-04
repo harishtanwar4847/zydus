@@ -61,7 +61,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="faq">
+      <a class="nav-link" href="/faq">
         <span class="nav-link-icon">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -93,5 +93,7 @@
   </div>
 </ul>
 <script>
-  document.querySelector('.nav-item .nav-link[href^="' + location.pathname + '"]').classList.add('active')
+  setTimeout(function() {
+    document.querySelector('.nav-item .nav-link[href^="' + location.pathname + '"]').classList.add('active')
+  }, 500)
 </script>

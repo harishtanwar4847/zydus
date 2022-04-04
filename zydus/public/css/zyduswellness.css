@@ -1787,3 +1787,9 @@ color: #C4C4C4CC;
     line-height: 16px;
 }
 /**** End :: Datasheet ****/
+
+/* set label.is-invalid class as style for .text-danger */
+label.is-invalid {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+}

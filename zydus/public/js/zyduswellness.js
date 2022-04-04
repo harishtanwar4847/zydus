@@ -61,9 +61,9 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
 
 window.onload = function () {
   //Initialize Tag Input
-  var input = document.querySelector("input[data-type=tags]");
+  var input = document.querySelectorAll("input[data-type=tags]");
   if (typeof Tagify !== "undefined") {
-    new Tagify(input);
+    input.forEach(x => new Tagify(x));
   }
   adjustScrollableAreaHeight();
 };

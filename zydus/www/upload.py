@@ -1,7 +1,4 @@
-from ast import Pass
 import frappe
-import zydus
-from frappe.desk.form.load import get_attachments
 
 def get_context(context):
     context['roles'] =  frappe.get_roles(frappe.session.user)
@@ -10,8 +7,6 @@ def get_context(context):
     context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
 
     if context['access_allowed']:
-         context['helpdesk_entries'] = frappe.get_all('Help Desk', fields=['full_name', 'designation', 'email', 'mobile_number'])
-        
-             
-         
-             
+        context['brands'] = [brand.name for brand in frappe.get_list('Brand')]
+        context['agencies'] = [agency.name for agency in frappe.get_list('Agency')]
+        context['project_types'] = [project_type.name for project_type in frappe.get_list('Project Type')]
