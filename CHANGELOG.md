@@ -1,3 +1,6 @@
+#[v0.1.7-dev] - 2022-04-04
+- [notification ui](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/11)
+
 #[v0.1.6-dev] - 2022-03-31
 - [upload project page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/10)
 
