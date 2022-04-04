@@ -1,6 +1,7 @@
 import frappe
 import zydus
 from frappe.desk.form.load import get_attachments
+from frappe.utils import pretty_date, now, add_to_date
 
 def get_context(context):
     context['roles'] =  frappe.get_roles(frappe.session.user)
@@ -20,3 +21,11 @@ def get_context(context):
         # due_by calculation
         for reminder in context['reminders']:
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
+        
+        
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"])
+
+        for notification in context['notifications']:
+            notification['creations'] = pretty_date(notification['creation'])
+            
+                  

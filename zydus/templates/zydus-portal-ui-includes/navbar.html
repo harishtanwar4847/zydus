@@ -39,16 +39,16 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                 aria-labelledby="nav-home-tab">
+                                {% for notification in notifications %}
                                 <a class="notification-item unread" href="#">
                                     <div class="notification-item-content">
-                                        admin
-                                        <span class="green-italic">approved</span> your
-                                        project <strong>'client list'</strong> for
-                                        <strong>'Sugar Free'</strong>
+                                        {{notification.subject}}
                                     </div>
-                                    <div class="notification-item-time">2h ago</div>
+                                    <div class="notification-item-time">{{notification.creations}}</div>
                                 </a>
-                                <a class="notification-item" href="#">
+                                {% endfor %}
+                                <!-- <a class="notification-item" href="#">
+
                                     <div class="notification-item-content">
                                         admin
                                         <span class="red-italic">rejected</span> your
@@ -86,20 +86,20 @@
                                         </div>
                                     </div>
                                     <div class="notification-item-time">5h ago</div>
-                                </a>
+                                </a> -->
+
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel"
                                 aria-labelledby="nav-profile-tab">
+                                {% for notification in notifications %}
                                 <a class="notification-item unread" href="#">
                                     <div class="notification-item-content">
-                                        admin
-                                        <span class="green-italic">approved</span> your
-                                        project <strong>'client list'</strong> for
-                                        <strong>'Sugar Free'</strong>
+                                        {{notification.subject}}
                                     </div>
-                                    <div class="notification-item-time">2h ago</div>
+                                    <div class="notification-item-time">{{notification.creations}}</div>
+                                    {% endfor %}
                                 </a>
-                                <a class="notification-item" href="#">
+                                <!-- <a class="notification-item" href="#">
                                     <div class="notification-item-content">
                                         admin
                                         <span class="red-italic">rejected</span> your
@@ -128,15 +128,15 @@
                                     </div>
                                     <div class="notification-item-time">2h ago</div>
                                 </a>
-                                <a class="notification-item" href="#">
-                                    <div class="notification-item-content">
+                                <a class="notification-item" href="#"> -->
+                                    <!-- <div class="notification-item-content">
                                         admin have a reminder for you
                                         <strong>'upload datasheet'</strong> for today
                                         <div class="notification-comment">
                                             uplaod the client list for nutralite
                                         </div>
                                     </div>
-                                    <div class="notification-item-time">5h ago</div>
+                                    <div class="notification-item-time">5h ago</div> -->
                                 </a>
                             </div>
                         </div>
