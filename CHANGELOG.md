@@ -1,3 +1,6 @@
+#[v0.1.8-dev] - 2022-04-06
+- [Datasheet implementation ui](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/13)
+
 #[v0.1.7-dev] - 2022-04-04
 - [notification ui](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/11)
 
