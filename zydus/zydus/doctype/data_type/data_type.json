@@ -6,7 +6,8 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "data_type_name"
+  "data_type_name",
+  "amended_from"
  ],
  "fields": [
   {
@@ -16,11 +17,21 @@
    "label": "Data Type Name",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Data Type",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2022-03-15 16:06:52.275751",
+ "modified": "2022-04-06 19:26:30.153234",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Data Type",
@@ -36,6 +47,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],

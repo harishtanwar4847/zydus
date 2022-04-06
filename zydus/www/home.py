@@ -17,13 +17,14 @@ def get_context(context):
         context['my_uploads'] = frappe.db.sql(""" select title,color,brand,count(file_name) as number_of_files,concat(month," ",year)as month_year from `tabProject` left join `tabBrand` on tabProject.brand = tabBrand.name left join `tabFile` on `tabFile`.attached_to_name = `tabProject`.name and `tabFile`.attached_to_doctype = "Project" group by `tabProject`.name  limit 10 """,as_dict=1)
         
         context["reminders"]=frappe.db.get_list("ToDo",fields=["title","description","owner","modified_by","date"],debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
-
+        
+      
         # due_by calculation
         for reminder in context['reminders']:
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
         
         
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"])
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"],limit_page_length=5)
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
