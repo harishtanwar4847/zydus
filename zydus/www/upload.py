@@ -11,6 +11,7 @@ def get_context(context):
         context['brands'] = [brand.name for brand in frappe.get_list('Brand')]
         context['agencies'] = [agency.name for agency in frappe.get_list('Agency')]
         context['project_types'] = [project_type.name for project_type in frappe.get_list('Project Type')]
+        context['data_types'] = [data_type.name for data_type in frappe.get_list('Data Type')]
     
         context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"],limit_page_length=5)
 
