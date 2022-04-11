@@ -61,7 +61,7 @@
                                     </label>
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6 col-xxl-8">
-                                            <select name="month" class="form-select" required>
+                                            <select name="month" class="form-select">
                                                 <option selected disabled>Month</option>
                                                 <option value="January">January</option>
                                                 <option value="February">February</option>
@@ -78,7 +78,7 @@
                                             </select>
                                         </div>
                                         <div class="col-6 col-xxl-4">
-                                            <select name="year" class="form-select" required>
+                                            <select name="year" class="form-select">
                                                 <option selected disabled>Year</option>
                                             </select>
                                         </div>
@@ -127,7 +127,7 @@
                                 Markets
                                 <sup class="text-primary">*</sup>
                             </label>
-                            <input name="markets" class="form-control" placeholder="Mention markets with sample sizes">
+                            <input name="markets" data-type="tags-whitelisted" class="form-control" placeholder="Mention markets with sample sizes">
                         </div>
                         <div class="col-12">
                             <label> Business Problems </label>
@@ -586,12 +586,24 @@
         $('select[name=project_type]').append('<option value="'+project_type+'">'+project_type+'</option>')
     }
      
-     // populating data_types
+    // populating data_types
     var data_types = {{data_types}}
     for(var i = 0; i < data_types.length; i++) {
         var data_type = data_types[i]
         $('select[name=data_type]').append('<option value="'+data_type+'">'+data_type+'</option>')
     }
+
+    // tagify markets input
+    tagify = new Tagify($('[name=markets]').get(0), {
+        whitelist : {{cities}},
+        dropdown: {
+            maxItems: 20,           // <- mixumum allowed rendered suggestions
+            classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+            enabled: 0,             // <- show suggestions on focus
+            closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+        },
+        enforceWhitelist: true
+    })
      
 
     // Jquery Validator Defaults
@@ -612,6 +624,17 @@
                 obj[x.name] = x.value
             })
 
+            // modifying markets json
+            var marketsArr = JSON.parse($('#upload-project-form [name=markets]').val() || '[]')
+            if(marketsArr.length > 0) {
+                var markets = marketsArr.map(x => x.value)
+                var markets_ = markets.map(x => {
+                    return {'city': x}
+                })
+                obj['markets'] = markets_
+            }
+            console.log(obj, markets_)
+
             $.ajax({
                 url: '/api/resource/Project',
                 method: 'POST',
@@ -623,21 +646,23 @@
                     console.log(res)
 
                     // adding tags to created document
-                    var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val())
-                    var tags = tagsArr.map(x => x.value)
-                    $.ajax({
-                        url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
-                        method: 'POST',
-                        async: false,
-                        headers: {
-                            'X-Frappe-CSRF-Token': frappe.csrf_token
-                        },
-                        data: {
-                            tags: JSON.stringify(tags),
-                            dt: 'Project',
-                            docs: JSON.stringify([res.data.name])
-                        }
-                    })
+                    var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val() || '[]')
+                    if(tagsArr.length > 0) {
+                        var tags = tagsArr.map(x => x.value)
+                        $.ajax({
+                            url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                            method: 'POST',
+                            async: false,
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            },
+                            data: {
+                                tags: JSON.stringify(tags),
+                                dt: 'Project',
+                                docs: JSON.stringify([res.data.name])
+                            }
+                        })
+                    }
 
                     // adding attachments to created document
                     var dropzone = Dropzone.forElement('#upload-project-dropzone')
@@ -677,6 +702,8 @@
         $('#upload-project-form').validate().resetForm()
         
         // setting submit inputs as not required
+        $('#upload-project-form [name=month]').attr('required', false)
+        $('#upload-project-form [name=year]').attr('required', false)
         $('#upload-project-form [name=agency]').attr('required', false)
         $('#upload-project-form [name=project_type]').attr('required', false)
         $('#upload-project-form [name=markets]').attr('required', false)
@@ -690,6 +717,8 @@
         $('#upload-project-form').validate().resetForm()
         
         // setting submit inputs as required
+        $('#upload-project-form [name=month]').attr('required', true)
+        $('#upload-project-form [name=year]').attr('required', true)
         $('#upload-project-form [name=agency]').attr('required', true)
         $('#upload-project-form [name=project_type]').attr('required', true)
         $('#upload-project-form [name=markets]').attr('required', true)
