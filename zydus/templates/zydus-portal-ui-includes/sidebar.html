@@ -31,7 +31,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="search.html">
+      <a class="nav-link" href="/search">
         <span class="nav-link-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -91,6 +91,6 @@
 </ul>
 <script>
   setTimeout(function() {
-    document.querySelector('.nav-item .nav-link[href^="' + location.pathname + '"]').classList.add('active')
+    document.querySelector('.nav-item .nav-link[href^="' + location.pathname.split('-')[0] + '"]').classList.add('active')
   }, 500)
 </script>
