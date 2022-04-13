@@ -18,7 +18,7 @@
             <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
                 aria-labelledby="nav-project-link">
                 <form id="upload-project-form" class="custom-form project-form">
-                    <input type="hidden" name="docstatus">
+                    <input type="hidden" name="workflow_state">
                     <input type="hidden" name="doctype" value="Project">
                     <div class="row gx-3 gy-3 mt-md-3">
                         <div class="col-12 col-lg-6 col-xl-4">
@@ -61,7 +61,7 @@
                                     </label>
                                     <div class="row gx-3 gy-3">
                                         <div class="col-6 col-xxl-8">
-                                            <select name="month" class="form-select" required>
+                                            <select name="month" class="form-select">
                                                 <option selected disabled>Month</option>
                                                 <option value="January">January</option>
                                                 <option value="February">February</option>
@@ -78,7 +78,7 @@
                                             </select>
                                         </div>
                                         <div class="col-6 col-xxl-4">
-                                            <select name="year" class="form-select" required>
+                                            <select name="year" class="form-select">
                                                 <option selected disabled>Year</option>
                                             </select>
                                         </div>
@@ -127,7 +127,7 @@
                                 Markets
                                 <sup class="text-primary">*</sup>
                             </label>
-                            <input name="markets" class="form-control" placeholder="Mention markets with sample sizes">
+                            <input name="markets" data-type="tags-whitelisted" class="form-control" placeholder="Mention markets with sample sizes">
                         </div>
                         <div class="col-12">
                             <label> Business Problems </label>
@@ -286,12 +286,14 @@
             </div>
 
             <div class="tab-pane fade" id="nav-saved-content" role="tabpanel" aria-labelledby="nav-saved-link">
-                <div class="saved-nav-wrap">
+                <div class="saved-nav-wrap">                    
                     <ul class="nav nav-pills saved-nav">
+                        {% for saved in saved_projects %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">client list (sugarfree)</a>
+                            <a class="nav-link active" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
                         </li>
-                        <li class="nav-item">
+                        {% endfor %}
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">file (nutralite)</a>
                         </li>
                         <li class="nav-item">
@@ -308,8 +310,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">file sample 40 (glucon-d)</a>
-                        </li>
-                    </ul>
+                        </li> -->
+                    </ul>                    
                 </div>
                 <form class="custom-form project-form">
                     <div class="row gx-3 gy-3 mt-md-3">
@@ -586,12 +588,24 @@
         $('select[name=project_type]').append('<option value="'+project_type+'">'+project_type+'</option>')
     }
      
-     // populating data_types
+    // populating data_types
     var data_types = {{data_types}}
     for(var i = 0; i < data_types.length; i++) {
         var data_type = data_types[i]
         $('select[name=data_type]').append('<option value="'+data_type+'">'+data_type+'</option>')
     }
+
+    // tagify markets input
+    tagify = new Tagify($('[name=markets]').get(0), {
+        whitelist : {{cities}},
+        dropdown: {
+            maxItems: 20,           // <- mixumum allowed rendered suggestions
+            classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+            enabled: 0,             // <- show suggestions on focus
+            closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+        },
+        enforceWhitelist: true
+    })
      
 
     // Jquery Validator Defaults
@@ -603,6 +617,13 @@
     // Form validations
     $('#upload-project-form').validate({
         submitHandler: function(form) {
+            // making sure attachments are added
+            var dropzone = Dropzone.forElement('#upload-project-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            if(uploaded_files.length == 0) {
+                alert('Files are mandatory')
+                return
+            }
             var dataArr = $(form).serializeArray()
             var obj = {}
             dataArr.forEach(x => {
@@ -611,6 +632,17 @@
                 }
                 obj[x.name] = x.value
             })
+
+            // modifying markets json
+            var marketsArr = JSON.parse($('#upload-project-form [name=markets]').val() || '[]')
+            if(marketsArr.length > 0) {
+                var markets = marketsArr.map(x => x.value)
+                var markets_ = markets.map(x => {
+                    return {'city': x}
+                })
+                obj['markets'] = markets_
+            }
+            console.log(obj, markets_)
 
             $.ajax({
                 url: '/api/resource/Project',
@@ -621,23 +653,25 @@
                 },
                 success: function(res) {
                     console.log(res)
-
+            
                     // adding tags to created document
-                    var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val())
-                    var tags = tagsArr.map(x => x.value)
-                    $.ajax({
-                        url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
-                        method: 'POST',
-                        async: false,
-                        headers: {
-                            'X-Frappe-CSRF-Token': frappe.csrf_token
-                        },
-                        data: {
-                            tags: JSON.stringify(tags),
-                            dt: 'Project',
-                            docs: JSON.stringify([res.data.name])
-                        }
-                    })
+                    var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val() || '[]')
+                    if(tagsArr.length > 0) {
+                        var tags = tagsArr.map(x => x.value)
+                        $.ajax({
+                            url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                            method: 'POST',
+                            async: false,
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            },
+                            data: {
+                                tags: JSON.stringify(tags),
+                                dt: 'Project',
+                                docs: JSON.stringify([res.data.name])
+                            }
+                        })
+                    }
 
                     // adding attachments to created document
                     var dropzone = Dropzone.forElement('#upload-project-dropzone')
@@ -659,7 +693,21 @@
                             name: res.data.name,
                             attachments: JSON.stringify(uploaded_file_names)
                         }
-                    })
+                    }) 
+                    if($('#upload-project-form [name=workflow_state]').val()=="Pending"){
+                        $.ajax({
+                            url: '/api/resource/Project/'+ res.data.name,
+                            method: 'PUT',
+                            async: false,
+                            data: JSON.stringify({workflow_state : "Pending"}),
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            }   
+                        })
+                    }
+                                 
+                    
+                    
 
                     // form house keeping
                     $('#upload-project-dropzone').trigger('reset')
@@ -677,10 +725,12 @@
         $('#upload-project-form').validate().resetForm()
         
         // setting submit inputs as not required
+        $('#upload-project-form [name=month]').attr('required', false)
+        $('#upload-project-form [name=year]').attr('required', false)
         $('#upload-project-form [name=agency]').attr('required', false)
         $('#upload-project-form [name=project_type]').attr('required', false)
         $('#upload-project-form [name=markets]').attr('required', false)
-        $('#upload-project-form [name=docstatus]').val(0)
+        $('#upload-project-form [name=workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
     }
@@ -690,16 +740,26 @@
         $('#upload-project-form').validate().resetForm()
         
         // setting submit inputs as required
+        $('#upload-project-form [name=month]').attr('required', true)
+        $('#upload-project-form [name=year]').attr('required', true)
         $('#upload-project-form [name=agency]').attr('required', true)
         $('#upload-project-form [name=project_type]').attr('required', true)
         $('#upload-project-form [name=markets]').attr('required', true)
-        $('#upload-project-form [name=docstatus]').val(1)
+        $('#upload-project-form [name=workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
     }
     
     $('#upload-datasheet-form').validate({
         submitHandler: function(form) {
+            // making sure attachments are added
+            var dropzone = Dropzone.forElement('#upload-data-sheet-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            if(uploaded_files.length == 0) {
+                alert('Files are mandatory')
+                return
+            }
+
             var dataArr = $(form).serializeArray()
             var obj = {}
             dataArr.forEach(x => {
@@ -719,10 +779,25 @@
                 success: function(res) {
                     console.log(res)
 
+                    // adding tags to created document
+                    var tagsArr = JSON.parse($('#upload-datasheet-form [data-type=tags]').val())
+                    var tags = tagsArr.map(x => x.value)
+                    $.ajax({
+                        url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            tags: JSON.stringify(tags),
+                            dt: 'Datasheet',
+                            docs: JSON.stringify([res.data.name])
+                        }
+                    })
+
 
                     // adding attachments to created document
-                    var dropzone = Dropzone.forElement('#upload-data-sheet-dropzone')
-                    var uploaded_files = dropzone.getAcceptedFiles()
                     var uploaded_file_names = uploaded_files.map(x => {
                         // returning name of File Document created
                         var a = JSON.parse(x.xhr.response)
@@ -741,6 +816,16 @@
                             attachments: JSON.stringify(uploaded_file_names)
                         }
                     })
+                    $.ajax({
+                        url: '/api/resource/Datasheet/'+ res.data.name,
+                        method: 'PUT',
+                        data: JSON.stringify({workflow_state : "Pending"}),
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        }   
+                    })
+
+                    
 
                     // form house keeping
                     $('#upload-data-sheet-dropzone').trigger('reset')
