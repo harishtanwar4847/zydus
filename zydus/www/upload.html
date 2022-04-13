@@ -18,7 +18,7 @@
             <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
                 aria-labelledby="nav-project-link">
                 <form id="upload-project-form" class="custom-form project-form">
-                    <input type="hidden" name="docstatus">
+                    <input type="hidden" name="Workflow_state">
                     <input type="hidden" name="doctype" value="Project">
                     <div class="row gx-3 gy-3 mt-md-3">
                         <div class="col-12 col-lg-6 col-xl-4">
@@ -615,6 +615,13 @@
     // Form validations
     $('#upload-project-form').validate({
         submitHandler: function(form) {
+            // making sure attachments are added
+            var dropzone = Dropzone.forElement('#upload-project-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            if(uploaded_files.length == 0) {
+                alert('Files are mandatory')
+                return
+            }
             var dataArr = $(form).serializeArray()
             var obj = {}
             dataArr.forEach(x => {
@@ -707,7 +714,7 @@
         $('#upload-project-form [name=agency]').attr('required', false)
         $('#upload-project-form [name=project_type]').attr('required', false)
         $('#upload-project-form [name=markets]').attr('required', false)
-        $('#upload-project-form [name=docstatus]').val(0)
+        $('#upload-project-form [name=Workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
     }
@@ -722,7 +729,7 @@
         $('#upload-project-form [name=agency]').attr('required', true)
         $('#upload-project-form [name=project_type]').attr('required', true)
         $('#upload-project-form [name=markets]').attr('required', true)
-        $('#upload-project-form [name=docstatus]').val(1)
+        $('#upload-project-form [name=Workflow_state]').val("Pending")
 
         $('#upload-project-form').submit()
     }

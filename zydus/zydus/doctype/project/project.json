@@ -26,18 +26,21 @@
    "fieldname": "brand",
    "fieldtype": "Link",
    "label": "Brand",
-   "options": "Brand"
+   "options": "Brand",
+   "reqd": 1
   },
   {
    "fieldname": "month",
    "fieldtype": "Select",
    "label": "Month",
-   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+   "reqd": 1
   },
   {
    "fieldname": "year",
    "fieldtype": "Int",
-   "label": "Year"
+   "label": "Year",
+   "reqd": 1
   },
   {
    "fieldname": "description",
@@ -48,13 +51,15 @@
    "fieldname": "agency",
    "fieldtype": "Link",
    "label": "Agency",
-   "options": "Agency"
+   "options": "Agency",
+   "reqd": 1
   },
   {
    "fieldname": "project_type",
    "fieldtype": "Link",
    "label": "Project type",
-   "options": "Project Type"
+   "options": "Project Type",
+   "reqd": 1
   },
   {
    "fieldname": "target_group",
@@ -65,7 +70,8 @@
    "fieldname": "markets",
    "fieldtype": "Table MultiSelect",
    "label": "Markets",
-   "options": "Market"
+   "options": "Market",
+   "reqd": 1
   },
   {
    "fieldname": "business_problems",
@@ -112,7 +118,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-31 15:25:06.593468",
+ "modified": "2022-04-12 16:22:58.349103",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
@@ -129,6 +135,43 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "KMS Admin",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "KMS Uploader",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "KMS Downloader",
+   "select": 1,
+   "share": 1
   }
  ],
  "sort_field": "modified",
