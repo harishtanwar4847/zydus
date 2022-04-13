@@ -651,7 +651,7 @@
                 },
                 success: function(res) {
                     console.log(res)
-
+            
                     // adding tags to created document
                     var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val() || '[]')
                     if(tagsArr.length > 0) {
@@ -691,7 +691,16 @@
                             name: res.data.name,
                             attachments: JSON.stringify(uploaded_file_names)
                         }
+                    })              
+                    $.ajax({
+                        url: '/api/resource/Project/'+ res.data.name,
+                        method: 'PUT',
+                        data: JSON.stringify({workflow_state : "Pending"}),
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        }   
                     })
+                    
 
                     // form house keeping
                     $('#upload-project-dropzone').trigger('reset')
@@ -729,7 +738,7 @@
         $('#upload-project-form [name=agency]').attr('required', true)
         $('#upload-project-form [name=project_type]').attr('required', true)
         $('#upload-project-form [name=markets]').attr('required', true)
-        $('#upload-project-form [name=Workflow_state]').val("Pending")
+        $('#upload-project-form [name=Workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
     }
@@ -800,6 +809,16 @@
                             attachments: JSON.stringify(uploaded_file_names)
                         }
                     })
+                    $.ajax({
+                        url: '/api/resource/Datasheet/'+ res.data.name,
+                        method: 'PUT',
+                        data: JSON.stringify({workflow_state : "Pending"}),
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        }   
+                    })
+
+                    
 
                     // form house keeping
                     $('#upload-data-sheet-dropzone').trigger('reset')
