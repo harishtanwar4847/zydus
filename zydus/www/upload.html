@@ -18,7 +18,7 @@
             <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
                 aria-labelledby="nav-project-link">
                 <form id="upload-project-form" class="custom-form project-form">
-                    <input type="hidden" name="Workflow_state">
+                    <input type="hidden" name="workflow_state">
                     <input type="hidden" name="doctype" value="Project">
                     <div class="row gx-3 gy-3 mt-md-3">
                         <div class="col-12 col-lg-6 col-xl-4">
@@ -286,12 +286,14 @@
             </div>
 
             <div class="tab-pane fade" id="nav-saved-content" role="tabpanel" aria-labelledby="nav-saved-link">
-                <div class="saved-nav-wrap">
+                <div class="saved-nav-wrap">                    
                     <ul class="nav nav-pills saved-nav">
+                        {% for saved in saved_projects %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">client list (sugarfree)</a>
+                            <a class="nav-link active" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
                         </li>
-                        <li class="nav-item">
+                        {% endfor %}
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">file (nutralite)</a>
                         </li>
                         <li class="nav-item">
@@ -308,8 +310,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">file sample 40 (glucon-d)</a>
-                        </li>
-                    </ul>
+                        </li> -->
+                    </ul>                    
                 </div>
                 <form class="custom-form project-form">
                     <div class="row gx-3 gy-3 mt-md-3">
@@ -691,15 +693,20 @@
                             name: res.data.name,
                             attachments: JSON.stringify(uploaded_file_names)
                         }
-                    })              
-                    $.ajax({
-                        url: '/api/resource/Project/'+ res.data.name,
-                        method: 'PUT',
-                        data: JSON.stringify({workflow_state : "Pending"}),
-                        headers: {
-                            'X-Frappe-CSRF-Token': frappe.csrf_token
-                        }   
-                    })
+                    }) 
+                    if($('#upload-project-form [name=workflow_state]').val()=="Pending"){
+                        $.ajax({
+                            url: '/api/resource/Project/'+ res.data.name,
+                            method: 'PUT',
+                            async: false,
+                            data: JSON.stringify({workflow_state : "Pending"}),
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            }   
+                        })
+                    }
+                                 
+                    
                     
 
                     // form house keeping
@@ -723,7 +730,7 @@
         $('#upload-project-form [name=agency]').attr('required', false)
         $('#upload-project-form [name=project_type]').attr('required', false)
         $('#upload-project-form [name=markets]').attr('required', false)
-        $('#upload-project-form [name=Workflow_state]').val("Saved")
+        $('#upload-project-form [name=workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
     }
@@ -738,7 +745,7 @@
         $('#upload-project-form [name=agency]').attr('required', true)
         $('#upload-project-form [name=project_type]').attr('required', true)
         $('#upload-project-form [name=markets]').attr('required', true)
-        $('#upload-project-form [name=Workflow_state]').val("Saved")
+        $('#upload-project-form [name=workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
     }
