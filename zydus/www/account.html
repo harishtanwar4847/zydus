@@ -1,0 +1,1237 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Home{% endblock %}
+{% block content%}
+<div class="row">
+  <div class="col-xl-3 line-on-left reminders-column pt-5">
+    <div class="account-profile-blk text-center">
+      <div class="account-profile-img">
+        <img src="/assets/zydus/images/user-img.png" alt="">
+      </div>
+      <div class="account-user-details">
+        <h2>
+          Jennifer A. Green
+        </h2>
+        <h6>
+          Marketing Head
+        </h6>
+        <a href="mailto:emailid123@zyduswellness.in">emailid123@zyduswellness.in</a>
+      </div>
+    </div>
+    <div class="account-tab-blk">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-uploads-tab" data-bs-toggle="pill" href="#v-pills-uploads"
+          role="tab" aria-controls="v-pills-uploads" aria-selected="true">My Uploads</a>
+        <a class="nav-link" id="v-pills-favourites-tab" data-bs-toggle="pill" href="#v-pills-favourites"
+          role="tab" aria-controls="v-pills-favourites" aria-selected="false">Favourites</a>
+        <a class="nav-link" id="v-pills-reminders-tab" data-bs-toggle="pill" href="#v-pills-reminders"
+          role="tab" aria-controls="v-pills-reminders" aria-selected="false">Reminders</a>
+        <a class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"
+          role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
+        <a class="nav-link nav-link-logout" href="">
+          logout
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-9 main-scroll-area">
+    <div class="account-nav-main-blk">
+      <div class="tab-content" id="v-pills-tabContent">
+        <!--------------------->
+        <!-- Upload Tab Start -->
+        <!--------------------->
+        <div class="tab-pane fade show active account-nav-upload-blk" id="v-pills-uploads" role="tabpanel"
+          aria-labelledby="v-pills-uploads-tab">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="section-title">My Uploads</h2>
+            <ul class="list-inline text-primary mb-0">
+              <li class="list-inline-item">
+                <small>
+                  1-50 of 500
+                </small>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-link view-all-link ps-0">
+                  <i class="bi bi-chevron-left"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-link view-all-link ps-0">
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- start -->
+          <div class="my-upload teal">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- start -->
+          <div class="my-upload green-1 white-bg">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Glucon-D</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="orange-status">pending</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload yellow">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload blue-1">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload red">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload green-2 white-bg">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="red-status">rejected</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload blue-2 white-bg">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="orange-status">pending</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload yellow">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="orange-status">pending</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload yellow">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload blue-1">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload red">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <div class="green-status">approved</div>
+            <div class="comment-icon">
+              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
+            </div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+        </div>
+        <!--------------------->
+        <!-- Upload Tab End -->
+        <!--------------------->
+        <!--------------------->
+        <!-- Favourite Tab Start -->
+        <!--------------------->
+        <div class="tab-pane fade account-nav-favourites-blk" id="v-pills-favourites" role="tabpanel"
+          aria-labelledby="v-pills-favourites-tab">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="section-title">Favourites</h2>
+            <ul class="list-inline text-primary mb-0">
+              <li class="list-inline-item">
+                <small>
+                  1-50 of 500
+                </small>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-link view-all-link ps-0">
+                  <i class="bi bi-chevron-left"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-link view-all-link ps-0">
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- start -->
+          <div class="my-upload teal">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- start -->
+          <div class="my-upload green-1 white-bg">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Glucon-D</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload yellow">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload blue-1">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload red">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload green-2 white-bg">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload blue-2 white-bg">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload yellow">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload yellow">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload blue-1">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+          <!-- Start -->
+          <div class="my-upload red">
+            <button type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+            <h3 class="brand">Everyuth</h3>
+            <div class="title">Digital maketing - Facebook</div>
+            <div class="subtitle">January 2022</div>
+            <div class="subtitle">2 files</div>
+            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">View</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Download</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+        </div>
+        <!--------------------->
+        <!-- Favourite Tab End -->
+        <!--------------------->
+        <!--------------------->
+        <!-- Reminder Tab Start -->
+        <!--------------------->
+        <div class="tab-pane fade account-nav-reminders-blk" id="v-pills-reminders" role="tabpanel"
+          aria-labelledby="v-pills-reminders-tab">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="section-title">Set New Reminder</h2>
+          </div>
+          <form action="" class="custom-form project-form ">
+            <div class="row gy-3">
+              <div class="col-12 col-md-6">
+                <label>
+                  Label
+                  <sup class="text-primary">*</sup>
+                </label>
+                <input class="form-control" placeholder="Enter the label of the reminder">
+              </div>
+              <div class="col-12 col-md-6">
+                <label>
+                  Description
+                  <sup class="text-primary">*</sup>
+                </label>
+                <input class="form-control" placeholder="Enter a brief description">
+              </div>
+              <div class="col-12 col-md-6">
+                <label>
+                  Date
+                  <sup class="text-primary">*</sup>
+                </label>
+                <input class="form-control calender-icon" placeholder="DD/MM/YYYY">
+              </div>
+              <div class="col-12 text-end action-btns mb-4">
+                <button class="btn btn-secondary me-2 remind-btn-cancel">
+                  Cancel
+                </button>
+                <button class="btn btn-primary remind-btn-add">
+                  Add
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="section-title">All Reminder</h2>
+          </div>
+          <div class="reminders-wrapper">
+            <!-- Start -->
+            <div class="reminder active">
+              <div>
+                <img src="/assets/zydus/images/reminder-filled.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+              <div class="reminder-actions">
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Snooze
+                  </button>
+                  <div class="dropdown-menu">
+                    <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
+                      <li>
+                        <a class="dropdown-item" href="#">Action</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <button class="btn">Done</button>
+              </div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder active">
+              <div>
+                <img src="/assets/zydus/images/reminder-filled.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+              <div class="reminder-actions">
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Snooze
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+                <button class="btn">Done</button>
+              </div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder">
+              <div>
+                <img src="/assets/zydus/images/reminder-outline.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder">
+              <div>
+                <img src="/assets/zydus/images/reminder-outline.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder">
+              <div>
+                <img src="/assets/zydus/images/reminder-outline.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder">
+              <div>
+                <img src="/assets/zydus/images/reminder-outline.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder">
+              <div>
+                <img src="/assets/zydus/images/reminder-outline.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+            </div>
+            <!-- End -->
+            <!-- Start -->
+            <div class="reminder">
+              <div>
+                <img src="/assets/zydus/images/reminder-outline.svg">
+              </div>
+              <div>
+                <span class="reminder-sender">me:</span>
+                <span class="reminder-title">Urgent!</span>
+              </div>
+              <div class="reminder-content mt-2">
+                Send the client list
+              </div>
+              <div class="reminder-time">Today</div>
+            </div>
+            <!-- End -->
+          </div>
+        </div>
+        <!--------------------->
+        <!-- Reminder Tab End -->
+        <!--------------------->
+        <!--------------------->
+        <!-- Notification Tab Start -->
+        <!--------------------->
+        <div class="tab-pane fade account-nav-notification-blk" id="v-pills-notifications" role="tabpanel"
+          aria-labelledby="v-pills-reminders-tab">
+          <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
+            <h2 class="section-title">My Notifications</h2>
+            <ul class="list-inline text-primary mb-0">
+              <li class="list-inline-item">
+                <a href="" class="text-primary">
+                  <small>
+                    Clear
+                  </small>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" class="text-primary">
+                  <small>
+                    Mark as read
+                  </small>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" class="text-primary">
+                  <small>
+                    Mark as unread
+                  </small>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="" class="text-primary">
+                  <small>
+                    Mark all as read
+                  </small>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <small>
+                  1-50 of 500
+                </small>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-link view-all-link ps-0">
+                  <i class="bi bi-chevron-left"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-link view-all-link ps-0">
+                  <i class="bi bi-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+          <div class="notification-wrapper">
+           
+
+             <!-- Start -->
+
+             <a class="notification-item" href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                  <div class="gray-bg mt-3 py-1 px-2 d-inline-block">
+                    <i>esign changes discussion</i>
+                  </div>
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item unread" href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                  <div class="gray-bg mt-3 py-1 px-2 d-inline-block">
+                    <i>esign changes discussion</i>
+                  </div>
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item unread" href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+            <!-- Start -->
+
+            <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+            <!-- Start -->
+
+            <a class="notification-item unread" href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                  <div class="gray-bg mt-3 py-1 px-2 d-inline-block">
+                    <i>esign changes discussion</i>
+                  </div>
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item unread" href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+            <!-- Start -->
+
+            <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+             <!-- Start -->
+
+             <a class="notification-item " href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    admin
+                    <span class="green-italic">approved</span> your
+                    project <strong>'client list'</strong> for
+                    <strong>'Sugar Free'</strong>
+                  </div>
+                   
+                </div>
+              </div>
+              <div class="notification-item-time"><i> 2h ago</i></div>
+            </a>
+
+            <!-- End -->
+
+          </div>
+        </div>
+        <!--------------------->
+        <!-- Notification Tab End -->
+        <!--------------------->
+      </div>
+      <div class="add-missing-btn">
+        <button class="btn btn-primary">
+          <img src="/assets/zydus/images/plus-icn.png" class="img-fluid">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
