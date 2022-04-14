@@ -632,6 +632,7 @@
                 }
                 obj[x.name] = x.value
             })
+	    obj['workflow_state'] = 'Saved'
 
             // modifying markets json
             var marketsArr = JSON.parse($('#upload-project-form [name=markets]').val() || '[]')
@@ -745,7 +746,7 @@
         $('#upload-project-form [name=agency]').attr('required', true)
         $('#upload-project-form [name=project_type]').attr('required', true)
         $('#upload-project-form [name=markets]').attr('required', true)
-        $('#upload-project-form [name=workflow_state]').val("Saved")
+        $('#upload-project-form [name=workflow_state]').val("Pending")
 
         $('#upload-project-form').submit()
     }
