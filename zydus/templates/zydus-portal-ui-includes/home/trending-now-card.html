@@ -16,7 +16,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <div class="subtitle">{{trending_now.number_of_files}} {% if trending_now.number_of_files > 1%} files {% else %} file {% endif %}</div>
             <div class="d-flex align-items-center justify-content-end actions">
-                <button class="btn btn-link">view</button>
+                <a href="/{{trending_now.route}}" class="btn btn-link">view</a>
                 <button class="btn btn-link p-0">
                     <img src="/assets/zydus/images/download.svg" class="img-fluid" />
                 </button>
