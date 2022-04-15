@@ -19,3 +19,4 @@ def get_context(context):
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
+        

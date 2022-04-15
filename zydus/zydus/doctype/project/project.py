@@ -13,4 +13,13 @@ class Project(WebsiteGenerator):
 		context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
 
 		if context['access_allowed']:
-			pass
+			context['_user_tags'] = frappe.db.get_value('Project', self.name, '_user_tags').split(',')[1:]
+			context['markets'] = ','.join([market.city for market in self.markets])
+			context['attachments'] = frappe.desk.form.load.get_attachments('Project', self.name)
+			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
+
+	def before_submit(self):
+		self.is_approved = True
+		self.route = 'projects/{}'.format(self.name)
+		frappe.db.delete("View Log",{"reference_name":self.name})
+			

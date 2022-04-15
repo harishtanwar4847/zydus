@@ -76,3 +76,36 @@ function logout() {
     location.href = '/login'
   })
 }
+
+function toggleLike(el, dt, dn) {
+  $.ajax({
+    url: '/api/method/frappe.desk.like.toggle_like',
+    method: 'POST',
+    data: {
+      doctype: dt, 
+      name: dn,
+      add: $(el).find('i.bi').hasClass('bi-heart-fill') ? 'No' : 'Yes'
+    },
+    headers: {
+      'X-Frappe-CSRF-Token': frappe.csrf_token
+    },
+    success: function() {
+      $('#content-wrapper > div > div:nth-child(2)').load('/home #content-wrapper > div > div:nth-child(2)')
+      setTimeout(function() {
+        updateLikeButton()
+      }, 500)
+    }
+  })
+}
+
+function updateLikeButton() {
+  document.querySelectorAll('button i.bi.bi-heart').forEach(x => {
+    var is_liked = JSON.parse(JSON.parse($(x).parent('button.fav-button').data('liked-by'))).includes(frappe.session.user)
+    if (is_liked) {
+      $(x).addClass('bi-heart-fill').removeClass('bi-heart').css('color', '#000')
+    }
+  })
+}
+setTimeout(function() {
+  updateLikeButton()
+}, 500)

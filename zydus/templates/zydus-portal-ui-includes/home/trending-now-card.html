@@ -1,7 +1,7 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
     <div class="trending-product-card" style="border-color: {{trending_now.color}}">
         <div class="d-flex align-items-start justify-content-between">
-            <button type="button" class="btn btn-link p-0 fav-button">
+            <button onclick="toggleLike(this, 'Project', '{{trending_now.name}}')" data-liked-by='{{trending_now.liked_by|tojson}}' type="button" class="btn btn-link p-0 fav-button">
                 <i class="bi bi-heart"></i>
             </button>
             <div class="brand-logo-wrap">
@@ -14,12 +14,15 @@
         </div>
         <div class="subtitle">{{trending_now.month_year}}</div>
         <div class="d-flex align-items-center justify-content-between">
-            <div class="subtitle">{{trending_now.number_of_files}} {% if trending_now.number_of_files > 1%} files {% else %} file {% endif %}</div>
+            <div class="subtitle">{{trending_now.attachments | len}} {% if trending_now.attachments | len > 1%} files {% else %} file {% endif %}</div>
             <div class="d-flex align-items-center justify-content-end actions">
-                <button class="btn btn-link">view</button>
-                <button class="btn btn-link p-0">
+                <a href="/{{trending_now.route}}" class="btn btn-link">view</a>
+                <button onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="btn btn-link p-0">
                     <img src="/assets/zydus/images/download.svg" class="img-fluid" />
                 </button>
+                {% for file in trending_now.attachments %}
+                <a href="{{file.file_url}}" download></a>
+                {% endfor %}
             </div>
         </div>
     </div>
