@@ -316,7 +316,7 @@ body {
 .sidebar .nav-item .nav-link.active .nav-link-icon img.active{
   display: inline-block;
 }
-.sidebar .nav-item .nav-link.active .nav-link-icon img:not(.active){
+.sidebar .nav-item .nav-link.active .nav-link-icon img:not(.active) {
   display: none;
 }
 @media all and (max-width: 575px) {
@@ -657,9 +657,9 @@ body {
   color: #d84848;
   font-style: italic;
 }
-.line-on-left {
+/* .line-on-left {
   border-left: 1px solid rgba(196, 196, 196, 0.3);
-}
+} */
 @media all and (max-width: 1199px) {
   .line-on-left {
     border: none;
@@ -756,6 +756,7 @@ body {
   color: #000000;
   margin: 0;
   margin-left: 15px;
+  font-weight: 600;
 }
 .my-upload .title {
   font-size: 14px;
@@ -1243,11 +1244,9 @@ body {
   line-height: 30px;
   color: rgba(0, 0, 0, 0.5);
 }
-.project-form .action-btns .btn {
-  padding: 10px 90px;
-}
+.project-form .action-btns .btn {padding: 7px 20px;font-size: 16px;line-height: 16px;}
 .action-btns .btn {
-  min-width: 200px;
+  min-width: 142px;
 }
 @media all and (max-width: 1199px) {
   .upload .nav-link {
@@ -1786,10 +1785,44 @@ color: #C4C4C4CC;
     font-size: 20px;
     line-height: 16px;
 }
-/**** End :: Datasheet ****/
 
-/* set label.is-invalid class as style for .text-danger */
-label.is-invalid {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+input.form-control.calender-icon {
+  position: relative;
+  background-image: url(../images/calender-icn.png);
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+  background-size: auto;
 }
+.add-missing-btn {display: flex;justify-content: flex-end;margin-top: 30px;}
+.add-missing-btn button.btn.btn-primary {background: rgba(0, 156, 164, 0.09);border: 1px solid rgba(0, 156, 164, 0.37);box-sizing: border-box;border-radius: 50%;width: 64px;height: 64px;display: flex;justify-content: center;align-items: center;}
+.add-missing-btn button.btn.btn-primary img.img-fluid {width: 28px;height: 28px;object-fit: contain;}
+.add-missing-btn button.btn.btn-primary:hover {background: rgba(0, 156, 164, 0.37);transition: 0.3s;}
+.project-form .action-btns 
+button.btn.btn-secondary.me-2.remind-btn-cancel {
+    border: 1px solid rgba(0, 156, 164, 0.37);
+    box-sizing: border-box;
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+    background: transparent;
+    box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 5%);
+    font-weight: 600;
+}
+.project-form .action-btns button.btn.btn-primary.remind-btn-add {
+  background: rgba(0, 156, 164, 0.09);
+  border: 1px solid rgba(0, 156, 164, 0.37);
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  color: #009CA4;
+  font-weight: 600;
+}
+.project-form .action-btns button.btn.btn-secondary.me-2.remind-btn-cancel:hover {
+  background: #009ca4;
+  transition: 0.3s;
+}
+.project-form .action-btns button.btn.btn-primary.remind-btn-add:hover {
+  background: #009ca4;
+  color: #fff;
+  transition: 0.3s;
+}
+/**** End :: Datasheet ****/

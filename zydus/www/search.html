@@ -1,0 +1,416 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Home{% endblock %}
+{% block content%}
+<div class="row">
+    <div
+      class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
+    >
+      <div
+        class="d-flex align-items-center justify-content-between mb-3"
+      >
+        <h2 class="section-title">Search Filter</h2>
+      </div>
+      <form class="custom-form">
+        <div class="row gx-3 gy-3">
+          <div class="col-12 col-md-6 col-xl-3">
+            <label for="brandSelect" class="form-label">Brand</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="brandSelect"
+            >
+              <option value="1">Nutralite</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-6">
+            <label for="projectName" class="form-label"
+              >Project Name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter the title of the project"
+              id="projectName"
+            />
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <label for="agency" class="form-label">Agency</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter the name of the agency"
+              id="agency"
+            />
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <label for="dateSelect" class="form-label"
+              >Date of Project</label
+            >
+            <div class="row" id="dateSelect">
+              <div class="col-6 col-xxl-8">
+                <select class="form-select">
+                  <option value="1">January</option>
+                </select>
+              </div>
+              <div class="col-6 col-xxl-4">
+                <select class="form-select">
+                  <option value="1">2022</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-xl-5">
+            <label for="projectType" class="form-label"
+              >Project Type</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter the project type"
+              id="projectType"
+            />
+          </div>
+          <div class="col-6 col-xl-4">
+            <label for="tags" class="form-label">Tags</label>
+            <input
+              type="text"
+              class="form-control"
+              data-type="tags"
+              id="tags"
+            />
+          </div>
+          <div class="col-12 text-end search-action-buttons">
+            <button class="btn btn-outline-secondary m-1">Clear</button>
+            <button class="btn btn-secondary m-1">Search</button>
+          </div>
+        </div>
+      </form>
+      <div
+        class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3"
+      >
+        <h2 class="section-title">Search Results</h2>
+        <div class="d-block d-lg-inline">
+          <span class="text-muted m-1 m-lg-2">for</span>
+          <span class="badge m-1 m-lg-2">nutralite</span>
+          <span class="badge m-1 m-lg-2">January 2022</span>
+          <span class="badge m-1 m-lg-2">#marketing</span>
+        </div>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+      <div class="search-result yellow">
+        <button type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi bi-heart"></i>
+        </button>
+        <h3 class="brand">Nutralite</h3>
+        <div class="title">Digital Maketing Plans</div>
+        <div class="type">Project Type</div>
+        <div class="agency">name of the agency</div>
+        <div class="subtitle-1">January 2022</div>
+        <div class="subtitle-2">2 files</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          fermentum ex quis dolor accumsan, vel sollicitudin velit
+          lacinia. Proin fringilla efficitur risus eget facilisis.
+        </p>
+        <button
+          type="button"
+          class="btn btn-link p-0 fav-button dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Another action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

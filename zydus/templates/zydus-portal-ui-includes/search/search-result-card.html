@@ -1,0 +1,22 @@
+<div class="search-result" style="border-color: {{search_result.color}}">
+    <button type="button" class="btn btn-link p-0 fav-button">
+        <i class="bi bi-heart"></i>
+    </button>
+    <h3 class="brand">{{search_result.brand}}</h3>
+    <div class="title">{{search_result.title}}</div>
+    <div class="type">{{search_result.project_type}}</div>
+    <div class="agency">{{search_result.agency}}</div>
+    <div class="subtitle-1">{{search_result.date}}</div>
+    <div class="subtitle-2">{{search_result.number_of_files}} {% if search_result.number_of_files > 1%} files {% else %} file {% endif %}</div>
+    <p>{{search_result.description}}</p>
+    <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">View</a></li>
+        <li>
+            <a class="dropdown-item" href="#">Download</a>
+        </li>
+    </ul>
+</div>

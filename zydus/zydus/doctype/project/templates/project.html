@@ -1,0 +1,141 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Project{% endblock %}
+{% block content%}
+<div class="row">
+    <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area" style="max-height: unset; overflow: auto;">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div class="d-flex aling-items-baseline">
+          <a class="btn ps-0 btn-link view-all-link me-1">
+            <i class="bi bi-chevron-left"></i>
+            back
+          </a>
+        </div>
+      </div>
+      <div class="file-contet red">
+        <div class="row gx-3 gy-3">
+          <div class="col-12 col-md-6 col-xl-4">
+            <div class="file-list-wrapper">
+              <div class="file-list">
+                <div class="file-list-item">
+                  <img src="./assets/images/pdf.png" class="img-fluid">
+                  <span class="file-name">name.pdf</span>
+                  <button class="btn btn-link">view</button>
+                  <button class="btn btn-link p-0">
+                    <img src="./assets/images/download.svg" class="img-fluid">
+                  </button>
+                </div>
+                <div class="file-list-item">
+                  <img src="./assets/images/pdf.png" class="img-fluid">
+                  <span class="file-name">name.pdf</span>
+                  <button class="btn btn-link">view</button>
+                  <button class="btn btn-link p-0">
+                    <img src="./assets/images/download.svg" class="img-fluid">
+                  </button>
+                </div>
+                <div class="file-list-item">
+                  <img src="./assets/images/pdf.png" class="img-fluid">
+                  <span class="file-name">name.pdf</span>
+                  <button class="btn btn-link">view</button>
+                  <button class="btn btn-link p-0">
+                    <img src="./assets/images/download.svg" class="img-fluid">
+                  </button>
+                </div>
+              </div>
+              <div class="text-end">
+                <button class="btn btn-lg btn-secondary">Download All</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 col-xl-8">
+            <h2 class="brand">{{doc.brand}}</h2>
+            <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
+              <h3 class="me-3 file-title">
+                Digital Maketing - Facebook
+              </h3>
+              <div class="upload-date-time">
+                uploaded on 28 November 2021
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Quisque in maximus elit
+            </p>
+            <div class="details mt-5 mt-lg-1 mt-xl-5">
+              <div class="row gx-3 gy-3">
+                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                  <label>Date of Project</label>
+                  <div>January 2022</div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                  <label>Project Type</label>
+                  <div>Lorem ipsum dolor sit amet</div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                  <label>Agency</label>
+                  <div>Lorem ipsum dolor sit amet</div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                  <label>Markets</label>
+                  <div>Mumbai , Delhi , Kolkata</div>
+                </div>
+                <div class="col-12">
+                  <label>Target Group</label>
+                  <div>
+                    Female 32-38 years, with kids between age 6 – 14,
+                    NCCS A, NCCS B
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label>Tags</label>
+                  <div>
+                    <span class="badge tag">Marketing</span>
+                    <span class="badge tag">Complan</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 details">
+            <label>Business Problems</label>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Quisque in maximus elit, vulputate porta lacus. Aenean eget
+              massa eget orci suscipit consequat.
+            </p>
+            <label>Reach Objectives</label>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Quisque in maximus elit, vulputate porta lacus. Aenean eget
+              massa eget or
+            </p>
+            <label>Results</label>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Quisque
+            </p>
+            <label>Learnings</label>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Quisque Quisque odio ante, pulvinar ac justo a, interdum
+              ornare elit.
+            </p><ol>
+              <li>
+                Nulla pharetra justo lacus, ac tincidunt orci
+                rutrum porta. Suspendisse mollis ipsum hendrerit ex volutpat
+                consequat.
+              </li>
+              <li>
+                Etiam ac magna tempor, mollis tortor vel, posuere sem. Praesent venenatis congue dapibus.
+              </li>
+              <li>
+                Etiam sit amet turpis euismod, venenatis magna in, pharetra risus. Aenean
+                non placerat tortor. ac tincidunt orci rutrum porta.
+              </li>
+            </ol>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
