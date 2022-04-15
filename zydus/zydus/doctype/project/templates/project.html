@@ -2,115 +2,104 @@
 {% block title%}Project{% endblock %}
 {% block content%}
 <div class="row">
-    <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area" style="max-height: unset; overflow: auto;">
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <div class="d-flex aling-items-baseline">
-          <a class="btn ps-0 btn-link view-all-link me-1">
-            <i class="bi bi-chevron-left"></i>
-            back
-          </a>
-        </div>
+  <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
+    style="max-height: unset; overflow: auto;">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <div class="d-flex aling-items-baseline">
+        <a class="btn ps-0 btn-link view-all-link me-1">
+          <i class="bi bi-chevron-left"></i>
+          back
+        </a>
       </div>
-      <div class="file-contet red">
-        <div class="row gx-3 gy-3">
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="file-list-wrapper">
-              <div class="file-list">
-                <div class="file-list-item">
-                  <img src="/assets/zydus/images/pdf.png" class="img-fluid">
-                  <span class="file-name">name.pdf</span>
-                  <button class="btn btn-link">view</button>
-                  <button class="btn btn-link p-0">
-                    <img src="/assets/zydus/images/download.svg" class="img-fluid">
-                  </button>
-                </div>
-                <div class="file-list-item">
-                  <img src="/assets/zydus/images/pdf.png" class="img-fluid">
-                  <span class="file-name">name.pdf</span>
-                  <button class="btn btn-link">view</button>
-                  <button class="btn btn-link p-0">
-                    <img src="/assets/zydus/images/download.svg" class="img-fluid">
-                  </button>
-                </div>
-                <div class="file-list-item">
-                  <img src="/assets/zydus/images/pdf.png" class="img-fluid">
-                  <span class="file-name">name.pdf</span>
-                  <button class="btn btn-link">view</button>
-                  <button class="btn btn-link p-0">
-                    <img src="/assets/zydus/images/download.svg" class="img-fluid">
-                  </button>
-                </div>
+    </div>
+    <div class="file-contet" style="border-color: {{brand_color}};">
+      <div class="row gx-3 gy-3">
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="file-list-wrapper">
+            <div class="file-list">
+              {% for file in attachments %}
+              <div class="file-list-item">
+                <img src="/assets/zydus/images/pdf.png" class="img-fluid">
+                <span class="file-name">{{file.file_name}}</span>
+                <a href="{{file.file_url}}" target="_blank" class="btn btn-link">view</a>
+                <a href="{{file.file_url}}" download class="btn btn-link p-0">
+                  <img src="/assets/zydus/images/download.svg" class="img-fluid">
+                </a>
               </div>
-              <div class="text-end">
-                <button class="btn btn-lg btn-secondary">Download All</button>
-              </div>
+              {% endfor %}
+            </div>
+            <div class="text-end">
+              <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" class="btn btn-lg btn-secondary">Download All</button>
             </div>
           </div>
-          <div class="col-12 col-lg-6 col-xl-8">
-            <h2 class="brand">{{doc.brand}}</h2>
-            <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
-              <h3 class="me-3 file-title">
-                {{doc.title}}
-              </h3>
-              <div class="upload-date-time">
-                {{doc.month}}{{doc.year}}
-              </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-8">
+          <h2 class="brand">{{doc.brand}}</h2>
+          <div
+            class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
+            <h3 class="me-3 file-title">
+              {{doc.title}}
+            </h3>
+            <div class="upload-date-time">
+              Uploaded on {{frappe.format_date(doc.modified)}}
             </div>
-            <p>
-              {{doc.description}}
-            </p>
-            <div class="details mt-5 mt-lg-1 mt-xl-5">
-              <div class="row gx-3 gy-3">
-                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
-                  <label>Date of Project</label>
-                  <div>{{doc.month}}{{doc.year}}</div>
+          </div>
+          <p>
+            {{doc.description}}
+          </p>
+          <div class="details mt-5 mt-lg-1 mt-xl-5">
+            <div class="row gx-3 gy-3">
+              <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                <label>Date of Project</label>
+                <div>{{doc.month}} {{doc.year}}</div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                <label>Project Type</label>
+                <div>{{doc.project_type}}</div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                <label>Agency</label>
+                <div>{{doc.agency}}</div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                <label>Markets</label>
+                <div>{{markets}}</div>
+              </div>
+              <div class="col-12">
+                <label>Target Group</label>
+                <div>
+                  {{doc.target_group}}
                 </div>
-                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
-                  <label>Project Type</label>
-                  <div>{{doc.project_type}}</div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
-                  <label>Agency</label>
-                  <div>{{doc.agency}}</div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
-                  <label>Markets</label>
-                  <div>{{doc.markets}}</div>
-                </div>
-                <div class="col-12">
-                  <label>Target Group</label>
-                  <div>
-                    {{doc.target_group}}
-                  </div>
-                </div>
-                <div class="col-12">
-                  <label>{{doc._users_tags}}</label>
-                  <!-- <div>
-                    <span class="badge tag">Marketing</span>
-                    <span class="badge tag">Complan</span>
-                  </div> -->
+              </div>
+              <div class="col-12">
+                <div>
+                  {% for tag in _user_tags %}
+                  <span class="badge tag">{{tag}}</span>
+                  {% endfor %}
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-12 details">
-            <label>Business Problems</label>
-            <p>
-              {{doc.business_problems}}
-            </p>
-            <label>Research Objectives</label>
-            <p>
-              {{doc.research_objectives}}
-            </p>
-            <label>Results</label>
-            <p>
-              {{doc.result}}
-            </p>
-            <label>Learnings</label>
-            <p>
-              {{doc.learnings}}
-            </p><ol>
-              <!-- <li>
+        </div>
+        <div class="col-12 details">
+          <label>Business Problems</label>
+          <p>
+            {{doc.business_problems}}
+          </p>
+          <label>Research Objectives</label>
+          <p>
+            {{doc.research_objectives}}
+          </p>
+          <label>Results</label>
+          <p>
+            {{doc.result}}
+          </p>
+          <label>Learnings</label>
+          <p>
+            {{doc.learnings}}
+          </p>
+          <ol>
+            <!-- <li>
                 Nulla pharetra justo lacus, ac tincidunt orci
                 rutrum porta. Suspendisse mollis ipsum hendrerit ex volutpat
                 consequat.
@@ -122,11 +111,11 @@
                 Etiam sit amet turpis euismod, venenatis magna in, pharetra risus. Aenean
                 non placerat tortor. ac tincidunt orci rutrum porta.
               </li> -->
-            </ol>
-            <p></p>
-          </div>
+          </ol>
+          <p></p>
         </div>
       </div>
     </div>
   </div>
+</div>
 {% endblock %}
