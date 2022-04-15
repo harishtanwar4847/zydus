@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "format:P-{YYYY}-{MM}-{####}",
  "creation": "2022-03-11 14:32:25.451219",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -19,7 +20,9 @@
   "result",
   "learnings",
   "actions",
-  "amended_from"
+  "amended_from",
+  "route",
+  "is_approved"
  ],
  "fields": [
   {
@@ -107,12 +110,25 @@
    "fieldname": "research_objectives",
    "fieldtype": "Data",
    "label": "Research objectives"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_approved",
+   "fieldtype": "Check",
+   "label": "Is Approved"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_approved",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-31 15:25:06.593468",
+ "modified": "2022-04-15 13:36:14.054583",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
@@ -131,6 +147,7 @@
    "write": 1
   }
  ],
+ "route": "projects",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1,
