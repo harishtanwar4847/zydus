@@ -1,0 +1,23 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Home{% endblock %}
+{% block content%}
+<div class="row">
+    <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
+        style="max-height: unset; overflow: auto;">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <div class="d-flex flex-column flex-md-row align-items-baseline">
+                <a href="/home" class="btn ps-0 btn-link view-all-link me-2">
+                    <i class="bi bi-chevron-left"></i>
+                    back
+                </a>
+                <h2 class="section-title me-2">Search Results</h2>
+                <span class="text-muted fst-italic">
+                    for sugarfree sales 2021</span>
+            </div>
+        </div>
+        {% for search_result in search_results %}
+        {% include "templates/zydus-portal-ui-includes/search/search-result-card.html" %}
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}
