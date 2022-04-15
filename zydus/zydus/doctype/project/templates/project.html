@@ -17,27 +17,27 @@
             <div class="file-list-wrapper">
               <div class="file-list">
                 <div class="file-list-item">
-                  <img src="./assets/images/pdf.png" class="img-fluid">
+                  <img src="/assets/zydus/images/pdf.png" class="img-fluid">
                   <span class="file-name">name.pdf</span>
                   <button class="btn btn-link">view</button>
                   <button class="btn btn-link p-0">
-                    <img src="./assets/images/download.svg" class="img-fluid">
+                    <img src="/assets/zydus/images/download.svg" class="img-fluid">
                   </button>
                 </div>
                 <div class="file-list-item">
-                  <img src="./assets/images/pdf.png" class="img-fluid">
+                  <img src="/assets/zydus/images/pdf.png" class="img-fluid">
                   <span class="file-name">name.pdf</span>
                   <button class="btn btn-link">view</button>
                   <button class="btn btn-link p-0">
-                    <img src="./assets/images/download.svg" class="img-fluid">
+                    <img src="/assets/zydus/images/download.svg" class="img-fluid">
                   </button>
                 </div>
                 <div class="file-list-item">
-                  <img src="./assets/images/pdf.png" class="img-fluid">
+                  <img src="/assets/zydus/images/pdf.png" class="img-fluid">
                   <span class="file-name">name.pdf</span>
                   <button class="btn btn-link">view</button>
                   <button class="btn btn-link p-0">
-                    <img src="./assets/images/download.svg" class="img-fluid">
+                    <img src="/assets/zydus/images/download.svg" class="img-fluid">
                   </button>
                 </div>
               </div>
@@ -50,47 +50,45 @@
             <h2 class="brand">{{doc.brand}}</h2>
             <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
               <h3 class="me-3 file-title">
-                Digital Maketing - Facebook
+                {{doc.title}}
               </h3>
               <div class="upload-date-time">
-                uploaded on 28 November 2021
+                {{doc.month}}{{doc.year}}
               </div>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Quisque in maximus elit
+              {{doc.description}}
             </p>
             <div class="details mt-5 mt-lg-1 mt-xl-5">
               <div class="row gx-3 gy-3">
                 <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
                   <label>Date of Project</label>
-                  <div>January 2022</div>
+                  <div>{{doc.month}}{{doc.year}}</div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
                   <label>Project Type</label>
-                  <div>Lorem ipsum dolor sit amet</div>
+                  <div>{{doc.project_type}}</div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
                   <label>Agency</label>
-                  <div>Lorem ipsum dolor sit amet</div>
+                  <div>{{doc.agency}}</div>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
                   <label>Markets</label>
-                  <div>Mumbai , Delhi , Kolkata</div>
+                  <div>{{doc.markets}}</div>
                 </div>
                 <div class="col-12">
                   <label>Target Group</label>
                   <div>
-                    Female 32-38 years, with kids between age 6 – 14,
-                    NCCS A, NCCS B
+                    {{doc.target_group}}
                   </div>
                 </div>
                 <div class="col-12">
-                  <label>Tags</label>
-                  <div>
+                  <label>{{doc._users_tags}}</label>
+                  <!-- <div>
                     <span class="badge tag">Marketing</span>
                     <span class="badge tag">Complan</span>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -98,28 +96,21 @@
           <div class="col-12 details">
             <label>Business Problems</label>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Quisque in maximus elit, vulputate porta lacus. Aenean eget
-              massa eget orci suscipit consequat.
+              {{doc.business_problems}}
             </p>
-            <label>Reach Objectives</label>
+            <label>Research Objectives</label>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Quisque in maximus elit, vulputate porta lacus. Aenean eget
-              massa eget or
+              {{doc.research_objectives}}
             </p>
             <label>Results</label>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Quisque
+              {{doc.result}}
             </p>
             <label>Learnings</label>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Quisque Quisque odio ante, pulvinar ac justo a, interdum
-              ornare elit.
+              {{doc.learnings}}
             </p><ol>
-              <li>
+              <!-- <li>
                 Nulla pharetra justo lacus, ac tincidunt orci
                 rutrum porta. Suspendisse mollis ipsum hendrerit ex volutpat
                 consequat.
@@ -130,7 +121,7 @@
               <li>
                 Etiam sit amet turpis euismod, venenatis magna in, pharetra risus. Aenean
                 non placerat tortor. ac tincidunt orci rutrum porta.
-              </li>
+              </li> -->
             </ol>
             <p></p>
           </div>
