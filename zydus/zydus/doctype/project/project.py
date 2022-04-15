@@ -18,7 +18,8 @@ class Project(WebsiteGenerator):
 			context['attachments'] = frappe.desk.form.load.get_attachments('Project', self.name)
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 
-	def _submit(self):
-		if self.workflow_state == "Approved":
-			frappe.db.delete("View Log",{"reference_name":self.name})
+	def before_submit(self):
+		self.is_approved = True
+		self.route = 'projects/{}'.format(self.name)
+		frappe.db.delete("View Log",{"reference_name":self.name})
 			
