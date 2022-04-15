@@ -5,7 +5,7 @@
     <h3 class="brand">{{my_upload.brand}}</h3>
     <div class="title">{{my_upload.title}}</div>
     <div class="subtitle">{{my_upload.month_year}}</div>
-    <div class="subtitle">{{my_upload.number_of_files}} {% if my_upload.number_of_files > 1%} files {% else %} file {% endif %}</div>
+    <div class="subtitle">{{my_upload.attachments | len}} {% if my_upload.attachments | len > 1%} files {% else %} file {% endif %}</div>
     <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button" id="dropdownMenuButton1"
         data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-three-dots-vertical"></i>
@@ -13,7 +13,10 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="/{{my_upload.route}}">View</a></li>
         <li>
-            <a class="dropdown-item" href="#">Download</a>
+            <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
+            {% for file in my_upload.attachments %}
+            <a href="{{file.file_url}}" download></a>
+            {% endfor %}
         </li>
     </ul>
 </div>
