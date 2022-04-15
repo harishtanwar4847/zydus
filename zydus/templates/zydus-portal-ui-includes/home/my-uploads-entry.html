@@ -1,5 +1,5 @@
 <div class="my-upload" style="border-color: {{my_upload.color}};">
-    <button type="button" class="btn btn-link p-0 fav-button">
+    <button onclick="toggleLike(this, 'Project', '{{my_upload.name}}')" data-liked-by='{{my_upload.liked_by|tojson}}' type="button" class="btn btn-link p-0 fav-button">
         <i class="bi bi-heart"></i>
     </button>
     <h3 class="brand">{{my_upload.brand}}</h3>
