@@ -1,5 +1,7 @@
 # [v0.2.0-dev] - 
 - [Search Pages](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/15)
+- [View Project / Favorites / Download files
+](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/17)
 
 # [v0.1.9-dev] - 2022-04-13
 - [upload project workflow](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/14) 
