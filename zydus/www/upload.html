@@ -482,7 +482,7 @@
                     $('#upload-saved-project-form [name=workflow_state]').val(res.docs[0].workflow_state)
                     $('#upload-saved-project-form [name=year]').val(res.docs[0].year)
                     $('#upload-saved-project-form [data-type=tags]').val(JSON.stringify(res.docs[0]._user_tags.split(',').splice(1).map(x => {return {value:x}})))
-                    $('#upload-saved-project-form [name=markets]').val('tag1, tag2 autofocus')
+                    $('#upload-saved-project-form [name=markets]').val(find_mar)
                   
 
                 }
