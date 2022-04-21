@@ -1,7 +1,7 @@
-<form id="{{form}}-form" class="custom-form project-form">
+<form id="{{form}}-form" class="custom-form project-form" {% if saved %} style="display: none" {% endif %}>
     <input type="hidden" name="workflow_state">
     {% if saved %}
-    <input type="hidden" name ="name">
+    <input type="hidden" name="name">
     {% endif %}
     <input type="hidden" name="doctype" value="Project">
     <div class="row gx-3 gy-3 mt-md-3">

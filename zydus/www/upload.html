@@ -44,7 +44,7 @@
                     </ul>                    
                 </div>
                {% set form="upload-saved-project"%}
-               {% set Saved = False  %}
+               {% set saved = True  %}
                {% include "templates/zydus-portal-ui-includes/forms/project-form.html" %}
             </div>
         </div>
@@ -182,16 +182,21 @@
     }
 
     // tagify markets input
-    tagify = new Tagify($('[name=markets]').get(0), {
-        whitelist : {{cities}},
-        dropdown: {
-            maxItems: 20,           // <- mixumum allowed rendered suggestions
-            classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
-            enabled: 0,             // <- show suggestions on focus
-            closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
-        },
-        enforceWhitelist: true
-    })
+    var input = document.querySelectorAll("[name=markets]");
+    if (typeof Tagify !== "undefined") {
+        input.forEach(x => {
+            new Tagify(x, {
+                whitelist : {{cities}},
+                dropdown: {
+                    maxItems: 20,           // <- mixumum allowed rendered suggestions
+                    classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+                    enabled: 0,             // <- show suggestions on focus
+                    closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+                },
+                enforceWhitelist: true
+            })
+        });
+    }
      
 
     // Jquery Validator Defaults
@@ -206,7 +211,7 @@
             // making sure attachments are added
             var dropzone = Dropzone.forElement('#upload-project-dropzone')
             var uploaded_files = dropzone.getAcceptedFiles()
-            if(uploaded_files.length == 0) {
+            if($('#upload-project-form [name=workflow_state]').val() != "Saved" &&  uploaded_files.length == 0) {
                 alert('Files are mandatory')
                 return
             }
@@ -218,7 +223,7 @@
                 }
                 obj[x.name] = x.value
             })
-	    obj['workflow_state'] = 'Saved'
+	    // obj['workflow_state'] = 'Saved'
 
             // modifying markets json
             var marketsArr = JSON.parse($('#upload-project-form [name=markets]').val() || '[]')
@@ -316,7 +321,7 @@
         $('#upload-project-form [name=year]').attr('required', false)
         $('#upload-project-form [name=agency]').attr('required', false)
         $('#upload-project-form [name=project_type]').attr('required', false)
-        $('#upload-project-form [name=markets]').attr('required', true)
+        $('#upload-project-form [name=markets]').attr('required', false)
         $('#upload-project-form [name=workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
@@ -436,6 +441,7 @@
 
         $('#upload-datasheet-form').submit()
     }
+    
     function loadSavedProject(projectName){
        
         $.ajax({
@@ -449,21 +455,6 @@
                 
                 success: function(res) {
                     console.log(res)
-                    //console.log(res.docs[0].markets[0].city)
-                   // console.log(res.docs[0].markets.length)
-                    mar_array=[]
-                    for(var i = 0;i < res.docs[0].markets.length;i++)
-                    { 
-                        
-                        //console.log(res.docs[0].markets[i].city)
-                        //console.log(typeof res.docs[0].markets[i].city)
-                        
-                        mar_array.push(res.docs[0].markets[i].city)
-                    }
-
-                    // console.log(mar_array)
-                    var find_mar=mar_array.toString()
-                    console.log(find_mar)
 
                     $('#upload-saved-project-form [name=brand]').val(res.docs[0].brand)
                     $('#upload-saved-project-form [name=project_type]').val(res.docs[0].project_type)
@@ -481,9 +472,14 @@
                     $('#upload-saved-project-form [name=doctype]').val(res.docs[0].doctype)
                     $('#upload-saved-project-form [name=workflow_state]').val(res.docs[0].workflow_state)
                     $('#upload-saved-project-form [name=year]').val(res.docs[0].year)
-                    $('#upload-saved-project-form [data-type=tags]').val(JSON.stringify(res.docs[0]._user_tags.split(',').splice(1).map(x => {return {value:x}})))
-                    $('#upload-saved-project-form [name=markets]').val(find_mar)
-                  
+                    if(res.docs[0]._user_tags) {
+                        $('#upload-saved-project-form [data-type=tags]').val(JSON.stringify(res.docs[0]._user_tags.split(',').splice(1).map(x => {return {value:x}})))
+                    }
+                    if(res.docs[0].markets.length > 0) {
+                        $('#upload-saved-project-form [name=markets]').val(JSON.stringify(res.docs[0].markets.map(x => {return {value:x.city}})))
+                    }
+                    
+                    $('#upload-saved-project-form').show()
 
                 }
         })
