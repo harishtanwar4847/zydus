@@ -29,7 +29,8 @@
               {% endfor %}
             </div>
             <div class="text-end">
-              <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" class="btn btn-lg btn-secondary">Download All</button>
+              <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())"
+                class="btn btn-lg btn-secondary">Download All</button>
             </div>
           </div>
         </div>
@@ -118,4 +119,15 @@
     </div>
   </div>
 </div>
+<script>
+  $.ajax({
+    url: '/api/method/frappe.desk.form.load.getdoc',
+
+    data: {
+      doctype: 'Project',
+      name: '{{name}}'
+    },
+    method: 'GET'
+  })
+</script>
 {% endblock %}
