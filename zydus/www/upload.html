@@ -17,153 +17,8 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
                 aria-labelledby="nav-project-link">
-                <form id="upload-project-form" class="custom-form project-form">
-                    <input type="hidden" name="workflow_state">
-                    <input type="hidden" name="doctype" value="Project">
-                    <div class="row gx-3 gy-3 mt-md-3">
-                        <div class="col-12 col-lg-6 col-xl-4">
-                            <div class="dropzone" id="upload-project-dropzone"></div>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xl-8">
-                            <div
-                                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3">
-                                <h2 class="title">Project Details</h2>
-                                <div class="text-primary">
-                                    <small class="me-2">
-                                        **mandatory to fill to save
-                                    </small>
-                                    <small class="me-2"> *to fill to submit </small>
-                                </div>
-                            </div>
-                            <div class="row gx-3 gy-3">
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
-                                    <label>
-                                        Brand
-                                        <sup class="text-primary">**</sup>
-                                    </label>
-                                    <select name="brand" class="form-select" required>
-                                        <option selected="" disabled="">
-                                            Choose the brand name
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
-                                    <label>
-                                        Project name
-                                        <sup class="text-primary">**</sup>
-                                    </label>
-                                    <input name="title" class="form-control" placeholder="Enter the title of the project" required>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
-                                    <label>
-                                        Date of Project
-                                        <sup>*</sup>
-                                    </label>
-                                    <div class="row gx-3 gy-3">
-                                        <div class="col-6 col-xxl-8">
-                                            <select name="month" class="form-select">
-                                                <option selected disabled>Month</option>
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6 col-xxl-4">
-                                            <select name="year" class="form-select">
-                                                <option selected disabled>Year</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
-                                    <label>
-                                        Agency
-                                        <sup class="text-primary"> * </sup>
-                                    </label>
-                                    <select name="agency" class="form-select">
-                                        <option selected="" disabled="">
-                                            Choose the agency
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
-                                    <label>
-                                        Project Type
-                                        <sup>*</sup>
-                                    </label>
-                                    <select name="project_type" class="form-select">
-                                        <option selected="" disabled="">
-                                            Choose the project type
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
-                                    <label> Tags </label>
-                                    <input class="form-control" data-type="tags" placeholder="Add tags for the project">
-                                </div>
-                                <div class="col-12">
-                                    <label>Description</label>
-                                    <input name="description" class="form-control"
-                                        placeholder="Enter one liner description of the project">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Target Group</label>
-                            <input name="target_group" class="form-control"
-                                placeholder="Include demographic, usage and attitudinal target group">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>
-                                Markets
-                                <sup class="text-primary">*</sup>
-                            </label>
-                            <input name="markets" data-type="tags-whitelisted" class="form-control" placeholder="Mention markets with sample sizes">
-                        </div>
-                        <div class="col-12">
-                            <label> Business Problems </label>
-                            <input name="business_problems" class="form-control"
-                                placeholder="Enter a short description of the business issue to be solved">
-                        </div>
-                        <div class="col-12">
-                            <label> Research Objective </label>
-                            <input name="research_objectives" class="form-control" placeholder="Mention what we need from the research">
-                        </div>
-                        <div class="col-12">
-                            <label> Result </label>
-                            <input name="result" class="form-control"
-                                placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
-                        </div>
-                        <div class="col-12">
-                            <label> Learnings </label>
-                            <textarea name="learnings" class="form-control"
-                                placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
-                                rows="6"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <label> Actions </label>
-                            <input name="actions" class="form-control"
-                                placeholder="Mention the business decisions/actions taken basis insights from the study">
-                        </div>
-                        <div class="col-12 text-end action-btns mb-4">
-                            <button class="btn btn-secondary me-2" type="button" onclick="saveUploadForm()">
-                                Save for later
-                            </button>
-                            <button class="btn btn-primary" type="button" onclick="submitUploadForm()">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                {% set form = "upload-project" %}
+                {% include "templates/zydus-portal-ui-includes/forms/project-form.html" %}
             </div>
             <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
                 <div class="row gx-3 gy-3 mt-md-3">
@@ -173,114 +28,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 px-lg-5">
-                        <form id="upload-datasheet-form" form class="custom-form project-form">
-                            <input type="hidden" name="docstatus">
-                            <input type="hidden" name="doctype" value="Datasheet">
-                            <div
-                                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3 mt-3 mt-md-0">
-                                <h2 class="title">Project Details</h2>
-                                <div class="text-primary">
-                                    <small class="me-2">
-                                        **mandatory to fill to save
-                                    </small>
-                                    <small class="me-2"> *to fill to submit </small>
-                                </div>
-                            </div>
-                            <div class="row gx-3 gy-3 mt-lg-4">
-                                <div class="col-12">
-                                    <label>
-                                        Brand 
-                                        <sup class="text-primary">**</sup>
-                                    </label>
-                                    <select name="brand" class="form-select" required>
-                                        <option selected="" disabled="">
-                                            Choose the brand name
-                                        </option>
-                                    </select>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <label>
-                                        Data Sheet name
-                                        <sup class="text-primary">*</sup>
-                                    </label>
-                                    <input name="title" class="form-control" placeholder="Enter the title of the Datasheet" required>
-                                    
-                                </div>
-                                <div class="col-12">
-                                    <label>
-                                        Date of Project
-                                        <sup>*</sup>
-                                    </label>
-                                    <div class="row gx-3 gy-3">
-                                        <div class="col-6 col-xxl-8">
-                                            <select name="month" class="form-select" required>
-                                                <option selected disabled>Month</option>
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6 col-xxl-4">
-                                            <select name="year" class="form-select" required>
-                                                <option selected disabled>Year</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label>
-                                        Agency
-                                        <sup class="text-primary"> * </sup>
-                                    </label>
-                                    <select name="agency" class="form-select" required>
-                                        <option selected="" disabled="">
-                                            Choose the agency
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="col-12">
-                                    <label>
-                                        Data Type
-                                        <sup class="text-primary"> * </sup>
-                                    </label>
-                                    <select name="data_type" class="form-select" required>
-                                        <option selected="" disabled="">
-                                            Choose the data types
-                                        </option>
-                                    </select>
-                                   
-                                </div>
-                                <div class="col-12">
-                                    <label> Tags </label>
-                                    <input class="form-control" data-type="tags" placeholder="Add tags for the data">
-                                </div>
-                                <div class="col-12">
-                                    <label> Description </label>
-                                    <textarea class="form-control"
-                                        placeholder="Enter one liner description of the data"></textarea>
-                                </div>
-                                
-                                <div class="col-12 text-end action-btns mt-5">
-                                    <button class="btn btn-primary" type="button" onclick="submitDatasheetForm()">
-                                        Submit
-                                    </button>
-                                        <!-- <button class="btn btn-primary"  onclick="submitDatasheetForm()" >
-                                            Submit
-                                        </button> -->
-                                </div>
-                            </div>
-                        </form>
+                        {% include "templates/zydus-portal-ui-includes/forms/datasheet-form.html" %}
                     </div>
                 </div>
             </div>
@@ -290,176 +38,14 @@
                     <ul class="nav nav-pills saved-nav">
                         {% for saved in saved_projects %}
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
+                            <a class="nav-link " onclick="loadSavedProject('{{saved.name}}')" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
                         </li>
                         {% endfor %}
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#">file (nutralite)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">sales 21 (nycil)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">marketing stategies ‘22 (everyuth)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">file sample 23 (sugar lite)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">file sample 40 (glucon-d)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">file sample 40 (glucon-d)</a>
-                        </li> -->
                     </ul>                    
                 </div>
-                <form class="custom-form project-form">
-                    <div class="row gx-3 gy-3 mt-md-3">
-                        <div class="col-12 col-lg-6 col-xl-4">
-                            <div class="dropzone" id="upload-saved-projects-dropzone"></div>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xl-8">
-                            <div
-                                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3">
-                                <h2 class="title">Project Details</h2>
-                                <div class="text-primary">
-                                    <small class="me-2">
-                                        **mandatory to fill to save
-                                    </small>
-                                    <small class="me-2"> *to fill to submit </small>
-                                </div>
-                            </div>
-                            <div class="row gx-3 gy-3">
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
-                                    <label>
-                                        Brand
-                                        <sup class="text-primary">**</sup>
-                                    </label>
-                                    <select name="brand" class="form-select is-valid">
-                                        <option selected="" disabled="">
-                                            Choose the brand name
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
-                                    <label>
-                                        Project name
-                                        <sup class="text-primary">**</sup>
-                                    </label>
-                                    <input class="form-control is-invalid" placeholder="Enter the title of the project">
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
-                                    <label>
-                                        Date of Project
-                                        <sup>*</sup>
-                                    </label>
-                                    <div class="row gx-3 gy-3">
-                                        <div class="col-6 col-xxl-8">
-                                            <select name="month" class="form-select">
-                                                <option selected="" disabled="">Month</option>
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-6 col-xxl-4">
-                                            <select name="year" class="form-select" required>
-                                                <option selected disabled>Year</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
-                                    <label>
-                                        Agency
-                                        <sup class="text-primary"> * </sup>
-                                    </label>
-                                    <select name="agency" class="form-select">
-                                        <option selected="" disabled="">
-                                            Choose the agency
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
-                                    <label>
-                                        Project Type
-                                        <sup>*</sup>
-                                    </label>
-                                    <select name="project_type" class="form-select">
-                                        <option selected="" disabled="">
-                                            Choose the project_type
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
-                                    <label> Tags </label>
-                                    <input class="form-control" data-type="tags" placeholder="Add tags for the project">
-                                </div>
-                                <div class="col-12">
-                                    <label>Description</label>
-                                    <input class="form-control"
-                                        placeholder="Enter one liner description of the project">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>Target Group</label>
-                            <input class="form-control"
-                                placeholder="Include demographic, usage and attitudinal target group">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <label>
-                                Markets
-                                <sup class="text-primary">*</sup>
-                            </label>
-                            <input class="form-control" placeholder="Mention markets with sample sizes">
-                        </div>
-                        <div class="col-12">
-                            <label> Business Problems </label>
-                            <input class="form-control"
-                                placeholder="Enter a short description of the business issue to be solved">
-                        </div>
-                        <div class="col-12">
-                            <label> Research Objective </label>
-                            <input class="form-control" placeholder="Mention what we need from the research">
-                        </div>
-                        <div class="col-12">
-                            <label> Result </label>
-                            <input class="form-control"
-                                placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
-                        </div>
-                        <div class="col-12">
-                            <label> Learnings </label>
-                            <textarea class="form-control"
-                                placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
-                                rows="6"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <label> Actions </label>
-                            <input class="form-control"
-                                placeholder="Mention the business decisions/actions taken basis insights from the study">
-                        </div>
-                        <div class="col-12 text-end action-btns mb-4">
-                            <button class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#saveModal"
-                                type="button">
-                                Save for later
-                            </button>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal"
-                                type="button">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
+               {% set form="upload-saved-project"%}
+               {% set Saved = False  %}
+               {% include "templates/zydus-portal-ui-includes/forms/project-form.html" %}
             </div>
         </div>
     </div>
@@ -530,7 +116,7 @@
         }
     };
 
-    Dropzone.options.uploadSavedProjectsDropzone = { // camelized version of the `id`
+    Dropzone.options.uploadSavedProjectDropzone = { // camelized version of the `id`
         paramName: "file", // The name that will be used to transfer the file
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
@@ -730,7 +316,7 @@
         $('#upload-project-form [name=year]').attr('required', false)
         $('#upload-project-form [name=agency]').attr('required', false)
         $('#upload-project-form [name=project_type]').attr('required', false)
-        $('#upload-project-form [name=markets]').attr('required', false)
+        $('#upload-project-form [name=markets]').attr('required', true)
         $('#upload-project-form [name=workflow_state]').val("Saved")
 
         $('#upload-project-form').submit()
@@ -850,7 +436,60 @@
 
         $('#upload-datasheet-form').submit()
     }
+    function loadSavedProject(projectName){
+       
+        $.ajax({
+                url: '/api/method/frappe.desk.form.load.getdoc',
+               
+                data: {
+                    doctype: 'Project',
+                    name: projectName
+                },
+                method: 'GET',
+                
+                success: function(res) {
+                    console.log(res)
+                    //console.log(res.docs[0].markets[0].city)
+                   // console.log(res.docs[0].markets.length)
+                    mar_array=[]
+                    for(var i = 0;i < res.docs[0].markets.length;i++)
+                    { 
+                        
+                        //console.log(res.docs[0].markets[i].city)
+                        //console.log(typeof res.docs[0].markets[i].city)
+                        
+                        mar_array.push(res.docs[0].markets[i].city)
+                    }
 
+                    // console.log(mar_array)
+                    var find_mar=mar_array.toString()
+                    console.log(find_mar)
+
+                    $('#upload-saved-project-form [name=brand]').val(res.docs[0].brand)
+                    $('#upload-saved-project-form [name=project_type]').val(res.docs[0].project_type)
+                    $('#upload-saved-project-form [name=agency]').val(res.docs[0].agency)
+                    $('#upload-saved-project-form [name=actions]').val(res.docs[0].actions)
+                    $('#upload-saved-project-form [name=business_problemsd]').val(res.docs[0].business_problems)
+                    $('#upload-saved-project-form [name=description]').val(res.docs[0].description)
+                    $('#upload-saved-project-form [name=learnings]').val(res.docs[0].learnings)
+                    $('#upload-saved-project-form [name=month]').val(res.docs[0].month)
+                    $('#upload-saved-project-form [name=name]').val(res.docs[0].name)
+                    $('#upload-saved-project-form [name=research_objectives]').val(res.docs[0].research_objectives)
+                    $('#upload-saved-project-form [name=result]').val(res.docs[0].result)
+                    $('#upload-saved-project-form [name=target_group]').val(res.docs[0].target_group)
+                    $('#upload-saved-project-form [name=title]').val(res.docs[0].title)
+                    $('#upload-saved-project-form [name=doctype]').val(res.docs[0].doctype)
+                    $('#upload-saved-project-form [name=workflow_state]').val(res.docs[0].workflow_state)
+                    $('#upload-saved-project-form [name=year]').val(res.docs[0].year)
+                    $('#upload-saved-project-form [data-type=tags]').val(JSON.stringify(res.docs[0]._user_tags.split(',').splice(1).map(x => {return {value:x}})))
+                    $('#upload-saved-project-form [name=markets]').val(find_mar)
+                  
+
+                }
+        })
+
+
+    }
     
 </script>
 {% endblock %}
