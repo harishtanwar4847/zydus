@@ -1,7 +1,7 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
     <div class="trending-product-card" style="border-color: {{trending_now.color}}">
         <div class="d-flex align-items-start justify-content-between">
-            <button onclick="toggleLike(this, 'Project', '{{trending_now.name}}')" data-liked-by='{{trending_now.liked_by|tojson}}' type="button" class="btn btn-link p-0 fav-button">
+            <button onclick="toggleLike(this, 'Project', '{{trending_now.name}}')" data-liked-by='{{trending_now.liked_by}}' type="button" class="btn btn-link p-0 fav-button">
                 <i class="bi bi-heart"></i>
             </button>
             <div class="brand-logo-wrap">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="title-wrap">
-            <h3>{{trending_now.title}} ({{trending_now.view}})</h3>
+            <h3>{{trending_now.title}} ({{trending_now.view_count}})</h3>
 
         </div>
         <div class="subtitle">{{trending_now.month_year}}</div>

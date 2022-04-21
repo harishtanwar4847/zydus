@@ -90,7 +90,7 @@ function toggleLike(el, dt, dn) {
       'X-Frappe-CSRF-Token': frappe.csrf_token
     },
     success: function() {
-      $('#content-wrapper > div > div:nth-child(2)').load('/home #content-wrapper > div > div:nth-child(2)')
+      $('#content-wrapper #content').load(location.pathname + location.search + ' #content-wrapper #content')
       setTimeout(function() {
         updateLikeButton()
       }, 500)
@@ -100,7 +100,7 @@ function toggleLike(el, dt, dn) {
 
 function updateLikeButton() {
   document.querySelectorAll('button i.bi.bi-heart').forEach(x => {
-    var is_liked = JSON.parse(JSON.parse($(x).parent('button.fav-button').data('liked-by'))).includes(frappe.session.user)
+    var is_liked = $(x).parent('button.fav-button').data('liked-by').split(',').includes(frappe.session.user)
     if (is_liked) {
       $(x).addClass('bi-heart-fill').removeClass('bi-heart').css('color', '#000')
     }
