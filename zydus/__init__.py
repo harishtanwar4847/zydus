@@ -1,6 +1,7 @@
 from six import string_types
 import datetime
 from frappe.utils.data import DATE_FORMAT, nowdate
+import frappe
 
 __version__ = '0.2.0-dev'
 
@@ -35,3 +36,9 @@ def pretty_date_future(iso_datetime):
 	elif dt_diff_days > 1:
 		return iso_datetime.strftime('%d/%m')
 
+def get_attachments_custom(dt, dn):
+	return frappe.get_all("File", fields=["name", "file_name", "file_url", "is_private", "file_size"],
+		filters = {"attached_to_name": dn, "attached_to_doctype": dt})
+
+from frappe.desk.form import load
+load.get_attachments = get_attachments_custom
