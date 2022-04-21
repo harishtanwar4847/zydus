@@ -2,6 +2,7 @@ import frappe
 import zydus
 from frappe.desk.form.load import get_attachments
 from frappe.utils import pretty_date, now, add_to_date
+import json
 
 def get_context(context):
     context['roles'] =  frappe.get_roles(frappe.session.user)
@@ -13,10 +14,12 @@ def get_context(context):
         context['trending_now_list'] = frappe.db.sql("""select P.route,P._liked_by as liked_by,B.color,P.name,B.brand_logo,P.title,count(V.reference_name) as view,concat(P.month," ",P.year) as month_year from `tabProject` as P  left join `tabBrand` as B on P.brand = B.name left join `tabView Log` as V on V.reference_name=P.name and V.reference_doctype="Project" group by P.name having count(V.reference_name) > 0 order by count(V.reference_name) desc limit 6 """,as_dict=True)
         for trending_now in context['trending_now_list']:
             trending_now['attachments'] = get_attachments("Project",trending_now.name)
+            trending_now['liked_by'] = ','.join(json.loads(trending_now['liked_by']))
 
         context['my_uploads'] = frappe.db.sql(""" select P.name,P._liked_by as liked_by,route,title,color,brand,concat(month," ",year)as month_year from `tabProject` P left join `tabBrand` on P.brand = tabBrand.name group by P.name  limit 10 """,as_dict=1)
         for my_upload in context['my_uploads']:
             my_upload['attachments'] = get_attachments("Project",my_upload.name)
+            my_upload['liked_by'] = ','.join(json.loads(my_upload['liked_by']))
         
         context["reminders"]=frappe.db.get_list("ToDo",fields=["title","description","owner","modified_by","date"],debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
         
