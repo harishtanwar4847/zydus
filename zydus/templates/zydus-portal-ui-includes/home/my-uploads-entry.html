@@ -2,7 +2,7 @@
     <button onclick="toggleLike(this, 'Project', '{{my_upload.name}}')" data-liked-by='{{my_upload.liked_by}}' type="button" class="btn btn-link p-0 fav-button">
         <i class="bi bi-heart"></i>
     </button>
-    <h3 class="brand">{{my_upload.brand_name}}</h3>
+    <h3 class="brand">{{my_upload.brand}}</h3>
     <div class="title">{{my_upload.title}}</div>
     <div class="subtitle">{{my_upload.month_year}}</div>
     <div class="subtitle">{{my_upload.attachments | len}} {% if my_upload.attachments | len > 1%} files {% else %} file {% endif %}</div>
