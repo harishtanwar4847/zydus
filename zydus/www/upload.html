@@ -38,7 +38,7 @@
                     <ul class="nav nav-pills saved-nav">
                         {% for saved in saved_projects %}
                         <li class="nav-item">
-                            <a class="nav-link " onclick="loadSavedProject('{{saved.name}}', this)" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
+                            <a class="nav-link " onclick="loadSavedProject('{{saved.name}}', this);event.preventDefault()" data-project-id="{{saved.name}}" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
                         </li>
                         {% endfor %}
                     </ul>                    
@@ -57,8 +57,8 @@
                 <img src="/assets/zydus/images/modal_check.svg">
                 <div class="text-white mt-1">Project Successfully Uploaded</div>
                 <div class="mt-4 d-flex flex-column modal-action-btns px-4">
-                    <button onclick="location.reload()" class="btn btn-link text-white">Go to saved</button>
-                    <button onclick="location.reload()" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
                     <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                 <img src="/assets/zydus/images/modal_check.svg">
                 <div class="text-white mt-1">Project Successfully Saved</div>
                 <div class="mt-4 d-flex flex-column modal-action-btns px-4">
-                    <button onclick="location.reload()" class="btn btn-link text-white">Go to saved</button>
-                    <button onclick="location.reload()" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
                     <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
                 </div>
             </div>
@@ -138,21 +138,6 @@
             })
         }
     };
-
-    // how to get uploaded files from particular dropzone
-    // var dropzone = Dropzone.forElement('#upload-project-dropzone')
-    // var uploaded_files = dropzone.getAcceptedFiles()
-    // uploaded_files.forEach(x => {
-    //     // getting xhr response of file upload api hit
-    //     console.log(x.xhr.response)
-
-    //     // getting name of File Document created
-    //     var a = JSON.parse(x.xhr.response)
-    //     console.log(a.message.name)
-    // })
-
-    // how to remove all files from particular dropzone
-    // Dropzone.forElement('#upload-project-dropzone').removeAllFiles()
     
     // creating options for 25 years in the past
     var currentYear = new Date().getFullYear()
@@ -637,6 +622,18 @@
             })
         }
     })
+
+    setTimeout(function() {
+        // Sauce: https://stackoverflow.com/a/50147341/9403680
+        const params = Object.fromEntries(new URLSearchParams(location.search));
+        if(Object.keys(params).includes('saved')) {
+            document.querySelector('#nav-saved-link').click()
+
+            if(params.saved.length > 0) {
+                document.querySelector('[data-project-id="'+params.saved+'"]').click()
+            }
+        }
+    }, 500)
     
 </script>
 {% endblock %}
