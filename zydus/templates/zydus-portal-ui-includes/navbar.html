@@ -3,8 +3,10 @@
         <div class="row gx-1 gx-xl-2 gx-xxl-4 align-items-center">
             <div class="col-9 col-sm-10 col-md-7 col-lg-7 col-xl-8">
                 <div class="search-input-wrap">
-                    <input class="form-control form-control-lg" type="text" placeholder="search for files here"
+                    <form action="/search" method="get">
+                    <input class="form-control form-control-lg" type="text" name="project_name" placeholder="search for files here"
                         aria-label="search for files here" />
+                    </form>
                 </div>
             </div>
             <div class="col-3 col-sm-2 col-md-5 col-lg-5 col-xl-4">

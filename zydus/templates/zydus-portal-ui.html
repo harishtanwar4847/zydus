@@ -41,7 +41,9 @@
     <div id="content-wrapper" class="main">
       <div class="container-fluid">
         {% include "templates/zydus-portal-ui-includes/navbar.html" %}
-        {% block content%}{% endblock %}
+        <div id="content">
+          {% block content%}{% endblock %}
+        </div>
       </div>
     </div>
   </div>

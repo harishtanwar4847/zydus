@@ -90,7 +90,7 @@ function toggleLike(el, dt, dn) {
       'X-Frappe-CSRF-Token': frappe.csrf_token
     },
     success: function() {
-      $('#content-wrapper > div > div:nth-child(2)').load('/home #content-wrapper > div > div:nth-child(2)')
+      $('#content-wrapper #content').load(location.pathname + location.search + ' #content-wrapper #content')
       setTimeout(function() {
         updateLikeButton()
       }, 500)
