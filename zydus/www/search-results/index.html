@@ -12,7 +12,7 @@
                 </a>
                 <h2 class="section-title me-2">Search Results</h2>
                 <span class="text-muted fst-italic">
-                    for sugarfree sales 2021</span>
+                    for `{{frappe.form_dict.q}}`</span>
             </div>
         </div>
         {% for search_result in search_results %}
@@ -20,4 +20,7 @@
         {% endfor%}
     </div>
 </div>
+<script>
+    document.querySelector('[name=q]').value = '{{frappe.form_dict.q}}'
+</script>
 {% endblock %}
