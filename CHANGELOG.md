@@ -1,6 +1,7 @@
 # [v0.2.3-dev] - 2022-04-23
 - [home page my uploads query fix | master patches
 ](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/20)
+- [search filter and search results done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/21)
 
 # [v0.2.2-dev] -2022-04-22
 - [search filter page search button done | file type images in drop zone done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/19)
