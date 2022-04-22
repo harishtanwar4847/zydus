@@ -1,3 +1,6 @@
+# [v0.2.2-dev] -2022-04-22
+- [search filter page search button done | file type images in drop zone done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/19)
+
 # [v0.2.1-dev] -2022-04-22
 - [Saved projects | Search Done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/18)
 
