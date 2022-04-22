@@ -1,3 +1,10 @@
 zydus.patches.create_kms_roles
 zydus.patches.import_workflow ##
 zydus.patches.import_workflow2
+zydus.patches.city ###
+zydus.patches.agency ##
+zydus.patches.brand #
+zydus.patches.data_type #
+zydus.patches.project_type #
+
+
