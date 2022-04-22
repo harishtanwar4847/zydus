@@ -75,8 +75,8 @@
       </div>
     </form>
     <div id="like-button-parent" class="search-results-parent">
-      <div id="like-button" {% if search_results | len == 0 %} style="display: none" {% endif %}>
-        <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3 search-results search-result-tags">
+      <div id="like-button" class="search-results" {% if search_results | len == 0 %} style="display: none" {% endif %}>
+        <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3 search-result-tags">
           <h2 class="section-title">Search Results</h2>
           <div class="d-block d-lg-inline">
             <span class="text-muted m-1 m-lg-2">for</span>
@@ -100,6 +100,7 @@
   // search form submit handler
   $('#search-form').validate({
     submitHandler: function(form) {
+      
       var dataArr = $(form).serializeArray()
       var obj = {}
       dataArr.forEach(x => {
@@ -109,7 +110,8 @@
           obj[x.name] = x.value
       })
 
-      $('#search-results-parent').load(location.pathname + '?' + $.param(obj) + ' #search-results')
+      $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
+      
     }
   })
 

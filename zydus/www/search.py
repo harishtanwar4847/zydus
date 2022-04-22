@@ -36,6 +36,7 @@ def get_context(context):
         
         or_filters = []
         if frappe.form_dict.project_name:
+            context['search_tags'].append(frappe.form_dict.project_name)
             for name in frappe.form_dict.project_name.strip().split():
                 or_filters.append("""P.title like "%{}%" """.format(name))
         if frappe.form_dict.tags:

@@ -277,7 +277,9 @@
                 if(x.name == 'docstatus') {
                     x.value = parseInt(x.value)
                 }
+                obj['workflow_state'] = 'Saved'
                 obj[x.name] = x.value
+                
             })
 
             // modifying markets json
