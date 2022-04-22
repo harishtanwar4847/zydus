@@ -98,6 +98,28 @@
                 // make all uploaded files private in File DocType 
                 is_private: 1
             }
+        },
+        init: function() {
+            console.log(this, 'init')
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
         }
     };
 
@@ -113,6 +135,28 @@
                 // make all uploaded files private in File DocType 
                 is_private: 1
             }
+        },
+        init: function() {
+            console.log(this, 'init')
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
         }
     };
 
@@ -135,6 +179,25 @@
             this.on('removedfile', function(file) {
                 console.log(this, file, 'removed')
                 $('#upload-saved-project-form').append('<input name="remove_file[]" type="hidden" value="'+file.id+'">')
+            })
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
             })
         }
     };

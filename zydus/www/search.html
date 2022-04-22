@@ -70,30 +70,49 @@
         </div>
         <div class="col-12 text-end search-action-buttons">
           <button type="reset" class="btn btn-outline-secondary m-1">Clear</button>
-          <button type="button" class="btn btn-secondary m-1">Search</button>
+          <button class="btn btn-secondary m-1">Search</button>
         </div>
       </div>
     </form>
-    <div class="search-results" {% if search_results | len == 0 %} style="display: none" {% endif %}>
-      <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3 search-result-tags">
-        <h2 class="section-title">Search Results</h2>
-        <div class="d-block d-lg-inline">
-          <span class="text-muted m-1 m-lg-2">for</span>
-          {% for search_tag in search_tags %}
-          <span class="badge m-1 m-lg-2">{{search_tag}}</span>
-          {% endfor %}
+    <div id="like-button-parent" class="search-results-parent">
+      <div id="like-button" {% if search_results | len == 0 %} style="display: none" {% endif %}>
+        <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3 search-results search-result-tags">
+          <h2 class="section-title">Search Results</h2>
+          <div class="d-block d-lg-inline">
+            <span class="text-muted m-1 m-lg-2">for</span>
+            {% for search_tag in search_tags %}
+            <span class="badge m-1 m-lg-2">{{search_tag}}</span>
+            {% endfor %}
+          </div>
         </div>
-      </div>
-      <div class="search-result-cards">
-        {% for search_result in search_results %}
-        {% include "templates/zydus-portal-ui-includes/search/search-result-card.html" %}
-        {% endfor%}
+        <div id="search-result-cards">
+          {% for search_result in search_results %}
+          {% include "templates/zydus-portal-ui-includes/search/search-result-card.html" %}
+          {% endfor%}
+        </div>
       </div>
     </div>
   </div>
 </div>
+<script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/assets/zydus/js/tagify.min.js"></script>
 <script>
+  // search form submit handler
+  $('#search-form').validate({
+    submitHandler: function(form) {
+      var dataArr = $(form).serializeArray()
+      var obj = {}
+      dataArr.forEach(x => {
+          if(x.name == 'tags') {
+            x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
+          }
+          obj[x.name] = x.value
+      })
+
+      $('#search-results-parent').load(location.pathname + '?' + $.param(obj) + ' #search-results')
+    }
+  })
+
   // creating options for 25 years in the past
   var currentYear = new Date().getFullYear()
   for(var i = 1; i <= 25; i++) {
