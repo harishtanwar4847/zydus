@@ -46,12 +46,14 @@ def get_context(context):
         
         clauses = {
             'and_where_clauses': ' and '.join(filters),
-            'or_where_clauses': ' or '.join(or_filters)
+            'or_where_clauses': 'and (' + ' or '.join(or_filters) + ')'
         }
+        if clauses['or_where_clauses'] == 'and ()':
+            clauses['or_where_clauses'] = ''
 
         context['search_results'] = frappe.db.sql("""select P.docstatus, P.description, P._user_tags, project_type, agency, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year, B.brand_logo, B.color, P.project_type from `tabProject` as P  
         left join `tabBrand` as B on P.brand = B.name 
-        where {and_where_clauses} and ({or_where_clauses})
+        where {and_where_clauses} {or_where_clauses}
         group by P.name """.format(**clauses), as_dict=True, debug=1)
 
         for search_result in context['search_results']:
