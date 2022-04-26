@@ -45,9 +45,11 @@
               Uploaded on {{frappe.format_date(doc.modified)}}
             </div>
           </div>
+          {% if description | len > 0%}
           <p>
             {{doc.description}}
           </p>
+          {% endif %}
           <div class="details mt-5 mt-lg-1 mt-xl-5">
             <div class="row gx-3 gy-3">
               <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
@@ -67,10 +69,12 @@
                 <div>{{markets}}</div>
               </div>
               <div class="col-12">
+                {% if target_group | len > 0%}
                 <label>Target Group</label>
                 <div>
                   {{doc.target_group}}
                 </div>
+                {% endif %}
               </div>
               <div class="col-12">
                 <div>
@@ -83,22 +87,34 @@
           </div>
         </div>
         <div class="col-12 details">
+          {% if business_problems | len > 0%}
           <label>Business Problems</label>
           <p>
             {{doc.business_problems}}
           </p>
+          {% endif %}
+
+          {% if research_objectives | len > 0%}
           <label>Research Objectives</label>
           <p>
             {{doc.research_objectives}}
           </p>
+          {% endif %}
+
+          {% if result | len > 0%}
           <label>Results</label>
           <p>
             {{doc.result}}
           </p>
+          {% endif %}
+
+          {% if learnings | len > 0%}
           <label>Learnings</label>
           <p>
             {{doc.learnings}}
           </p>
+          {% endif %}
+
           <ol>
             <!-- <li>
                 Nulla pharetra justo lacus, ac tincidunt orci
