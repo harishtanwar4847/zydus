@@ -1,4 +1,4 @@
-<div class="reminder {% if reminder.active %} active {% endif %}">
+<div class="reminder {% if reminder.due_by == 'Today' %} active {% endif %}">
     <div>
         <img src="{% if reminder.active %} /assets/zydus/images/reminder-filled.svg {% else %} /assets/zydus/images/reminder-outline.svg {% endif %}" />
     </div>
