@@ -220,9 +220,8 @@
     
     // creating options for 25 years in the past
     var currentYear = new Date().getFullYear()
-    for(var i = 1; i <= 25; i++) {
-        $('select[name=year]').append('<option value="'+currentYear+'">'+currentYear+'</option>')
-        currentYear--;
+    for(var i = 2000; i <= currentYear; i++) {
+        $('select[name=year]').append('<option value="'+i+'">'+i+'</option>');
     }
 
     // populating brands
