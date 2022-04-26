@@ -1,3 +1,6 @@
+# [v0.2.4-dev] -2022-04-25
+- [UI-changes-fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/22)
+
 # [v0.2.3-dev] - 2022-04-23
 - [home page my uploads query fix | master patches
 ](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/20)
