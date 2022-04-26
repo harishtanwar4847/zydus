@@ -16,6 +16,10 @@ def get_context(context):
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
 
         context['search_tags'] = []
+        context['search_results'] = []
+        if not frappe.form_dict:
+            return
+
 
         filters = ["P.docstatus = 1"]
         if frappe.form_dict.brand:
