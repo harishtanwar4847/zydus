@@ -81,6 +81,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="datasheetModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Datasheet Successfully Uploaded</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="/assets/zydus/js/dropzone.min.js"></script>
 <script src="/assets/zydus/js/tagify.min.js"></script>
 <script src="/assets/zydus/js/tagify.polyfills.min.js"></script>
@@ -204,9 +220,8 @@
     
     // creating options for 25 years in the past
     var currentYear = new Date().getFullYear()
-    for(var i = 1; i <= 25; i++) {
-        $('select[name=year]').append('<option value="'+currentYear+'">'+currentYear+'</option>')
-        currentYear--;
+    for(var i = 2000; i <= currentYear; i++) {
+        $('select[name=year]').append('<option value="'+i+'">'+i+'</option>');
     }
 
     // populating brands
@@ -363,7 +378,14 @@
                     Dropzone.forElement('#upload-project-dropzone').removeAllFiles()
 
                     // show modal
-                    $('#saveModal').modal('show')
+                    if($('#upload-project-form [name=workflow_state]').val()=="Saved"){
+                        $('#saveModal').modal('show')
+                    }
+                    else {
+                        $('#successModal').modal('show')
+                    }
+  
+                    
                 }
             })
         }
@@ -482,7 +504,7 @@
                     Dropzone.forElement('#upload-data-sheet-dropzone').removeAllFiles()
 
                     // show modal
-                    $('#saveModal').modal('show')
+                    $('#datasheetModal').modal('show')
                 }
             })
         }
