@@ -1,3 +1,6 @@
+# [v0.2.6-dev] -2022-04-26
+- [search not to work when search form empty | reminder today highlight issue](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/24)
+
 # [v0.2.4-dev] -2022-04-25
 - [UI-changes-fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/22)
 
