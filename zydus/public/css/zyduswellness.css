@@ -115,6 +115,11 @@
   font-size: 12px;
   line-height: 18px;
 }
+.comment-dropdown-menu{
+  background: #F3F3F3;
+  box-shadow: 2px 4px 14px rgb(0 0 0 / 10%);
+  padding: 15px 10px;
+}
 .dropdown-menu .dropdown-item {
   padding: 10px 8px;
   border-radius: 4px;
@@ -137,6 +142,25 @@
   line-height: 24px;
   color: rgba(0, 0, 0, 0.7);
   border: none;
+}
+.alert-success {
+  border: none;
+  background: rgba(0, 156, 164, 0.2);
+  box-shadow: 2px 4px 8px rgb(0 0 0 / 6%);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 10px 60px 25px 10px;
+}
+.alert-dismissible .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  font-size: 10px;
+  padding: 0;
 }
 .form-select:focus {
   border-color: #009ca4;
@@ -404,6 +428,10 @@ body {
   line-height: 18px;
   text-decoration: none;
   padding-right: 0;
+}
+.notification-dropdown{
+  margin-left: auto;
+  margin-right: 36px;
 }
 .notification-dropdown .dropdown-toggle::after {
   display: none;
@@ -1611,9 +1639,9 @@ body {
 .account-nav-upload-blk .my-upload{
   grid-template-columns: 25px 3fr 4fr 2fr 1fr 1fr 25px 25px;
 }
-.account-nav-main-blk .white-bg{
+/* .account-nav-main-blk .white-bg{
   background: rgba(255, 255, 255, 0.7);
-}
+} */
 .account-nav-favourites-blk .fav-button{
   color: #000;
 }
@@ -1781,11 +1809,10 @@ body {
   margin-top: 30px;
 }
 .close-icon-btn{
-color: #C4C4C4CC;
-    font-size: 20px;
-    line-height: 16px;
+  color: #C4C4C4CC;
+  font-size: 20px;
+  line-height: 16px;
 }
-
 input.form-control.calender-icon {
   position: relative;
   background-image: url(../images/calender-icn.png);
@@ -1794,18 +1821,18 @@ input.form-control.calender-icon {
   background-size: auto;
 }
 .add-missing-btn {display: flex;justify-content: flex-end;margin-top: 30px;}
-.add-missing-btn button.btn.btn-primary {background: rgba(0, 156, 164, 0.09);border: 1px solid rgba(0, 156, 164, 0.37);box-sizing: border-box;border-radius: 50%;width: 64px;height: 64px;display: flex;justify-content: center;align-items: center;}
+.add-missing-btn button.btn.btn-primary {background: rgba(0, 156, 164, 0.09);border: 1px solid rgba(0, 156, 164, 0.37);box-sizing: border-box;border-radius: 50%;width: 64px;height: 64px;display: flex;justify-content: center;align-items: center;box-shadow: 0 0 14px 0px rgb(0 0 0 / 10%);}
 .add-missing-btn button.btn.btn-primary img.img-fluid {width: 28px;height: 28px;object-fit: contain;}
 .add-missing-btn button.btn.btn-primary:hover {background: rgba(0, 156, 164, 0.37);transition: 0.3s;}
-.project-form .action-btns 
+.project-form .action-btns
 button.btn.btn-secondary.me-2.remind-btn-cancel {
-    border: 1px solid rgba(0, 156, 164, 0.37);
-    box-sizing: border-box;
-    backdrop-filter: blur(4px);
-    border-radius: 4px;
-    background: transparent;
-    box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 5%);
-    font-weight: 600;
+  border: 1px solid rgba(0, 156, 164, 0.37);
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 5%);
+  font-weight: 600;
 }
 .project-form .action-btns button.btn.btn-primary.remind-btn-add {
   background: rgba(0, 156, 164, 0.09);
@@ -1826,3 +1853,46 @@ button.btn.btn-secondary.me-2.remind-btn-cancel {
   transition: 0.3s;
 }
 /**** End :: Datasheet ****/
+/* 13/04/2022 */
+.my-upload:hover {
+  background-color: #fff;
+  transition: 0.3s;
+}
+.trending-product-card:hover {
+  background-color: #fff;
+  transition: 0.3s;
+  box-shadow: 10px -10px 50px #f3f3f3;
+}
+.green-tp {
+  border-top: 9px solid #00AC41;
+  border-radius: 4px 4px 0 0;
+  padding-top: 30px;
+}
+.file-list-wrapper button.btn.btn-lg.btn-secondary {
+  color: #009ca4;
+  background: rgba(0, 156, 164, 0.09);
+  border: 1px solid rgba(0, 156, 164, 0.37);
+  box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 10%);
+  padding: 7px 20px;
+  font-size: 16px;
+  line-height: 16px;
+  min-width: 142px;
+}
+.file-list-wrapper button.btn.btn-lg.btn-secondary:hover {
+  background-color: #009ca4;
+  color: #fff;
+  border-color: #009ca4;
+}
+.action-btns button.btn.btn-secondary {
+  min-width: 142px !important;
+  width: 142px !important;
+}
+.action-btns button.btn.btn-primary{
+  min-width: 142px !important;
+  width: 142px !important;
+}
+.search-result:hover {
+  background-color: #fff;
+  transition: 0.3s;
+  box-shadow: 10px -10px 50px #f3f3f3;
+}
