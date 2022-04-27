@@ -40,9 +40,10 @@
   color: rgba(0, 156, 164, 0.5);
 }
 .form-control:focus,
+.form-select:focus,
 .tagify__input:focus {
   border-color: #009ca4;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 .text-primary {
   color: rgba(0, 156, 164, 0.5) !important;
@@ -366,13 +367,13 @@ body {
   left: 15px;
   transform: translateY(-50%);
 }
-.search-input-wrap > input {
+.search-input-wrap input {
   font-size: 16px;
   padding: 10px 10px 10px 50px;
   position: relative;
   border-radius: 10px;
 }
-.search-input-wrap > input::placeholder {
+.search-input-wrap input::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 .header-action-button {
@@ -1500,7 +1501,7 @@ body {
   color: rgba(0, 0, 0, 0.3);
 }
 .login-box .form-control:focus {
-  box-shadow: none;
+  box-shadow: none !important;
 }
 .login-box .btn-primary {
   padding: 15px;
