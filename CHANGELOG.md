@@ -5,6 +5,7 @@
 - [icon filled in sidenav | homepage scroll | datasheet view link](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/26)
 - [Datasheet Tag are not mandatory fixed | increase file attach size = 50 mb](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/27)
 -[home page tranding hover | my_uploads only approved projects /datasheet will get listed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/28)
+- [datasheet view from my uploads | user default image and designation visible | reminder filled clock for today's reminder](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/29)
 -[action not visible in view project](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/30)
 
 # [v0.2.4-dev] -2022-04-25

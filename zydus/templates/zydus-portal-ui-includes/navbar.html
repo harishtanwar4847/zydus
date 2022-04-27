@@ -73,10 +73,10 @@
                     <div class="d-flex align-items-center justify-content-end">
                         <div class="profile-info">
                             <div>{{ frappe.get_fullname() }}</div>
-                            <div class="designation">Designation</div>
+                            <div class="designation">{{ frappe.db.get_value('User', frappe.session.user, 'designation') }}</div>
                         </div>
                         <div class="profile-pic online">
-                            <img src="/assets/zydus/images/user.png" class="img-fluid" />
+                            <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" class="img-fluid" />
                         </div>
                     </div>
                 </a>

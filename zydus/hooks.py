@@ -89,13 +89,11 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"User": {
+		"before_insert": "zydus.add_default_image_in_user_before_insert"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
