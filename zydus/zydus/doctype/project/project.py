@@ -23,5 +23,5 @@ class Project(WebsiteGenerator):
 	def before_submit(self):
 		self.is_approved = True
 		self.route = 'projects/{}'.format(self.name)
-		frappe.db.delete("View Log",{"reference_name":self.name})
+		frappe.db.delete("View Log",{"reference_doctype": "Project", "reference_name":self.name})
 			
