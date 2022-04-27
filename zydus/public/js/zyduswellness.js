@@ -1,29 +1,3 @@
-function adjustScrollableAreaHeight() {
-  if (jQuery(document).width() > 1199) {
-    var scrollableContainer = document.querySelector(".main-scroll-area");
-    var headerHeight = document.querySelector(".header-row");
-    if (headerHeight) {
-      if (scrollableContainer) {
-        scrollableContainer.style.maxHeight =
-          "calc(100vh - " + headerHeight.offsetHeight + "px)";
-        scrollableContainer.style.overflow = "auto";
-      }
-      var reminderColumnHeight = jQuery(".reminders-column").height();
-      var reminderTitleHeight = jQuery(".reminder-title-div").outerHeight();
-      var reminderButtonHeight = jQuery(".new-reminder-button").outerHeight();
-      jQuery(".reminders-wrapper").css(
-        "height",
-        reminderColumnHeight -
-          reminderTitleHeight -
-          reminderButtonHeight -
-          headerHeight.offsetHeight
-      );
-    }
-  } else {
-    jQuery(".main-scroll-area").css("max-height", "unset");
-    jQuery(".reminders-wrapper").css("height", "unset");
-  }
-}
 jQuery(function () {
   jQuery(".drop-zone").on("click", function () {
     $(this).addClass("d-none");
@@ -65,12 +39,8 @@ window.onload = function () {
   if (typeof Tagify !== "undefined") {
     input.forEach(x => new Tagify(x));
   }
-  adjustScrollableAreaHeight();
 };
 
-window.onresize = function () {
-  adjustScrollableAreaHeight();
-};
 function logout() {
   $.get('/api/method/logout', function() {
     location.href = '/login'

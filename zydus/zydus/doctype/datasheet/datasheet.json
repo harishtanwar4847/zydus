@@ -13,7 +13,9 @@
   "description",
   "agency",
   "data_type",
-  "amended_from"
+  "amended_from",
+  "route",
+  "is_approved"
  ],
  "fields": [
   {
@@ -73,12 +75,25 @@
    "options": "Datasheet",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_approved",
+   "fieldtype": "Check",
+   "label": "Is Approved"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_approved",
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-06 18:57:49.595503",
+ "modified": "2022-04-27 14:11:56.867271",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Datasheet",
@@ -99,6 +114,7 @@
    "write": 1
   }
  ],
+ "route": "datasheets",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1,
