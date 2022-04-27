@@ -1,99 +1,101 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Home{% endblock %}
 {% block content%}
-<div id="like-button-parent" class="row">
-    <div id="like-button" class="col-xl-9 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <h2 class="section-title">Trending Now</h2>
-            <a href="/trending-now" class="btn btn-link view-all-link">
-                view all
-                <i class="bi bi-chevron-right"></i>
-            </a>
-        </div>
-        <div class="row">
-            {% for trending_now in trending_now_list %}
-            {% include "templates/zydus-portal-ui-includes/home/trending-now-card.html" %}
-            {% endfor%}
-        </div>
-        <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
-            <h2 class="section-title">My Uploads</h2>
-            <a class="btn btn-link view-all-link">
-                view all
-                <i class="bi bi-chevron-right"></i>
-            </a>
-        </div>
-        {% if my_uploads | len == 0 %}
-            <div class="nodata-content pos-rel-reset py-5 my-5">
-                <div class="nodata-icon">
-                    <svg width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M40.7664 11.3542C40.7156 10.977 40.6602 10.6001 40.6001 10.2238L40.4666 9.38748C39.9973 6.44717 37.4611 4.28366 34.4836 4.28366L17.5732 4.28366C16.9461 2.0525 14.8965 0.416748 12.4649 0.416748H7.69079C4.60156 0.416748 1.9995 2.72504 1.63118 5.79223L1.0635 10.5196C0.453815 15.5967 0.611164 20.7366 1.53027 25.767C2.02197 28.4581 4.27268 30.4754 7.0014 30.6706L10.1556 30.8962C17.3758 31.4128 24.6238 31.4128 31.844 30.8962L35.2563 30.6521C36.9408 30.5316 38.4324 29.6758 39.3931 28.3876C40.6716 27.1613 41.6777 25.6634 42.3286 23.9896L44.9316 17.2962C46.0434 14.4372 43.9344 11.3542 40.8669 11.3542H40.7664ZM7.69079 3.54175C6.18334 3.54175 4.91362 4.66812 4.73389 6.16482L4.16621 10.8921C3.59388 15.6582 3.74159 20.4832 4.60438 25.2053C4.83984 26.494 5.91766 27.4601 7.2244 27.5535L7.40358 27.5664L12.2621 15.0152C13.1162 12.8087 15.2389 11.3542 17.6049 11.3542H37.6112C37.5804 11.1414 37.5481 10.9288 37.5142 10.7164L37.3807 9.88004C37.1534 8.45628 35.9253 7.40866 34.4836 7.40866L16.3318 7.40866C15.4006 7.40866 14.6456 6.65374 14.6456 5.72251C14.6456 4.51811 13.6693 3.54175 12.4649 3.54175H7.69079Z"
-                            fill="#009CA4" fill-opacity="0.8"></path>
-                    </svg>
+<div id="like-button-parent">
+    <div id="like-button" class="row">
+        <div class="col-xl-9 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h2 class="section-title">Trending Now</h2>
+                <a href="/trending-now" class="btn btn-link view-all-link">
+                    view all
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+            <div class="row">
+                {% for trending_now in trending_now_list %}
+                {% include "templates/zydus-portal-ui-includes/home/trending-now-card.html" %}
+                {% endfor%}
+            </div>
+            <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+                <h2 class="section-title">My Uploads</h2>
+                <a class="btn btn-link view-all-link">
+                    view all
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+            {% if my_uploads | len == 0 %}
+                <div class="nodata-content pos-rel-reset py-5 my-5">
+                    <div class="nodata-icon">
+                        <svg width="46" height="32" viewBox="0 0 46 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M40.7664 11.3542C40.7156 10.977 40.6602 10.6001 40.6001 10.2238L40.4666 9.38748C39.9973 6.44717 37.4611 4.28366 34.4836 4.28366L17.5732 4.28366C16.9461 2.0525 14.8965 0.416748 12.4649 0.416748H7.69079C4.60156 0.416748 1.9995 2.72504 1.63118 5.79223L1.0635 10.5196C0.453815 15.5967 0.611164 20.7366 1.53027 25.767C2.02197 28.4581 4.27268 30.4754 7.0014 30.6706L10.1556 30.8962C17.3758 31.4128 24.6238 31.4128 31.844 30.8962L35.2563 30.6521C36.9408 30.5316 38.4324 29.6758 39.3931 28.3876C40.6716 27.1613 41.6777 25.6634 42.3286 23.9896L44.9316 17.2962C46.0434 14.4372 43.9344 11.3542 40.8669 11.3542H40.7664ZM7.69079 3.54175C6.18334 3.54175 4.91362 4.66812 4.73389 6.16482L4.16621 10.8921C3.59388 15.6582 3.74159 20.4832 4.60438 25.2053C4.83984 26.494 5.91766 27.4601 7.2244 27.5535L7.40358 27.5664L12.2621 15.0152C13.1162 12.8087 15.2389 11.3542 17.6049 11.3542H37.6112C37.5804 11.1414 37.5481 10.9288 37.5142 10.7164L37.3807 9.88004C37.1534 8.45628 35.9253 7.40866 34.4836 7.40866L16.3318 7.40866C15.4006 7.40866 14.6456 6.65374 14.6456 5.72251C14.6456 4.51811 13.6693 3.54175 12.4649 3.54175H7.69079Z"
+                                fill="#009CA4" fill-opacity="0.8"></path>
+                        </svg>
+                    </div>
+                    <div class="nodata-heading mb-1">
+                        There are no files uploaded by you
+                    </div>
+                    <div class="nodata-subheading mb-2">
+                        start by uploading new project or datasheet now
+                    </div>
+                    <div class="text-center">
+                        <button onclick="location.href = '/upload'" type="button" class="btn btn-lg btn-primary btn-with-icon text-center header-action-button mx-auto">
+                            <img src="/assets/zydus/images/plus.svg" class="me-md-1">
+                            <span class="d-none d-md-inline"><span class="d-none d-xl-inline">Upload</span> New
+                                Document</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="nodata-heading mb-1">
-                    There are no files uploaded by you
+            {% else %}
+                {% for my_upload in my_uploads %}
+                {% include "templates/zydus-portal-ui-includes/home/my-uploads-entry.html" %}
+                {% endfor%}
+            {% endif %}
+        </div>
+        <div class="col-xl-3 line-on-left reminders-column pt-5 px-md-3 px-lg-5 px-xl-4">
+            <div class="d-flex align-items-center justify-content-between mb-3 reminder-title-div">
+                <h2 class="section-title">Reminders</h2>
+                <a class="btn btn-link view-all-link">
+                    view all
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+            <div class="reminders-container">
+                <div class="reminders-wrapper">
+                    {% if reminders | len == 0 %}
+                        <div class="nodata-content pos-rel-reset my-5 py-5">
+                            <div class="nodata-icon">
+                                <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M15.5 4.34375C8.99339 4.34375 3.71875 9.61839 3.71875 16.125C3.71875 22.6316 8.99339 27.9062 15.5 27.9062C22.0066 27.9062 27.2812 22.6316 27.2812 16.125C27.2812 9.61839 22.0066 4.34375 15.5 4.34375ZM1.28125 16.125C1.28125 8.2722 7.6472 1.90625 15.5 1.90625C23.3528 1.90625 29.7188 8.2722 29.7188 16.125C29.7188 23.9778 23.3528 30.3438 15.5 30.3438C7.6472 30.3438 1.28125 23.9778 1.28125 16.125Z"
+                                        fill="#009CA4"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M15.5 6.78125C16.1731 6.78125 16.7188 7.3269 16.7188 8V15.4495L21.0209 18.1384C21.5917 18.4951 21.7652 19.247 21.4085 19.8178C21.0518 20.3886 20.2998 20.5621 19.7291 20.2054L14.8541 17.1585C14.4977 16.9358 14.2812 16.5452 14.2812 16.125V8C14.2812 7.3269 14.8269 6.78125 15.5 6.78125Z"
+                                        fill="#009CA4"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.61179 0.638214C7.08774 1.11417 7.08774 1.88583 6.61179 2.36179L2.54929 6.42429C2.07333 6.90024 1.30167 6.90024 0.825714 6.42429C0.349762 5.94833 0.349762 5.17666 0.825714 4.70071L4.88821 0.638214C5.36416 0.162262 6.13583 0.162262 6.61179 0.638214Z"
+                                        fill="#009CA4"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M24.3882 0.638214C23.9123 1.11417 23.9123 1.88583 24.3882 2.36179L28.4507 6.42429C28.9267 6.90024 29.6983 6.90024 30.1743 6.42429C30.6502 5.94833 30.6502 5.17666 30.1743 4.70071L26.1118 0.638214C25.6358 0.162262 24.8642 0.162262 24.3882 0.638214Z"
+                                        fill="#009CA4"></path>
+                                </svg>
+                            </div>
+                            <div class="nodata-heading">
+                                No reminders </div>
+                            <div class="nodata-subheading">
+                                Create a reminder and it will show up here </div>
+                        </div>
+                    {% else %}
+                        {% for reminder in reminders %}
+                        {% include "templates/zydus-portal-ui-includes/home/reminder-card.html" %}
+                        {% endfor%}
+                    {% endif %}
                 </div>
-                <div class="nodata-subheading mb-2">
-                    start by uploading new project or datasheet now
-                </div>
-                <div class="text-center">
-                    <button onclick="location.href = '/upload'" type="button" class="btn btn-lg btn-primary btn-with-icon text-center header-action-button mx-auto">
-                        <img src="/assets/zydus/images/plus.svg" class="me-md-1">
-                        <span class="d-none d-md-inline"><span class="d-none d-xl-inline">Upload</span> New
-                            Document</span>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-outline-primary w-100 new-reminder-button">
+                        <i class="bi bi-plus-lg me-1"></i>Set new reminder
                     </button>
                 </div>
-            </div>
-        {% else %}
-            {% for my_upload in my_uploads %}
-            {% include "templates/zydus-portal-ui-includes/home/my-uploads-entry.html" %}
-            {% endfor%}
-        {% endif %}
-    </div>
-    <div class="col-xl-3 line-on-left reminders-column pt-5 px-md-3 px-lg-5 px-xl-4">
-        <div class="d-flex align-items-center justify-content-between mb-3 reminder-title-div">
-            <h2 class="section-title">Reminders</h2>
-            <a class="btn btn-link view-all-link">
-                view all
-                <i class="bi bi-chevron-right"></i>
-            </a>
-        </div>
-        <div class="reminders-container">
-            <div class="reminders-wrapper">
-                {% if reminders | len == 0 %}
-                    <div class="nodata-content pos-rel-reset my-5 py-5">
-                        <div class="nodata-icon">
-                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M15.5 4.34375C8.99339 4.34375 3.71875 9.61839 3.71875 16.125C3.71875 22.6316 8.99339 27.9062 15.5 27.9062C22.0066 27.9062 27.2812 22.6316 27.2812 16.125C27.2812 9.61839 22.0066 4.34375 15.5 4.34375ZM1.28125 16.125C1.28125 8.2722 7.6472 1.90625 15.5 1.90625C23.3528 1.90625 29.7188 8.2722 29.7188 16.125C29.7188 23.9778 23.3528 30.3438 15.5 30.3438C7.6472 30.3438 1.28125 23.9778 1.28125 16.125Z"
-                                    fill="#009CA4"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M15.5 6.78125C16.1731 6.78125 16.7188 7.3269 16.7188 8V15.4495L21.0209 18.1384C21.5917 18.4951 21.7652 19.247 21.4085 19.8178C21.0518 20.3886 20.2998 20.5621 19.7291 20.2054L14.8541 17.1585C14.4977 16.9358 14.2812 16.5452 14.2812 16.125V8C14.2812 7.3269 14.8269 6.78125 15.5 6.78125Z"
-                                    fill="#009CA4"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M6.61179 0.638214C7.08774 1.11417 7.08774 1.88583 6.61179 2.36179L2.54929 6.42429C2.07333 6.90024 1.30167 6.90024 0.825714 6.42429C0.349762 5.94833 0.349762 5.17666 0.825714 4.70071L4.88821 0.638214C5.36416 0.162262 6.13583 0.162262 6.61179 0.638214Z"
-                                    fill="#009CA4"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M24.3882 0.638214C23.9123 1.11417 23.9123 1.88583 24.3882 2.36179L28.4507 6.42429C28.9267 6.90024 29.6983 6.90024 30.1743 6.42429C30.6502 5.94833 30.6502 5.17666 30.1743 4.70071L26.1118 0.638214C25.6358 0.162262 24.8642 0.162262 24.3882 0.638214Z"
-                                    fill="#009CA4"></path>
-                            </svg>
-                        </div>
-                        <div class="nodata-heading">
-                            No reminders </div>
-                        <div class="nodata-subheading">
-                            Create a reminder and it will show up here </div>
-                    </div>
-                {% else %}
-                    {% for reminder in reminders %}
-                    {% include "templates/zydus-portal-ui-includes/home/reminder-card.html" %}
-                    {% endfor%}
-                {% endif %}
-            </div>
-            <div class="mt-3">
-                <button type="button" class="btn btn-outline-primary w-100 new-reminder-button">
-                    <i class="bi bi-plus-lg me-1"></i>Set new reminder
-                </button>
             </div>
         </div>
     </div>

@@ -1,8 +1,8 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
     <div class="trending-product-card" style="border-color: {{trending_now.color}}">
         <div class="d-flex align-items-start justify-content-between">
-            <button onclick="toggleLike(this, 'Project', '{{trending_now.name}}')" data-liked-by='{{trending_now.liked_by}}' type="button" class="btn btn-link p-0 fav-button">
-                <i class="bi bi-heart"></i>
+            <button onclick="toggleLike('Project', '{{trending_now.name}}', {% if trending_now.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+                <i class="bi {% if trending_now.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if trending_now.is_liked %}style="color: #000;"{% endif %}></i>
             </button>
             <div class="brand-logo-wrap">
                 <img src="{{trending_now.brand_logo}}" class="img-fluid" />
