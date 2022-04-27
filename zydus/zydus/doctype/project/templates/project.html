@@ -19,7 +19,7 @@
             <div class="file-list">
               {% for file in attachments %}
               <div class="file-list-item">
-                <img src="/assets/zydus/images/pdf.png" class="img-fluid">
+                <img src="/assets/zydus/images/file-ext" class="img-fluid">
                 <span class="file-name">{{file.file_name}}</span>
                 <a href="{{file.file_url}}" target="_blank" class="btn btn-link">view</a>
                 <a href="{{file.file_url}}" download class="btn btn-link p-0">
@@ -115,6 +115,12 @@
           </p>
           {% endif %}
 
+          {% if actions | len > 0%}
+          <label>Actions</label>
+          <p>
+            {{doc.actions}}
+          </p>
+          {% endif %}
           <ol>
             <!-- <li>
                 Nulla pharetra justo lacus, ac tincidunt orci
