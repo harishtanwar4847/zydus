@@ -107,7 +107,7 @@
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
         },
-        maxFilesize: 2, // MB
+        maxFilesize: 50, // MB
         url: '/api/method/upload_file',
         params(files, xhr, chunk) {
             return {
@@ -144,7 +144,7 @@
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
         },
-        maxFilesize: 2, // MB
+        maxFilesize: 50, // MB
         url: '/api/method/upload_file',
         params(files, xhr, chunk) {
             return {
@@ -181,7 +181,7 @@
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
         },
-        maxFilesize: 2, // MB
+        maxFilesize: 50, // MB
         url: '/api/method/upload_file',
         addRemoveLinks: true,
         params(files, xhr, chunk) {
