@@ -107,8 +107,14 @@
           if(x.name == 'tags') {
             x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
           }
-          obj[x.name] = x.value
+          if(x.value.length > 0) {
+            obj[x.name] = x.value
+          }
       })
+
+      if(Object.keys(obj).length == 0) {
+        return
+      }
 
       $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
       
