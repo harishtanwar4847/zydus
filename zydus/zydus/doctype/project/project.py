@@ -1,7 +1,9 @@
 # Copyright (c) 2022, Atrina Technologies Pvt Ltd and contributors
 # For license information, please see license.txt
 
+from ast import If
 import frappe
+import os
 from frappe.website.website_generator import WebsiteGenerator
 
 
@@ -18,6 +20,11 @@ class Project(WebsiteGenerator):
 				context['_user_tags'] = context['_user_tags'][1:]
 			context['markets'] = ','.join([market.city for market in self.markets])
 			context['attachments'] = frappe.desk.form.load.get_attachments('Project', self.name)
+			for attachment in context['attachments']:
+				file_ext=attachment['file_name']
+				attachment['ext']=file_ext.rsplit('.', 1)[1]
+				 
+
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 
 	def before_submit(self):
