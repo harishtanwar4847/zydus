@@ -115,6 +115,13 @@
           </p>
           {% endif %}
 
+          {% if actions | len > 0%}
+          <label>actions</label>
+          <p>
+            {{doc.actions}}
+          </p>
+          {% endif %}
+
           <ol>
             <!-- <li>
                 Nulla pharetra justo lacus, ac tincidunt orci
