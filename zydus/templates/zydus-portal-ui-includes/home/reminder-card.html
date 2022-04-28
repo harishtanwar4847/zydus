@@ -11,6 +11,7 @@
     </div>
     <div class="reminder-time">{{ reminder.due_by }}</div>
     <div class="reminder-actions mt-3">
+        {% if reminder.due_by == 'Today' %}
         {% if reminder.owner == reminder.modified_by %}
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
@@ -20,18 +21,32 @@
             <div class="dropdown-menu">
                 <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
                     <li>
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Tomorrow</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">in 2 days</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">in 3 days</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Saturday</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Sunday</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Monday</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Tuesday</a>
                     </li>
                 </ul>
             </div>
         </div>
         {% endif %}
         <button class="btn">Done</button>
+        {% endif %}
+
     </div>
 </div>
