@@ -18,7 +18,7 @@
           </select>
         </div>
         <div class="col-12 col-md-6">
-          <label for="projectName" class="form-label">Project Name</label>
+          <label for="projectName" class="form-label">Project / Datasheet Name</label>
           <input name="project_name" type="text" class="form-control" placeholder="Enter the title of the project" id="projectName" />
         </div>
         <div class="col-12 col-md-6 col-xl-3">
@@ -30,7 +30,7 @@
           </select>
         </div>
         <div class="col-12 col-md-6 col-xl-3">
-          <label for="dateSelect" class="form-label">Date of Project</label>
+          <label for="dateSelect" class="form-label">Date of Project / Datasheet</label>
           <div class="row" id="dateSelect">
             <div class="col-6 col-xxl-8">
               <select name="month" class="form-select">
@@ -57,12 +57,13 @@
           </div>
         </div>
         <div class="col-6 col-xl-5">
-          <label for="projectType" class="form-label">Project Type</label>
-          <select name="project_type" class="form-select" aria-label="Default select example" id="projectType">
+          <label for="type" class="form-label">Project / Data Types</label>
+          <input type="text" name="type" data-type="tags-whitelisted" class='form-control' placeholder="Choose Project / Data type " />
+          <!-- <select name="project_type" class="form-select" aria-label="Default select example" id="projectType">
             <option selected="" disabled="" value="">
               Choose the Project Type
           </option>
-          </select>
+          </select> -->
         </div>
         <div class="col-6 col-xl-4">
           <label for="tags" class="form-label">Tags</label>
@@ -107,6 +108,9 @@
           if(x.name == 'tags') {
             x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
           }
+          if(x.name == 'type') {
+            x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
+          }
           if(x.value.length > 0) {
             obj[x.name] = x.value
           }
@@ -149,6 +153,18 @@
     $('select[name=project_type]').append('<option value="' + project_type + '">' + project_type + '</option>')
   }
 
+  // tagify project_type and data_type input
+  var input = document.querySelectorAll("[name=type]");
+    if (typeof Tagify !== "undefined") {
+        input.forEach(x => {
+            new Tagify(x, {
+                whitelist : {{types}},
+                enforceWhitelist: true,
+                mode: "select",
+            })
+        });
+    }
+
   setTimeout(function() {
       // Sauce: https://stackoverflow.com/a/50147341/9403680
       const params = Object.fromEntries(new URLSearchParams(location.search));
@@ -156,7 +172,7 @@
       
       $('[name=brand]').val(params.brand || '')
       $('[name=agency]').val(params.agency || '')
-      $('[name=project_type]').val(params.project_type || '')
+      $('[name=type]').val(params.type || '')
       $('[name=project_name]').val(params.project_name || '')
       $('[name=month]').val(params.month || '')
       $('[name=year]').val(params.year || '')

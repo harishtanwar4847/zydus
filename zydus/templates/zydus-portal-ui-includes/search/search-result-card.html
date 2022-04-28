@@ -8,7 +8,7 @@
     <div class="agency">{{search_result.agency or ''}}</div>
     <div class="subtitle-1">{{search_result.month_year}}</div>
     <div class="subtitle-2">{{search_result.attachments | len}} {% if search_result.attachments | len > 1%} files {% else %} file {% endif %}</div>
-    <p>{{search_result.description}}</p>
+    <p>{{search_result.description or ''}}</p>
 
     <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" id="dropdownMenuButton1"
         data-bs-toggle="dropdown" aria-expanded="false">

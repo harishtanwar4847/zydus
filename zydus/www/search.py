@@ -14,6 +14,8 @@ def get_context(context):
         context['brands'] = [brand.name for brand in frappe.get_all('Brand')]
         context['agencies'] = [agency.name for agency in frappe.get_all('Agency')]
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
+        context['types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
+        context['types'] += [data_type.name for data_type in frappe.get_all('Data Type')]
 
         context['search_tags'] = []
         context['search_results'] = []
@@ -32,10 +34,10 @@ def get_context(context):
             context['search_tags'].append(frappe.form_dict.agency)
             P_filters.append("""P.agency = "{}" """.format(frappe.form_dict.agency))
             D_filters.append("""D.agency = "{}" """.format(frappe.form_dict.agency))
-        if frappe.form_dict.project_type:
-            context['search_tags'].append(frappe.form_dict.project_type)
-            P_filters.append("""P.project_type = "{}" """.format(frappe.form_dict.project_type))
-            D_filters.append("""D.data_type = "{}" """.format(frappe.form_dict.project_type))
+        if frappe.form_dict.type:
+            context['search_tags'].append(frappe.form_dict.type)
+            P_filters.append("""P.project_type = "{}" """.format(frappe.form_dict.type))
+            D_filters.append("""D.data_type = "{}" """.format(frappe.form_dict.type))
         if frappe.form_dict.month:
             P_filters.append("""P.month = "{}" """.format(frappe.form_dict.month))
             D_filters.append("""D.month = "{}" """.format(frappe.form_dict.month))
@@ -77,4 +79,4 @@ def get_context(context):
 
         for search_result in context['search_results']:
             search_result['attachments'] = get_attachments(search_result.doctype, search_result.name)
-            search_result['is_liked'] = frappe.session.user in json.loads(search_result['liked_by'] or '')
+            search_result['is_liked'] = frappe.session.user in json.loads(search_result['liked_by'] or '[]')
