@@ -1,14 +1,14 @@
-jQuery(function () {
-  jQuery(".drop-zone").on("click", function () {
-    $(this).addClass("d-none");
-    $(".drop-zone-file-list").removeClass("d-none");
-  });
-});
-document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-  const dropZoneElement = inputElement.closest(".drop-zone");
-  dropZoneElement.addEventListener("click", (e) => {
-    inputElement.click();
-  });
+// jQuery(function () {
+//   jQuery(".drop-zone").on("click", function () {
+//     $(this).addClass("d-none");
+//     $(".drop-zone-file-list").removeClass("d-none");
+//   });
+// });
+// document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+//   const dropZoneElement = inputElement.closest(".drop-zone");
+//   dropZoneElement.addEventListener("click", (e) => {
+//     inputElement.click();
+//   });
   // inputElement.addEventListener("change", (e) => {
   //   if (inputElement.files.length) {
   //     updateThumbnail(dropZoneElement, inputElement.files[0]);
