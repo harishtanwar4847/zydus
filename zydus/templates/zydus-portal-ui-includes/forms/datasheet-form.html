@@ -1,103 +1,118 @@
-<form id="upload-datasheet-form" form class="custom-form project-form">
-    <input type="hidden" name="docstatus">
-    <input type="hidden" name="doctype" value="Datasheet">
-    <div
-        class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3 mt-3 mt-md-0">
-        <h2 class="title">Datasheet Details</h2>
-        <div class="text-primary">
-            <small class="me-2"> *mandatory to fill to submit </small>
-        </div>
-    </div>
-    <div class="row gx-3 gy-3 mt-lg-4">
-        <div class="col-12">
-            <label>
-                Brand 
-                <sup class="text-primary">*</sup>
-            </label>
-            <select name="brand" class="form-select" required>
-                <option selected="" disabled="">
-                    Choose the brand name
-                </option>
-            </select>
-            </select>
-        </div>
-        <div class="col-12">
-            <label>
-                DataSheet name
-                <sup class="text-primary">*</sup>
-            </label>
-            <input name="title" class="form-control" placeholder="Enter the title of the Datasheet" required>
-            
-        </div>
-        <div class="col-12">
-            <label>
-                Date of Datasheet
-                <sup>*</sup>
-            </label>
-            <div class="row gx-3 gy-3">
-                <div class="col-6 col-xxl-8">
-                    <select name="month" class="form-select" required>
-                        <option selected disabled>Month</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                    </select>
-                </div>
-                <div class="col-6 col-xxl-4">
-                    <select name="year" class="form-select" required>
-                        <option selected disabled>Year</option>
-                    </select>
-                </div>
+<div class="row gx-3 gy-3 mt-md-3">
+    <div class="col-12 col-lg-6 px-md-5">
+        <div class="p-xxl-5 h-100 d-flex align-items-center">
+            <div class="drop-zone dropzone" id="upload-data-sheet-dropzone">
+                <span class="dz-message drop-zone__prompt">
+                    <img src="/assets/zydus/images/upload.svg">
+                    <div>Drop files for upload</div>
+                    <div>or</div>
+                    <u class="btn btn-link p-0">browse</u>
+                </span>
             </div>
         </div>
-        <div class="col-12">
-            <label>
-                Agency
-                <sup class="text-primary"> * </sup>
-            </label>
-            <select name="agency" class="form-select" required>
-                <option selected="" disabled="">
-                    Choose the agency
-                </option>
-            </select>
-        </div>
-
-        <div class="col-12">
-            <label>
-                Data Type
-                <sup class="text-primary"> * </sup>
-            </label>
-            <select name="data_type" class="form-select" required>
-                <option selected="" disabled="">
-                    Choose the data types
-                </option>
-            </select>
-           
-        </div>
-        <div class="col-12">
-            <label> Tags </label>
-            <input class="form-control" data-type="tags" placeholder="Add tags for the data">
-        </div>
-        <div class="col-12">
-            <label> Description </label>
-            <textarea class="form-control"
-                placeholder="Enter one liner description of the data"></textarea>
-        </div>
-        
-        <div class="col-12 text-end action-btns mt-5">
-            <button class="btn btn-primary" type="button" onclick="submitDatasheetForm()">
-                Submit
-            </button>
-                
-        </div>
     </div>
-</form>
+    <div class="col-12 col-lg-6 px-lg-5">
+        <form id="upload-datasheet-form" form class="custom-form project-form">
+            <input type="hidden" name="docstatus">
+            <input type="hidden" name="doctype" value="Datasheet">
+            <div
+                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3 mt-3 mt-md-0">
+                <h2 class="title">Datasheet Details</h2>
+                <div class="text-primary">
+                    <small class="me-2"> *mandatory to fill to submit </small>
+                </div>
+            </div>
+            <div class="row gx-3 gy-3 mt-lg-4">
+                <div class="col-12">
+                    <label>
+                        Brand
+                        <sup class="text-primary">*</sup>
+                    </label>
+                    <select name="brand" class="form-select" required>
+                        <option selected="" disabled="">
+                            Choose the brand name
+                        </option>
+                    </select>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label>
+                        Data Sheet name
+                        <sup class="text-primary">*</sup>
+                    </label>
+                    <input name="title" class="form-control" placeholder="Enter the title of the Datasheet" required>
+
+                </div>
+                <div class="col-12">
+                    <label>
+                        Date of Project
+                        <sup>*</sup>
+                    </label>
+                    <div class="row gx-3 gy-3">
+                        <div class="col-6 col-xxl-8">
+                            <select name="month" class="form-select" required>
+                                <option selected disabled>Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-xxl-4">
+                            <select name="year" class="form-select" required>
+                                <option selected disabled>Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label>
+                        Agency
+                        <sup class="text-primary"> * </sup>
+                    </label>
+                    <select name="agency" class="form-select" required>
+                        <option selected="" disabled="">
+                            Choose the agency
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label>
+                        Data Type
+                        <sup class="text-primary"> * </sup>
+                    </label>
+                    <select name="data_type" class="form-select" required>
+                        <option selected="" disabled="">
+                            Choose the data types
+                        </option>
+                    </select>
+
+                </div>
+                <div class="col-12">
+                    <label> Tags </label>
+                    <input class="form-control" data-type="tags" placeholder="Add tags for the data">
+                </div>
+                <div class="col-12">
+                    <label> Description </label>
+                    <textarea class="form-control" placeholder="Enter one liner description of the data"></textarea>
+                </div>
+
+                <div class="col-12 text-end action-btns mt-5">
+                    <button class="btn btn-primary" type="button" onclick="submitDatasheetForm()">
+                        Submit
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
