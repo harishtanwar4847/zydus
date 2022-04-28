@@ -22,6 +22,17 @@ def get_context(context):
                 P_or_filters.append("""P.year like "%{}%" """.format(x))
                 P_or_filters.append("""P.title like "%{}%" """.format(x))
                 P_or_filters.append("""P._user_tags like "%{}%" """.format(x))
+                P_or_filters.append("""P.targer_group like "%{}%" """.format(x))
+                P_or_filters.append("""P.markets like "%{}%" """.format(x))
+                P_or_filters.append("""P.business_problems like "%{}%" """.format(x))
+                P_or_filters.append("""P.research_objectives like "%{}%" """.format(x))
+                P_or_filters.append("""P.result like "%{}%" """.format(x))
+                P_or_filters.append("""P.learnings like "%{}%" """.format(x))
+                P_or_filters.append("""P.actions like "%{}%" """.format(x))
+
+
+
+
         D_filters = ["D.docstatus = 1"]
         D_or_filters = []
         if frappe.form_dict.q:
@@ -33,6 +44,8 @@ def get_context(context):
                 D_or_filters.append("""D.year like "%{}%" """.format(x))
                 D_or_filters.append("""D.title like "%{}%" """.format(x))
                 D_or_filters.append("""D._user_tags like "%{}%" """.format(x))
+
+
         
         clauses = {
             'P_and_where_clauses': ' and '.join(P_filters),
