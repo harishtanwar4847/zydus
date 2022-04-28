@@ -6,9 +6,10 @@
 - [Datasheet Tag are not mandatory fixed | increase file attach size = 50 mb](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/27)
 -[home page tranding hover | my_uploads only approved projects /datasheet will get listed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/28)
 - [datasheet view from my uploads | user default image and designation visible | reminder filled clock for today's reminder](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/29)
--[action not visible in view project](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/30)
--[search filter and search result datasheet should show with project | favorite not working on datasheet](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/31)
--[View File - all the file icons are shown as Pdf Ressolved | snooze or Done should only be seen if reminder is due Today](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/32)
+- [action not visible in view project](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/30)
+- [search filter and search result datasheet should show with project | favorite not working on datasheet](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/31)
+- [View File - all the file icons are shown as Pdf Ressolved | snooze or Done should only be seen if reminder is due Today](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/32)
+- [icon filled in sidenav fixed for upload | user default image updated](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/33)
 
 # [v0.2.4-dev] -2022-04-25
 - [UI-changes-fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/22)

@@ -707,9 +707,10 @@ body {
 }
 .trending-product-card .brand-logo-wrap {
   max-width: 85px;
+  height: 40px;
 }
-.trending-product-card .brand-logo-wrap img{
-  max-height: 30px;
+.trending-product-card .brand-logo-wrap img {
+  max-height: 40px;
 }
 .trending-product-card .title-wrap {
   margin-top: 20px;
