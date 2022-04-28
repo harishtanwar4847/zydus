@@ -48,6 +48,8 @@ def get_context(context):
 
         for search_result in context['search_results']:
             search_result['attachments'] = get_attachments(search_result.doctype, search_result.name)
-            search_result['is_liked'] = frappe.session.user in json.loads(search_result['liked_by'] or '')
+            search_result['is_liked'] = frappe.session.user in json.loads(search_result['liked_by'] or '[]')
+
+        print(context['search_results'])
             
                   
