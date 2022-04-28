@@ -10,6 +10,10 @@
 - [search filter and search result datasheet should show with project | favorite not working on datasheet](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/31)
 - [View File - all the file icons are shown as Pdf Ressolved | snooze or Done should only be seen if reminder is due Today](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/32)
 - [icon filled in sidenav fixed for upload | user default image updated](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/33)
+- [dropbox css updated | trending now brand logo css updated | save for later button size fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/34)
+- [Reminde-action-button-work | snooze or done button should not be shown for future remiderrs](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/35)
+
+- [search filter will be an input | my uploads sorting to be done by modified | leave some space between in my uploads and page end |search filter titled to be continued |correct label for date of project to date of datasheet](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/36)
 - [ui fixes | search result changes](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/37)
 
 # [v0.2.4-dev] -2022-04-25
