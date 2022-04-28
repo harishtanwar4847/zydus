@@ -96,6 +96,8 @@
   border-color: #009ca4;
   color: #009ca4;
   box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 10%);
+  margin-top: 200px;
+  position: sticky;
 }
 .btn-outline-primary:hover,
 .btn-check:active + .btn-outline-primary,
@@ -256,6 +258,7 @@
 html,
 body {
   font-family: "Poppins", sans-serif;
+  padding-bottom : 20px;
 }
 .page-wrapper {
   min-height: 100vh;
