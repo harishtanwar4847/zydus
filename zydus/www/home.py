@@ -19,12 +19,12 @@ def get_context(context):
             trending_now['attachments'] = get_attachments(trending_now.doctype,trending_now.name)
             trending_now['is_liked'] = frappe.session.user in json.loads(trending_now['liked_by'] or '[]')
 
-        context['my_uploads'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from          (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where owner= %s and P.docstatus = 1        union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where owner = %s and D.docstatus = 1) as T left join `tabBrand` as B on T.brand = B.name  limit 10; """, (frappe.session.user,frappe.session.user),as_dict=1,debug=1)
+        context['my_uploads'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where owner= %s and P.docstatus = 1        union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where owner = %s and D.docstatus = 1) as T left join `tabBrand` as B on T.brand = B.name  limit 10; """, (frappe.session.user,frappe.session.user),as_dict=1,debug=1)
         for my_upload in context['my_uploads']:
             my_upload['attachments'] = get_attachments(my_upload.doctype,my_upload.name)
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
         
-        context["reminders"]=frappe.db.get_list("ToDo",fields=["title","description","owner","modified_by","date"],debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
+        context["reminders"]=frappe.db.get_list("ToDo",fields=["title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
         
       
         # due_by calculation
