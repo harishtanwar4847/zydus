@@ -21,19 +21,19 @@
             <div class="dropdown-menu">
                 <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
                     <li>
-                        <a class="dropdown-item" href="#">Tomorrow</a>
+                        <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',1,'{{reminder.name}}')" href="#">Tomorrow </button>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">in 2 days</a>
+                        <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',2,'{{reminder.name}}')" href="#">in 2 days</button>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">in 3 days</a>
+                        <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',3,'{{reminder.name}}')" href="#">in 3 days</button>
                     </li>
                 </ul>
             </div>
         </div>
         {% endif %}
-        <button class="btn">Done</button>
+        <button class="btn" onclick="Done('{{reminder.name}}')">Done</button>
         {% endif %}
 
     </div>

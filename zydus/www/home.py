@@ -24,7 +24,7 @@ def get_context(context):
             my_upload['attachments'] = get_attachments(my_upload.doctype,my_upload.name)
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
         
-        context["reminders"]=frappe.db.get_list("ToDo",fields=["title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
+        context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
         
       
         # due_by calculation
