@@ -17,6 +17,7 @@
 - [Ui fixes](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/38)
 - [search result changes | add remove in drop file](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/39)
 - [homescreen-View count should not be shown | in view datasheet description is visible fixed | Toast as Saved project-after uploading project it should show as project successfully uploaded done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/40)
+- [on login, redirect to /home](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/42)
 
 # [v0.2.4-dev] -2022-04-25
 - [UI-changes-fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/22)
