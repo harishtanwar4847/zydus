@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="col-12">
-                {% if description | len > 0%}
+                {% if description or "" | len > 0 %}
                 <label>Description</label>
                 <div>
                   {{doc.description}}
