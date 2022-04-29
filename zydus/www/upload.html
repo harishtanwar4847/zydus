@@ -72,6 +72,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Project Successfully uploaded</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="datasheetModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
     aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -699,7 +715,13 @@
                     Dropzone.forElement('#upload-saved-project-dropzone').removeAllFiles()
 
                     // show modal
-                    $('#saveModal').modal('show')
+                    if($('#upload-saved-form [name=workflow_state]').val()=="Saved"){
+                        $('#saveModal').modal('show')
+                    }
+                    else {
+                        $('#successModal').modal('show')
+                    }
+                    // $('#saveModal').modal('show')
                 }
             })
         }
