@@ -1,3 +1,6 @@
+# [v0.2.6-dev] -2022-05-02
+- [accounts my uploads and notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/46)
+
 # [v0.2.5-dev] -2022-05-02
 - [Year start from 2000 | Learning Textarea changed =100 | in saved year,agency and project type fixed | tag showed on project view handled if empty | and UI issues also fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/23)
 - [search not to work when search form empty | reminder today highlight issue](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/24)
