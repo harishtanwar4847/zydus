@@ -40,9 +40,10 @@
   color: rgba(0, 156, 164, 0.5);
 }
 .form-control:focus,
+.form-select:focus,
 .tagify__input:focus {
   border-color: #009ca4;
-  box-shadow: none;
+  box-shadow: none !important;
 }
 .text-primary {
   color: rgba(0, 156, 164, 0.5) !important;
@@ -98,6 +99,9 @@
   border-color: #009ca4;
   color: #009ca4;
   box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 10%);
+  margin-top: 200px;
+  position: sticky;
+
 }
 .btn-outline-primary:hover,
 .btn-check:active + .btn-outline-primary,
@@ -258,6 +262,7 @@
 html,
 body {
   font-family: "Poppins", sans-serif;
+  padding-bottom : 20px;
 }
 .page-wrapper {
   min-height: 100vh;
@@ -370,13 +375,13 @@ body {
   left: 15px;
   transform: translateY(-50%);
 }
-.search-input-wrap > input {
+.search-input-wrap input {
   font-size: 16px;
   padding: 10px 10px 10px 50px;
   position: relative;
   border-radius: 10px;
 }
-.search-input-wrap > input::placeholder {
+.search-input-wrap input::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 .header-action-button {
@@ -629,11 +634,17 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: rgba(0, 156, 164, 0.1);
-  border: 1px dashed #009ca4;
+  background: rgba(0, 156, 164, 0.1)!important;
+  border: 1px dashed #009ca4 !important;
   border-radius: 8px;
   cursor: pointer;
   padding: 30px;
+}
+.dropzone .dz-preview.dz-image-preview {
+  background: transparent !important;
+}
+.dropzone .dz-preview .dz-image {
+  border: 1px dashed #009ca4 !important;
 }
 @media all and (min-width: 768px) {
   .drop-zone {
@@ -1696,14 +1707,14 @@ color: #000000;
 .login-box .form-err input{
  border: 0.8px solid rgba(255, 0, 4, 0.9) !important;
 }  */
-form .is-valid{
+/* form .is-valid{
   border:1px solid #009ca4;
   background-image: none !important;
 }
 form .is-invalid{
   border:1px solid #F94144B2;
   background-image: none !important;
-}
+} */
 
 form .is-valid:focus,form .is-invalid:focus{
   box-shadow: none !important;
