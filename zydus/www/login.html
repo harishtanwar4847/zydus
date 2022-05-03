@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <link rel="icon" type="image/png" href="/assets/zydus/images/favicon.png" />
+    <meta name="author" content="" />
+    <link href="/assets/zydus/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/zydus/css/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/assets/zydus/css/zyduswellness.css" rel="stylesheet" />
+    <title>Home - Zydus Wellness</title>
+    
+  </head>
+  <body>
+    <div class="login-page-3 container-fluid">
+      <div class="row">
+        <div class="login-partition col-lg-4  ">
+          <h1 class="new-here">New Here?</h1>
+          <a href="http://localhost/login_updated/login.html#signup" class="btn btn-register-new">Register</a>
+        </div>
+        <div class="login-partition-2 col-lg-8 login-col-2 py-5 ">
+          <div class="login-box login-box2">
+            <h1>Login to <br> your account</h1>
+            <form id="login">
+              <div class="form-group">
+								<label>Email</label>
+								<div class="email-field">
+									<input type="text" id="login_email" name="usr" class="form-control" placeholder="Enter your mail here" required="" autofocus="">	
+								</div>
+							</div>
+						
+							<div class="form-group mt-4">
+								<label>Password</label>
+								<div class="password-field">
+									<input type="password" id="password" name="pwd" class="form-control" placeholder="Enter your password here" required>
+								</div>
+							</div>
+
+              <div class="show-password text-start d-flex align-items-center">
+                <input type="checkbox" id="show-password" value="Show Password">
+                <label for="show-password">Show Password</label>
+              </div>
+
+              <div class="forgot-password text-end">
+                <a href="#">Forgot Password?</a>
+              </div>
+              <button type="submit" class="btn btn-primary btn-login w-100">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<script>
+  // Show Pass
+
+  document.getElementById('show-password').onclick = function() {
+    if ( this.checked ) {
+       document.getElementById('password').type = "text";
+    } else {
+       document.getElementById('password').type = "password";
+    }
+};
+</script>
+    
+    <script src="/assets/zydus/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/zydus/js/jquery.min.js"></script>
+    <script src="/assets/zydus/js/zyduswellness.js"></script>
+<script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        $('#login').validate({
+            submitHandler: function(form) {
+                console.log(form, 'login form')
+                event.preventDefault()
+                $.ajax({
+                    url: '/',
+                    method: 'POST',
+                    data: {usr: $('#login [name=usr]').val(), pwd: $('#login [name=pwd]').val(), cmd: 'login'},
+                    // headers: {
+                    //     'X-Frappe-CSRF-Token': frappe.csrf_token
+                    // },
+                    success: function(res) {
+                        console.log(res)  
+                        location.href = '/home'
+                    }
+                })
+            } 
+        })       
+    </script>
+  </body>
+</html>
