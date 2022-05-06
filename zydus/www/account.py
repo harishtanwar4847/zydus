@@ -15,15 +15,14 @@ def get_context(context):
         for trending_now in context['trending_now_list']:
             trending_now['number_of_files'] = len(get_attachments("Project",trending_now.name))
             
-        context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=5)
+        context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
 
     # due_by calculation
         for reminder in context['reminders']:
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
 
-
-
-        context['favourites'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where owner= %s and P.docstatus = 1 and P._liked_by like %s      union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where owner = %s and D.docstatus = 1 and D._liked_by like %s ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, (frappe.session.user,frappe.session.user,"%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
+    
+        context['favourites'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where owner= %s and P.docstatus = 1 and P._liked_by like  %s    union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where owner = %s and D.docstatus = 1 and D._liked_by like  %s  ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, (frappe.session.user,"%{}%".format(frappe.session.user),frappe.session.user,"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
         for favourite in context['favourites']:
             favourite['attachments'] = get_attachments(favourite.doctype,favourite.name)
             favourite['is_liked'] = frappe.session.user in json.loads(favourite['liked_by'] or '[]')
