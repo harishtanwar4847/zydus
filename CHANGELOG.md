@@ -1,5 +1,5 @@
 # [v0.2.7-dev] -2022-05-06
-- [account page-reminder paritially done  and favourities done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/45}
+- [account page-reminder paritially done  and favourities done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/45)
 
 
 # [v0.2.5-dev] -2022-04-27
