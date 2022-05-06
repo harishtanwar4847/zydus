@@ -1,8 +1,13 @@
+# [v0.2.7-dev] -2022-05-06
+- [reset-password| password-reset-popup| update-password page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/50)
+
+
 # [v0.2.6-dev] -2022-05-04
 - [accounts my uploads and notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/46)
 - [upload page css update](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/47)
 - [Upload page css modification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/48)
 - [reset-password | login page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/49)
+
 
 # [v0.2.5-dev] -2022-05-02
 - [Year start from 2000 | Learning Textarea changed =100 | in saved year,agency and project type fixed | tag showed on project view handled if empty | and UI issues also fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/23)
