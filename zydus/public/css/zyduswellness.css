@@ -48,6 +48,9 @@
 .text-primary {
   color: rgba(0, 156, 164, 0.5) !important;
 }
+.text-primary-100 {
+  color: rgba(0, 156, 164,1) !important;
+}
 .btn {
   border-radius: 10px;
 }
@@ -98,6 +101,7 @@
   box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 10%);
   margin-top: 200px;
   position: sticky;
+
 }
 .btn-outline-primary:hover,
 .btn-check:active + .btn-outline-primary,
@@ -271,6 +275,7 @@ body {
   .page-wrapper {
     grid-template-columns: 180px 1fr;
   }
+
 }
 @media all and (max-width: 767px) {
   .page-wrapper {
@@ -621,6 +626,7 @@ body {
   padding: 30px !important;
   width: 100%;
 }
+
 .drop-zone {
   width: 100%;
   height: 100%;
@@ -628,7 +634,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: rgba(0, 156, 164, 0.1) !important;
+  background: rgba(0, 156, 164, 0.1)!important;
   border: 1px dashed #009ca4 !important;
   border-radius: 8px;
   cursor: pointer;
@@ -725,10 +731,9 @@ body {
 }
 .trending-product-card .brand-logo-wrap {
   max-width: 85px;
-  height: 40px;
 }
-.trending-product-card .brand-logo-wrap img {
-  max-height: 40px;
+.trending-product-card .brand-logo-wrap img{
+  max-height: 30px;
 }
 .trending-product-card .title-wrap {
   margin-top: 20px;
@@ -1303,9 +1308,16 @@ body {
   }
 }
 @media all and (max-width: 991px) {
+  .btn-register-new{
+    margin-top: 60px !important;
+  }
+  .login-partition{
+    border-radius: 0 !important;
+  }
   .project-form .action-btns .btn {
     padding: 10px 30px;
   }
+ 
 }
 @media all and (max-width: 767px) {
   .upload .nav-link {
@@ -1468,7 +1480,7 @@ body {
   overflow: hidden;
 }
 /**** End :: File Page ****/
-/**** Start :: Login Page ****/
+/**** Start :: Login Page ****/ 
 .login-2 {
   background: linear-gradient(
     96.5deg,
@@ -1499,7 +1511,18 @@ body {
   box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
 }
-.login-box h1 {
+.login-box.login-box2{
+  background: transparent;
+  box-shadow: none;
+}
+.login-box.login-box2 .form-control {
+  background: transparent;
+  /* box-shadow: none; */
+}
+.login-page-3, .login-page-3 .login-partition , .login-page-3 .login-partition-2 {
+  min-height: 100vh;;
+}
+.login-box:not(.login-box2) h1 {
   font-weight: 400;
   font-size: 48px;
   line-height: 72px;
@@ -1507,7 +1530,7 @@ body {
   color: #000000;
   margin-bottom: 100px;
 }
-.login-box .form-control {
+.login-box:not(.login-box2) .form-control {
   margin-bottom: 20px;
   padding: 15px 25px;
   background: rgba(255, 255, 255, 0.3);
@@ -1516,13 +1539,13 @@ body {
   font-size: 18px;
   line-height: 27px;
 }
-.login-box .form-control::placeholder {
+.login-box:not(.login-box2) .form-control::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
-.login-box .form-control:focus {
-  box-shadow: none !important;
+.login-box:not(.login-box2) .form-control:focus {
+  box-shadow: none;
 }
-.login-box .btn-primary {
+.login-box:not(.login-box2) .btn-primary {
   padding: 15px;
   font-size: 18px;
   line-height: 27px;
@@ -1530,18 +1553,18 @@ body {
   box-shadow: 4px 4px 14px 0px rgb(0 0 0 / 10%);
   font-weight: 600;
 }
-.login-box .forgot-password {
+.login-box:not(.login-box2) .forgot-password {
   margin-bottom: 65px;
   font-size: 13px;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.5);
 }
-.login-box .forgot-password a {
+.login-box:not(.login-box2) .forgot-password a {
   color: inherit;
   transition-duration: 0.3s;
   text-decoration: none;
 }
-.login-box .forgot-password a:hover {
+.login-box:not(.login-box2) .forgot-password a:hover {
   color: #ffffff;
 }
 .partial-login-box{
@@ -1563,9 +1586,10 @@ body {
   border-radius: 25px;
 }
 .partial-login-box h1 {
-  font-size: 20px;
-  font-weight: 600;
-  color: rgba(0, 156, 164, 0.8);
+  font-size: 20px   !important;
+  font-weight: 600 !important;
+  color: rgba(0, 156, 164, 0.8) !important;
+  margin-bottom: 30px !important;
 }
 .partial-login-box .btn-secondary{
   padding: 15px;
@@ -1588,13 +1612,305 @@ body {
     margin-bottom: 40px;
   }
 }
+.login-page .row{
+  height: 100vh;
+}
+
+.login-partition{
+  background: linear-gradient(
+  rgba(196, 76, 165, 0.7) 0%,
+  rgba(0, 156, 164, 0.7) 100%
+);
+box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.1);
+border-radius: 0 25px 25px 0;
+margin: 0 !important;
+display: flex;
+justify-content: center;
+flex-direction: column;
+text-align: left;
+padding: 78px;
+}
+
+.new-here{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 72px;
+}
+
+.btn-register-new{
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  margin-top: 115px;
+  color: #ffffff;
+}
+
+.login-partition-2{
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box h1{
+    font-size: 48px ;
+    line-height: 72px;
+    text-align: left;
+}
+.login-box .err-msg{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 14px;
+  color: rgba(255, 0, 4, 0.9);
+}
+
+.login-box .page-card-head h4{
+  font-size: 48px !important;
+  line-height: 72px;
+  text-align: left;
+  display: flex;
+}
+
+.login-box form{
+  margin-top: 50px;
+}
+
+.login-box form label{
+font-size: 16px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: justified;
+color: #000000;
+}
+
+.login-box form .form-control{
+  background: white !important;
+  /* border: 0.8px solid #009CA4 !important; */
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 15px ;
+}
+
+/* .login-box .form-err{
+  margin-top: 18px;
+}
+
+
+
+.login-box .form-err input{
+ border: 0.8px solid rgba(255, 0, 4, 0.9) !important;
+}  */
+/* form .is-valid{
+  border:1px solid #009ca4;
+  background-image: none !important;
+}
+form .is-invalid{
+  border:1px solid #F94144B2;
+  background-image: none !important;
+} */
+
+form .is-valid:focus,form .is-invalid:focus{
+  box-shadow: none !important;
+}
+
+.login-box .show-password{
+  margin-top: 10px;
+}
+
+.login-box .forgot-password{
+  margin-top: 10px;
+}
+
+.login-box .forgot-password a{
+  font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+color: rgba(0, 156, 164, 0.7);
+}
+
+.login-box .show-password label{
+  font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+color: rgba(0, 0, 0, 0.7);
+}
+
+.btn-login{
+  padding: 15px 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  background: #009CA4 !important;
+  margin-top: 72px;
+}
+
+.btn-login-2{
+  padding: 15px 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  background: rgba(0, 156, 164, 0.09);
+border: 1px solid #009CA4;
+  color: #009CA4;
+}
 /**** End :: Login Page ****/
+
+/**** Start :: SignUp Page ****/
+.signup-page .row{
+  height: 100vh;
+}
+
+.signup-partition-2{
+  display: flex ;
+  align-items: center;
+  justify-content: center;
+}
+
+.question{
+  font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+color: rgba(0, 0, 0, 0.5);
+}
+
+.signup-box h1{
+  font-size: 48px ;
+  line-height: 72px;
+  text-align: left;
+  font-weight: 400;
+}
+.signup-box .err-msg{
+font-style: normal;
+font-weight: 400;
+font-size: 9px;
+line-height: 14px;
+color: rgba(255, 0, 4, 0.9);
+}
+
+.signup-box .page-card-head h4{
+font-size: 48px !important;
+line-height: 72px;
+text-align: left;
+display: flex;
+}
+
+.signup-box form{
+margin-top: 50px;
+}
+
+.signup-box form label{
+font-size: 16px;
+font-weight: 600;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: justified;
+color: #000000;
+margin-bottom: 8px;
+}
+.show-password input{
+  margin-right: 5px;
+}
+
+.signup-box form input{
+  background: rgba(255, 255, 255, 0.3);
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+padding: 15px ;
+}
+
+.signup-basic-info{
+  margin-top: 40px;
+}
+
+.signup-basic-info form label{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: justified;
+  color: #000000;
+  }
+  
+  .signup-basic-info form input{
+    background: rgba(255, 255, 255, 0.3);
+    border: 0.8px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  padding: 15px ;
+  }
+
+.signup-box .form-err{
+margin-top: 18px;
+}
+
+.signup-box .form-err input{
+border: 0.8px solid rgba(255, 0, 4, 0.9) !important;
+} 
+
+.signup-box .show-password{
+margin-top: 10px;
+}
+
+.signup-box .forgot-password{
+margin-top: 10px;
+}
+
+.signup-box .forgot-password a{
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+color: rgba(0, 156, 164, 0.7);
+}
+
+.signup-box .show-password label{
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+color: rgba(0, 0, 0, 0.7);
+}
+
+
+.profile-info{
+  margin-top: 36px;
+}
+
+.btn-upload{
+  border: 1px solid rgba(0, 156, 164, 0.37);
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  padding: 4px 24px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #009CA4 !important;
+  font-weight: 600 !important;
+  
+}
+
+/**** End :: SignUp Page ****/
+
 /**** Start :: Account Page ****/
 .account-profile-blk.text-center {
   padding: 20px;
   background: rgba(196, 196, 196, 0.2);
   border-radius: 13px;
   margin-bottom: 10px;
+  position: relative;
 }
 .account-profile-img{
   margin-top: -70px;
@@ -1692,6 +2008,12 @@ body {
 }
 .gray-bg{
   background-color: #EAEAEA;
+}
+.edit-profile-btn{
+  position: absolute;
+  z-index: 2;
+  right: 15px;
+  top: 10px;
 }
 @media (min-width: 768px) and (max-width: 1199px){
   .account-nav-reminders-blk .reminders-wrapper {

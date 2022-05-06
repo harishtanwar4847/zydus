@@ -62,15 +62,16 @@
             </ul>
           </div>
           <!-- start -->
-          <div class="my-upload teal">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
+          {% for my_upload in my_uploads %}
+          <div class="my-upload teal" style="border-color: {{my_upload.color}};">
+            <button onclick="toggleLike('{{my_upload.doctype}}', '{{my_upload.name}}', {% if my_upload.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi {% if my_upload.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if my_upload.is_liked %}style="color: #000;"{% endif %}></i>
+          </button>
+            <h3 class="brand">{{my_upload.brand}}</h3>
+            <div class="title">{{my_upload.title}}</div>
+            <div class="subtitle">{{my_upload.month_year}}</div>
+            <div class="subtitle">{{my_upload.attachments | len}} {% if my_upload.attachments | len > 1%} files {% else %} file {% endif %}</div>
+            <div class="green-status">{{my_upload.workflow_state}}</div>
             <div class="comment-icon">
               <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
             </div>
@@ -81,13 +82,17 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">View</a></li>
               <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
+                <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
+                {% for file in my_upload.attachments %}
+                <a href="{{file.file_url}}" download></a>
+                {% endfor %}
+            </li>
             </ul>
           </div>
+          {% endfor%}
           <!-- End -->
           <!-- start -->
-          <div class="my-upload green-1 white-bg">
+          <!-- <div class="my-upload green-1 white-bg">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -109,10 +114,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload yellow">
+          <!-- <div class="my-upload yellow">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -134,10 +139,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload blue-1">
+          <!-- <div class="my-upload blue-1">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -159,10 +164,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload red">
+          <!-- <div class="my-upload red">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -184,10 +189,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload green-2 white-bg">
+          <!-- <div class="my-upload green-2 white-bg">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -209,10 +214,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload blue-2 white-bg">
+          <!-- <div class="my-upload blue-2 white-bg">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -234,10 +239,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload yellow">
+          <!-- <div class="my-upload yellow">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -259,10 +264,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload yellow">
+          <!-- <div class="my-upload yellow">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -284,10 +289,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload blue-1">
+          <!-- <div class="my-upload blue-1">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -309,10 +314,10 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
           <!-- Start -->
-          <div class="my-upload red">
+          <!-- <div class="my-upload red">
             <button type="button" class="btn btn-link p-0 fav-button">
               <i class="bi bi-heart"></i>
             </button>
@@ -334,7 +339,7 @@
                 <a class="dropdown-item" href="#">Download</a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- End -->
         </div>
         <!--------------------->
@@ -503,11 +508,32 @@
 
 
           <div class="notification-wrapper">
-            
+            {% for my_notification in my_notifications %}
+           
 
              <!-- Start -->
-            
+
+             <a class="notification-item" href="#">
+
+              <div class="notification-item-content d-flex">
+                <div class="me-2">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+
+                </div>
+                <div class="d-inline-block">
+                  <div>
+                    {{my_notification.subject}}
+                  </div>
+                </div>
+              </div>
+              <div class="notification-item-time"><i>{{my_notification.creations}}</i></div>
+            </a>
+            {% endfor %}
+
             <!-- End -->
+             <!-- Start -->
+
+ 
 
           </div>
         </div>

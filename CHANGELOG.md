@@ -1,8 +1,16 @@
 # [v0.2.7-dev] -2022-05-06
+- [reset-password| password-reset-popup| update-password page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/50)
 - [account page-reminder paritially done  and favourities done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/45)
 
 
-# [v0.2.5-dev] -2022-04-27
+# [v0.2.6-dev] -2022-05-04
+- [accounts my uploads and notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/46)
+- [upload page css update](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/47)
+- [Upload page css modification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/48)
+- [reset-password | login page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/49)
+
+
+# [v0.2.5-dev] -2022-05-02
 - [Year start from 2000 | Learning Textarea changed =100 | in saved year,agency and project type fixed | tag showed on project view handled if empty | and UI issues also fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/23)
 - [search not to work when search form empty | reminder today highlight issue](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/24)
 - [search bar icon fix | fav icon handling | search filter show no results if form is not filled | input shadow fix](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/25)
@@ -23,6 +31,7 @@
 - [homescreen-View count should not be shown | in view datasheet description is visible fixed | Toast as Saved project-after uploading project it should show as project successfully uploaded done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/40)
 - [on login, redirect to /home](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/42)
 - [Datasheet View description error get solved](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/43)
+- [home page-my uploads](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/44)
 
 # [v0.2.4-dev] -2022-04-25
 - [UI-changes-fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/22)
