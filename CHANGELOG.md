@@ -1,3 +1,6 @@
+# [v0.2.7-dev] -2022-05-11
+- [register page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/51)
+
 # [v0.2.6-dev] -2022-05-02
 - [accounts my uploads and notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/46)
 - [upload page css update](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/47)
