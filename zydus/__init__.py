@@ -42,6 +42,3 @@ def get_attachments_custom(dt, dn):
 
 from frappe.desk.form import load
 load.get_attachments = get_attachments_custom
-
-def add_default_image_in_user_before_insert(doc, method):
-	doc.user_image = '/assets/zydus/images/user_default_image.png'
