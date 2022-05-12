@@ -7,3 +7,4 @@ zydus.patches.brand #
 zydus.patches.data_type #
 zydus.patches.project_type #
 zydus.patches.create_designation_field_in_user_doctype
+zydus.patches.notification
