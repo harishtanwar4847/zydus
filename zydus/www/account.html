@@ -385,7 +385,7 @@
               <i class="bi bi-three-dots-vertical"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
+              <li><a class="dropdown-item" href="/{{favourite.route}}">View</a></li>
               <li>
                 <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
                 {% for file in favourite.attachments %}
@@ -409,31 +409,31 @@
         <div class="d-flex align-items-center justify-content-between mb-3"   >
           <h2 class="section-title">Set New Reminder</h2>
         </div>
-        <form id="" form action="" class="custom-form project-form " >
+        <form id="set-reminder-form" form action="" class="custom-form project-form " >
           <div class="row gy-3">
             <div class="col-12 col-md-6">
               <label>
                 Label
               </label>
-              <input class="form-control" placeholder="Enter the label of the reminder">
+              <input class="form-control" name="title" placeholder="Enter the label of the reminder">
             </div>
             <div class="col-12 col-md-6">
               <label>
                 Description
               </label>
-              <input class="form-control" placeholder="Enter a brief description">
+              <input  class="form-control" name="description" placeholder="Enter a brief description">
             </div>
             <div class="col-12 col-md-6">
               <label>
                 Date
               </label>
-              <input class="form-control calender-icon" placeholder="DD/MM/YYYY">
+              <input type="date" name="date" class="form-control " placeholder="DD/MM/YYYY">
             </div>
             <div class="col-12 text-end action-btns mb-4">
-              <button class="btn btn-secondary me-2 remind-btn-cancel" type="button" onclick="">
+              <button class="btn btn-secondary me-2 remind-btn-cancel" type="reset" onclick="CancelReminder()">
                 Cancel
               </button>
-              <button class="btn btn-primary remind-btn-add" type="button" onclick="">
+              <button class="btn btn-primary remind-btn-add" type="submit" onclick="AddReminder()">
                 Add
               </button>
             </div>
@@ -451,6 +451,11 @@
           {% endfor %}
         </div> 
           <!-- End -->
+        </div>
+        <div class="add-missing-btn">
+          <button class="btn btn-primary" id ="set-add-button" type ="button">
+            <img src="/assets/zydus/images/plus-icn.png" class="img-fluid">
+          </button>
         </div>
       </div>
       <!-----
@@ -548,19 +553,66 @@
         <!-- Notification Tab End -->
         <!--------------------->
       </div>
-      <div class="add-missing-btn">
-        <button class="btn btn-primary" id ="set-add-button" type ="button">
-          <img src="/assets/zydus/images/plus-icn.png" class="img-fluid">
-        </button>
-      </div>
+      
     </div>
   </div>
 </div>
+
+<script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 <script>
   $(document).ready(function(){
     $("#set-add-button").click(function(){
       $("#set-new-reminder").show();
     });
   });
-</script>
+
+  $('#set-reminder-form').validate({
+        submitHandler: function(form) {
+            
+            
+            var dataArr = $(form).serializeArray()
+            var obj = {}
+            dataArr.forEach(x => {
+                obj[x.name] = x.value
+            })
+
+            $.ajax({
+                url: '/api/resource/ToDo',
+                method: 'POST',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+                    $(form).trigger('reset')
+                    $("#set-new-reminder").hide();
+                  
+                }
+
+                
+                })
+          
+        }
+    })
+
+    function AddReminder(){
+    //  alert("reminder")
+     $('#set-reminder-form').validate().resetForm()
+        
+        // setting submit inputs as required
+        $('#set-reminder-form [name=date]').attr('required', true)
+        $('#set-reminder-form [name=title]').attr('required',true)
+        $('#set-reminder-form [name=description]').attr('required',true)
+
+        $('#set-reminder-form').submit()
+  
+  }       
+  function CancelReminder(){
+    $("#set-new-reminder").hide();
+  }
+
+
+  </script>+
 {% endblock %}
