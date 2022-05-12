@@ -1,10 +1,12 @@
-# [v0.2.8-dev] -2022-05-11
+# [v0.2.9-dev] - 2022-05-12
+- [Accounts page favourities and reminder tab done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/52)
+
+# [v0.2.8-dev] - 2022-05-12
 - [register page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/51)
 
 # [v0.2.7-dev] -2022-05-06
 - [reset-password| password-reset-popup| update-password page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/50)
 - [account page-reminder paritially done  and favourities done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/45)
-- [Accounts page favourities and reminder tab done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/52)
 
 
 # [v0.2.6-dev] -2022-05-04
