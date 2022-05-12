@@ -28,5 +28,18 @@ def get_context(context):
             favourite['attachments'] = get_attachments(favourite.doctype,favourite.name)
             favourite['is_liked'] = frappe.session.user in json.loads(favourite['liked_by'] or '[]')
             
+# @frappe.whitelist()
+# def setReminder():
+#     doc = frappe.new_doc('ToDo')
+#     doc.title='urgenttttt'
+#     doc.description='sssssssssss'
+#     doc.date='11/05/2022'
+#     doc.insert()
+#     frappe.db.commit()
 
-    
+#     doc = frappe.get_doc('ToDo','d90533d7f3')
+#     doc.title =''
+#     doc.desc=''
+#     doc.date=''
+#     frappe.msgprint(doc.title,doc.date,doc.description)
+
