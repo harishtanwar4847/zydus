@@ -80,7 +80,7 @@
               <i class="bi bi-three-dots-vertical"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
+              <li><a class="dropdown-item" href="/{{my_upload.route}}">View</a></li>
               <li>
                 <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
                 {% for file in my_upload.attachments %}
@@ -473,7 +473,7 @@
             <h2 class="section-title">My Notifications</h2>
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
-                <a href="" class="text-primary">
+                <a href="" class="text-primary" name="clear" id="clr">
                   <small>
                     Clear
                   </small>
@@ -614,5 +614,5 @@
   }
 
 
-  </script>+
+  </script>
 {% endblock %}

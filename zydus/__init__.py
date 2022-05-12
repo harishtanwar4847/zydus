@@ -3,7 +3,7 @@ import datetime
 from frappe.utils.data import DATE_FORMAT, nowdate
 import frappe
 
-__version__ = '0.2.7-dev'
+__version__ = '0.2.8-dev'
 
 # Sauce: frappe.utils.data.pretty_date
 def pretty_date_future(iso_datetime):
@@ -42,6 +42,3 @@ def get_attachments_custom(dt, dn):
 
 from frappe.desk.form import load
 load.get_attachments = get_attachments_custom
-
-def add_default_image_in_user_before_insert(doc, method):
-	doc.user_image = '/assets/zydus/images/user_default_image.png'

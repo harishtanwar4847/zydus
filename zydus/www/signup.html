@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <link rel="icon" type="image/png" href="/assets/zydus/images/favicon.png" />
+  <meta name="author" content="" />
+  <link href="/assets/zydus/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/zydus/css/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="/assets/zydus/css/zyduswellness.css" rel="stylesheet" />
+  <title>Home - Zydus Wellness</title>
+</head>
+
+<body>
+  <div class="signup-page container">
+    <form id="register" method="post" action="/api/method/zydus.www.signup.sign_up">
+    <div class="row">
+      <div class="signup-part-1 col-lg-6   py-5  pe-lg-5 align-items-center justify-content-center">
+        <div class="content">
+          <h1>Make a new account </h1>
+
+
+          <div class="signup-basic-info pe-0 pe-lg-5   me-0 me-lg-5">
+            <div class=" mb-4 d-flex align-items-center justify-content-between">
+              <div class="profile-img">
+                <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="44" cy="44" r="44" fill="#C4C4C4" fill-opacity="0.15" />
+                  <path
+                    d="M44.4998 17.0312C37.8552 17.0312 32.4686 22.4178 32.4686 29.0625C32.4686 35.7072 37.8552 41.0938 44.4998 41.0938C51.1445 41.0938 56.5311 35.7072 56.5311 29.0625C56.5311 22.4178 51.1445 17.0312 44.4998 17.0312Z"
+                    fill="#C4C4C4" fill-opacity="0.8" />
+                  <path
+                    d="M31.6665 47.5104C25.0218 47.5104 19.6353 52.897 19.6353 59.5417V63.3541C19.6353 65.7707 21.3866 67.8312 23.7717 68.2206C37.4996 70.4619 51.5001 70.4619 65.228 68.2206C67.613 67.8312 69.3644 65.7707 69.3644 63.3541V59.5417C69.3644 52.897 63.9779 47.5104 57.3332 47.5104H56.2396C55.6476 47.5104 55.0594 47.604 54.4968 47.7877L51.7199 48.6945C47.0284 50.2264 41.9713 50.2264 37.2798 48.6945L34.5029 47.7877C33.9402 47.604 33.352 47.5104 32.7601 47.5104H31.6665Z"
+                    fill="#C4C4C4" fill-opacity="0.8" />
+                </svg>
+              </div>
+              <div class="profile-upload-btn">
+                <input type="file" name="user_image" id="user_image" style="display: none;">
+                <button type="button" class="btn btn-upload" onclick="$('#user_image').click()">Upload Picture</button>
+              </div>
+            </div>
+            <!-- <form class=""> -->
+              <div class="form-group ">
+                        <label>Full Name</label>
+                        <div class="email-field">
+                        <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Enter your Full Name here" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <label>Designation</label>
+                        <div class="password-field">
+                        <input type="text" id="designation" name="designation" class="form-control" placeholder="Enter your designation here" required>
+                        </div>
+              </div>
+            <!-- </form> -->
+          </div>
+        </div>
+      </div>
+
+
+      <div class="signup-partition-2   col-lg-6  py-5   px-lg-5 login-col-2  ">
+        <div class="signup-box w-100  ps-0 ps-lg-5  ms-0 ms-lg-5">
+          <p>Simply register to gain access to the portal.</p>
+          <!-- <form> -->
+            <div class="form-group">
+              <label>Email</label>
+              <div class="email-field">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your mail here" required>
+              </div>
+            </div>
+
+            <div class="form-group mt-4">
+              <label>Password</label>
+              <div class="password-field">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password here" required>
+              </div>
+            </div>
+
+            <div class="form-group mt-4">
+              <label>Confirm Password</label>
+              <div class="password-field">
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+                  placeholder="Enter the same password as above" required>
+              </div>
+            </div>
+
+            <button type="submit" id="btn-register" class="btn btn-primary btn-login w-100">Register</button>
+            <div class="question text-left mt-2">Already have an account?</div>
+            <button type="button" id="btn-login" class="btn btn-primary btn-login-2 w-100 mt-2">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+  <script type="text/javascript">
+    document.getElementById("btn-login").onclick = function () {
+        location.href = "/login";
+    };
+</script>
+
+  <script src="/assets/zydus/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/zydus/js/jquery.min.js"></script>
+  <script src="/assets/zydus/js/zyduswellness.js"></script>
+  <script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+   <script>
+     // Jquery Validator Defaults
+      $.validator.setDefaults({
+        validClass: 'is-valid',
+        errorClass: 'is-invalid'
+      });
+     $('#register').validate({
+            rules: {
+              confirm_password: {
+                equalTo : "#password"
+              }
+            },
+            submitHandler: function(form) {
+                console.log(form, 'register form')
+                var dataArr = $(form).serializeArray()
+                var obj = new FormData()
+                dataArr.forEach(x => {
+                    obj.append(x.name, x.value)
+                })
+                if(document.getElementById('user_image').files.length > 0) {
+                  obj.append('file', document.getElementById('user_image').files[0])
+                }
+                console.log(obj)
+                event.preventDefault()
+                $.ajax({
+                    url: '/api/method/zydus.www.signup.sign_up',
+                    method: 'POST',
+                    data: obj,
+                    contentType: false,
+                    processData: false,
+                    // headers: {
+                    //     'X-Frappe-CSRF-Token': frappe.csrf_token
+                    // },
+                    success: function(res) {
+                        console.log(res)
+                        if(res.message[0] == 0) {
+                          alert(res.message[1])
+                          return
+                        }
+
+                        location.href = '/login'
+                    }
+                })
+            } 
+        });
+
+              
+    </script>
+
+</body>
+
+</html>
