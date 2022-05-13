@@ -61,6 +61,7 @@
         </div>
       </div>
     </div>
+    
 <script>
   // Show Pass
 
@@ -93,6 +94,13 @@
                     success: function(res) {
                         console.log(res)  
                         location.href = '/home'
+                    },
+                    error: function(res) {
+                      console.log(res)
+                      if(res.status==401) {
+                          alert("invalid Username or Password")
+                          return
+                      }
                     }
                 })
             } 
