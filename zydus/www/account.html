@@ -27,8 +27,8 @@
           role="tab" aria-controls="v-pills-reminders" aria-selected="false">Reminders</a>
         <a class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"
           role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
-        <a class="nav-link nav-link-logout" href="">
-          logout
+        <a class="nav-link nav-link-logout"onclick="event.preventDefault(); logout()" href="#">
+          logout 
         </a>
       </div>
     </div>
@@ -90,256 +90,6 @@
             </ul>
           </div>
           {% endfor%}
-          <!-- End -->
-          <!-- start -->
-          <!-- <div class="my-upload green-1 white-bg">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Glucon-D</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="orange-status">pending</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload yellow">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload blue-1">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload red">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload green-2 white-bg">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="red-status">rejected</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload blue-2 white-bg">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="orange-status">pending</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload yellow">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="orange-status">pending</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload yellow">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload blue-1">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- End -->
-          <!-- Start -->
-          <!-- <div class="my-upload red">
-            <button type="button" class="btn btn-link p-0 fav-button">
-              <i class="bi bi-heart"></i>
-            </button>
-            <h3 class="brand">Everyuth</h3>
-            <div class="title">Digital maketing - Facebook</div>
-            <div class="subtitle">January 2022</div>
-            <div class="subtitle">2 files</div>
-            <div class="green-status">approved</div>
-            <div class="comment-icon">
-              <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
-            </div>
-            <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-three-dots-vertical"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li>
-                <a class="dropdown-item" href="#">Download</a>
-              </li>
-            </ul>
-          </div> -->
           <!-- End -->
         </div>
         <!--------------------->
@@ -433,14 +183,15 @@
               <button class="btn btn-secondary me-2 remind-btn-cancel" type="reset" onclick="CancelReminder()">
                 Cancel
               </button>
-              <button class="btn btn-primary remind-btn-add" type="submit" onclick="AddReminder()">
+              <button class="btn btn-primary remind-btn-add" type="submit" onclick="AddReminder()" value="Update">
                 Add
               </button>
             </div>
           </div>
         </form>
       </div>
-      <div class="all-reminders-class" id = "all-reminder" >
+      <div id="all-reminder-parent">
+      <div class="all-reminders-class" id="all-reminder" >
         <div class="d-flex align-items-center justify-content-between mb-3"    >
           <h2 class="section-title">All Reminders</h2>
         </div>
@@ -452,6 +203,7 @@
         </div> 
           <!-- End -->
         </div>
+      </div>
         <div class="add-missing-btn">
           <button class="btn btn-primary" id ="set-add-button" type ="button">
             <img src="/assets/zydus/images/plus-icn.png" class="img-fluid">
@@ -588,6 +340,8 @@
                     console.log(res)
                     $(form).trigger('reset')
                     $("#set-new-reminder").hide();
+                    $('#all-reminder-parent').load('/account #all-reminder')
+                    
                   
                 }
 
@@ -610,6 +364,8 @@
   function CancelReminder(){
     $("#set-new-reminder").hide();
   }
+
+
 
 
   </script>
