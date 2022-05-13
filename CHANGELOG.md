@@ -1,3 +1,6 @@
+# [v0.3.0-dev] - 2022-05-13
+- [account page reminders | my upload | favourites| logout | login error popup | registration success popup](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/53)
+
 # [v0.2.9-dev] - 2022-05-12
 - [Accounts page favourities and reminder tab done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/52)
 
