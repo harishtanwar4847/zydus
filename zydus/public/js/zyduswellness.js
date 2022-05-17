@@ -25,7 +25,7 @@ function toggleLike(dt, dn, add) {
       'X-Frappe-CSRF-Token': frappe.csrf_token
     },
     success: function() {
-      $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
+      $('#like-button-parent').load(location.pathname + location.search + '#like-button')
     }
   })
 }

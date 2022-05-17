@@ -224,7 +224,7 @@
         <!-- Notification Tab Start -->
         <!--------------------->
         <div class="tab-pane fade account-nav-notification-blk" id="v-pills-notifications" role="tabpanel"
-          aria-labelledby="v-pills-reminders-tab">
+          aria-labelledby="v-pills-notifications-tab">
           <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
             <h2 class="section-title">My Notifications</h2>
             <ul class="list-inline text-primary mb-0">
@@ -460,7 +460,49 @@
   }
 
 
-
-
-  </script>
+</script>
+<script>
+    setTimeout(function() {
+        // Sauce: https://stackoverflow.com/a/50147341/9403680
+        const params = Object.fromEntries(new URLSearchParams(location.search));
+        if(Object.keys(params).includes('favourites')) {
+            document.querySelector('#v-pills-favourites-tab').click()
+        }
+    })
+</script>
+<script>
+  setTimeout(function() {
+      // Sauce: https://stackoverflow.com/a/50147341/9403680
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      if(Object.keys(params).includes('reminders')) {
+          document.querySelector('#v-pills-reminders-tab').click()
+      }
+  })
+</script>
+<script>
+  setTimeout(function() {
+      // Sauce: https://stackoverflow.com/a/50147341/9403680
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      if(Object.keys(params).includes('notifications')) {
+          document.querySelector('#v-pills-notifications-tab').click()
+      }
+  })
+</script>
+<script>
+    $('#mark_all_as_read').validate({
+            submitHandler: function(form) {
+                console.log(form, 'v-pills-notifications')
+                event.preventDefault()
+                $.ajax({
+                    url: '/frappe.desk.doctype.notification_log.notification_log.mark_all_as_read',
+                    method: 'POST',
+                    data: {},
+                    headers: {
+                        'X-Frappe-CSRF-Token': frappe.csrf_token
+                    },
+                    success: function(res) {
+                        console.log(res)  
+                        location.href = '/home'
+                    }
+</script>
 {% endblock %}
