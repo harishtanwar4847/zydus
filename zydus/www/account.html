@@ -4,6 +4,8 @@
 <div class="row">
   <div class="col-xl-3 line-on-left reminders-column pt-5">
     <div class="account-profile-blk text-center">
+      <a class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
+        <img src="/assets/zydus/images/edit-profile.svg" alt=""></a>
       <div class="account-profile-img">
         <img src="/assets/zydus/images/user-img.png" alt="">
       </div>
@@ -19,6 +21,8 @@
     </div>
     <div class="account-tab-blk">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link" style="display: none;" id="v-pills-edit-profile-tab" data-bs-toggle="pill" href="#v-pills-edit-profile"
+          role="tab" aria-controls="v-pills-uploads" aria-selected="true">Edit Profile</a>
         <a class="nav-link active" id="v-pills-uploads-tab" data-bs-toggle="pill" href="#v-pills-uploads"
           role="tab" aria-controls="v-pills-uploads" aria-selected="true">My Uploads</a>
         <a class="nav-link" id="v-pills-favourites-tab" data-bs-toggle="pill" href="#v-pills-favourites"
@@ -220,7 +224,7 @@
         <!-- Notification Tab Start -->
         <!--------------------->
         <div class="tab-pane fade account-nav-notification-blk" id="v-pills-notifications" role="tabpanel"
-          aria-labelledby="v-pills-reminders-tab">
+          aria-labelledby="v-pills-notifications-tab">
           <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
             <h2 class="section-title">My Notifications</h2>
             <ul class="list-inline text-primary mb-0">
@@ -304,10 +308,95 @@
         <!--------------------->
         <!-- Notification Tab End -->
         <!--------------------->
-      </div>
+
+         <!---------------->
+      <!--- edit profile start --->
+      <!---------------->
+    <!-- <div class="col-xl-9  tab-pane fade account-edit-profile-blk"  id="v-pills-edit-profile" role="tabpanel" -->
+    <!-- aria-labelledby="v-pills-edit-profile"> -->
+      <!-- <div class="edit-profile-wrapper" id="edit-profile" > -->
+        <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
+          <h2 class="section-title">Profile</h2>
+          <div class="row">
+            <div class=" col-lg-6 mx-auto signup-box">
+              <div class=" mb-4 d-flex align-items-center justify-content-center flex-column py-3">
+                <div class="profile-img">
+
+                  <img src="/assets/zydus/images/user-img.png" alt="">
+
+                </div>
+                <div class="profile-upload-btn pt-2">
+                  <button class="btn btn-upload">Change Picture</button>
+                </div>
+              </div>
+              <form class="">
+                <div class="form-group ">
+                  <label>Full Name</label>
+                  <div class="email-field">
+                    <input type="text" class="form-control" placeholder="" value="Jennifer A. Green">
+                  </div>
+                </div>
+
+                <div class="form-group  mt-4">
+                  <label>Designation</label>
+                  <div class="email-field">
+                    <input type="text" class="form-control" placeholder="" value="Marketing Head">
+                  </div>
+                </div>
+
+                <div class="form-group  mt-4">
+                  <label>Email</label>
+                  <div class="email-field">
+                    <input type="text" id="login_email" class="form-control" placeholder="Enter your mail here"
+                      required="" autofocus="">
+                  </div>
+                </div>
+
+                <div class="form-group mt-4">
+                  <label>New password</label>
+                  <div class="password-field">
+                    <input type="password" id="password" class="form-control"
+                      placeholder="Enter your password here">
+                  </div>
+                </div>
+
+                <div class="form-group mt-4">
+                  <label>Confirm Password</label>
+                  <div class="password-field">
+                    <input type="password" id="password" class="form-control"
+                      placeholder="Enter the same password as above">
+                  </div>
+                </div>
+                
+                  <div class="row mt-5 mb-4">
+                    <div class="col-lg-6">
+                    <button class="btn btn-secondary px-3 py-2   my-2 w-100" data-bs-toggle="modal"
+                      data-bs-target="#saveModal" type="button">
+                      Cancel
+                    </button>
+                  </div>
+                  <div class="col-lg-6">
+                    <button class="btn btn-primary px-3 py-2  my-2 w-100" data-bs-toggle="modal" data-bs-target="#successModal"
+                      type="button">
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+                 
+              </form>
+            </div>
+          </div>
+        <div>
+      <!-- </div> -->
+    <!-- </div> -->
+
       
     </div>
   </div>
+      </div>
+
+
+     
 </div>
 
 <script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -316,6 +405,11 @@
   $(document).ready(function(){
     $("#set-add-button").click(function(){
       $("#set-new-reminder").show();
+    });
+  });
+  $(document).ready(function(){
+    $("#edit-profile-button").click(function(){
+      $("#edit-profile").show();
     });
   });
 
@@ -366,7 +460,49 @@
   }
 
 
-
-
-  </script>
+</script>
+<script>
+    setTimeout(function() {
+        // Sauce: https://stackoverflow.com/a/50147341/9403680
+        const params = Object.fromEntries(new URLSearchParams(location.search));
+        if(Object.keys(params).includes('favourites')) {
+            document.querySelector('#v-pills-favourites-tab').click()
+        }
+    })
+</script>
+<script>
+  setTimeout(function() {
+      // Sauce: https://stackoverflow.com/a/50147341/9403680
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      if(Object.keys(params).includes('reminders')) {
+          document.querySelector('#v-pills-reminders-tab').click()
+      }
+  })
+</script>
+<script>
+  setTimeout(function() {
+      // Sauce: https://stackoverflow.com/a/50147341/9403680
+      const params = Object.fromEntries(new URLSearchParams(location.search));
+      if(Object.keys(params).includes('notifications')) {
+          document.querySelector('#v-pills-notifications-tab').click()
+      }
+  })
+</script>
+<script>
+    $('#mark_all_as_read').validate({
+            submitHandler: function(form) {
+                console.log(form, 'v-pills-notifications')
+                event.preventDefault()
+                $.ajax({
+                    url: '/frappe.desk.doctype.notification_log.notification_log.mark_all_as_read',
+                    method: 'POST',
+                    data: {},
+                    headers: {
+                        'X-Frappe-CSRF-Token': frappe.csrf_token
+                    },
+                    success: function(res) {
+                        console.log(res)  
+                        location.href = '/home'
+                    }
+</script>
 {% endblock %}

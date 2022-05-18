@@ -1,3 +1,6 @@
+# [v0.3.1-dev] - 2022-05-17
+- [navbar dropdown | edit profile ui | account page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/54)
+
 # [v0.3.0-dev] - 2022-05-13
 - [account page reminders | my upload | favourites| logout | login error popup | registration success popup](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/53)
 

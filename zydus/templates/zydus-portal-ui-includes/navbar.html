@@ -81,15 +81,15 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu profile-dropdown-menu" aria-labelledby="profileDropdownMenuButton">
-                    <li><a class="dropdown-item" href="#">My Uploads</a></li>
+                    <li><a class="dropdown-item" onclick="location.href = '/account'"  href="#">My Uploads</a></li>
                     <li>
-                        <a class="dropdown-item" href="#">Favourites</a>
+                        <a class="dropdown-item" onclick="location.href = '/account?favourites'"  href="#">Favourites</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">Reminders</a>
+                        <a class="dropdown-item" onclick="location.href = '/account?reminders'"  href="#">Reminders</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">Notifications</a>
+                        <a class="dropdown-item" onclick="location.href = '/account?notifications'"  href="#">Notifications</a>
                     </li>
                     <li>
                         <a class="dropdown-item logout" onclick="event.preventDefault(); logout()" href="#">Logout</a>
