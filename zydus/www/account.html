@@ -1,7 +1,8 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Home{% endblock %}
 {% block content%}
-<div class="row">
+<div id="like-button-parent">
+<div class="row" id="like-button">
   <div class="col-xl-3 line-on-left reminders-column pt-5">
     <div class="account-profile-blk text-center">
       <a class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
@@ -227,30 +228,31 @@
           aria-labelledby="v-pills-notifications-tab">
           <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
             <h2 class="section-title">My Notifications</h2>
+            <form  id="notificatons-form">
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
-                <a href="" class="text-primary" name="clear" id="clr">
+                <a href="" class="text-primary" name="clear" onclick="$('input:checked[name=notifications]').prop('checked', false); event.preventDefault()" id="">
                   <small>
                     Clear
                   </small>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="" class="text-primary">
+                <a href="" id="mark_as_read-btn" onclick="event.preventDefault().notification_read_unread()" class="text-primary">
                   <small>
                     Mark as read
                   </small>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="" class="text-primary">
+                <a href="" id="mark_as_unread-btn"  onclick="event.preventDefault().notification_read_unread()" class="text-primary">
                   <small>
                     Mark as unread
                   </small>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="" class="text-primary">
+                <a href="#"  id="mark_all_as_read-btn" onclick="event.preventDefault().mark_all_as_read()" class="text-primary">
                   <small>
                     Mark all as read
                   </small>
@@ -272,6 +274,7 @@
                 </a>
               </li>
             </ul>
+            </form>
           </div>
 
 
@@ -281,11 +284,11 @@
 
              <!-- Start -->
 
-             <a class="notification-item" href="#">
+             <a class="notification-item {% if not my_notification.read %}unread{% endif %}" href="#">
 
               <div class="notification-item-content d-flex">
                 <div class="me-2">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <input class="form-check-input" name="notifications" type="checkbox" value="{{my_notification.name}}" id="flexCheckDefault">
 
                 </div>
                 <div class="d-inline-block">
@@ -393,10 +396,11 @@
       
     </div>
   </div>
-      </div>
+  </div>
 
 
      
+</div>
 </div>
 
 <script src="/assets/zydus/js/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -434,7 +438,8 @@
                     console.log(res)
                     $(form).trigger('reset')
                     $("#set-new-reminder").hide();
-                    $('#all-reminder-parent').load('/account #all-reminder')
+                    $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
+                    
                     
                   
                 }
@@ -488,21 +493,80 @@
       }
   })
 </script>
+
+
+
+
 <script>
-    $('#mark_all_as_read').validate({
-            submitHandler: function(form) {
-                console.log(form, 'v-pills-notifications')
-                event.preventDefault()
-                $.ajax({
-                    url: '/frappe.desk.doctype.notification_log.notification_log.mark_all_as_read',
-                    method: 'POST',
-                    data: {},
-                    headers: {
+$(document).ready(function(){
+  $("#mark_as_read-btn").click(function(){
+    event.preventDefault()
+    var notif_ids = []
+    document.querySelectorAll('input:checked[name=notifications]').forEach(x => notif_ids.push(x.value))
+    var docnames = notif_ids.join(',')
+    
+    
+    $.ajax({
+      url: '/api/method/zydus.www.account.notification_read_unread',
+      method: 'POST',
+      data:{docnames:docnames,mark_as_read: 1},
+      headers: {
+               'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function(res) {
+                    console.log(res)  
+                    location.href = '#'
+      }
+
+    })
+  })
+})
+</script>
+
+<script>
+  $(document).ready(function(){
+    $("#mark_as_unread-btn").click(function(){
+      event.preventDefault()
+      var notif_ids = []
+      document.querySelectorAll('input:checked[name=notifications]').forEach(x => notif_ids.push(x.value))
+      var docnames = notif_ids.join(',')
+      
+      
+      $.ajax({
+        url: '/api/method/zydus.www.account.notification_read_unread',
+        method: 'POST',
+        data:{docnames:docnames,mark_as_read: 0},
+        headers: {
+                 'X-Frappe-CSRF-Token': frappe.csrf_token
+        },
+        success: function(res) {
+                      console.log(res)  
+                      location.href = '#'
+        }
+  
+      })
+    })
+  })
+</script>
+
+<script>
+    $(document).ready(function(){
+      $("#mark_all_as_read-btn").click(function(){
+        event.preventDefault()
+        $.ajax({
+              url: '/api/method/frappe.desk.doctype.notification_log.notification_log.mark_all_as_read',
+              method: 'POST',
+              headers: {
                         'X-Frappe-CSRF-Token': frappe.csrf_token
-                    },
-                    success: function(res) {
-                        console.log(res)  
-                        location.href = '/home'
-                    }
+              },
+              success: function(res) {
+                    console.log(res)  
+                    location.href = '/account?notifications'
+              }
+        })
+      })
+    })
+    
+                
 </script>
 {% endblock %}

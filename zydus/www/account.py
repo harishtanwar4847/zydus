@@ -23,7 +23,7 @@ def get_context(context):
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
 
     
-        context['favourites'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where owner= %s and P.docstatus = 1 and P._liked_by like  %s    union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where owner = %s and D.docstatus = 1 and D._liked_by like  %s  ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, (frappe.session.user,"%{}%".format(frappe.session.user),frappe.session.user,"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
+        context['favourites'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where  P.docstatus = 1 and P._liked_by like  %s    union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where  D.docstatus = 1 and D._liked_by like  %s  ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, ("%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
         for favourite in context['favourites']:
             favourite['attachments'] = get_attachments(favourite.doctype,favourite.name)
             favourite['is_liked'] = frappe.session.user in json.loads(favourite['liked_by'] or '[]')
@@ -34,7 +34,7 @@ def get_context(context):
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
             
 
-        context["my_notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"])
+        context["my_notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation", "read", "name"],limit_page_length=12)
 
         for my_notification in context['my_notifications']:
             my_notification['creations'] = pretty_date(my_notification['creation'])
@@ -43,6 +43,10 @@ def get_context(context):
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
-            
 
-
+@frappe.whitelist()
+def notification_read_unread(docnames, mark_as_read):
+    notifs = (docnames or '').split(',')
+    print(bool)
+    read_value = 1 if int(mark_as_read) else 0
+    frappe.db.commit('update `tabNotification Log` set `read` = %s where name in %s',(read_value, tuple(notifs)),debug=1)
