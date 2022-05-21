@@ -41,7 +41,7 @@ function SnoozeReminder(date, days,ReminderName) {
         'X-Frappe-CSRF-Token': frappe.csrf_token
     },
     success: function() {
-      $('#all-reminder-parent').load('/account #all-reminder')
+      $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
     }   
 })
 }
@@ -55,7 +55,7 @@ function Done(ReminderName) {
         'X-Frappe-CSRF-Token': frappe.csrf_token
     },
     success: function() {
-      $('#all-reminder-parent').load('/account #all-reminder')
+      $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
     }   
 })
 }
