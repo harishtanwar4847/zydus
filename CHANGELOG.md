@@ -1,6 +1,8 @@
 # [v0.3.2-dev] - 2022-05-20
 - [favourites | reminder, my upload auto-refresh | notification clear, mark as read, mark as read all, mark as unread](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/55)
 
+# [v0.3.1-dev] - 2022-05-17
+- [navbar dropdown | edit profile ui | account page](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/54)
 
 # [v0.3.0-dev] - 2022-05-13
 - [account page reminders | my upload | favourites| logout | login error popup | registration success popup](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/53)
