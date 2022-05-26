@@ -8,16 +8,16 @@
       <a class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
         <img src="/assets/zydus/images/edit-profile.svg" alt=""></a>
       <div class="account-profile-img">
-        <img src="/assets/zydus/images/user-img.png" alt="">
+        <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" alt="">
       </div>
       <div class="account-user-details">
         <h2>
-          Jennifer A. Green
+          {{ frappe.get_fullname() }}
         </h2>
         <h6>
-          Marketing Head
+          {{ frappe.db.get_value('User', frappe.session.user, 'designation') }}
         </h6>
-        <a href="mailto:emailid123@zyduswellness.in">emailid123@zyduswellness.in</a>
+        <a href="mailto:{{frappe.session.user}}">{{frappe.session.user}}</a>
       </div>
     </div>
     <div class="account-tab-blk">
