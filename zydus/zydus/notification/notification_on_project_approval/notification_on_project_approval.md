@@ -1,0 +1,1 @@
+You successfully uploaded a project {{ doc.title }}  for {{ doc.brand }}

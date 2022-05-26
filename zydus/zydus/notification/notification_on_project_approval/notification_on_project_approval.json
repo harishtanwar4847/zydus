@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.workflow_state == \"Pending\"",
+ "creation": "2022-05-24 12:46:38.101852",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Project",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "You successfully uploaded a project {{ doc.title }}  for {{ doc.brand }}",
+ "modified": "2022-05-26 17:42:18.802707",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Notification on project approval",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "You successfully uploaded a project {{ doc.title }}  for {{ doc.brand }}",
+ "value_changed": "workflow_state"
+}
