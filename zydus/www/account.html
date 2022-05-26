@@ -51,18 +51,18 @@
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
                 <small>
-                  1-50 of 500
+                  {{my_uploads_page_from}}-{{my_uploads_page_to}} of {{my_uploads_count}}
                 </small>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button {% if my_uploads_page > 1 %} onclick="load_accounts_page('my_uploads', {{my_uploads_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_uploads_page == 1  else '' }}">
                   <i class="bi bi-chevron-left"></i>
-                </a>
+                </button>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button {% if my_uploads_page_to < my_uploads_count  %} onclick="load_accounts_page('my_uploads', {{my_uploads_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if my_uploads_page_to < my_uploads_count  else 'disabled' }}">
                   <i class="bi bi-chevron-right"></i>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -110,7 +110,7 @@
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
                 <small>
-                  1-50 of 500
+                  1-50 of {{favourites_count}}
                 </small>
               </li>
               <li class="list-inline-item">
@@ -260,7 +260,7 @@
               </li>
               <li class="list-inline-item">
                 <small>
-                  1-50 of 500
+                  1-50 of {{my_notifications_count}}
                 </small>
               </li>
               <li class="list-inline-item">
@@ -462,6 +462,10 @@
   }       
   function CancelReminder(){
     $("#set-new-reminder").hide();
+  }
+
+  function load_accounts_page(tab, page) {
+    $('#like-button-parent').load('/account?'+ tab +'='+ page +' #like-button')
   }
 
 
