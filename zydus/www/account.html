@@ -5,7 +5,7 @@
 <div class="row" id="like-button">
   <div class="col-xl-3 line-on-left reminders-column pt-5">
     <div class="account-profile-blk text-center">
-      <a class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
+      <a style="cursor: pointer" class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
         <img src="/assets/zydus/images/edit-profile.svg" alt=""></a>
       <div class="account-profile-img">
         <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" alt="">
