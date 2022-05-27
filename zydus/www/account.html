@@ -8,16 +8,17 @@
       <a class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
         <img src="/assets/zydus/images/edit-profile.svg" alt=""></a>
       <div class="account-profile-img">
-        <img src="/assets/zydus/images/user-img.png" alt="">
+        <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" class="img-fluid">
       </div>
       <div class="account-user-details">
         <h2>
-          Jennifer A. Green
+          {{frappe.get_fullname()}}
         </h2>
         <h6>
-          Marketing Head
+          {{frappe.db.get_value('User', frappe.session.user, 'designation')}}
         </h6>
-        <a href="mailto:emailid123@zyduswellness.in">emailid123@zyduswellness.in</a>
+        <a href="mailto:emailid123@zyduswellness.in">{{frappe.db.get_value('User', frappe.session.user, 'email')}}
+        </a>
       </div>
     </div>
     <div class="account-tab-blk">
@@ -30,7 +31,7 @@
           role="tab" aria-controls="v-pills-favourites" aria-selected="false">Favourites</a>
         <a class="nav-link" id="v-pills-reminders-tab" data-bs-toggle="pill" href="#v-pills-reminders"
           role="tab" aria-controls="v-pills-reminders" aria-selected="false">Reminders</a>
-        <a class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"
+        <a class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"               
           role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
         <a class="nav-link nav-link-logout"onclick="event.preventDefault(); logout()" href="#">
           logout 
@@ -128,7 +129,7 @@
           <!-- start -->
           {% for favourite in favourites %}
           <div class="my-upload teal" style="border-color: {{favourite.color}};">
-            <button onclick="toggleLike('{{favourite.doctype}}', '{{favourite.name}}', {% if favourite.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+            <button onclick="toggleLike('{{favourite.doctype}}', '{{favourite.name}}', {% if favourite.is_liked %}'No'{% else %}'Yes'{% endif %}) " location.href = '/account?favourites' type="button"  class="btn btn-link p-0 fav-button">
               <i class="bi {% if favourite.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if favourite.is_liked %}style="color: #000;"{% endif %}></i>
           </button>
             <h3 class="brand">{{favourite.brand}}</h3>
@@ -319,13 +320,14 @@
     <!-- aria-labelledby="v-pills-edit-profile"> -->
       <!-- <div class="edit-profile-wrapper" id="edit-profile" > -->
         <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
+          <form id= "edit_profile" method="post" action='/api/method/zydus.www.account.update'>
           <h2 class="section-title">Profile</h2>
           <div class="row">
             <div class=" col-lg-6 mx-auto signup-box">
               <div class=" mb-4 d-flex align-items-center justify-content-center flex-column py-3">
-                <div class="profile-img">
+                <div class="profile-pic online">
 
-                  <img src="/assets/zydus/images/user-img.png" alt="">
+                  <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" class="img-fluid">
 
                 </div>
                 <div class="profile-upload-btn pt-2">
@@ -336,22 +338,22 @@
                 <div class="form-group ">
                   <label>Full Name</label>
                   <div class="email-field">
-                    <input type="text" class="form-control" placeholder="" value="Jennifer A. Green">
+                    <input type="text" class="form-control" placeholder="" value= {{frappe.get_fullname()}}>
                   </div>
                 </div>
 
                 <div class="form-group  mt-4">
                   <label>Designation</label>
                   <div class="email-field">
-                    <input type="text" class="form-control" placeholder="" value="Marketing Head">
+                    <input type="text" class="form-control" placeholder="" value={{frappe.db.get_value('User', frappe.session.user, 'designation')}}>
                   </div>
                 </div>
 
                 <div class="form-group  mt-4">
                   <label>Email</label>
                   <div class="email-field">
-                    <input type="text" id="login_email" class="form-control" placeholder="Enter your mail here"
-                      required="" autofocus="">
+                    <input type="text" id="login_email" class="form-control" placeholder="Enter your mail here" value= {{frappe.db.get_value('User', frappe.session.user, 'email')}}
+                      required="" autofocus="" disabled>
                   </div>
                 </div>
 
@@ -379,8 +381,8 @@
                     </button>
                   </div>
                   <div class="col-lg-6">
-                    <button class="btn btn-primary px-3 py-2  my-2 w-100" data-bs-toggle="modal" data-bs-target="#successModal"
-                      type="button">
+                    <button class="btn btn-primary px-3 py-2  my-2 w-100" data-bs-toggle="modal" data-bs-target="#successModal" id="save-changes-button" type="submit"
+                    >
                       Save changes
                     </button>
                   </div>
@@ -389,6 +391,7 @@
               </form>
             </div>
           </div>
+          </form>
         <div>
       <!-- </div> -->
     <!-- </div> -->
@@ -436,6 +439,7 @@
                 },
                 success: function(res) {
                     console.log(res)
+                    location.href = '/account?reminders'
                     $(form).trigger('reset')
                     $("#set-new-reminder").hide();
                     $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
@@ -515,7 +519,7 @@ $(document).ready(function(){
       },
       success: function(res) {
                     console.log(res)  
-                    location.href = '#'
+                    location.href = '/account?notifications'
       }
 
     })
@@ -541,7 +545,7 @@ $(document).ready(function(){
         },
         success: function(res) {
                       console.log(res)  
-                      location.href = '#'
+                      location.href = '/account?notifications'
         }
   
       })
@@ -569,4 +573,55 @@ $(document).ready(function(){
     
                 
 </script>
+<!-- edit profile -->
+<script>
+  // Jquery Validator Defaults
+   $.validator.setDefaults({
+     validClass: 'is-valid',
+     errorClass: 'is-invalid'
+   });
+  $('#edit_profile').validate({
+         rules: {
+           confirm_password: {
+             equalTo : "#new_password"
+           }
+         },
+         submitHandler: function(form) {
+             console.log(form, 'edit_profile form')
+             var dataArr = $(form).serializeArray()
+             var obj = new FormData()
+             dataArr.forEach(x => {
+                 obj.append(x.name, x.value)
+             })
+             if(document.getElementById('user_image').files.length > 0) {
+               obj.append('file', document.getElementById('user_image').files[0])
+             }
+             console.log(obj)
+             event.preventDefault()
+             $.ajax({
+                 url: '/api/method/zydus.www.account.update',
+                 method: 'POST',
+                 data: obj,
+                 contentType: false,
+                 processData: false,
+                 // headers: {
+                 //     'X-Frappe-CSRF-Token': frappe.csrf_token
+                 // },
+                 success: function(res) {
+                     console.log(res)
+                     if(res.message[0] == 0) {
+                       alert(res.message[1])
+                       return
+                     }
+                    //  show modal
+                    //  $('#registerModal').modal('show')
+                     location.href = '#'
+                 }
+             })
+         } 
+     });
+
+           
+ </script>
+
 {% endblock %}

@@ -19,6 +19,4 @@ class Datasheet(WebsiteGenerator):
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 
 	def before_submit(self):
-		self.is_approved = True
-		self.route = 'datasheets/{}'.format(self.name)
 		frappe.db.delete("View Log",{"reference_doctype": "Datasheet", "reference_name":self.name})
