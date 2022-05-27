@@ -22,9 +22,15 @@ def get_context(context):
         for reminder in context['reminders']:
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
 
-        context['favorites_page_length'] = 10
+        context['favourites_page_length'] = 10
+        context['favourites_page'] = int(frappe.form_dict.favourites) if frappe.form_dict.favourites else 1
+        context['favourites_page_offset'] = (context['favourites_page'] - 1) * context['favourites_page_length']
+        context['favourites_page_from'] = context['favourites_page_offset'] + 1
         context['favourites'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where  P.docstatus = 1 and P._liked_by like  %s    union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where  D.docstatus = 1 and D._liked_by like  %s  ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, ("%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
         context['favourites_count'] = frappe.db.sql("""  select count(T.name) as count from (select P.name from `tabProject` as P where  P.docstatus = 1 and P._liked_by like  %s    union         select D.name from `tabDatasheet`as D where  D.docstatus = 1 and D._liked_by like  %s  ) as T ; """, ("%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)[0]['count']
+        context['favourites_page_to'] = context['favourites_page'] * context['favourites_page_length']
+        if context['favourites_page_to'] > context['favourites_count']:
+            context['favourites_page_to'] = context['favourites_count']
         for favourite in context['favourites']:
             favourite['attachments'] = get_attachments(favourite.doctype,favourite.name)
             favourite['is_liked'] = frappe.session.user in json.loads(favourite['liked_by'] or '[]')
