@@ -2,6 +2,7 @@
 
 ## Added
 - [pagination for favourites done on account page]()
+- [pagination for notifications done on account page]()
 
 # [v0.3.3-dev] - 2022-05-27
 

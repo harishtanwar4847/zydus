@@ -48,9 +48,15 @@ def get_context(context):
             my_upload['attachments'] = get_attachments(my_upload.doctype,my_upload.name)
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
             
-
-        context["my_notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation", "read", "name"], filters={'for_user': frappe.session.user}, limit_page_length=12)
+        context['my_notifications_page_length'] = 12
+        context['my_notifications_page'] = int(frappe.form_dict.notifications) if frappe.form_dict.notifications else 1
+        context['my_notifications_page_offset'] = (context['my_notifications_page'] - 1) * context['my_notifications_page_length']
+        context['my_notifications_page_from'] = context['my_notifications_page_offset'] + 1
+        context["my_notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation", "read", "name"], filters={'for_user': frappe.session.user}, limit_page_length=context['my_notifications_page_length'], limit_start=context['my_notifications_page_from'])
         context["my_notifications_count"] = frappe.db.get_all("Notification Log",fields=["count(name) as count"], filters={'for_user': frappe.session.user})[0]['count']
+        context['my_notifications_page_to'] = context['my_notifications_page'] * context['my_notifications_page_length']
+        if context['my_notifications_page_to'] > context['my_notifications_count']:
+            context['my_notifications_page_to'] = context['my_notifications_count']
 
         for my_notification in context['my_notifications']:
             my_notification['creations'] = pretty_date(my_notification['creation'])
