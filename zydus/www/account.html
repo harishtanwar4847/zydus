@@ -320,7 +320,7 @@
     <!-- aria-labelledby="v-pills-edit-profile"> -->
       <!-- <div class="edit-profile-wrapper" id="edit-profile" > -->
         <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
-          <form id= "edit_profile" method="post" action='/api/method/zydus.www.account.update'>
+          <form id="edit_profile" >
           <h2 class="section-title">Profile</h2>
           <div class="row">
             <div class=" col-lg-6 mx-auto signup-box">
@@ -334,7 +334,6 @@
                   <button class="btn btn-upload">Change Picture</button>
                 </div>
               </div>
-              <form class="">
                 <div class="form-group ">
                   <label>Full Name</label>
                   <div class="email-field">
@@ -360,7 +359,7 @@
                 <div class="form-group mt-4">
                   <label>New password</label>
                   <div class="password-field">
-                    <input type="password" id="password" class="form-control"
+                    <input type="password" name="password" id="password" class="form-control"
                       placeholder="Enter your password here">
                   </div>
                 </div>
@@ -368,7 +367,7 @@
                 <div class="form-group mt-4">
                   <label>Confirm Password</label>
                   <div class="password-field">
-                    <input type="password" id="password" class="form-control"
+                    <input type="password" name="new_password" id="new_password" class="form-control"
                       placeholder="Enter the same password as above">
                   </div>
                 </div>
@@ -388,7 +387,6 @@
                   </div>
                 </div>
                  
-              </form>
             </div>
           </div>
           </form>
@@ -583,7 +581,7 @@ $(document).ready(function(){
   $('#edit_profile').validate({
          rules: {
            confirm_password: {
-             equalTo : "#new_password"
+             equalTo : "#password"
            }
          },
          submitHandler: function(form) {
@@ -615,7 +613,7 @@ $(document).ready(function(){
                      }
                     //  show modal
                     //  $('#registerModal').modal('show')
-                     location.href = '#'
+                    //  location.href = '#'
                  }
              })
          } 

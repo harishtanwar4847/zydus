@@ -59,20 +59,7 @@ def notification_read_unread(docnames, mark_as_read):
 # edit profile API
 @frappe.whitelist(allow_guest=True)
 def update():
-	if not is_signup_enabled():
-		return 0, _('Sign up is disabled')
-
-	user = frappe.db.get("User", {"email": frappe.form_dict.email})
-	if user:
-		if user.disabled:
-			return 0, _("Registered but disabled")
-		else:
-			return 0, _("Already Registered")
-	else:
-		if frappe.db.sql("""select count(*) from tabUser where
-			HOUR(TIMEDIFF(CURRENT_TIMESTAMP, TIMESTAMP(modified)))=1""")[0][0] > 300:
-
-			return 0, _('Too many users signed up recently, so the registration is disabled. Please try back in an hour')
+	user = frappe.get_doc('User', frappe.session.user)
 
 	files = frappe.request.files
 	is_private = False
@@ -89,8 +76,8 @@ def update():
 	frappe.local.uploaded_file = content
 	frappe.local.uploaded_filename = filename
 
-	first_name = frappe.session.user.file_name
-	last_name = frappe.session.user.last_name
+	first_name = None
+	last_name =  None
 	full_name_exploded = frappe.form_dict.full_name.split(' ')
 	if len(full_name_exploded) > 1:
 		last_name = full_name_exploded[-1]
@@ -98,25 +85,9 @@ def update():
 	else:
 		first_name = frappe.form_dict.full_name
 
-	user = frappe.get_doc('User',frappe.session.user)
 	user.first_name = first_name
 	user.last_name = last_name
 	user.designation = frappe.form_dict.designation
-
-	# user = frappe.get_doc({
-	# 	"doctype":"User",
-	# 	"email": frappe.form_dict.email,
-	# 	"first_name": first_name,
-	# 	"last_name": last_name,
-	# 	"enabled": 1,
-	# 	"new_password": frappe.form_dict.password,
-	# 	"user_type": "System User",
-	# 	"send_welcome_email": False,
-	# 	"designation": frappe.form_dict.designation,
-	# })
-	user.flags.ignore_permissions = True
-	user.flags.ignore_password_policy = True
-	user.insert()
 	
 	user_image = '/assets/zydus/images/user_default_image.png'
 	if 'file' in files:
@@ -136,8 +107,5 @@ def update():
 
 	user.user_image = user_image
 	user.save()
-
-	user.add_roles('KMS Uploader')
-	user.add_roles('KMS Downloader')
 
 	return 1, _('Updated Successfully')
