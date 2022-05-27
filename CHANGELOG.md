@@ -1,3 +1,9 @@
+# [v0.3.4-dev] - 2022-05-27
+
+## Added
+- [pagination for favourites done on account page](!57)
+- [pagination for notifications done on account page](!57)
+
 # [v0.3.3-dev] - 2022-05-27
 
 ## Added

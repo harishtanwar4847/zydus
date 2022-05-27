@@ -110,18 +110,18 @@
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
                 <small>
-                  1-50 of {{favourites_count}}
+                  {{favourites_page_from}}-{{favourites_page_to}} of {{favourites_count}}
                 </small>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button {% if favourites_page > 1 %} onclick="load_accounts_page('favourites', {{favourites_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if favourites_page == 1  else '' }}">
                   <i class="bi bi-chevron-left"></i>
-                </a>
+                </button>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button {% if favourites_page_to < favourites_count  %} onclick="load_accounts_page('favourites', {{favourites_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if favourites_page_to < favourites_count  else 'disabled' }}">
                   <i class="bi bi-chevron-right"></i>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -260,18 +260,18 @@
               </li>
               <li class="list-inline-item">
                 <small>
-                  1-50 of {{my_notifications_count}}
+                  {{my_notifications_page_from}}-{{my_notifications_page_to}} of {{my_notifications_count}}
                 </small>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button type="button" {% if my_notifications_page > 1 %} onclick="load_accounts_page('notifications', {{my_notifications_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_notifications_page == 1  else '' }}">
                   <i class="bi bi-chevron-left"></i>
-                </a>
+                </button>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button type="button" {% if my_notifications_page_to < my_notifications_count  %} onclick="load_accounts_page('notifications', {{my_notifications_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if my_notifications_page_to < my_notifications_count  else 'disabled' }}">
                   <i class="bi bi-chevron-right"></i>
-                </a>
+                </button>
               </li>
             </ul>
             </form>
