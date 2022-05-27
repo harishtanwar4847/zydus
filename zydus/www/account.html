@@ -5,32 +5,32 @@
 <div class="row" id="like-button">
   <div class="col-xl-3 line-on-left reminders-column pt-5">
     <div class="account-profile-blk text-center">
-      <a class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
+      <a style="cursor: pointer" class="edit-profile-btn" id="edit-profile-button" onclick="document.getElementById('v-pills-edit-profile-tab').click()">
         <img src="/assets/zydus/images/edit-profile.svg" alt=""></a>
       <div class="account-profile-img">
-        <img src="/assets/zydus/images/user-img.png" alt="">
+        <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" alt="">
       </div>
       <div class="account-user-details">
         <h2>
-          Jennifer A. Green
+          {{ frappe.get_fullname() }}
         </h2>
         <h6>
-          Marketing Head
+          {{ frappe.db.get_value('User', frappe.session.user, 'designation') }}
         </h6>
-        <a href="mailto:emailid123@zyduswellness.in">emailid123@zyduswellness.in</a>
+        <a href="mailto:{{frappe.session.user}}">{{frappe.session.user}}</a>
       </div>
     </div>
     <div class="account-tab-blk">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link" style="display: none;" id="v-pills-edit-profile-tab" data-bs-toggle="pill" href="#v-pills-edit-profile"
           role="tab" aria-controls="v-pills-uploads" aria-selected="true">Edit Profile</a>
-        <a class="nav-link active" id="v-pills-uploads-tab" data-bs-toggle="pill" href="#v-pills-uploads"
+        <a class="nav-link {{ 'active' if 'my_uploads' in frappe.form_dict  else '' }}" id="v-pills-uploads-tab" data-bs-toggle="pill" href="#v-pills-uploads"
           role="tab" aria-controls="v-pills-uploads" aria-selected="true">My Uploads</a>
-        <a class="nav-link" id="v-pills-favourites-tab" data-bs-toggle="pill" href="#v-pills-favourites"
+        <a class="nav-link {{ 'active' if 'favourites' in frappe.form_dict  else '' }}" id="v-pills-favourites-tab" data-bs-toggle="pill" href="#v-pills-favourites"
           role="tab" aria-controls="v-pills-favourites" aria-selected="false">Favourites</a>
-        <a class="nav-link" id="v-pills-reminders-tab" data-bs-toggle="pill" href="#v-pills-reminders"
+        <a class="nav-link {{ 'active' if 'reminders' in frappe.form_dict  else '' }}" id="v-pills-reminders-tab" data-bs-toggle="pill" href="#v-pills-reminders"
           role="tab" aria-controls="v-pills-reminders" aria-selected="false">Reminders</a>
-        <a class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"
+        <a class="nav-link {{ 'active' if 'notifications' in frappe.form_dict  else '' }}" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"
           role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
         <a class="nav-link nav-link-logout"onclick="event.preventDefault(); logout()" href="#">
           logout 
@@ -44,25 +44,25 @@
         <!--------------------->
         <!-- Upload Tab Start -->
         <!--------------------->
-        <div class="tab-pane fade show active account-nav-upload-blk" id="v-pills-uploads" role="tabpanel"
+        <div class="tab-pane fade account-nav-upload-blk {{ 'show active' if 'my_uploads' in frappe.form_dict  else '' }}" id="v-pills-uploads" role="tabpanel"
           aria-labelledby="v-pills-uploads-tab">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h2 class="section-title">My Uploads</h2>
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
                 <small>
-                  1-50 of 500
+                  {{my_uploads_page_from}}-{{my_uploads_page_to}} of {{my_uploads_count}}
                 </small>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button {% if my_uploads_page > 1 %} onclick="load_accounts_page('my_uploads', {{my_uploads_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_uploads_page == 1  else '' }}">
                   <i class="bi bi-chevron-left"></i>
-                </a>
+                </button>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-link view-all-link ps-0">
+                <button {% if my_uploads_page_to < my_uploads_count  %} onclick="load_accounts_page('my_uploads', {{my_uploads_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if my_uploads_page_to < my_uploads_count  else 'disabled' }}">
                   <i class="bi bi-chevron-right"></i>
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -103,14 +103,14 @@
         <!--------------------->
         <!-- Favourite Tab Start -->
         <!--------------------->
-        <div class="tab-pane fade account-nav-favourites-blk" id="v-pills-favourites" role="tabpanel"
+        <div class="tab-pane fade account-nav-favourites-blk {{ 'show active' if 'favourites' in frappe.form_dict  else '' }}" id="v-pills-favourites" role="tabpanel"
           aria-labelledby="v-pills-favourites-tab">
           <div class="d-flex align-items-center justify-content-between mb-3">
             <h2 class="section-title">Favourites</h2>
             <ul class="list-inline text-primary mb-0">
               <li class="list-inline-item">
                 <small>
-                  1-50 of 500
+                  1-50 of {{favourites_count}}
                 </small>
               </li>
               <li class="list-inline-item">
@@ -158,7 +158,7 @@
         <!--------------------->
         <!-- Reminder Tab Start -->
         <!--------------------->
-        <div  class="tab-pane fade account-nav-reminders-blk" id="v-pills-reminders" role="tabpanel" 
+        <div  class="tab-pane fade account-nav-reminders-blk {{ 'show active' if 'reminders' in frappe.form_dict  else '' }}" id="v-pills-reminders" role="tabpanel" 
         aria-labelledby="v-pills-reminders-tab">
       <div class="set-reminders-wrapper" style="display:none;" id="set-new-reminder" >
         <div class="d-flex align-items-center justify-content-between mb-3"   >
@@ -224,7 +224,7 @@
         <!--------------------->
         <!-- Notification Tab Start -->
         <!--------------------->
-        <div class="tab-pane fade account-nav-notification-blk" id="v-pills-notifications" role="tabpanel"
+        <div class="tab-pane fade account-nav-notification-blk {{ 'show active' if 'notifications' in frappe.form_dict  else '' }}" id="v-pills-notifications" role="tabpanel"
           aria-labelledby="v-pills-notifications-tab">
           <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
             <h2 class="section-title">My Notifications</h2>
@@ -260,7 +260,7 @@
               </li>
               <li class="list-inline-item">
                 <small>
-                  1-50 of 500
+                  1-50 of {{my_notifications_count}}
                 </small>
               </li>
               <li class="list-inline-item">
@@ -318,7 +318,7 @@
     <!-- <div class="col-xl-9  tab-pane fade account-edit-profile-blk"  id="v-pills-edit-profile" role="tabpanel" -->
     <!-- aria-labelledby="v-pills-edit-profile"> -->
       <!-- <div class="edit-profile-wrapper" id="edit-profile" > -->
-        <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
+        <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk {{ 'show active' if 'profile' in frappe.form_dict  else '' }}"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
           <h2 class="section-title">Profile</h2>
           <div class="row">
             <div class=" col-lg-6 mx-auto signup-box">
@@ -464,34 +464,11 @@
     $("#set-new-reminder").hide();
   }
 
+  function load_accounts_page(tab, page) {
+    $('#like-button-parent').load('/account?'+ tab +'='+ page +' #like-button')
+  }
 
-</script>
-<script>
-    setTimeout(function() {
-        // Sauce: https://stackoverflow.com/a/50147341/9403680
-        const params = Object.fromEntries(new URLSearchParams(location.search));
-        if(Object.keys(params).includes('favourites')) {
-            document.querySelector('#v-pills-favourites-tab').click()
-        }
-    })
-</script>
-<script>
-  setTimeout(function() {
-      // Sauce: https://stackoverflow.com/a/50147341/9403680
-      const params = Object.fromEntries(new URLSearchParams(location.search));
-      if(Object.keys(params).includes('reminders')) {
-          document.querySelector('#v-pills-reminders-tab').click()
-      }
-  })
-</script>
-<script>
-  setTimeout(function() {
-      // Sauce: https://stackoverflow.com/a/50147341/9403680
-      const params = Object.fromEntries(new URLSearchParams(location.search));
-      if(Object.keys(params).includes('notifications')) {
-          document.querySelector('#v-pills-notifications-tab').click()
-      }
-  })
+
 </script>
 
 

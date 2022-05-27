@@ -32,7 +32,7 @@ def get_context(context):
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
         
         
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"],limit_page_length=5)
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
