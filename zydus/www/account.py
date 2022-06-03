@@ -100,7 +100,7 @@ def edit_profile():
 	user.last_name = last_name
 	user.designation = frappe.form_dict.designation
 	
-	user_image = '/assets/zydus/images/user_default_image.png'
+	# user_image = '/assets/zydus/images/user_default_image.png'
 	if 'file' in files:
 		file = files['file']
 		content = file.stream.read()
@@ -117,9 +117,11 @@ def edit_profile():
 			"content": content
 		})
 		ret.save(ignore_permissions=True)
-		user_image = ret.file_url
+		user.user_image = ret.file_url
 
-	user.user_image = user_image
+		# user_image = ret.file_url
+
+	
 	user.save()
 	if frappe.form_dict.confirm_password:
 		update_password(frappe.session.user,frappe.form_dict.confirm_password)
