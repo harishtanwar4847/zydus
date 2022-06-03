@@ -17,8 +17,7 @@
         <h6>
           {{frappe.db.get_value('User', frappe.session.user, 'designation')}}
         </h6>
-        <a href="mailto:emailid123@zyduswellness.in">{{frappe.db.get_value('User', frappe.session.user, 'email')}}
-        </a>
+        <a href="mailto:{{frappe.session.user}}">{{frappe.session.user}}</a>
       </div>
     </div>
     <div class="account-tab-blk">
@@ -31,7 +30,7 @@
           role="tab" aria-controls="v-pills-favourites" aria-selected="false">Favourites</a>
         <a class="nav-link {{ 'active' if 'reminders' in frappe.form_dict  else '' }}" id="v-pills-reminders-tab" data-bs-toggle="pill" href="#v-pills-reminders"
           role="tab" aria-controls="v-pills-reminders" aria-selected="false">Reminders</a>
-        <a class="nav-link" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"               
+          <a class="nav-link {{ 'active' if 'notifications' in frappe.form_dict  else '' }}" id="v-pills-notifications-tab" data-bs-toggle="pill" href="#v-pills-notifications"               
           role="tab" aria-controls="v-pills-notifications" aria-selected="false">Notifications</a>
         <a class="nav-link nav-link-logout"onclick="event.preventDefault(); logout()" href="#">
           logout 
@@ -129,7 +128,7 @@
           <!-- start -->
           {% for favourite in favourites %}
           <div class="my-upload teal" style="border-color: {{favourite.color}};">
-            <button onclick="toggleLike('{{favourite.doctype}}', '{{favourite.name}}', {% if favourite.is_liked %}'No'{% else %}'Yes'{% endif %}) " location.href = '/account?favourites' type="button"  class="btn btn-link p-0 fav-button">
+            <button onclick="toggleLike('{{favourite.doctype}}', '{{favourite.name}}', {% if favourite.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
               <i class="bi {% if favourite.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if favourite.is_liked %}style="color: #000;"{% endif %}></i>
           </button>
             <h3 class="brand">{{favourite.brand}}</h3>
@@ -319,7 +318,7 @@
     <!-- <div class="col-xl-9  tab-pane fade account-edit-profile-blk"  id="v-pills-edit-profile" role="tabpanel" -->
     <!-- aria-labelledby="v-pills-edit-profile"> -->
       <!-- <div class="edit-profile-wrapper" id="edit-profile" > -->
-        <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
+        <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk {{ 'show active' if 'profile' in frappe.form_dict  else '' }}"   id="v-pills-edit-profile" role="tabpanel"  aria-labelledby="v-pills-edit-profile" >
           <form id="edit_profile">
           <h2 class="section-title">Profile</h2>
           <div class="row">
@@ -439,7 +438,6 @@
                 },
                 success: function(res) {
                     console.log(res)
-                    location.href = '/account?reminders'
                     $(form).trigger('reset')
                     $("#set-new-reminder").hide();
                     $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
@@ -475,45 +473,6 @@
 
 </script>
 <script>
-    setTimeout(function() {
-        // Sauce: https://stackoverflow.com/a/50147341/9403680
-        const params = Object.fromEntries(new URLSearchParams(location.search));
-        console.log("******")
-
-        console.log(params)
-        if(Object.keys(params).includes('favourites')) {
-            document.querySelector('#v-pills-favourites-tab').click()
-        }
-    })
-</script>
-<script>
-  setTimeout(function() {
-      // Sauce: https://stackoverflow.com/a/50147341/9403680
-      const params = Object.fromEntries(new URLSearchParams(location.search));
-      if(Object.keys(params).includes('reminders')) {
-          document.querySelector('#v-pills-reminders-tab').click()
-      }
-  })
-</script>
-<script>
-  setTimeout(function() {
-      // Sauce: https://stackoverflow.com/a/50147341/9403680
-      const params = Object.fromEntries(new URLSearchParams(location.search));
-      if(Object.keys(params).includes('notifications')) {
-          document.querySelector('#v-pills-notifications-tab').click()
-      }
-  })
-</script>
-<script>
-  setTimeout(function() {
-      // Sauce: https://stackoverflow.com/a/50147341/9403680
-      const params = Object.fromEntries(new URLSearchParams(location.search));
-      if(Object.keys(params).includes('edit-profile')) {
-          document.querySelector('#v-pills-edit-profile-tab').click()
-      }
-  })
-</script>
-<script>
 $(document).ready(function(){
   $("#mark_as_read-btn").click(function(){
     event.preventDefault()
@@ -531,7 +490,6 @@ $(document).ready(function(){
       },
       success: function(res) {
                     console.log(res)  
-                    location.href = '/account?notifications'
       }
 
     })
@@ -557,7 +515,6 @@ $(document).ready(function(){
         },
         success: function(res) {
                       console.log(res)  
-                      location.href = '/account?notifications'
         }
   
       })
