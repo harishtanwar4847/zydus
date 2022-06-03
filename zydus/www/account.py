@@ -9,8 +9,13 @@ from frappe.website.utils import is_signup_enabled
 from frappe.utils import (cint, flt, has_gravatar, escape_html, format_datetime,
 	now_datetime, get_formatted_email, today)
 from frappe import _
+from frappe.utils.password import update_password
 
 def get_context(context):
+	# print(frappe.get_fullname())
+	# frappe.logger().info(frappe.get_fullname())
+	
+	
 	context['roles'] =  frappe.get_roles(frappe.session.user)
 	context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
 	# Sauce: https://stackoverflow.com/a/50633946/9403680
@@ -56,10 +61,15 @@ def notification_read_unread(docnames, mark_as_read):
 	read_value = 1 if int(mark_as_read) else 0
 	frappe.db.sql('update `tabNotification Log` set `read` = %s where name in %s',(read_value, tuple(notifs)))
 
+
+
 # edit profile API
 @frappe.whitelist(allow_guest=True)
-def update():
+def edit_profile():
+	print("**frappe.form_dict.confirm_password**",frappe.form_dict)
 	user = frappe.get_doc('User', frappe.session.user)
+	# frappe.logger().info("req data")
+	# frappe.logger().info(frappe.form_dict)
 
 	files = frappe.request.files
 	is_private = False
@@ -68,10 +78,10 @@ def update():
 	content = None
 	filename = None
 
-	if 'file' in files:
-		file = files['file']
-		content = file.stream.read()
-		filename = file.filename
+	# if 'file' in files:
+	# 	file = files['file']
+	# 	content = file.stream.read()
+	# 	filename = file.filename
 
 	frappe.local.uploaded_file = content
 	frappe.local.uploaded_filename = filename
@@ -79,6 +89,7 @@ def update():
 	first_name = None
 	last_name =  None
 	full_name_exploded = frappe.form_dict.full_name.split(' ')
+	# frappe.logger().info(full_name)
 	if len(full_name_exploded) > 1:
 		last_name = full_name_exploded[-1]
 		first_name = ' '.join(full_name_exploded[:-1])
@@ -91,6 +102,9 @@ def update():
 	
 	user_image = '/assets/zydus/images/user_default_image.png'
 	if 'file' in files:
+		file = files['file']
+		content = file.stream.read()
+		filename = file.filename
 		ret = frappe.get_doc({
 			"doctype": "File",
 			"attached_to_doctype": 'User',
@@ -107,5 +121,13 @@ def update():
 
 	user.user_image = user_image
 	user.save()
+	if frappe.form_dict.confirm_password:
+		update_password(frappe.session.user,frappe.form_dict.confirm_password)
+	#user.new_password = frappe.form_dict.confirm_password
+	frappe.db.commit()
+	
+	frappe.logger().info("**********************")
+	frappe.logger().info(user)
 
 	return 1, _('Updated Successfully')
+
