@@ -327,7 +327,7 @@
               <div class=" mb-4 d-flex align-items-center justify-content-center flex-column py-3">
                 <div class="profile-pic online">
 
-                  <img src="{{ frappe.db.get_value('User', frappe.session.user, 'user_image') }}" class="img-fluid">
+                  <img src="{{frappe.db.get_value('User', frappe.session.user, 'user_image')}}" class="img-fluid">
 
                 </div>
                 <div class="profile-upload-btn pt-2">
@@ -377,7 +377,7 @@
                   <div class="row mt-5 mb-4">
                     <div class="col-lg-6">
                     <button class="btn btn-secondary px-3 py-2   my-2 w-100" data-bs-toggle="modal"
-                      data-bs-target="#saveModal" id="cancel-button" type="reset">
+                      data-bs-target="#saveModal" id="cancel-button" type="reset" onclick="location.href='/account'"> 
                       Cancel
                     </button>
                   </div>
@@ -474,6 +474,9 @@
     setTimeout(function() {
         // Sauce: https://stackoverflow.com/a/50147341/9403680
         const params = Object.fromEntries(new URLSearchParams(location.search));
+        console.log("******")
+
+        console.log(params)
         if(Object.keys(params).includes('favourites')) {
             document.querySelector('#v-pills-favourites-tab').click()
         }
@@ -622,7 +625,7 @@ $(document).ready(function(){
                      }
                     //  show modal
                     alert("successfully profile edited")
-                    location.href = '#'
+                    location.href = '/account?edit_profile'
                  }
              })
          } 
