@@ -1,3 +1,20 @@
+# [v0.3.4-dev] - 2022-05-27
+
+## Added
+- [pagination for favourites done on account page](!57)
+- [pagination for notifications done on account page](!57)
+
+# [v0.3.3-dev] - 2022-05-27
+
+## Added
+- [user information fetched from database](!56)
+- [edit profile button has pointer cursor to identify it can be clicked](!56)
+- [tab set active as per /account?<<tab_name>>](!56)
+- [pagination for my uploads tab done](!56)
+
+## Fixed
+- [entries from notification log only fetched for logged in user](!56)
+
 # [v0.3.2-dev] - 2022-05-20
 - [favourites | reminder, my upload auto-refresh | notification clear, mark as read, mark as read all, mark as unread](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/55)
 

@@ -16,7 +16,7 @@ def get_context(context):
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
         context['types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
         context['types'] += [data_type.name for data_type in frappe.get_all('Data Type')]
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"],limit_page_length=5)
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
