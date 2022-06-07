@@ -1,3 +1,8 @@
+# [v0.3.6-dev] - 2022-06-07
+- [form develop workflow patches-imported](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/60)
+
+
+
 # [v0.3.5-dev] - 2022-06-03
 - [Account page edit profile completed and notification tab mark as read and unread completed and myupload tab view completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/59)
 
