@@ -21,19 +21,19 @@
         <div class="dropdown-menu">
             <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
                 <li>
-                    <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',1,'{{reminder.name}}')" location.href="/account?reminders" >Tomorrow </button>
+                    <button class="dropdown-item" onclick="SnoozeReminderA('{{reminder.date}}',1,'{{reminder.name}}')" location.href="#" >Tomorrow </button>
                 </li>
                 <li>
-                    <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',2,'{{reminder.name}}')" location.href="/account?reminders" >in 2 days</button>
+                    <button class="dropdown-item" onclick="SnoozeReminderA('{{reminder.date}}',2,'{{reminder.name}}')" location.href="#" >in 2 days</button>
                 </li>
                 <li>
-                    <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',3,'{{reminder.name}}')" location.href="/account?reminders" >in 3 days</button>
+                    <button class="dropdown-item" onclick="SnoozeReminderA('{{reminder.date}}',3,'{{reminder.name}}')" location.href="#" >in 3 days</button>
                 </li>
             </ul>
         </div>
       </div>
       {% endif %}
-      <button class="btn" onclick="Done('{{reminder.name}}')" location.href="/account?reminders" >Done</button>
+      <button class="btn" onclick="DoneA('{{reminder.name}}')" location.href="#" >Done</button>
       {% endif %}
     </div>
   </div>  

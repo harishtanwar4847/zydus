@@ -45,7 +45,7 @@
   },
   {
    "fieldname": "description",
-   "fieldtype": "Small Text",
+   "fieldtype": "Text",
    "label": "Description"
   },
   {
@@ -62,7 +62,7 @@
   },
   {
    "fieldname": "target_group",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Target Group"
   },
   {
@@ -73,24 +73,24 @@
   },
   {
    "fieldname": "business_problems",
-   "fieldtype": "Small Text",
+   "fieldtype": "Text",
    "label": "Business Problems"
   },
   {
    "fieldname": "title",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Project Name",
    "reqd": 1
   },
   {
    "fieldname": "result",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Result"
   },
   {
    "fieldname": "actions",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Actions"
   },
   {
@@ -109,7 +109,7 @@
   },
   {
    "fieldname": "research_objectives",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Research objectives"
   },
   {
@@ -128,7 +128,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-31 14:34:59.734575",
+ "modified": "2022-06-06 12:47:54.067502",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
