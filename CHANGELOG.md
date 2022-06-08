@@ -1,6 +1,8 @@
-# [v0.3.6-dev] - 2022-06-07
+# [v0.3.7-dev] - 2022-06-08
 - [form develop workflow patches-imported](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/60)
 
+# [v0.3.6-dev] - 2022-06-07
+-[account page all tabs redirection completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/61)
 
 
 # [v0.3.5-dev] - 2022-06-03
