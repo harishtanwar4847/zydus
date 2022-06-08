@@ -484,6 +484,7 @@
             dataArr.forEach(x => {
                 obj[x.name] = x.value
             })
+            obj['owner'] = '{{frappe.session.user}}'
 
             $.ajax({
                 url: '/api/resource/ToDo',
