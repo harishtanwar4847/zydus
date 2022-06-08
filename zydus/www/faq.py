@@ -4,6 +4,7 @@ from frappe.desk.form.load import get_attachments
 from frappe.utils import pretty_date, now, add_to_date
 
 def get_context(context):
+    context['no_cache'] = 1
     context['roles'] =  frappe.get_roles(frappe.session.user)
     context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
     # Sauce: https://stackoverflow.com/a/50633946/9403680
@@ -13,7 +14,7 @@ def get_context(context):
         context['faqs'] = frappe.get_all('FAQ', fields=['name', 'question', 'answer'])  
 
 
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])

@@ -11,12 +11,13 @@ def get_context(context):
     context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
 
     if context['access_allowed']:
+        context['no_cache'] = 1
         context['brands'] = [brand.name for brand in frappe.get_all('Brand')]
         context['agencies'] = [agency.name for agency in frappe.get_all('Agency')]
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
         context['types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
         context['types'] += [data_type.name for data_type in frappe.get_all('Data Type')]
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
