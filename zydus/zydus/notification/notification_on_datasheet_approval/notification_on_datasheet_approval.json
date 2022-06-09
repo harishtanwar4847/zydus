@@ -11,9 +11,9 @@
  "event": "Value Change",
  "idx": 0,
  "is_standard": 1,
- "message": "You successfully uploaded a datasheet {{ doc.title }}  for {{ doc.brand }}",
- "modified": "2022-05-26 17:42:27.938016",
- "modified_by": "Administrator",
+ "message": "You successfully uploaded a datasheet {{ doc.d_title }}  for {{ doc.brand }}",
+ "modified": "2022-06-09 15:17:57.418687",
+ "modified_by": "manjunath.raikar@atriina.com",
  "module": "Zydus",
  "name": "Notification on datasheet approval",
  "owner": "Administrator",
@@ -24,6 +24,6 @@
  ],
  "send_system_notification": 0,
  "send_to_all_assignees": 0,
- "subject": "You successfully uploaded a datasheet {{ doc.title }}  for {{ doc.brand }}",
+ "subject": "You successfully uploaded a datasheet {{ doc.d_title }}  for {{ doc.brand }}",
  "value_changed": "workflow_state"
 }
