@@ -9,6 +9,7 @@ from frappe.website.website_generator import WebsiteGenerator
 
 class Project(WebsiteGenerator):
 	def get_context(self, context):
+		context['no_cache'] = 1
 		context['roles'] =  frappe.get_roles(frappe.session.user)
 		context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
 		# Sauce: https://stackoverflow.com/a/50633946/9403680

@@ -463,13 +463,14 @@
                      }
                     //  show modal
                     alert("Profile updated successfully!")
-                    //  location.href = '/account?edit_profile'
-                    var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
-                    $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button',function() {
-                      setJqueryValidateOnAllForms()
-                    }
+                    location.href = '/account?profile'
+                  //   var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
+                  //   $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button',function() {
+                  //     setJqueryValidateOnAllForms()
+                  //   }
+                    
                    
-                  )
+                  // )
                  }
              })
          } 
