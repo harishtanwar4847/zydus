@@ -1,3 +1,5 @@
+# [v0.4.0-uat] - 2022-06-09
+- [in saved tab project name shows none-done | in search filter cache not clearing - done | notification project name showing done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/64)
 # [v0.3.9-uat] - 2022-06-09
 -[edit profile reload missing done | view option project name is visible now | search page reloading done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/63)
 
