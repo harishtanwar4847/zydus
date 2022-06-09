@@ -1,1 +1,1 @@
-You successfully uploaded a datasheet {{ doc.title }}  for {{ doc.brand }}
+You successfully uploaded a datasheet {{ doc.d_title }}  for {{ doc.brand }}

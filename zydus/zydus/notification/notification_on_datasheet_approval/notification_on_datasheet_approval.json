@@ -12,7 +12,7 @@
  "idx": 0,
  "is_standard": 1,
  "message": "You successfully uploaded a datasheet {{ doc.d_title }}  for {{ doc.brand }}",
- "modified": "2022-06-09 15:17:57.418687",
+ "modified": "2022-06-09 15:44:19.329196",
  "modified_by": "manjunath.raikar@atriina.com",
  "module": "Zydus",
  "name": "Notification on datasheet approval",
