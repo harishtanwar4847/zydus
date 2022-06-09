@@ -5,6 +5,7 @@ from frappe.utils import pretty_date, now, add_to_date
 import json
 
 def get_context(context):
+    context['no_cache'] = 1
     context['roles'] =  frappe.get_roles(frappe.session.user)
     context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
     # Sauce: https://stackoverflow.com/a/50633946/9403680
@@ -58,8 +59,8 @@ def get_context(context):
         if frappe.form_dict.project_name:
             context['search_tags'].append(frappe.form_dict.project_name)
             for name in frappe.form_dict.project_name.strip().split():
-                P_or_filters.append("""P.title like "%{}%" """.format(name))
-                D_or_filters.append("""D.title like "%{}%" """.format(name))
+                P_or_filters.append("""P.p_title like "%{}%" """.format(name))
+                D_or_filters.append("""D.d_title like "%{}%" """.format(name))
         if frappe.form_dict.tags:
             for tag in frappe.form_dict.tags.strip().split(','):
                 P_or_filters.append("""P._user_tags like "%{}%" """.format(tag))
@@ -78,9 +79,9 @@ def get_context(context):
             clauses['D_or_where_clauses'] = ''
 
 
-        context['search_results'] = frappe.db.sql("""select T.doctype,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand,T.agency,T.type,T._user_tags,T.description,B.brand_logo,count(V.reference_name) as view_count from (select "Project" as doctype, P.docstatus, P.description, P._user_tags, agency, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year, P.project_type as type from `tabProject` as P  left join `tabBrand` as B on P.brand = B.name where {P_and_where_clauses} {P_or_where_clauses}
+        context['search_results'] = frappe.db.sql("""select T.doctype,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand,T.agency,T.type,T._user_tags,T.description,B.brand_logo,count(V.reference_name) as view_count from (select "Project" as doctype, P.docstatus, P.description, P._user_tags, agency, P.route,P._liked_by as liked_by,P.brand,P.name,P.p_title as title,concat(P.month," ",P.year) as month_year, P.project_type as type from `tabProject` as P  left join `tabBrand` as B on P.brand = B.name where {P_and_where_clauses} {P_or_where_clauses}
         union
-        select "Datasheet" as doctype,D.docstatus, D.description, D._user_tags, D.agency, D.route,D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year, D.data_type as type from `tabDatasheet` as D  left join `tabBrand` as B on D.brand = B.name where {D_and_where_clauses} {D_or_where_clauses}) as T left join `tabBrand` as B on T.brand = B.name left join `tabView Log` as V on V.reference_name= T.name and V.reference_doctype= T.doctype  group by T.name """.format(**clauses), as_dict=True, debug=1)
+        select "Datasheet" as doctype,D.docstatus, D.description, D._user_tags, D.agency, D.route,D._liked_by as liked_by,D.brand,D.name,D.d_title as title,concat(D.month," ",D.year) as month_year, D.data_type as type from `tabDatasheet` as D  left join `tabBrand` as B on D.brand = B.name where {D_and_where_clauses} {D_or_where_clauses}) as T left join `tabBrand` as B on T.brand = B.name left join `tabView Log` as V on V.reference_name= T.name and V.reference_doctype= T.doctype  group by T.name """.format(**clauses), as_dict=True, debug=1)
 
         for search_result in context['search_results']:
             search_result['attachments'] = get_attachments(search_result.doctype, search_result.name)
