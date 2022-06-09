@@ -14,7 +14,7 @@ def get_context(context):
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
         context['data_types'] = [data_type.name for data_type in frappe.get_all('Data Type')]
         context['cities'] = [city.name for city in frappe.get_all('City')]
-        context["saved_projects"]=frappe.db.get_list("Project",fields=["name","title","brand"],filters={"owner":frappe.session.user,"workflow_state":"Saved"})
+        context["saved_projects"]=frappe.db.get_list("Project",fields=["name","p_title","brand"],filters={"owner":frappe.session.user,"workflow_state":"Saved"})
     
         context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
 
