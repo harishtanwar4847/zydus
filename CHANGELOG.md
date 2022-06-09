@@ -1,4 +1,6 @@
-# [v0.3.7-uat] - 2022-06-08
+# [v0.3.9-uat] - 2022-06-09
+-[edit profile reload missing done | view option project name is visible now | search page reloading done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/63)
+
 # [v0.3.7-dev] - 2022-06-08
 - [form develop workflow patches-imported](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/60)
 
