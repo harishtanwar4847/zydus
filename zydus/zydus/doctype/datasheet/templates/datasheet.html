@@ -36,8 +36,7 @@
         </div>
         <div class="col-12 col-lg-6 col-xl-8">
           <h2 class="brand">{{doc.brand}}</h2>
-          <div
-            class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
+          <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
             <h3 class="me-3 file-title">
               {{doc.d_title}}
             </h3>
@@ -45,6 +44,10 @@
               Uploaded on {{frappe.format_date(doc.modified)}}
             </div>
           </div>
+          <p>
+            {% if description or "" | len > 0 %}
+              {{doc.description}}
+            {% endif %}</p>
           <div class="details mt-5 mt-lg-1 mt-xl-5">
             <div class="row gx-3 gy-3">
               <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
@@ -75,12 +78,6 @@
                 </div>
               </div>
               <div class="col-12">
-                {% if description or "" | len > 0 %}
-                <label>Description</label>
-                <div>
-                  {{doc.description}}
-                </div>
-                {% endif %}
               </div>
             </div>
           </div>
