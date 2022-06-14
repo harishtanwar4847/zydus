@@ -1,3 +1,6 @@
+# [v0.4.2-dev] - 2022-06-13
+-[new user access notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66}
+
 # [v0.4.1-uat] - 2022-06-10
 - [uat issues fixed-completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/65)
 # [v0.4.0-uat] - 2022-06-09
