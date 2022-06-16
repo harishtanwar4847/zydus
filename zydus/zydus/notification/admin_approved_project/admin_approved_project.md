@@ -1,0 +1,1 @@
+Admin approved project {{ doc.p_title }}  for {{ doc.brand }}
