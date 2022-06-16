@@ -1,0 +1,1 @@
+Admin approved datasheet  {{ doc.d_title }}  for {{ doc.brand }}

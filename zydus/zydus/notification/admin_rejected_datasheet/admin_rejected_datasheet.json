@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.workflow_state == \"Rejected\"",
+ "creation": "2022-06-16 14:57:57.105458",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Datasheet",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Admin rejected datasheet  {{ doc.d_title }}  for {{ doc.brand }}",
+ "modified": "2022-06-16 14:57:57.105458",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Admin rejected datasheet",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Admin rejected datasheet  {{ doc.d_title }}  for {{ doc.brand }}",
+ "value_changed": "workflow_state"
+}
