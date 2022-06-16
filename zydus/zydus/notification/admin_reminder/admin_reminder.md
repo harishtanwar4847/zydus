@@ -1,0 +1,1 @@
+Admin has a reminder for you {{doc.title}} for {{doc.date}}

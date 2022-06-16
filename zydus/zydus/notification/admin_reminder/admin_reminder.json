@@ -1,0 +1,28 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "",
+ "creation": "2022-06-16 15:22:08.328970",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "ToDo",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Admin has a reminder for you {{doc.title}} for {{doc.date}}",
+ "modified": "2022-06-16 15:30:23.042442",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Admin reminder",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Admin has a reminder for you {{doc.title}} for {{doc.date}}"
+}
