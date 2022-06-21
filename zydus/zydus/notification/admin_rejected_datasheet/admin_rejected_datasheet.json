@@ -1,8 +1,8 @@
 {
  "attach_print": 0,
- "channel": "Email",
- "condition": "doc.workflow_state == \"Rejected\"\r\n",
- "creation": "2022-06-21 18:48:23.948387",
+ "channel": "System Notification",
+ "condition": "doc.workflow_state == \"Rejected\"",
+ "creation": "2022-06-21 19:22:03.276754",
  "days_in_advance": 0,
  "docstatus": 0,
  "doctype": "Notification",
@@ -12,10 +12,10 @@
  "idx": 0,
  "is_standard": 1,
  "message": "Add your message here",
- "modified": "2022-06-21 18:48:23.948387",
+ "modified": "2022-06-21 19:22:03.276754",
  "modified_by": "Administrator",
  "module": "Zydus",
- "name": "admin rejected datasheet",
+ "name": "Admin rejected datasheet",
  "owner": "Administrator",
  "recipients": [
   {
