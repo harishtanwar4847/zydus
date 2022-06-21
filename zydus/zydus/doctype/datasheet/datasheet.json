@@ -1,13 +1,13 @@
 {
  "actions": [],
- "autoname": "format:Datasheet{#####} ",
+ "autoname": "format:D-{YYYY}-{MM}-{####}",
  "creation": "2022-03-11 14:12:48.018887",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "brand",
-  "title",
+  "d_title",
   "month",
   "year",
   "description",
@@ -24,13 +24,6 @@
    "in_list_view": 1,
    "label": "Brand",
    "options": "Brand",
-   "reqd": 1
-  },
-  {
-   "fieldname": "title",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Datasheet Name",
    "reqd": 1
   },
   {
@@ -86,13 +79,20 @@
    "fieldname": "is_approved",
    "fieldtype": "Check",
    "label": "Is Approved"
+  },
+  {
+   "fieldname": "d_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Datasheet Name",
+   "reqd": 1
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-31 14:35:42.749996",
+ "modified": "2022-06-08 22:27:38.249366",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Datasheet",

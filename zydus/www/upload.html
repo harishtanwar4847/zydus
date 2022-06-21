@@ -29,7 +29,7 @@
                     <ul class="nav nav-pills saved-nav">
                         {% for saved in saved_projects %}
                         <li class="nav-item">
-                            <a class="nav-link " onclick="loadSavedProject('{{saved.name}}', this);event.preventDefault()" data-project-id="{{saved.name}}" aria-current="page" href="#">{{saved.title}}({{saved.brand}})</a>
+                            <a class="nav-link " onclick="loadSavedProject('{{saved.name}}', this);event.preventDefault()" data-project-id="{{saved.name}}" aria-current="page" href="#">{{saved.p_title}}({{saved.brand}})</a>
                         </li>
                         {% endfor %}
                     </ul>                    
@@ -565,7 +565,7 @@
                     $('#upload-saved-project-form [name=research_objectives]').val(res.docs[0].research_objectives)
                     $('#upload-saved-project-form [name=result]').val(res.docs[0].result)
                     $('#upload-saved-project-form [name=target_group]').val(res.docs[0].target_group)
-                    $('#upload-saved-project-form [name=title]').val(res.docs[0].title)
+                    $('#upload-saved-project-form [name=p_title]').val(res.docs[0].p_title)
                     $('#upload-saved-project-form [name=doctype]').val(res.docs[0].doctype)
                     $('#upload-saved-project-form [name=workflow_state]').val(res.docs[0].workflow_state)
                     $('#upload-saved-project-form [name=year]').val(res.docs[0].year)

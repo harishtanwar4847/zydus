@@ -1,3 +1,17 @@
+# [v0.4.2-dev] - 2022-06-21
+- [new user access notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66}
+
+# [v0.4.1-uat] - 2022-06-10
+- [uat issues fixed-completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/65)
+# [v0.4.0-uat] - 2022-06-09
+- [in saved tab project name shows none-done | in search filter cache not clearing - done | notification project name showing done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/64)
+# [v0.3.9-uat] - 2022-06-09
+-[edit profile reload missing done | view option project name is visible now | search page reloading done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/63)
+
+# [v0.3.8-uat] - 2022-06-08
+- [every page.py file context['no_cache']=1 | project and datasheet should be named by .format | ordering on home to account page | project workflow.csv enabled = 1 | permission to add todo](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/62)
+
+# [v0.3.7-uat] - 2022-06-08
 # [v0.3.7-dev] - 2022-06-08
 - [form develop workflow patches-imported](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/60)
 

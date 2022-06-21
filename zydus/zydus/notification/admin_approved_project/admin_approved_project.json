@@ -1,21 +1,21 @@
 {
  "attach_print": 0,
  "channel": "System Notification",
- "condition": "doc.workflow_state == \"Pending\"",
- "creation": "2022-06-21 16:23:26.120049",
+ "condition": "doc.workflow_state == \"Approved\"",
+ "creation": "2022-06-21 16:47:56.161317",
  "days_in_advance": 0,
  "docstatus": 0,
  "doctype": "Notification",
- "document_type": "Datasheet",
+ "document_type": "Project",
  "enabled": 1,
  "event": "Value Change",
  "idx": 0,
  "is_standard": 1,
  "message": "Add your message here",
- "modified": "2022-06-21 16:23:26.120049",
+ "modified": "2022-06-21 16:47:56.161317",
  "modified_by": "Administrator",
  "module": "Zydus",
- "name": "Notification on datasheet approval",
+ "name": "Admin approved project",
  "owner": "Administrator",
  "recipients": [
   {
@@ -24,6 +24,6 @@
  ],
  "send_system_notification": 0,
  "send_to_all_assignees": 0,
- "subject": "You successfully uploaded a datasheet {{ doc.d_title }}  for {{ doc.brand }}",
+ "subject": "Admin approved project {{ doc.p_title }}  for {{ doc.brand }}",
  "value_changed": "workflow_state"
 }

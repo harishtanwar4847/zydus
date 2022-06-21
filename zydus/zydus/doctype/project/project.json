@@ -16,7 +16,7 @@
   "markets",
   "business_problems",
   "research_objectives",
-  "title",
+  "p_title",
   "result",
   "learnings",
   "actions",
@@ -77,13 +77,6 @@
    "label": "Business Problems"
   },
   {
-   "fieldname": "title",
-   "fieldtype": "Small Text",
-   "in_list_view": 1,
-   "label": "Project Name",
-   "reqd": 1
-  },
-  {
    "fieldname": "result",
    "fieldtype": "Text",
    "label": "Result"
@@ -122,13 +115,20 @@
    "fieldname": "is_approved",
    "fieldtype": "Check",
    "label": "Is Approved"
+  },
+  {
+   "fieldname": "p_title",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "reqd": 1
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-06 12:47:54.067502",
+ "modified": "2022-06-08 22:24:23.169792",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",

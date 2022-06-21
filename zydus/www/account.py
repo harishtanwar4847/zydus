@@ -12,6 +12,7 @@ from frappe import _
 from frappe.utils.password import update_password
 
 def get_context(context):
+	context['no_cache'] = 1
 	# print(frappe.get_fullname())
 	# frappe.logger().info(frappe.get_fullname())
 	
@@ -22,7 +23,7 @@ def get_context(context):
 	context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
 
 	if context['access_allowed']:
-		context['trending_now_list'] = frappe.db.sql("""select B.color,P.name,B.brand_logo,P.title,count(V.reference_name) as view,concat(P.month," ",P.year) as month_year from `tabProject` as P  left join `tabBrand` as B on P.brand = B.name left join `tabView Log` as V on V.reference_name=P.name and V.reference_doctype="Project" group by P.name order by count(V.reference_name) desc limit 6 """,as_dict=True)
+		context['trending_now_list'] = frappe.db.sql("""select B.color,P.name,B.brand_logo,P.p_title as title,count(V.reference_name) as view,concat(P.month," ",P.year) as month_year from `tabProject` as P  left join `tabBrand` as B on P.brand = B.name left join `tabView Log` as V on V.reference_name=P.name and V.reference_doctype="Project" group by P.name order by count(V.reference_name) desc limit 6 """,as_dict=True)
 		for trending_now in context['trending_now_list']:
 			trending_now['number_of_files'] = len(get_attachments("Project",trending_now.name))
 			
@@ -32,11 +33,11 @@ def get_context(context):
 		for reminder in context['reminders']:
 			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
 
-		context['favourites_page_length'] = 10
+		context['favourites_page_length'] = 12
 		context['favourites_page'] = int(frappe.form_dict.favourites) if frappe.form_dict.favourites else 1
 		context['favourites_page_offset'] = (context['favourites_page'] - 1) * context['favourites_page_length']
 		context['favourites_page_from'] = context['favourites_page_offset'] + 1
-		context['favourites'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year from `tabProject` as P where  P.docstatus = 1 and P._liked_by like  %s    union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where  D.docstatus = 1 and D._liked_by like  %s  ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, ("%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
+		context['favourites'] = frappe.db.sql("""  select T.modified,T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand from (select modified,docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.p_title as title,concat(P.month," ",P.year) as month_year from `tabProject` as P where  P.docstatus = 1 and P._liked_by like  %s    union         select modified,docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.d_title as title,concat(D.month," ",D.year) as month_year from `tabDatasheet`as D where  D.docstatus = 1 and D._liked_by like  %s  ) as T left join `tabBrand` as B on T.brand = B.name  order by modified desc limit 10; """, ("%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)
 		context['favourites_count'] = frappe.db.sql("""  select count(T.name) as count from (select P.name from `tabProject` as P where  P.docstatus = 1 and P._liked_by like  %s    union         select D.name from `tabDatasheet`as D where  D.docstatus = 1 and D._liked_by like  %s  ) as T ; """, ("%{}%".format(frappe.session.user),"%{}%".format(frappe.session.user)),as_dict=1,debug=1)[0]['count']
 		context['favourites_page_to'] = context['favourites_page'] * context['favourites_page_length']
 		if context['favourites_page_to'] > context['favourites_count']:
@@ -45,11 +46,11 @@ def get_context(context):
 			favourite['attachments'] = get_attachments(favourite.doctype,favourite.name)
 			favourite['is_liked'] = frappe.session.user in json.loads(favourite['liked_by'] or '[]')
 
-		context['my_uploads_page_length'] = 10
+		context['my_uploads_page_length'] = 12
 		context['my_uploads_page'] = int(frappe.form_dict.my_uploads) if frappe.form_dict.my_uploads else 1
 		context['my_uploads_page_offset'] = (context['my_uploads_page'] - 1) * context['my_uploads_page_length']
 		context['my_uploads_page_from'] = context['my_uploads_page_offset'] + 1
-		context['my_uploads'] = frappe.db.sql("""  select T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand,T.workflow_state from (select docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.title,concat(P.month," ",P.year) as month_year,P.workflow_state from `tabProject` as P where owner= %(owner)s        union         select docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.title,concat(D.month," ",D.year) as month_year,D.workflow_state  from `tabDatasheet`as D where owner = %(owner)s) as T left join `tabBrand` as B on T.brand = B.name order by modified desc limit %(limit)s offset %(offset)s """, {'owner': frappe.session.user, 'limit': context['my_uploads_page_length'], 'offset': context['my_uploads_page_offset']} ,as_dict=1,debug=1)
+		context['my_uploads'] = frappe.db.sql("""  select T.modified,T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand,T.workflow_state from (select modified,docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.p_title as title,concat(P.month," ",P.year) as month_year,P.workflow_state from `tabProject` as P where owner= %(owner)s        union         select modified,docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.d_title as title ,concat(D.month," ",D.year) as month_year,D.workflow_state  from `tabDatasheet`as D where owner = %(owner)s) as T left join `tabBrand` as B on T.brand = B.name order by modified desc limit %(limit)s offset %(offset)s """, {'owner': frappe.session.user, 'limit': context['my_uploads_page_length'], 'offset': context['my_uploads_page_offset']} ,as_dict=1,debug=1)
 		context['my_uploads_count'] = frappe.db.sql("""  select count(T.name) as count from (select P.name from `tabProject` as P where owner= %s        union         select D.name from `tabDatasheet` as D where owner = %s) as T""", (frappe.session.user,frappe.session.user),as_dict=1,debug=1)[0]['count']
 		context['my_uploads_page_to'] = context['my_uploads_page'] * context['my_uploads_page_length']
 		if context['my_uploads_page_to'] > context['my_uploads_count']:
@@ -71,7 +72,7 @@ def get_context(context):
 		for my_notification in context['my_notifications']:
 			my_notification['creations'] = pretty_date(my_notification['creation'])
 
-		context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"],limit_page_length=5)
+		context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"],limit_page_length=5,order_by="modified desc")
 
 		for notification in context['notifications']:
 			notification['creations'] = pretty_date(notification['creation'])

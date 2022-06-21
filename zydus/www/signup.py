@@ -80,7 +80,7 @@ def sign_up():
 	user.user_image = user_image
 	user.save()
 
-	user.add_roles('KMS Uploader')
-	user.add_roles('KMS Downloader')
+	# user.add_roles('KMS Uploader')
+	# user.add_roles('KMS Downloader')
 
 	return 1, _('Registered Successfully')
