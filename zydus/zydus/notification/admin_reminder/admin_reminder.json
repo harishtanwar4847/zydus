@@ -1,8 +1,7 @@
 {
  "attach_print": 0,
  "channel": "System Notification",
- "condition": "",
- "creation": "2022-06-16 15:22:08.328970",
+ "creation": "2022-06-21 16:52:34.082084",
  "days_in_advance": 0,
  "docstatus": 0,
  "doctype": "Notification",
@@ -11,11 +10,11 @@
  "event": "New",
  "idx": 0,
  "is_standard": 1,
- "message": "Admin has a reminder for you {{doc.title}} for {{doc.date}}",
- "modified": "2022-06-16 15:30:23.042442",
+ "message": "Add your message here",
+ "modified": "2022-06-21 16:52:34.082084",
  "modified_by": "Administrator",
  "module": "Zydus",
- "name": "Admin reminder",
+ "name": "admin reminder",
  "owner": "Administrator",
  "recipients": [
   {

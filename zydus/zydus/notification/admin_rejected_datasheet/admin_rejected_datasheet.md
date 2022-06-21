@@ -1,1 +1,0 @@
-Admin rejected datasheet  {{ doc.d_title }}  for {{ doc.brand }}

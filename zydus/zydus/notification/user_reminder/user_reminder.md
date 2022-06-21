@@ -1,1 +1,1 @@
-you have a reminder {{doc.title}} for today
+Add your message here

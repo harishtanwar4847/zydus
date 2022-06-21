@@ -1,1 +1,0 @@
-Admin rejected project  {{ doc.p_title }}  for {{ doc.brand }}

@@ -1,7 +1,7 @@
 {
  "attach_print": 0,
  "channel": "Email",
- "creation": "2022-06-13 18:59:22.615689",
+ "creation": "2022-06-21 16:33:33.329289",
  "days_in_advance": 0,
  "docstatus": 0,
  "doctype": "Notification",
@@ -10,19 +10,19 @@
  "event": "New",
  "idx": 0,
  "is_standard": 1,
- "message": "<b> Hello Admin,</b>\r\n<br></br>\r\n<br></br>\r\n<b>You have received a request for KMS portal access from {{doc.email}}.</b>\r\n<br></br>\r\n<br></br>\r\nKindly login to <a href =\"https://zydus.uat.atriina.com/\"> https://zydus.uat.atriina.com/</a> for the approval process.\r\n\r\n\r\n",
- "modified": "2022-06-14 14:39:53.864709",
+ "message": "Hello Admin,\r\n<br></br>\r\n<br></br>\r\nYou have received a request for KMS portal access from {{doc.email}}.\r\n<br></br>\r\n<br></br>\r\nKindly login to <a href =\"https://zydus.uat.atriina.com/\"> https://zydus.uat.atriina.com/</a> for the approval process.",
+ "modified": "2022-06-21 16:33:33.329289",
  "modified_by": "Administrator",
  "module": "Zydus",
- "name": "Access Request",
+ "name": "Access request",
  "owner": "Administrator",
  "recipients": [
   {
    "receiver_by_role": "KMS Admin"
   }
  ],
- "send_system_notification": 0,
+ "send_system_notification": 1,
  "send_to_all_assignees": 0,
- "set_property_after_alert": "",
- "subject": "Request for Access "
+ "sender_email": "developers@atriina.com",
+ "subject": "Request for Access"
 }
