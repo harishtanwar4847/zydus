@@ -1,3 +1,6 @@
+# [v0.4.3-dev]  - 2022-06-21
+- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68}
+
 # [v0.4.2-dev] - 2022-06-21
 - [new user access notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66}
 
