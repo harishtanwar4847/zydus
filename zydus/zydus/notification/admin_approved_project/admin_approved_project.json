@@ -2,7 +2,7 @@
  "attach_print": 0,
  "channel": "System Notification",
  "condition": "doc.workflow_state == \"Approved\"",
- "creation": "2022-06-09 14:04:22.516588",
+ "creation": "2022-06-21 16:47:56.161317",
  "days_in_advance": 0,
  "docstatus": 0,
  "doctype": "Notification",
@@ -11,11 +11,11 @@
  "event": "Value Change",
  "idx": 0,
  "is_standard": 1,
- "message": "Admin Approved Project  {{ doc.title }}  for {{ doc.brand }}",
- "modified": "2022-06-09 14:04:22.516588",
+ "message": "Add your message here",
+ "modified": "2022-06-21 16:47:56.161317",
  "modified_by": "Administrator",
  "module": "Zydus",
- "name": "Admin Approved Project  {{ doc.title }}  for {{ doc.brand }}",
+ "name": "Admin approved project",
  "owner": "Administrator",
  "recipients": [
   {
@@ -24,6 +24,6 @@
  ],
  "send_system_notification": 0,
  "send_to_all_assignees": 0,
- "subject": "Admin Approved Project  {{ doc.title }}  for {{ doc.brand }}",
+ "subject": "Admin approved project {{ doc.p_title }}  for {{ doc.brand }}",
  "value_changed": "workflow_state"
 }
