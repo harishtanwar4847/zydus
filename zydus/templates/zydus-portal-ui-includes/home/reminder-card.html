@@ -3,7 +3,8 @@
         <img src="{% if reminder.due_by == 'Today' %} /assets/zydus/images/reminder-filled.svg {% else %} /assets/zydus/images/reminder-outline.svg {% endif %}" />
     </div>
     <div>
-        <div>
+        <div><div class="d-flex align-items-center">
+            <!-- <img src="/assets/zydus/images/employee-small.png" alt="" class="img-fluid"> -->
             <span class="reminder-sender">{% if reminder.modified_by == "Administrator" %} admin {% else %} me {% endif %}:</span>
             <span class="reminder-title">{{reminder.title}}</span>
         </div>
