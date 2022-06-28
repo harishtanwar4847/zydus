@@ -1,5 +1,5 @@
 # [v0.4.5-dev]  - 2022-06-28
--[Admin panel Add Faq functionality]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/71}
+-[Add FAQ and home page To Do list]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72}
 
 # [v0.4.4-dev]  - 2022-06-21
 - [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69}
