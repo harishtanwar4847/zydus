@@ -4,6 +4,10 @@
     </div>
     <div>
       <span class="reminder-sender">{% if reminder.modified_by == "Administrator" %} admin {% else %} me {% endif %}:</span>
+      <div class="d-flex align-items-center">
+        <img src="./assets/zydus/images/employee-small.png" alt="" class="img-fluid">
+        <div class="reminder-sender">Manjunath raikar</div>
+      </div>
       <span class="reminder-title">{{reminder.title}}</span>
     </div>
     <div class="reminder-content mt-2">

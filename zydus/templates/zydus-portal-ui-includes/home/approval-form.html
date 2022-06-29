@@ -1,0 +1,25 @@
+<div class="approval teal">
+    <button type="button" class="btn btn-link p-0 fav-button">
+        <i class="bi bi-heart"></i>
+      </button>
+      <h3 class="brand">{{ approval_all_list.brand }}</h3>
+    <div class="title">{{ approval_all_list.title }}</div>
+    <div class="subtitle">Project Type</div>
+    <div class="subtitle">Name of the Agency</div>
+    <div class="subtitle">January 2022</div>
+    <div class="text-approved">{{approval_all_list.workflow_state}}</div>
+    <div class="subtitle">Ankita R. Chatterjee</div>
+    <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="./assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+      </button>
+      <button class="btn btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      Actions
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">View</a></li>
+      <li>
+        <a class="dropdown-item" href="#">Download</a>
+      </li>
+    </ul>
+  </div>
