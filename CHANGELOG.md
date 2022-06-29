@@ -1,3 +1,6 @@
+# [v0.4.6-dev]  - 2022-06-29
+-[Admin panel Approval tab done | todo css fixes donet]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/73}
+
 # [v0.4.5-dev]  - 2022-06-28
 -[Add FAQ and home page To Do list]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72}
 

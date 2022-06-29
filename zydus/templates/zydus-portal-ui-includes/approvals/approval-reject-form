@@ -1,0 +1,28 @@
+<div class="approval teal" style="border-color:#e41f28;">
+    <button type="button" class="btn btn-link p-0 fav-button">
+        <i class="bi bi-heart"></i>
+    </button>
+    <h3 class="brand">{{rejected_list.brand}}</h3>
+    <div class="title">{{rejected_list.title}}</div>
+    <div class="subtitle">{{rejected_list.type}}</div>
+    <div class="subtitle">{{rejected_list.agency}}</div>
+    <div class="subtitle">{{rejected_list.month_year}}</div>
+    <div class="text-rejected">{{rejected_list.workflow_state}}</div>
+    <div class="subtitle">{{rejected_list.full_name}}</div>
+    <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="./assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+      </button>
+      <button class="btn btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      Actions
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">View</a></li>
+      <li>
+        <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
+        {% for file in rejected_list.attachments %}
+        <a href="{{file.file_url}}" download></a>
+        {% endfor %}
+      </li>
+    </ul>
+  </div>
