@@ -13,25 +13,27 @@
 
     <div class="tab-content mt-4" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
-            {% for approval_all in approval_all_list %}
-            {% include "templates/zydus-portal-ui-includes/home/approval-form.html" %}
+            {% for approval_all in approval_all %}
+            {% include "templates/zydus-portal-ui-includes/approvals/approval-all-form.html" %}
             {% endfor %}
         </div>
 
 
         <div class="tab-pane fade" id="nav-approved" role="tabpanel" aria-labelledby="nav-approved-tab">
-            {% include "templates/zydus-portal-ui-includes/home/approval-form.html" %}         
+            {% for approval_approved in approval_approved %}
+            {% include "templates/zydus-portal-ui-includes/approvals/approval-approved-form.html" %}  
+            {% endfor %}       
         </div>
 
 
         <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
-            {% include "templates/zydus-portal-ui-includes/home/approval-form.html" %}
+            {% include "templates/zydus-portal-ui-includes/approvals/approval-all-form.html" %}
        </div>
 
 
 
         <div class="tab-pane fade" id="nav-rejected" role="tabpanel" aria-labelledby="nav-rejected-tab">
-            {% include "templates/zydus-portal-ui-includes/home/approval-form.html" %}              
+            {% include "templates/zydus-portal-ui-includes/approvals/approval-all-form.html" %}              
         </div>
 
 
