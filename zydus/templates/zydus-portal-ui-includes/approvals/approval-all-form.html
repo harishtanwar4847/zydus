@@ -19,7 +19,10 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item" href="#">View</a></li>
       <li>
-        <a class="dropdown-item" href="#">Download</a>
+        <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
+        {% for file in approval_all.attachments %}
+        <a href="{{file.file_url}}" download></a>
+        {% endfor %}
       </li>
     </ul>
   </div>
