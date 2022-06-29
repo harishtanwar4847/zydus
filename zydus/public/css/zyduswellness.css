@@ -567,8 +567,8 @@ body {
   color: rgba(0, 0, 0, 0.5);
 }
 .user-profile .profile-pic {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 30px;
 }
 .user-profile .profile-pic img {
   border-radius: 100px;
