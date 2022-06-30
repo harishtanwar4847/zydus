@@ -1,7 +1,7 @@
 <div class="approval teal" >
-    <button type="button" class="btn btn-link p-0 fav-button">
-        <i class="bi bi-heart"></i>
-      </button>
+  <button onclick="toggleLike('{{approval_all.doctype}}', '{{approval_all.name}}', {% if approval_all.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+    <i class="bi {% if approval_all.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if approval_all.is_liked %}style="color: #000;"{% endif %}></i>
+  </button>
       <h3 class="brand">{{ approval_all.brand }}</h3>
     <div class="title">{{ approval_all.title }}</div>
     <div class="subtitle">{{ approval_all.type}}</div>
@@ -10,7 +10,7 @@
     <div  class="text-approved" >{{approval_all.workflow_state}}</div>
     <div class="subtitle">{{ approval_all.full_name}}</div>
     <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+        <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
       </button>
       <button class="btn btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
       data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,10 +19,10 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item" href="#">View</a></li>
       <li>
-        <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
-        {% for file in approval_all.attachments %}
-        <a href="{{file.file_url}}" download></a>
-        {% endfor %}
+          <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
+          {% for file in approval_all.attachments %}
+          <a href="{{file.file_url}}" download></a>
+          {% endfor %}
       </li>
     </ul>
   </div>

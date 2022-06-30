@@ -1,7 +1,7 @@
 <div class="approval teal"  style="border-color: #00ac41;">
-    <button type="button" class="btn btn-link p-0 fav-button">
-        <i class="bi bi-heart"></i>
-      </button>
+  <button onclick="toggleLike('{{approval_approved.doctype}}', '{{approval_approved.name}}', {% if approval_approved.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+    <i class="bi {% if approval_approved.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if approval_approved.is_liked %}style="color: #000;"{% endif %}></i>
+  </button>
       <h3 class="brand">{{ approval_approved.brand }}</h3>
     <div class="title">{{ approval_approved.title }}</div>
     <div class="subtitle">{{ approval_approved.type}}</div>
