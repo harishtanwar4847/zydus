@@ -1,7 +1,7 @@
 <div class="approval teal" style="border-color:#ffe500;">
-    <button type="button" class="btn btn-link p-0 fav-button">
-        <i class="bi bi-heart"></i>
-    </button>
+  <button onclick="toggleLike('{{pending_list.doctype}}', '{{pending_list.name}}', {% if pending_list.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+    <i class="bi {% if pending_list.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if pending_list.is_liked %}style="color: #000;"{% endif %}></i>
+  </button>
     <h3 class="brand">{{pending_list.brand}}</h3>
     <div class="title">{{pending_list.title}}</div>
     <div class="subtitle">{{pending_list.type}}</div>
