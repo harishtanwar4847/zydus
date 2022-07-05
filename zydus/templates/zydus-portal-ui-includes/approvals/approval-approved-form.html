@@ -1,16 +1,16 @@
 <div class="approval teal"  style="border-color: #00ac41;">
-  <button onclick="toggleLike('{{approval_approved.doctype}}', '{{approval_approved.name}}', {% if approval_approved.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
-    <i class="bi {% if approval_approved.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if approval_approved.is_liked %}style="color: #000;"{% endif %}></i>
+  <button onclick="toggleLikeApproval('{{approved.doctype}}', '{{approved.name}}', {% if approved.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+    <i class="bi {% if approved.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if approved.is_liked %}style="color: #000;"{% endif %}></i>
   </button>
-      <h3 class="brand">{{ approval_approved.brand }}</h3>
-    <div class="title">{{ approval_approved.title }}</div>
-    <div class="subtitle">{{ approval_approved.type}}</div>
-    <div class="subtitle">{{ approval_approved.agency}}</div>
-    <div class="subtitle">{{ approval_approved.month_year}}</div>
-    <div class="text-approved">{{approval_approved.workflow_state}}</div>
-    <div class="subtitle">{{ approval_approved.full_name}}</div>
+      <h3 class="brand">{{ approved.brand }}</h3>
+    <div class="title">{{ approved.title }}</div>
+    <div class="subtitle">{{ approved.type}}</div>
+    <div class="subtitle">{{ approved.agency}}</div>
+    <div class="subtitle">{{ approved.month_year}}</div>
+    <div class="text-approved">{{approved.workflow_state}}</div>
+    <div class="subtitle">{{ approved.full_name}}</div>
     <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
+        <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
       </button>
       <button class="btn btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
       data-bs-toggle="dropdown" aria-expanded="false">
@@ -20,7 +20,7 @@
       <li><a class="dropdown-item" href="#">View</a></li>
       <li>
         <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
-        {% for file in approval_approved.attachments %}
+        {% for file in approved.attachments %}
         <a href="{{file.file_url}}" download></a>
         {% endfor %}
       </li>
