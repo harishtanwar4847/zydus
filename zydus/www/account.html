@@ -129,13 +129,13 @@
           <button class="btn btn-cross" type="button">
             <i class='bi bi-x'></i>
           </button>
-          <button class="btn btn-down" data-bs-toggle="collapse" data-bs-target="#User-{{User.full_name}}"  role="button" aria-expanded="false" aria-controls="#User-{{User.full_name}}"  type="button">
+          <button class="btn btn-down" data-bs-toggle="collapse" data-bs-target="#User-{{User.username}}"  role="button" aria-expanded="false" aria-controls="#User-{{User.username}}"  type="button">
             <i class='bi bi-chevron-down'></i>
           </button> 
          </div>
         </button>
         </div>
-        <div class="collapse m-0" data-bs-parent="#tickcollapse" id="User-{{User.full_name}}" aria-labelledby="faq-{{User.full_name}}">
+        <div class="collapse m-0" data-bs-parent="#tickcollapse" id="User-{{User.username}}" aria-labelledby="User-{{User.username}}">
           <div class="card card-body">
             <form class="d-flex justify-content-around">
               <div class="form-check">
