@@ -1,3 +1,6 @@
+# [v0.4.8-dev]  - 2022-07-06
+-[approval pagination done| like functionality done| access tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/75}
+
 # [v0.4.7-dev]  - 2022-06-30
 -[Account page access tab integration and partially functionality done | approval like button]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/74}
 

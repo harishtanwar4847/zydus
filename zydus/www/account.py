@@ -33,7 +33,7 @@ def get_context(context):
 		for reminder in context['reminders']:
 			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
 
-		context["Users"]=frappe.db.get_list("User",fields=["user_image","full_name","designation","email","creation"],debug=1,limit_page_length=15)
+		context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation"],debug=1,limit_page_length=15)
         # due_by calculation for users
 		for User in context['Users']:
 			User['creation'] = pretty_date(User['creation'])

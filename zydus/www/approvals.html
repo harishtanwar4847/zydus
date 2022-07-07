@@ -5,38 +5,98 @@
 <div class="row" id="like-button">
 <div class="container">
     <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-link nav-all active" id="all-tab" data-bs-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
-        <a class="nav-link nav-approved" id="approved-tab" data-bs-toggle="tab" href="#nav-approved" role="tab" aria-controls="nav-approved" aria-selected="false">Approved</a>
-        <a class="nav-link nav-pending" id="pending-tab" data-bs-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</a>
-        <a class="nav-link nav-rejected" id="rejected-tab" data-bs-toggle="tab" href="#nav-rejected" role="tab" aria-controls="nav-rejected" aria-selected="false">Rejected</a>
+        <a class="nav-link {{ 'active' if 'all' in frappe.form_dict  else '' }}" id="all" data-bs-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
+        <a class="nav-link {{ 'active' if 'approved' in frappe.form_dict  else '' }}" id="approved" data-bs-toggle="tab" href="#nav-approved" role="tab" aria-controls="nav-approved" aria-selected="true">Approved</a>
+        <a class="nav-link {{ 'active' if 'pending' in frappe.form_dict  else '' }}" id="pending" data-bs-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="true">Pending</a>
+        <a class="nav-link {{ 'active' if 'rejected' in frappe.form_dict  else '' }}" id="rejected" data-bs-toggle="tab" href="#nav-rejected" role="tab" aria-controls="nav-rejected" aria-selected="true">Rejected</a>
     </nav>
 
 
     <div class="tab-content mt-4" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
-            {% for approval_all in approval_all %}
+        <div class="tab-pane fade show {{ 'show active' if 'all' in frappe.form_dict  else '' }}" id="nav-all" role="tabpanel" aria-labelledby="all">
+          <li class="list-inline-item">
+            <small>
+              {{all_page_from}}-{{all_page_to}} of {{all_count}}
+            </small>
+          </li>
+          <li class="list-inline-item">
+            <button {% if all_page > 1 %} onclick="load_approval_page('all', {{all_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if all_page == 1  else '' }}">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </li>
+          <li class="list-inline-item">
+            <button {% if all_page_to < all_count  %} onclick="load_approval_page('all', {{all_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if all_page_to < all_count  else 'disabled' }}">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </li>
+            {% for all in all %}
             {% include "templates/zydus-portal-ui-includes/approvals/approval-all-form.html" %}
             {% endfor %}
         </div>
 
 
-        <div class="tab-pane fade" id="nav-approved" role="tabpanel" aria-labelledby="nav-approved-tab">
-            {% for approval_approved in approval_approved %}
+        <div class="tab-pane fade {{ 'show active' if 'approved' in frappe.form_dict  else '' }}" id="nav-approved" role="tabpanel" aria-labelledby="approved">
+          <li class="list-inline-item">
+            <small>
+              {{approved_page_from}}-{{approved_page_to}} of {{approved_count}}
+            </small>
+          </li>
+          <li class="list-inline-item">
+            <button {% if approved_page > 1 %} onclick="load_approval_page('approved', {{approved_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if approved_page == 1  else '' }}">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </li>
+          <li class="list-inline-item">
+            <button {% if approved_page_to < approved_count  %} onclick="load_approval_page('approved', {{approved_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if approved_page_to < approved_count  else 'disabled' }}">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </li>
+            {% for approved in approved %}
             {% include "templates/zydus-portal-ui-includes/approvals/approval-approved-form.html" %}  
             {% endfor %}       
         </div>
 
 
-        <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
-          {% for pending_list in pending_list %}
+        <div class="tab-pane fade {{ 'show active' if 'pending' in frappe.form_dict  else '' }}" id="nav-pending" role="tabpanel" aria-labelledby="pending">
+          <li class="list-inline-item">
+            <small>
+              {{pending_page_from}}-{{pending_page_to}} of {{pending_count}}
+            </small>
+          </li>
+          <li class="list-inline-item">
+            <button {% if pending_page > 1 %} onclick="load_approval_page('pending', {{pending_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if pending_page == 1  else '' }}">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </li>
+          <li class="list-inline-item">
+            <button {% if pending_page_to < pending_count  %} onclick="load_approval_page('pending', {{pending_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if pending_page_to < pending_count  else 'disabled' }}">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </li>
+          {% for pending in pending %}
           {% include "templates/zydus-portal-ui-includes/approvals/approval-pending-form.html" %}
           {% endfor %}
        </div>
 
 
 
-        <div class="tab-pane fade" id="nav-rejected" role="tabpanel" aria-labelledby="nav-rejected-tab">
-          {% for rejected_list in rejected_list %}
+        <div class="tab-pane fade {{ 'show active' if 'rejected' in frappe.form_dict  else '' }}" id="nav-rejected" role="tabpanel" aria-labelledby="rejected">
+          <li class="list-inline-item">
+            <small>
+              {{rejected_page_from}}-{{rejected_page_to}} of {{rejected_count}}
+            </small>
+          </li>
+          <li class="list-inline-item">
+            <button {% if rejected_page > 1 %} onclick="load_approval_page('rejected', {{rejected_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if rejected_page == 1  else '' }}">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+          </li>
+          <li class="list-inline-item">
+            <button {% if rejected_page_to < rejected_count  %} onclick="load_approval_page('rejected', {{rejected_page + 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ '' if rejected_page_to < rejected_count  else 'disabled' }}">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </li>
+          {% for rejected in rejected %}
           {% include "templates/zydus-portal-ui-includes/approvals/approval-reject-form" %}  
           {% endfor %}           
         </div>
@@ -45,7 +105,7 @@
         
     </div>
 
-    <div class="d-flex justify-content-center mt-4">
+    <!-- <div class="d-flex justify-content-center mt-4">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item mx-1">
@@ -63,13 +123,46 @@
           </li>
         </ul>
       </nav>
-    </div>   
+    </div>    -->
  
   </div>
  </div>
 </div>
 <script src="/assets/zydus/js/jquery.validate.min.js"></script>
  
+<script>
+function setJqueryValidateOnAllForms() {
+    console.log('jquery validate added')
+    $.validator.setDefaults({
+     validClass: 'is-valid',
+     errorClass: 'is-invalid'
+   })    
+  }
+  function load_approval_page(tab, page){
+      $('#like-button-parent').load('/approvals?'+ tab +'='+ page +' #like-button',function() {
+          setJqueryValidateOnAllForms()
+      })
+    }
+  function toggleLikeApproval(dt, dn, add){
+          $.ajax({
+            url: '/api/method/frappe.desk.like.toggle_like',
+            method: 'POST',
+            data: {
+              doctype: dt, 
+              name: dn,
+              add: add
+            },
+            headers: {
+              'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+            success: function() {
+              var curr_tab = $('#like-button #nav-tab .nav-link.active').attr('id')
+              $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button',function() {
+                setJqueryValidateOnAllForms()
+              })
+            }
+          })
+      }
+  </script>
 
-
-  {% endblock %}
+{% endblock %}
