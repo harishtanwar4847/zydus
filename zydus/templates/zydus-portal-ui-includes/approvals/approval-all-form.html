@@ -1,4 +1,4 @@
-<div class="approval teal" >
+<div class="approval teal" style="border-color: {{ all.color}};" >
   <button onclick="toggleLikeApproval('{{all.doctype}}', '{{all.name}}', {% if all.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
     <i class="bi {% if all.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if all.is_liked %}style="color: #000;"{% endif %}></i>
   </button>
