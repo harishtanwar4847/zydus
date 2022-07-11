@@ -26,7 +26,7 @@ def get_context(context):
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
         
         # context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open",},limit_page_length=5)
-        context["reminders"] = frappe.db.sql(""" select U.user_image,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 5 """,as_dict=1,debug=1)
+        context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 5 """,as_dict=1,debug=1)
       
         # due_by calculation
         for reminder in context['reminders']:
