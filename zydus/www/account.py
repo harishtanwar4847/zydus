@@ -1,3 +1,4 @@
+
 import frappe
 import zydus
 import json
@@ -27,8 +28,8 @@ def get_context(context):
 		for trending_now in context['trending_now_list']:
 			trending_now['number_of_files'] = len(get_attachments("Project",trending_now.name))
 			
-		context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
-
+		# context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
+		context["reminders"] = frappe.db.sql(""" select U.user_image,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.owner where status = "open" order by date asc limit 10 """,as_dict=1,debug=1)
 		# due_by calculation for reminders
 		for reminder in context['reminders']:
 			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
@@ -38,6 +39,8 @@ def get_context(context):
 		for User in context['Users']:
 			User['creation'] = pretty_date(User['creation'])
 
+		context['Employees'] = [User.full_name for User in frappe.get_all('User',fields="full_name")]
+	
 
 		context['favourites_page_length'] = 12
 		context['favourites_page'] = int(frappe.form_dict.favourites) if frappe.form_dict.favourites else 1
