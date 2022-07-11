@@ -20,7 +20,7 @@
     <div class="reminder-time">{{ reminder.due_by }}</div>
     <div class="reminder-actions mt-3">
         {% if reminder.due_by == 'Today' %}
-        {% if reminder.owner == reminder.modified_by %}
+        {% if reminder.owner == reminder.owner %}
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-expanded="false">
