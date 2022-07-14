@@ -1,3 +1,6 @@
+# [v0.4.9-dev]  - 2022-07-14
+-[Admin panel reminder tab completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/76}
+
 # [v0.4.8-dev]  - 2022-07-06
 -[approval pagination done| like functionality done| access tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/75}
 

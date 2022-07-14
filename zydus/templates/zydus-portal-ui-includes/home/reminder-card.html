@@ -5,10 +5,13 @@
     <div>
         <div><div class="d-flex align-items-center">
             <!-- <img src="/assets/zydus/images/employee-small.png" alt="" class="img-fluid"> -->
-            <span class="reminder-sender">{% if reminder.modified_by == "Administrator" %} admin {% else %} me {% endif %}:</span>
-            <div class="d-flex align-items-center">
-                <img src="./assets/zydus/images/employee-small.png" alt="" class="img-fluid">
-                <div class="reminder-sender">Manjunath raikar</div>
+            <span class="reminder-sender">{% if reminder.owner == "Administrator" %} me {% else %}  {% endif %}:</span>
+            <div class="d-flex align-items-center user-profile">
+                <div class="profile-pic">{% if reminder.owner != "Administrator" %} 
+                <img src="{{reminder.user_image}}" alt="" class="img-fluid">{% endif %}
+                </div>
+                <div class="reminder-sender">{% if reminder.owner != "Administrator" %} 
+                    {{reminder.full_name}}  {% endif %}</div>
               </div>
             <span class="reminder-title">{{reminder.title}}</span>
         </div>
@@ -17,7 +20,7 @@
     <div class="reminder-time">{{ reminder.due_by }}</div>
     <div class="reminder-actions mt-3">
         {% if reminder.due_by == 'Today' %}
-        {% if reminder.owner == reminder.modified_by %}
+        {% if reminder.owner == reminder.owner %}
         <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-expanded="false">

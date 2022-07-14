@@ -1,4 +1,4 @@
-<div class="approval teal" style="border-color:#ffe500;">
+<div class="approval teal" style="border-color: {{ pending.color}};">
   <button onclick="toggleLikeApproval('{{pending.doctype}}', '{{pending.name}}', {% if pending.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
     <i class="bi {% if pending.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if pending.is_liked %}style="color: #000;"{% endif %}></i>
   </button>
