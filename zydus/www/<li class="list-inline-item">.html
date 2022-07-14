@@ -1,0 +1,5 @@
+<li class="list-inline-item">
+    <button {% if my_uploads_page > 1 %} onclick="load_accounts_page('my_uploads', {{my_uploads_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_uploads_page == 1  else '' }}">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+  </li>

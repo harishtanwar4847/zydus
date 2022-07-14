@@ -284,7 +284,7 @@
                 <sup class="text-primary"></sup>
               </label> 
               <select name="Employee" class="form-select">
-                <option selected="" name="" disabled="" value="">
+                <option selected="" name="" disabled="" value="" >
                   Choose the Employee
               </option>
               </select>
@@ -590,8 +590,9 @@
             dataArr.forEach(x => {
                 obj[x.name] = x.value
             })
-            obj['owner'] = '{{frappe.session.user}}'
-
+            // obj['owner'] = '{{frappe.session.user}}'
+            obj['owner'] = $("select[name=Employee]").val();
+            console.log(obj)
             $.ajax({
                 url: '/api/resource/ToDo',
                 method: 'POST',
@@ -631,6 +632,7 @@
         $('#set-reminder-form [name=date]').attr('required', true)
         $('#set-reminder-form [name=title]').attr('required',true)
         $('#set-reminder-form [name=description]').attr('required',true)
+        $('#set-reminder-form [name=Employee]').attr('required',true)
   
   }       
   function CancelReminder(){
@@ -647,9 +649,10 @@
   // populating employee names
   var Employees = {{Employees}}
     for(var i = 0; i < Employees.length; i++) {
-        var Employee= Employees[i]
-        $('select[name=Employee]').append('<option value="'+Employee+'">'+Employee+'</option>')
+        // var Employee= Employees[i]       
+        $('select[name=Employee]').append('<option value="'+Employees[i]["name"]+'">'+Employees[i]["full_name"]+'</option>')
     }
+   
 
 
 </script>
