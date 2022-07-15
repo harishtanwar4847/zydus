@@ -179,7 +179,6 @@ function toggleLikeB(dt, dn, add) {
     },
     success: function() {
       var dataArr = $("#search-form").serializeArray()
-      console.log("********")
       console.log(dataArr)
       var obj = {}
       dataArr.forEach(x => {
@@ -194,7 +193,6 @@ function toggleLikeB(dt, dn, add) {
           }
       })
       $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
-      // $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
     }
   })
 }
