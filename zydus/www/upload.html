@@ -152,7 +152,7 @@
         headers: {
             "X-Frappe-CSRF-Token": frappe.csrf_token
         },
-        maxFilesize: 50, // MB
+        maxFilesize: 100, // MB
         url: '/api/method/upload_file',
         addRemoveLinks: true,
         params(files, xhr, chunk) {
