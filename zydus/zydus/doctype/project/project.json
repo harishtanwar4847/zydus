@@ -22,7 +22,8 @@
   "actions",
   "amended_from",
   "route",
-  "is_approved"
+  "is_approved",
+  "sample_size"
  ],
  "fields": [
   {
@@ -45,7 +46,7 @@
   },
   {
    "fieldname": "description",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Description"
   },
   {
@@ -122,13 +123,18 @@
    "in_list_view": 1,
    "label": "Project Name",
    "reqd": 1
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Data",
+   "label": "Sample Size"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-08 22:24:23.169792",
+ "modified": "2022-07-18 11:28:14.239196",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
