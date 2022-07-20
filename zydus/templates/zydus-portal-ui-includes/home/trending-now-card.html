@@ -1,6 +1,6 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
-    <a href="/{{trending_now.route}}" style="text-decoration: none">
-    <div class="trending-product-card" id="trending-now" style="border-color: {{trending_now.color}}" >
+    <!-- <a href="/{{trending_now.route}}" style="text-decoration: none"> -->
+    <div class="trending-product-card" id="trending-now" style="border-color: {{trending_now.color}}">
         <div class="d-flex align-items-start justify-content-between">
             <button onclick="toggleLike('{{trending_now.doctype}}', '{{trending_now.name}}', {% if trending_now.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
                 <i class="bi {% if trending_now.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if trending_now.is_liked %}style="color: #000;"{% endif %}></i>
@@ -9,22 +9,25 @@
                 <img src="{{trending_now.brand_logo}}" class="img-fluid" />
             </div>
         </div>
-        <div class="title-wrap">
-            <h3>{{trending_now.title}}</h3>
-        </div>
-        <div class="subtitle">{{trending_now.month_year}}</div>
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="subtitle">{{trending_now.attachments | len}} {% if trending_now.attachments | len > 1%} files {% else %} file {% endif %}</div>
-            <div class="d-flex align-items-center justify-content-end actions">
-                <a href="/{{trending_now.route}}" class="btn btn-link">view</a>
-                <button onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="btn btn-link p-0">
-                    <img src="/assets/zydus/images/download.svg" class="img-fluid" />
-                </button>
-                {% for file in trending_now.attachments %}
-                <a href="{{file.file_url}}" download></a>
-                {% endfor %}
+
+        <div onclick="location.href='/{{trending_now.route}}';">
+            <div class="title-wrap">
+                <h3>{{trending_now.title}}</h3>
+            </div>
+            <div class="subtitle">{{trending_now.month_year}}</div>
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="subtitle">{{trending_now.attachments | len}} {% if trending_now.attachments | len > 1%} files {% else %} file {% endif %}</div>
+                <div class="d-flex align-items-center justify-content-end actions">
+                    <a href="/{{trending_now.route}}" class="btn btn-link">view</a>
+                    <button onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="btn btn-link p-0">
+                        <img src="/assets/zydus/images/download.svg" class="img-fluid" />
+                    </button>
+                    {% for file in trending_now.attachments %}
+                    <a href="{{file.file_url}}" download></a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</a>
+<!-- </a> -->
 </div>

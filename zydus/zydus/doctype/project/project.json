@@ -22,8 +22,7 @@
   "actions",
   "amended_from",
   "route",
-  "is_approved",
-  "sample_size"
+  "is_approved"
  ],
  "fields": [
   {
@@ -123,18 +122,13 @@
    "in_list_view": 1,
    "label": "Project Name",
    "reqd": 1
-  },
-  {
-   "fieldname": "sample_size",
-   "fieldtype": "Int",
-   "label": "Sample Size"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-18 12:00:21.272968",
+ "modified": "2022-07-20 12:45:57.996466",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
