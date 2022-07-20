@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.website.website_generator import WebsiteGenerator
+import json
 
 class Datasheet(WebsiteGenerator):
 	def get_context(self, context):
@@ -18,6 +19,8 @@ class Datasheet(WebsiteGenerator):
 				context['_user_tags'] = context['_user_tags'][1:]
 			context['attachments'] = frappe.desk.form.load.get_attachments('Datasheet', self.name)
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
+
+		context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Datasheet', self.name, ['_liked_by']) or "[]"))
 
 	def before_submit(self):
 		frappe.db.delete("View Log",{"reference_doctype": "Datasheet", "reference_name":self.name})

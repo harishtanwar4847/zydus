@@ -1,7 +1,8 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Project{% endblock %}
 {% block content%}
-<div class="row">
+<div id="like-button-parent">
+<div id="like-button" class="row">
   <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
     style="max-height: unset; overflow: auto;">
     <div class="d-flex align-items-center justify-content-between mb-3">
@@ -35,7 +36,11 @@
           </div>
         </div>
         <div class="col-12 col-lg-6 col-xl-8">
-          <h2 class="brand">{{doc.brand}}</h2>
+          <h2 class="brand">{{doc.brand}} 
+            <button onclick="toggleLike('{{doc.doctype}}', '{{doc.name}}', {% if is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi {% if is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if is_liked %}style="color: #000;"{% endif %}></i>
+           </button>
+        </h2>
           <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
             <h3 class="me-3 file-title">
               {{doc.d_title}}
