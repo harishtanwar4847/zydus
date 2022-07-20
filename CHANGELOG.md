@@ -1,4 +1,6 @@
-# [v0.4.4-uat]  - 2022-06-22
+
+# [v0.4.5-uat]  - 2022-07-20
+- [Uat : Project and Datasheet file upload max size set to 100Mb, Like feature enabled on view project page, search filter like and refresh functionality issue fixes done, New field added in project doctype(Sample Size),Field type changed as text editor] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/77}
 # [v0.4.4-dev]  - 2022-06-21
 - [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69}
 
