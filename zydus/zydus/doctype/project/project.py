@@ -27,8 +27,6 @@ class Project(WebsiteGenerator):
 				attachment['ext']=file_ext.rsplit('.', 1)[1]
 
 			context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Project', self.name, ['_liked_by']) or "[]"))
-			print(context)
-			print("*************************8")
 			
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 
