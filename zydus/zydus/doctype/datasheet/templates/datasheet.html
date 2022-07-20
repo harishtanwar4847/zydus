@@ -37,10 +37,9 @@
         </div>
         <div class="col-12 col-lg-6 col-xl-8">
           <h2 class="brand">{{doc.brand}} 
-            <button onclick="toggleLike('{{doc.doctype}}', '{{doc.name}}', {% if doc.is_liked %}'No'+
-            {% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
-            <i class="bi {% if doc.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if doc.is_liked %}style="color: #000;"{% endif %}></i>
-         </button>
+            <button onclick="toggleLike('{{doc.doctype}}', '{{doc.name}}', {% if is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+              <i class="bi {% if is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if is_liked %}style="color: #000;"{% endif %}></i>
+           </button>
         </h2>
           <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
             <h3 class="me-3 file-title">
