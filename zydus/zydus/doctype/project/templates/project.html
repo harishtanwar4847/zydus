@@ -78,8 +78,10 @@
                 <div>{{markets}}</div>
               </div>
               <div class="col-12 col-sm-6 col-lg-12 col-xl-6">
+                {% if sample_size | len > 0%}
                 <label>Sample Size</label>
                 <div>{{doc.sample_size}}</div>
+                {% endif %}
               </div>
               <div class="col-12">
                 {% if target_group | len > 0%}

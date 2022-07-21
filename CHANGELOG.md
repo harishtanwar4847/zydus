@@ -1,14 +1,17 @@
+# [v0.4.6-uat]  - 2022-07-21
+- [User:-sample size added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/78)
 
 # [v0.4.5-uat]  - 2022-07-20
-- [Uat : Project and Datasheet file upload max size set to 100Mb, Like feature enabled on view project page, search filter like and refresh functionality issue fixes done, New field added in project doctype(Sample Size),Field type changed as text editor] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/77}
+- [Uat : Project and Datasheet file upload max size set to 100Mb, Like feature enabled on view project page, search filter like and refresh functionality issue fixes done, New field added in project doctype(Sample Size),Field type changed as text editor](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/77)
+
 # [v0.4.4-dev]  - 2022-06-21
-- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69}
+- [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69)
 
 # [v0.4.3-dev]  - 2022-06-21
-- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68}
+- [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68)
 
 # [v0.4.2-dev] - 2022-06-21
-- [new user access notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66}
+- [new user access notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66)
 
 # [v0.4.1-uat] - 2022-06-10
 - [uat issues fixed-completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/65)
