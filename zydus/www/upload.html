@@ -430,7 +430,7 @@
 
         $('#'+ form_id).submit()
     }
-    
+
     $('#upload-datasheet-form').validate({
         submitHandler: function(form) {
             // making sure attachments are added
@@ -557,7 +557,7 @@
                     $('#upload-saved-project-form [name=project_type]').val(res.docs[0].project_type)
                     $('#upload-saved-project-form [name=agency]').val(res.docs[0].agency)
                     $('#upload-saved-project-form [name=actions]').val(res.docs[0].actions)
-                    $('#upload-saved-project-form [name=business_problemsd]').val(res.docs[0].business_problems)
+                    $('#upload-saved-project-form [name=business_problems]').val(res.docs[0].business_problems)
                     $('#upload-saved-project-form [name=description]').val(res.docs[0].description)
                     $('#upload-saved-project-form [name=learnings]').val(res.docs[0].learnings)
                     $('#upload-saved-project-form [name=month]').val(res.docs[0].month)
@@ -569,6 +569,7 @@
                     $('#upload-saved-project-form [name=doctype]').val(res.docs[0].doctype)
                     $('#upload-saved-project-form [name=workflow_state]').val(res.docs[0].workflow_state)
                     $('#upload-saved-project-form [name=year]').val(res.docs[0].year)
+                    $('#upload-saved-project-form [name=sample_size]').val(res.docs[0].sample_size)
                     if(res.docs[0]._user_tags) {
                         $('#upload-saved-project-form [data-type=tags]').val(JSON.stringify(res.docs[0]._user_tags.split(',').splice(1).map(x => {return {value:x}})))
                     }
