@@ -1,3 +1,6 @@
+# [v0.4.7-uat]  - 2022-07-22
+- [User:-Uat-fixes , samplesize feild number validation added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/79)
+
 # [v0.4.6-uat]  - 2022-07-21
 - [User:-sample size added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/78)
 
