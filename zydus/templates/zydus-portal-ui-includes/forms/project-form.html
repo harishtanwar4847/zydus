@@ -123,7 +123,8 @@
         <div class="col-12">
             <label>Sample Size</label>
             <input name="sample_size" class="form-control"
-                placeholder="Enter the market size" type ="number" pattern = "[0-9]">
+                placeholder="Enter the market size" type ="text" onkeypress="return onlyNumberKey(event)" >
+                <label id="samplesize-error" class="is-invalid" style="display:none;" for="sample_size">Enter only numeric value.</label>
         </div>
         <div class="col-12">
             <label> Business Problems </label>
@@ -160,3 +161,17 @@
         </div>
     </div>
 </form>
+<script>
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
+            // alert("Enter only numeric value")
+            $("#samplesize-error").show()
+            return false;
+        }
+        $("#samplesize-error").hide()    
+        return true;
+    }
+</script>
