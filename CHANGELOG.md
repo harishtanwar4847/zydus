@@ -1,3 +1,6 @@
+# [v0.4.8-uat]  - 2022-07-25
+- [card onclick view project/datasheet done in search tab](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/80)
+
 # [v0.4.7-uat]  - 2022-07-22
 - [User:-Uat-fixes , samplesize field number validation added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/79)
 
