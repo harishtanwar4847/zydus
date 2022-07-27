@@ -25,7 +25,8 @@ class Project(WebsiteGenerator):
 				file_ext=attachment['file_name']
 				attachment['ext']=file_ext.rsplit('.', 1)[1]
 				 
-			context['user']=frappe.get_user()
+			context['userinfo']=frappe.db.sql(""" select P.name,U.user_image,U.full_name from `tabUser` as U  left join `tabProject` as P on  U.name = P.owner where P.name = %s """,(self.name),as_dict=1,debug=1)
+		
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 
 	def before_submit(self):

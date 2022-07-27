@@ -49,14 +49,16 @@
                 </div>
               </div>
               <div class="col col-lg-5 col-md-12 col-12">
+                {% for data in userinfo %}
                 <div class="employee-details d-flex align-items-center user-profile">
                   <div class="profile-pic">
-                  <img src="{{ frappe.db.get_value('User','user_image') }}" alt="" class="img-fluid">
+                  <img src="{{ data.user_image}}" alt="" class="img-fluid">
                   </div>
                   <div class="upload-date-time">
-                    {{doc.owner}}
+                    {{data.full_name}}
                   </div>
                 </div>
+                {% endfor %}
                 <div class="upload-date-time text-start mt-3">
                   Uploaded on {{frappe.format_date(doc.modified)}}
                 </div>
@@ -158,7 +160,7 @@
             Delete
           </button>
           <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
-            type="button">
+            type="button" onclick="location.href">
             Edit
           </button>
           <button class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#saveModal"

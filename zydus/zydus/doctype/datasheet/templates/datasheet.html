@@ -48,28 +48,21 @@
               </div>
             </div>
             <div class="col col-lg-5 col-md-12 col-12">
+              {% for data in userinfo %}
               <div class="employee-details d-flex align-items-center user-profile">
                 <div class="profile-pic">
-                <img src="{{ frappe.db.get_value('User','user_image') }}" alt="" class="img-fluid">
+                <img src="{{ data.user_image}}" alt="" class="img-fluid">
                 </div>
                 <div class="upload-date-time">
-                  {{doc.owner}}
+                  {{data.full_name}}
                 </div>
               </div>
+              {% endfor %}
               <div class="upload-date-time text-start mt-3">
                 Uploaded on {{frappe.format_date(doc.modified)}}
               </div>
             </div>
           </div>
-          <!-- <h2 class="brand">{{doc.brand}}</h2> -->
-          <!-- <div class="d-flex align-items-start justify-content-between flex-column flex-md-row flex-lg-column flex-xl-row">
-            <h3 class="me-3 file-title">
-              {{doc.d_title}}
-            </h3>
-            <div class="upload-date-time">
-              Uploaded on {{frappe.format_date(doc.modified)}}
-            </div>
-          </div> -->
           <p>
             {% if description or "" | len > 0 %}
               {{doc.description}}
@@ -107,7 +100,7 @@
               </div>
             </div>
           </div>
-        </div>
+      </div>
         <div class="col-12 details">
           {% if business_problems | len > 0%}
           <label>Business Problems</label>
