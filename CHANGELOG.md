@@ -1,3 +1,6 @@
+# [v0.4.9-uat]  - 2022-07-28
+- [User UAT: maxlength 5 added in sample size field](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/81)
+
 # [v0.4.8-uat]  - 2022-07-25
 - [card onclick view project/datasheet done in search tab](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/80)
 
