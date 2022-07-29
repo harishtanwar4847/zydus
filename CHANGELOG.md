@@ -1,3 +1,6 @@
+# [v0.5.0-uat]  - 2022-07-29
+- [redirected to login page after update password done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/82)
+
 # [v0.4.9-uat]  - 2022-07-28
 - [User UAT: maxlength 5 added in sample size field](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/81)
 
