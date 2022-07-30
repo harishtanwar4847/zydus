@@ -1,0 +1,746 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Upload{% endblock %}
+{% block content%}
+<link rel="stylesheet" href="/assets/zydus/css/dropzone.min.css" type="text/css" />
+<link href="/assets/zydus/css/tagify.css" rel="stylesheet" />
+<div class="row upload">
+    <div class="col-lg-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5">
+        <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-link active" id="nav-project-link" data-bs-toggle="tab" href="#nav-project-content" role="tab"
+                aria-controls="nav-project" aria-selected="true">Upload Project</a>
+            <a class="nav-link" id="nav-data-link" data-bs-toggle="tab" href="#nav-data-content" role="tab"
+                aria-controls="nav-data" aria-selected="false">Upload Data Sheet</a>
+
+            <a class="nav-link" id="nav-saved-link" data-bs-toggle="tab" href="#nav-saved-content" role="tab"
+                aria-controls="nav-saved" aria-selected="false">Saved</a>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
+                aria-labelledby="nav-project-link">
+                {% set form = "upload-project" %}
+                {% include "templates/zydus-portal-ui-includes/forms/project-form.html" %}
+            </div>
+            <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
+                {% include "templates/zydus-portal-ui-includes/forms/datasheet-form.html" %}
+            </div>
+
+            <div class="tab-pane fade" id="nav-saved-content" role="tabpanel" aria-labelledby="nav-saved-link">
+                <div class="saved-nav-wrap">                    
+                    <ul class="nav nav-pills saved-nav">
+                        {% for saved in saved_projects %}
+                        <li class="nav-item">
+                            <a class="nav-link " onclick="loadSavedProject('{{saved.name}}', this);event.preventDefault()" data-project-id="{{saved.name}}" aria-current="page" href="#">{{saved.p_title}}({{saved.brand}})</a>
+                        </li>
+                        {% endfor %}
+                    </ul>                    
+                </div>
+               {% set form="upload-saved-project"%}
+               {% set saved = True  %}
+               {% include "templates/zydus-portal-ui-includes/forms/project-form.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Project Successfully Uploaded</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="saveModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Project Successfully Saved</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Project Successfully uploaded</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="datasheetModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" style="display: none;"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content bg-primary">
+            <div class="modal-body text-center">
+                <img src="/assets/zydus/images/modal_check.svg">
+                <div class="text-white mt-1">Datasheet Successfully Uploaded</div>
+                <div class="mt-4 d-flex flex-column modal-action-btns px-4">
+                    <button onclick="location.href = '/upload?saved'" class="btn btn-link text-white">Go to saved</button>
+                    <button onclick="location.href = '/upload'" class="btn btn-link text-white">Go to upload</button>
+                    <button onclick="location.href = '/home'" class="btn btn-link text-white">Go to home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/zydus/js/dropzone.min.js"></script>
+<script src="/assets/zydus/js/tagify.min.js"></script>
+<script src="/assets/zydus/js/tagify.polyfills.min.js"></script>
+<script src="/assets/zydus/js/jquery.validate.min.js" ></script>
+<script>
+    Dropzone.options.uploadProjectDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 100, // MB
+        url: '/api/method/upload_file',
+        addRemoveLinks: true,
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        },
+        init: function() {
+            console.log(this, 'init')
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
+        }
+    };
+
+    Dropzone.options.uploadDataSheetDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 100, // MB
+        url: '/api/method/upload_file',
+        addRemoveLinks: true,
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        },
+        init: function() {
+            console.log(this, 'init')
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
+        }
+    };
+
+    Dropzone.options.uploadSavedProjectDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 100, // MB
+        url: '/api/method/upload_file',
+        addRemoveLinks: true,
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        },
+        init: function() {
+            console.log(this, 'init')
+            this.on('removedfile', function(file) {
+                console.log(this, file, 'removed')
+                $('#upload-saved-project-form').append('<input name="remove_file[]" type="hidden" value="'+file.id+'">')
+            })
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
+        }
+    };
+    
+    // creating options for 25 years in the past
+    var currentYear = new Date().getFullYear()
+    for(var i = 2000; i <= currentYear; i++) {
+        $('select[name=year]').append('<option value="'+i+'">'+i+'</option>');
+    }
+
+    // populating brands
+    var brands = {{brands}}
+    for(var i = 0; i < brands.length; i++) {
+        var brand = brands[i]
+        $('select[name=brand]').append('<option value="'+brand+'">'+brand+'</option>')
+    }
+
+    // populating agencies
+    var agencies = {{agencies}}
+    for(var i = 0; i < agencies.length; i++) {
+        var agency = agencies[i]
+        $('select[name=agency]').append('<option value="'+agency+'">'+agency+'</option>')
+    }
+
+    // populating project_types
+    var project_types = {{project_types}}
+    for(var i = 0; i < project_types.length; i++) {
+        var project_type = project_types[i]
+        $('select[name=project_type]').append('<option value="'+project_type+'">'+project_type+'</option>')
+    }
+     
+    // populating data_types
+    var data_types = {{data_types}}
+    for(var i = 0; i < data_types.length; i++) {
+        var data_type = data_types[i]
+        $('select[name=data_type]').append('<option value="'+data_type+'">'+data_type+'</option>')
+    }
+
+    // tagify markets input
+    var input = document.querySelectorAll("[name=markets]");
+    if (typeof Tagify !== "undefined") {
+        input.forEach(x => {
+            new Tagify(x, {
+                whitelist : {{cities}},
+                dropdown: {
+                    maxItems: 20,           // <- mixumum allowed rendered suggestions
+                    classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+                    enabled: 0,             // <- show suggestions on focus
+                    closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+                },
+                enforceWhitelist: true
+            })
+        });
+    }
+     
+
+    // Jquery Validator Defaults
+    $.validator.setDefaults({
+        validClass: 'is-valid',
+        errorClass: 'is-invalid'
+    });
+
+    // Form validations
+    $('#upload-project-form').validate({
+        submitHandler: function(form) {
+            // making sure attachments are added
+            var dropzone = Dropzone.forElement('#upload-project-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            if($('#upload-project-form [name=workflow_state]').val() != "Saved" &&  uploaded_files.length == 0) {
+                alert('Files are mandatory')
+                return
+            }
+            var dataArr = $(form).serializeArray()
+            var obj = {}
+            dataArr.forEach(x => {
+                if(x.name == 'docstatus') {
+                    x.value = parseInt(x.value)
+                }
+                obj['workflow_state'] = 'Saved'
+                obj[x.name] = x.value
+                
+            })
+
+            // modifying markets json
+            var marketsArr = JSON.parse($('#upload-project-form [name=markets]').val() || '[]')
+            if(marketsArr.length > 0) {
+                var markets = marketsArr.map(x => x.value)
+                var markets_ = markets.map(x => {
+                    return {'city': x}
+                })
+                obj['markets'] = markets_
+            }
+            console.log(obj, markets_)
+
+            $.ajax({
+                url: '/api/resource/Project',
+                method: 'POST',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+            
+                    // adding tags to created document
+                    var tagsArr = JSON.parse($('#upload-project-form [data-type=tags]').val() || '[]')
+                    if(tagsArr.length > 0) {
+                        var tags = tagsArr.map(x => x.value)
+                        $.ajax({
+                            url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                            method: 'POST',
+                            async: false,
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            },
+                            data: {
+                                tags: JSON.stringify(tags),
+                                dt: 'Project',
+                                docs: JSON.stringify([res.data.name])
+                            }
+                        })
+                    }
+
+                    // adding attachments to created document
+                    var dropzone = Dropzone.forElement('#upload-project-dropzone')
+                    var uploaded_files = dropzone.getAcceptedFiles()
+                    var uploaded_file_names = uploaded_files.map(x => {
+                        // returning name of File Document created
+                        var a = JSON.parse(x.xhr.response)
+                        return a.message.name
+                    })
+                    $.ajax({
+                        url: '/api/method/frappe.utils.file_manager.add_attachments',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            doctype: 'Project',
+                            name: res.data.name,
+                            attachments: JSON.stringify(uploaded_file_names)
+                        }
+                    }) 
+                    if($('#upload-project-form [name=workflow_state]').val()=="Pending"){
+                        $.ajax({
+                            url: '/api/resource/Project/'+ res.data.name,
+                            method: 'PUT',
+                            async: false,
+                            data: JSON.stringify({workflow_state : "Pending"}),
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            }   
+                        })
+                    }
+                                 
+                    
+                    
+
+                    // form house keeping
+                    $('#upload-project-dropzone').trigger('reset')
+                    Dropzone.forElement('#upload-project-dropzone').removeAllFiles()
+
+                    // show modal
+                    if($('#upload-project-form [name=workflow_state]').val()=="Saved"){
+                        $('#saveModal').modal('show')
+                    }
+                    else {
+                        $('#successModal').modal('show')
+                    }
+  
+                    
+                }
+            })
+        }
+    })
+
+    function saveUploadForm(form_id) {
+        console.log(form_id, 'form_id')
+        // resetting form
+        $('#'+ form_id).validate().resetForm()
+        
+        // setting submit inputs as not required
+        $('#'+ form_id +' [name=month]').attr('required', false)
+        $('#'+ form_id +' [name=year]').attr('required', false)
+        $('#'+ form_id +' [name=agency]').attr('required', false)
+        $('#'+ form_id +' [name=project_type]').attr('required', false)
+        $('#'+ form_id +' [name=markets]').attr('required', false)
+        $('#'+ form_id +' [name=workflow_state]').val("Saved")
+
+        $('#'+ form_id).submit()
+    }
+
+    function submitUploadForm(form_id) {
+        // resetting form
+        $('#'+ form_id).validate().resetForm()
+        
+        // setting submit inputs as required
+        $('#'+ form_id +' [name=month]').attr('required', true)
+        $('#'+ form_id +' [name=year]').attr('required', true)
+        $('#'+ form_id +' [name=agency]').attr('required', true)
+        $('#'+ form_id +' [name=project_type]').attr('required', true)
+        $('#'+ form_id +' [name=markets]').attr('required', true)
+        $('#'+ form_id +' [name=workflow_state]').val("Pending")
+
+        $('#'+ form_id).submit()
+    }
+
+    $('#upload-datasheet-form').validate({
+        submitHandler: function(form) {
+            // making sure attachments are added
+            var dropzone = Dropzone.forElement('#upload-data-sheet-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            if(uploaded_files.length == 0) {
+                alert('Files are mandatory')
+                return
+            }
+
+            var dataArr = $(form).serializeArray()
+            var obj = {}
+            dataArr.forEach(x => {
+                if(x.name == 'docstatus') {
+                    x.value = parseInt(x.value)
+                }
+                obj[x.name] = x.value
+            })
+
+            $.ajax({
+                url: '/api/resource/Datasheet',
+                method: 'POST',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+
+                    // adding tags to created document
+                    var tagsArr = JSON.parse($('#upload-datasheet-form [data-type=tags]').val() || '[]')
+                    if(tagsArr.length > 0){
+                    var tags = tagsArr.map(x => x.value)
+                    $.ajax({
+                        url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            tags: JSON.stringify(tags),
+                            dt: 'Datasheet',
+                            docs: JSON.stringify([res.data.name])
+                        }
+                    })
+
+                }
+
+
+                    // adding attachments to created document
+                    var uploaded_file_names = uploaded_files.map(x => {
+                        // returning name of File Document created
+                        var a = JSON.parse(x.xhr.response)
+                        return a.message.name
+                    })
+                    $.ajax({
+                        url: '/api/method/frappe.utils.file_manager.add_attachments',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            doctype: 'Datasheet',
+                            name: res.data.name,
+                            attachments: JSON.stringify(uploaded_file_names)
+                        }
+                    })
+                    $.ajax({
+                        url: '/api/resource/Datasheet/'+ res.data.name,
+                        method: 'PUT',
+                        data: JSON.stringify({workflow_state : "Pending"}),
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        }   
+                    })
+
+                    
+
+                    // form house keeping
+                    $('#upload-data-sheet-dropzone').trigger('reset')
+                    Dropzone.forElement('#upload-data-sheet-dropzone').removeAllFiles()
+
+                    // show modal
+                    $('#datasheetModal').modal('show')
+                }
+            })
+        }
+    })
+
+    function submitDatasheetForm() {
+        
+        $('#upload-datasheet-form').validate().resetForm()
+        
+        // setting submit inputs as required
+        $('#upload-datasheet-form [name=agency]').attr('required', true)
+        $('#upload-datasheet-form [name=data_type]').attr('required',true)
+        $('#upload-datasheet-form [name=docstatus]').val(0)
+
+        $('#upload-datasheet-form').submit()
+    }
+    
+    function loadSavedProject(projectName, el){
+        $('.nav.nav-pills.saved-nav .nav-link.active').removeClass('active')
+        $('#upload-saved-project-dropzone .dz-preview.dz-complete.dz-image-preview').remove()
+        $('#upload-saved-project-form [name="remove_file[]"]').remove()
+        $('#upload-saved-project-form [name="added_file[]"]').remove()
+
+        $.ajax({
+                url: '/api/method/frappe.desk.form.load.getdoc',
+               
+                data: {
+                    doctype: 'Project',
+                    name: projectName
+                },
+                method: 'GET',
+                
+                success: function(res) {
+                    console.log(res)
+                    $(el).addClass('active')
+
+                    $('#upload-saved-project-form [name=brand]').val(res.docs[0].brand)
+                    $('#upload-saved-project-form [name=project_type]').val(res.docs[0].project_type)
+                    $('#upload-saved-project-form [name=agency]').val(res.docs[0].agency)
+                    $('#upload-saved-project-form [name=actions]').val(res.docs[0].actions)
+                    $('#upload-saved-project-form [name=business_problems]').val(res.docs[0].business_problems)
+                    $('#upload-saved-project-form [name=description]').val(res.docs[0].description)
+                    $('#upload-saved-project-form [name=learnings]').val(res.docs[0].learnings)
+                    $('#upload-saved-project-form [name=month]').val(res.docs[0].month)
+                    $('#upload-saved-project-form [name=name]').val(res.docs[0].name)
+                    $('#upload-saved-project-form [name=research_objectives]').val(res.docs[0].research_objectives)
+                    $('#upload-saved-project-form [name=result]').val(res.docs[0].result)
+                    $('#upload-saved-project-form [name=target_group]').val(res.docs[0].target_group)
+                    $('#upload-saved-project-form [name=p_title]').val(res.docs[0].p_title)
+                    $('#upload-saved-project-form [name=doctype]').val(res.docs[0].doctype)
+                    $('#upload-saved-project-form [name=workflow_state]').val(res.docs[0].workflow_state)
+                    $('#upload-saved-project-form [name=year]').val(res.docs[0].year)
+                    $('#upload-saved-project-form [name=sample_size]').val(res.docs[0].sample_size)
+                    if(res.docs[0]._user_tags) {
+                        $('#upload-saved-project-form [data-type=tags]').val(JSON.stringify(res.docs[0]._user_tags.split(',').splice(1).map(x => {return {value:x}})))
+                    }
+                    if(res.docs[0].markets.length > 0) {
+                        $('#upload-saved-project-form [name=markets]').val(JSON.stringify(res.docs[0].markets.map(x => {return {value:x.city}})))
+                    }
+
+                    res.docinfo.attachments.forEach(x => {
+                        var mockfile = {name: x.file_name, size: x.file_size, id: x.name, url: x.file_url}
+                        Dropzone.forElement('#upload-saved-project-dropzone').emit("addedfile", mockfile);
+                        Dropzone.forElement('#upload-saved-project-dropzone').emit("thumbnail", mockfile, x.file_url);
+                        Dropzone.forElement('#upload-saved-project-dropzone').emit("complete", mockfile);
+
+                        $('#upload-saved-project-form').append('<input name="added_file[]" type="hidden" value="'+x.id+'">')
+                    })
+
+                    $('#upload-saved-project-form').show()
+                }
+        })
+
+
+
+    }
+
+    $('#upload-saved-project-form').validate({
+        submitHandler: function(form) {
+            document.querySelectorAll('#upload-saved-project-form [name="remove_file[]"]').forEach(x => {
+                $.ajax({
+                    url: '/api/method/frappe.desk.form.utils.remove_attach',
+                    method: 'POST',
+                    data: {
+                        fid: x.value,
+                        dt: 'Project',
+                        dn: $('#upload-saved-project-form [name=name]').val()
+                    },
+                    headers: {
+                        'X-Frappe-CSRF-Token': frappe.csrf_token
+                    }
+                })
+                x.remove()
+            })
+
+            // making sure attachments are added
+            var dropzone = Dropzone.forElement('#upload-saved-project-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            document.querySelectorAll('#upload-saved-project-form [name="added_file[]"]').forEach(x => {
+                uploaded_files.push(x)
+            })
+            if($('#upload-saved-project-form [name=workflow_state]').val() != "Saved" &&  uploaded_files.length == 0) {
+                alert('Files are mandatory')
+                return
+            }
+            var dataArr = $(form).serializeArray()
+            var obj = {}
+            dataArr.forEach(x => {
+                if(x.name == 'workflow_state' && x.value == 'Saved') {
+                    return
+                }
+                if(x.name == 'docstatus') {
+                    x.value = parseInt(x.value)
+                }
+                if(x.name == 'name') {
+                    return
+                }
+                obj[x.name] = x.value
+            })
+
+            // modifying markets json
+            var marketsArr = JSON.parse($('#upload-saved-project-form [name=markets]').val() || '[]')
+            if(marketsArr.length > 0) {
+                var markets = marketsArr.map(x => x.value)
+                var markets_ = markets.map(x => {
+                    return {'city': x}
+                })
+                obj['markets'] = markets_
+            }
+            console.log(obj, markets_)
+
+            $.ajax({
+                url: '/api/resource/Project/' + $('#upload-saved-project-form [name=name]').val(),
+                method: 'PUT',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+            
+                    // adding tags to created document
+                    var tagsArr = JSON.parse($('#upload-saved-project-form [data-type=tags]').val() || '[]')
+                    if(tagsArr.length > 0) {
+                        var tags = tagsArr.map(x => x.value)
+                        $.ajax({
+                            url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+                            method: 'POST',
+                            async: false,
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            },
+                            data: {
+                                tags: JSON.stringify(tags),
+                                dt: 'Project',
+                                docs: JSON.stringify([res.data.name])
+                            }
+                        })
+                    }
+
+                    // adding attachments to created document
+                    var dropzone = Dropzone.forElement('#upload-saved-project-dropzone')
+                    var uploaded_files = dropzone.getAcceptedFiles()
+                    var uploaded_file_names = uploaded_files.map(x => {
+                        // returning name of File Document created
+                        var a = JSON.parse(x.xhr.response)
+                        return a.message.name
+                    })
+                    $.ajax({
+                        url: '/api/method/frappe.utils.file_manager.add_attachments',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            doctype: 'Project',
+                            name: res.data.name,
+                            attachments: JSON.stringify(uploaded_file_names)
+                        }
+                    }) 
+                    if($('#upload-saved-project-form [name=workflow_state]').val()=="Pending"){
+                        $.ajax({
+                            url: '/api/resource/Project/'+ res.data.name,
+                            method: 'PUT',
+                            async: false,
+                            data: JSON.stringify({workflow_state : "Pending"}),
+                            headers: {
+                                'X-Frappe-CSRF-Token': frappe.csrf_token
+                            }   
+                        })
+                    }
+                                 
+                    
+                    
+
+                    // form house keeping
+                    $('#upload-saved-project-dropzone').trigger('reset')
+                    Dropzone.forElement('#upload-saved-project-dropzone').removeAllFiles()
+
+                    // show modal
+                    if($('#upload-saved-project-form [name=workflow_state]').val()=="Saved"){
+                        $('#saveModal').modal('show')
+                    }
+                    else {
+                        $('#successModal').modal('show')
+                    }
+                    // $('#saveModal').modal('show')
+                }
+            })
+        }
+    })
+
+    setTimeout(function() {
+        // Sauce: https://stackoverflow.com/a/50147341/9403680
+        const params = Object.fromEntries(new URLSearchParams(location.search));
+        if(Object.keys(params).includes('saved')) {
+            document.querySelector('#nav-saved-link').click()
+
+            if(params.saved.length > 0) {
+                document.querySelector('[data-project-id="'+params.saved+'"]').click()
+            }
+        }
+    }, 500)
+    
+</script>
+{% endblock %}

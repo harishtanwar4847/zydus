@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <link rel="icon" type="image/png" href="/assets/zydus/images/favicon.png" />
+  <meta name="author" content="" />
+  <link href="/assets/zydus/css/bootstrap.min.css" rel="stylesheet" as="style" />
+  <link href="/assets/zydus/css/bootstrap-icons.css" rel="stylesheet" as="style" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet" as="style" />
+  <link href="/assets/zydus/css/zyduswellness.css" rel="stylesheet" as="style" />
+  <title>{% block title %}{% endblock %} - Zydus Wellness</title>
+
+  <!-- frappe stuff -->
+  <script>
+    window.frappe = {};
+    frappe.ready_events = [];
+    frappe.ready = function (fn) {
+      frappe.ready_events.push(fn);
+    }
+    window.dev_server = {{ dev_server }};
+    window.socketio_port = {{ (frappe.socketio_port or 'null') }};
+    window.show_language_picker = {{ show_language_picker }};
+    window.is_chat_enabled = {{ chat_enable }};
+  </script>
+  <!-- csrf_token -->
+</head>
+
+<body>
+  <script src="/assets/zydus/js/jquery.min.js"></script>
+  {% if access_allowed %}
+  <div class="page-wrapper" id="wrapper">
+    {% include "templates/zydus-portal-ui-includes/sidebar.html" %}
+
+    <div id="content-wrapper" class="main">
+      <div class="container-fluid">
+        {% include "templates/zydus-portal-ui-includes/navbar.html" %}
+        <div id="content">
+          {% block content%}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="login-page">
+    <div class="login-box partial-login-box">
+      <div class="text-center">
+        <img src="/assets/zydus/images/info-circle.svg" alt="">
+      </div>
+      {% if roles == ['Guest'] %}
+        <h1>Kindly login to access the portal</h1>
+        <button onclick="location.href = '/login'" class="btn btn-secondary w-100">Login</button>
+      {% else %}
+        <h1>Request for access sent to admin </h1>
+        <button onclick="logout()" class="btn btn-secondary w-100">Logout</button>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  <!-- frappe js -->
+  <script type="text/javascript" src="/assets/js/frappe-web.min.js?ver={{ build_version }}"></script>
+  <script src="/assets/zydus/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/zydus/js/zyduswellness.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.workflow_state == \"Pending\"",
+ "creation": "2022-06-21 16:23:26.120049",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Datasheet",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Add your message here",
+ "modified": "2022-06-21 16:23:26.120049",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Notification on datasheet approval",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "You successfully uploaded a datasheet {{ doc.d_title }}  for {{ doc.brand }}",
+ "value_changed": "workflow_state"
+}

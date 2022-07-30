@@ -1,0 +1,198 @@
+{
+ "actions": [],
+ "autoname": "format:P-{YYYY}-{MM}-{####}",
+ "creation": "2022-03-11 14:32:25.451219",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "brand",
+  "month",
+  "year",
+  "description",
+  "agency",
+  "project_type",
+  "target_group",
+  "markets",
+  "business_problems",
+  "research_objectives",
+  "p_title",
+  "result",
+  "learnings",
+  "actions",
+  "amended_from",
+  "route",
+  "is_approved",
+  "sample_size"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand",
+   "reqd": 1
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "agency",
+   "fieldtype": "Link",
+   "label": "Agency",
+   "options": "Agency"
+  },
+  {
+   "fieldname": "project_type",
+   "fieldtype": "Link",
+   "label": "Project type",
+   "options": "Project Type"
+  },
+  {
+   "fieldname": "target_group",
+   "fieldtype": "Text Editor",
+   "label": "Target Group"
+  },
+  {
+   "fieldname": "markets",
+   "fieldtype": "Table MultiSelect",
+   "label": "Markets",
+   "options": "Market"
+  },
+  {
+   "fieldname": "business_problems",
+   "fieldtype": "Text Editor",
+   "label": "Business Problems"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Text Editor",
+   "label": "Result"
+  },
+  {
+   "fieldname": "actions",
+   "fieldtype": "Text",
+   "label": "Actions"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Project",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "learnings",
+   "fieldtype": "Text Editor",
+   "label": "Learnings"
+  },
+  {
+   "fieldname": "research_objectives",
+   "fieldtype": "Text Editor",
+   "label": "Research objectives"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_approved",
+   "fieldtype": "Check",
+   "label": "Is Approved"
+  },
+  {
+   "fieldname": "p_title",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Int",
+   "label": "Sample Size"
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-07-22 11:52:15.914788",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Project",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "KMS Admin",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "KMS Uploader",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "KMS Downloader",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "route": "projects",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_views": 1
+}

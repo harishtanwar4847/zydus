@@ -1,0 +1,176 @@
+<form id="{{form}}-form" class="custom-form project-form" {% if saved %} style="display: none" {% endif %}>
+    <input type="hidden" name="workflow_state">
+    {% if saved %}
+    <input type="hidden" name="name">
+    {% endif %}
+    <input type="hidden" name="doctype" value="Project">
+    <div class="row gx-3 gy-3 mt-md-3">
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div class="dropzone" id="{{form}}-dropzone">
+                <span class="dz-message drop-zone__prompt">
+                    <img src="/assets/zydus/images/upload.svg">
+                    <div>Drop files for upload</div>
+                    <div>or</div>
+                    <u class="btn btn-link p-0">browse</u>
+                </span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-8">
+            <div
+                class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3">
+                <h2 class="title">Project Details</h2>
+                <div class="text-primary">
+                    <small class="me-2">
+                        **mandatory to fill to save
+                    </small>
+                    <small class="me-2"> *mandatory to fill to submit </small>
+                </div>
+            </div>
+            <div class="row gx-3 gy-3">
+                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                    <label>
+                        Brand
+                        <sup class="text-primary">**</sup>
+                    </label>
+                    <select name="brand" class="form-select" required>
+                        <option selected="" disabled="">
+                            Choose the brand name
+                        </option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                    <label>
+                        Project name
+                        <sup class="text-primary">**</sup>
+                    </label>
+                    <input name="p_title" class="form-control" placeholder="Enter the title of the project" required>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                    <label>
+                        Date of Project
+                        <sup>*</sup>
+                    </label>
+                    <div class="row gx-3 gy-3">
+                        <div class="col-6 col-xxl-8">
+                            <select name="month" class="form-select">
+                                <option selected disabled>Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-xxl-4">
+                            <select name="year" class="form-select">
+                                <option selected disabled value="0"> Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                    <label>
+                        Agency
+                        <sup class="text-primary"> * </sup>
+                    </label>
+                    <select name="agency" class="form-select">
+                        <option selected="" disabled="" value="">
+                            Choose the agency
+                        </option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                    <label>
+                        Project Type
+                        <sup>*</sup>
+                    </label>
+                    <select name="project_type" class="form-select">
+                        <option selected="" disabled="" value="">
+                            Choose the project type
+                        </option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                    <label> Tags </label>
+                    <input class="form-control" data-type="tags" placeholder="Add tags for the project">
+                </div>
+                <div class="col-12">
+                    <label>Description</label>
+                    <input name="description" class="form-control"
+                        placeholder="Enter one liner description of the project">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <label>Target Group</label>
+            <input name="target_group" class="form-control"
+                placeholder="Include demographic, usage and attitudinal target group">
+        </div>
+        <div class="col-12 col-md-6">
+            <label>
+                Markets
+                <sup class="text-primary">*</sup>
+            </label>
+            <input name="markets" data-type="tags-whitelisted" class="form-control" placeholder="Mention markets with sample sizes">
+        </div>
+        <div class="col-12">
+            <label>Sample Size</label>
+            <input name="sample_size" class="form-control" maxlength="5" placeholder="Enter the market size" type ="text" onkeypress="return onlyNumberKey(event)" >
+                <label id="samplesize-error" class="is-invalid" style="display:none;" for="sample_size">Enter only numeric value.</label>
+        </div>
+        <div class="col-12">
+            <label> Business Problems </label>
+            <input name="business_problems" class="form-control"
+                placeholder="Enter a short description of the business issue to be solved">
+        </div>
+        <div class="col-12">
+            <label> Research Objective </label>
+            <input name="research_objectives" class="form-control" placeholder="Mention what we need from the research">
+        </div>
+        <div class="col-12">
+            <label> Result </label>
+            <input name="result" class="form-control"
+                placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
+        </div>
+        <div class="col-12">
+            <label> Learnings </label>
+            <textarea name="learnings" class="form-control"
+                placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
+                rows="10"></textarea>
+        </div>
+        <div class="col-12">
+            <label> Actions </label>
+            <input name="actions" class="form-control"
+                placeholder="Mention the business decisions/actions taken basis insights from the study">
+        </div>
+        <div class="col-12 text-end action-btns mb-4">
+            <button class="btn btn-secondary me-2 px-3 py-2" type="button" onclick="saveUploadForm('{{form}}-form')">
+                Save for later
+            </button>
+            <button class="btn btn-primary" type="button" onclick="submitUploadForm('{{form}}-form')">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+<script>
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
+            // alert("Enter only numeric value")
+            $("#samplesize-error").show()
+            return false;
+        }
+        $("#samplesize-error").hide()    
+        return true;
+    }
+</script>

@@ -1,0 +1,26 @@
+<div class="search-result"  style="border-color: {{search_result.color}}">
+    <button onclick="toggleLikeB('{{search_result.doctype}}', '{{search_result.name}}', {% if search_result.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
+        <i class="bi {% if search_result.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if search_result.is_liked %}style="color: #000;"{% endif %}></i>
+    </button>
+    <h3 class="brand" onclick="location.href='/{{search_result.route}}';">{{search_result.brand}}</h3>
+    <div class="title" onclick="location.href='/{{search_result.route}}';">{{search_result.title}}</div>
+    <div class="type" onclick="location.href='/{{search_result.route}}';">{{search_result.type or ''}}</div>
+    <div class="agency" onclick="location.href='/{{search_result.route}}';">{{search_result.agency or ''}}</div>
+    <div class="subtitle-1" onclick="location.href='/{{search_result.route}}';">{{search_result.month_year}}</div>
+    <div class="subtitle-2" onclick="location.href='/{{search_result.route}}';">{{search_result.attachments | len}} {% if search_result.attachments | len > 1%} files {% else %} file {% endif %}</div>
+    <p>{{search_result.description or ''}}</p>
+
+    <button type="button" class="btn btn-link p-0 fav-button dropdown-toggle" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="/{{search_result.route}}">View</a></li>
+        <li>
+            <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
+            {% for file in search_result.attachments %}
+            <a href="{{file.file_url}}" download></a>
+            {% endfor %}
+        </li>
+    </ul>
+</div>

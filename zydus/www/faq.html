@@ -1,0 +1,43 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Home{% endblock %}
+{% block content%}
+<div class="row">
+    <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
+        style="max-height: calc(100vh - 63px); overflow: auto;">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="section-title">FAQs</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 ">
+                    <div class="accordion accordion-flush mt-4 mb-5" id="accordionFlush">
+                        {% for faq in faqs %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-{{faq.name}}" aria-expanded="false"
+                                    aria-controls="faq-{{faq.name}}">
+                                    {{faq.question}}
+                                </button>
+                            </h2>
+                            <div id="faq-{{faq.name}}" class="accordion-collapse collapse "
+                                aria-labelledby="faq-{{faq.name}}" data-bs-parent="#accordionFlush">
+                                <div class="accordion-body" style="text-align: justify;">
+                                   {{faq.answer}}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}

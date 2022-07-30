@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.workflow_state == \"Rejected\"",
+ "creation": "2022-06-21 17:15:03.118316",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Project",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Add your message here",
+ "modified": "2022-06-21 17:15:03.118316",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Admin rejected project",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Admin rejected project {{ doc.p_title }}  for {{ doc.brand }}",
+ "value_changed": "workflow_state"
+}
