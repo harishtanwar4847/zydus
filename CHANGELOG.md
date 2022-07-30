@@ -1,3 +1,4 @@
+# [v1.0.0] - 2022-07-30
 # [v0.5.0-uat]  - 2022-07-29
 - [redirected to login page after update password done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/82)
 
