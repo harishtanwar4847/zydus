@@ -1,3 +1,6 @@
+# [v0.5.0-dev]  - 2022-08-01
+-[In To do pending project display done , Reminders card fixed, view project profile pic and name done,Sample size field added in project,Approval tab pagination adjusted to left done,Approval tab grid done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/84}
+
 # [v0.4.9-dev]  - 2022-07-14
 -[Admin panel reminder tab completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/76}
 
