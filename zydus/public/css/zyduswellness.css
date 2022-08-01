@@ -771,6 +771,31 @@ body {
   font-weight: 600;
   border-bottom: 3px solid #C7121D !important;
 }
+
+element.style {
+}
+.small, small {
+    font-size: .875em;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+small {
+    font-size: smaller;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+.text-primary {
+    color: rgba(0, 156, 164, 0.5) !important;
+}
+.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important;
+}
+
 /**** End :: Common ****/
 /**** Start :: Utils ****/
 .px-50 {
@@ -963,6 +988,7 @@ body {
   text-align: right;
   text-transform: lowercase;
   color: #127846;
+  text-align: center;
 }
 .text-rejected{
   font-style: italic;
@@ -1134,10 +1160,11 @@ color: rgba(0, 156, 164, 0.5);
   padding: 5px 15px 5px 15px;
   border-radius: 8px;
   border-left: 10px solid black;
-  display: flex;
   justify-content: space-between;
   vertical-align: middle;
   margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 30px 3fr 3fr 3fr 2fr 2fr 1fr 2fr 60px 65px;
 }
 .approval .dropdown-item {
   text-align: center;
@@ -1407,6 +1434,11 @@ color: rgba(0, 156, 164, 0.5);
     rgba(216, 72, 72, 0.25) 0%,
     rgba(216, 72, 72, 0) 100%
   );
+}
+
+.inline1 {
+  position: absolute;
+  right:0;
 }
 .reminder .dropdown-toggle {
   white-space: normal;
