@@ -979,6 +979,7 @@ li {
   text-align: right;
   text-transform: lowercase;
   color: #E4BB07;
+  text-align: center;
 }
 .text-approved{
   font-style: italic;
@@ -998,6 +999,7 @@ li {
   text-align: right;
   text-transform: lowercase;
   color: #C7121D;
+  text-align: center;
 }
 .text-mandatory{
   font-style: normal;
