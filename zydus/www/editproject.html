@@ -1,0 +1,380 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Editproject{% endblock %}
+{% block content%}
+
+<div class="row">
+  <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <div class="d-flex aling-items-baseline">
+        <a  href="/home" class="btn ps-0 btn-link view-all-link me-1">
+          <i class="bi bi-chevron-left"></i>
+          back
+        </a>
+      </div>
+    </div>
+    <div class="file-contet" style="border-color: {{color}};">
+      </div>
+<div class="row ">
+  <div class="col-lg-12 ">
+   
+    <div class="tab-content" id="nav-tabContent">
+      <div
+      class="tab-pane fade show active"
+      id="nav-project-content"
+      role="tabpanel"
+      aria-labelledby="nav-project-link"
+      >
+      <form class="custom-form project-form">
+        <div class="row gx-3 gy-3 mt-md-3">
+          <div class="col-12 col-lg-6 col-xl-4">
+            <div class="">
+              <div class="file-list-wrapper">
+                <div class="file-list">
+                  <div class="file-list-item">
+                    <img
+                    src="./assets/zydus/images/pdf.png"
+                    class="img-fluid"
+                    />
+                    <span class="file-name">name.pdf</span>
+                    <button class="btn btn-link">view</button>
+                    <button class="btn btn-link p-0">
+                      <img
+                      src="./assets/zydus/images/download.svg"
+                      class="img-fluid"
+                      />
+                    </button>
+                  </div>
+                  <div>
+                    <small class="text-muted">
+                      <i class="bi bi-plus-lg me-1"></i>drag or
+                      <a href="#" class="text-primary">browse</a>
+                      another document</small
+                      >
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+              <div class="d-flex justify-content-end py-5">
+                <button
+              class=" btn btn-secondary me-2 px-3 py-2"
+              type="button"
+              style="margin-top: 275px;"
+              >
+              Download All
+            </button>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-8">
+              <div
+              class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3"
+              >
+              <h2 class="title">Project Details</h2>
+              <div class="text-pending">{{doc.workflow_state}}</div>
+              <div class="text-primary">
+                <!-- <small class="me-2">
+                  **mandatory to fill to save
+                </small> -->
+                <small class="me-2"> **mandatory to fill to save   *mandatory to fill to submit </small>
+              </div>
+            </div>
+            <div class="row gx-3 gy-3">
+              <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                <label>
+                  Brand
+                  <sup class="text-primary">**</sup>
+                </label>
+                <select name="brand" class="form-select" required>
+                  <option selected="" disabled="">
+                    Choose the brand name
+                  </option>
+                  {% for brand in brands %}
+                  <option value="{{brand}}" {% if doc.brand==brand %} selected {% endif %}>{{brand}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                <label >
+                  Project name
+                  <sup class="text-primary">**</sup>
+                </label>
+                <input name="p_title" class="form-control" placeholder="Enter the title of the project"
+                value="{{doc.p_title}}" required>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                <label>
+                  Uploaded By
+                  
+                </label>
+                <div class="employee-details d-flex align-items-center  user-profile">
+                  <div class="profile-pic"><img src="{{image}}" alt="" class="img-fluid"></div>
+                  <div class="upload-date-time">
+                    {{username}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                <label>
+                  Uploaded On
+                  
+                </label>
+                <div class="upload-date-time text-start mt-2">
+                  {{frappe.format_date(doc.creation)}}
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                <label>
+                  Date of Project
+                  <sup>*</sup>
+                </label>
+                <div class="row gx-3 gy-3">
+                  <div class="col-6 col-xxl-8">
+                    <select name="month" class="form-select">
+                      <option selected disabled>Month</option>
+                      <option {% if doc.month=="January" %} selected {% endif %} value="January">January</option>
+                      <option {% if doc.month=="February" %} selected {% endif %} value="February">February</option>
+                      <option {% if doc.month=="March" %} selected {% endif %} value="March">March</option>
+                      <option {% if doc.month=="April" %} selected {% endif %} value="April">April</option>
+                      <option {% if doc.month=="May" %} selected {% endif %} value="May">May</option>
+                      <option {% if doc.month=="June" %} selected {% endif %} value="June">June</option>
+                      <option {% if doc.month=="July" %} selected {% endif %} value="July">July</option>
+                      <option {% if doc.month=="August" %} selected {% endif %} value="August">August</option>
+                      <option {% if doc.month=="September" %} selected {% endif %} value="September">September</option>
+                      <option {% if doc.month=="October" %} selected {% endif %} value="October">October</option>
+                      <option {% if doc.month=="November" %} selected {% endif %} value="November">November</option>
+                      <option {% if doc.month=="December" %} selected {% endif %} value="December">December</option>
+                    </select>
+                  </div>
+                  <div class="col-6 col-xxl-4">
+                    <select id="year" name="year" class="form-select">
+                      <option selected disabled value="0"> Year</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                <label>
+                  Agency
+                  <sup class="text-primary"> * </sup>
+                </label>
+                <select name="agency" class="form-select">
+                  <option selected="" disabled="" value="">
+                    Choose the agency
+                  </option>
+                  {% for agency in agencies %}
+                  <option value="{{agency}}" {% if doc.agency==agency %} selected {% endif %}>{{agency}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                <label>
+                  Project Type
+                  <sup>*</sup>
+                </label>
+                <select name="project_type" class="form-select">
+                  <option selected="" disabled="" value="">
+                    Choose the project type
+                  </option>
+                  {% for project_type in project_types %}
+                  <option value="{{project_type}}" {% if doc.project_type==project_type %} selected {% endif %}>
+                    {{project_type}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                <label> Tags </label>
+                <input
+                class="form-control" data-type="tags" placeholder="Add tags for the project"/>
+              </div>
+              <div class="col-12">
+                <label>Description</label>
+                <input name="description" class="form-control" value="{{doc.description}}"
+                placeholder="Enter one liner description of the project">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label>Target Group</label>
+            <input name="target_group" class="form-control" value="{{doc.target_group}}"
+            placeholder="Include demographic, usage and attitudinal target group">
+          </div>
+          <div class="col-12 col-md-6">
+            <label>
+              Markets
+              <sup class="text-primary">*</sup>
+            </label>
+            <input name="markets" values="" data-type="tags-whitelisted" class="form-control" placeholder="Mention markets with sample sizes" value='A,B,C,D'>
+          </div>
+          <div class="col-12">
+            <label>Sample Size</label>
+            <input value="{{doc.sample_size}}" name="sample_size" class="form-control" maxlength="5"
+              placeholder="Enter the market size" type="text" onkeypress="return onlyNumberKey(event)">
+            <label id="samplesize-error" class="is-invalid" style="display:none;" for="sample_size">Enter only
+              numeric value.</label>
+          </div>
+          <div class="col-12">
+            <label> Business Problems </label>
+            <input value="{{doc.business_problems}}" name="business_problems" class="form-control"
+            placeholder="Enter a short description of the business issue to be solved">
+          </div>
+          <div class="col-12">
+            <label> Research Objective </label>
+            <input value="{{doc.research_objectives}}" name="research_objectives" class="form-control"
+            placeholder="Mention what we need from the research">
+          </div>
+          <div class="col-12">
+            <label> Result </label>
+            <input name="result" class="form-control" value="{{doc.result}}"
+            placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
+          </div>
+          <div class="col-12">
+            <label> Learnings </label>
+            <textarea
+            class="form-control"
+            placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
+            rows="10"
+            >{{doc.learnings}}</textarea>
+          </div>
+          <div class="col-12">
+            <label> Actions </label>
+            <input name="actions" class="form-control" value="{{doc.actions}}"
+            placeholder="Mention the business decisions/actions taken basis insights from the study">
+          </div>
+          <div class="col-5">
+
+          </div>
+          <div class="col-7">
+            <label> Comments </label>
+            <textarea
+            class="form-control"
+            placeholder="Add a comment here"
+            rows="6"
+            ></textarea>
+            </div>
+          <div class="col-12 text-end action-btns mt-5 mb-4">
+            <button
+            class="btn btn-primary-2  px-3 py-2"
+            data-bs-toggle="modal"
+            data-bs-target="#saveModal"
+            type="button"
+            >
+            Cancel
+          </button>
+          <button
+          class="btn btn-secondary-2  px-3 py-2"
+          data-bs-toggle="modal"
+          data-bs-target="#successModal"
+          type="button"
+          >
+          Save Changes
+        </button>
+        <button
+        class="btn btn-primary-red px-3 py-2"
+        data-bs-toggle="modal"
+        data-bs-target="#saveModal"
+        type="button"
+        >
+        Reject
+      </button>
+      <button
+      class="btn btn-primary-green  px-3 py-2"
+      data-bs-toggle="modal"
+      data-bs-target="#successModal"
+      type="button"
+      >
+      Approve
+    </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div
+class="tab-pane fade"
+id="nav-data-content"
+role="tabpanel"
+aria-labelledby="nav-data-link"
+>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+              
+<script src="./assets/zydus/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/zydus/js/tagify.min.js"></script>
+<script src="./assets/zydus/js/tagify.polyfills.min.js"></script>
+<script src="./assets/zydus/js/jquery.min.js"></script>
+<script src="./assets/zydus/js/zyduswellness.js"></script>
+<script>
+
+  // creating options for 25 years in the past
+  var currentYear = new Date().getFullYear();
+  var edityear = {{ doc.year }};
+  var selectedStr = "";
+  for (var i = 2000; i <= currentYear; i++) {
+    $('select[name=year]').append('<option value="' + i + '">' + i + '</option>');
+  }
+  document.getElementById("year").value = edityear
+
+    //         // tagify markets input
+    //         var input = document.querySelectorAll("input[name=markets]");
+    //         console.log({{cities}})
+    //         if (typeof Tagify !== "undefined") {
+    //           input.forEach(x => {
+    //             new Tagify(x, {
+    //               whitelist: {{ cities }},  
+    //             dropdown: {
+    //             maxItems: 20,           // <- mixumum allowed rendered suggestions
+    //             classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+    //             enabled: 0,             // <- show suggestions on focus
+    //             closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+    //           },
+    //             enforceWhitelist: true
+    //         })
+    //     });
+    // }
+    var input = document.querySelector('input[name=markets]');
+    alert(input)
+    // init Tagify script on the above inputs
+    new Tagify(input, {
+        whitelist : ["A# .NET", "A# (Axiom)", "A-0 System", "A+", "A++", "ABAP", "ABC", "ABC ALGOL", "ABSET", "ABSYS", "ACC", "Accent", "Ace DASL", "ACL2", "Avicsoft", "ACT-III", "Action!", "ActionScript", "Ada", "Adenine", "Agda", "Agilent VEE", "Agora", "AIMMS", "Alef", "ALF", "ALGOL 58", "ALGOL 60", "ALGOL 68", "ALGOL W", "Alice", "Alma-0", "AmbientTalk", "Amiga E", "AMOS", "AMPL", "Apex (Salesforce.com)", "APL", "AppleScript", "Arc", "ARexx", "Argus", "AspectJ", "Assembly language", "ATS", "Ateji PX", "AutoHotkey", "Autocoder", "AutoIt", "AutoLISP / Visual LISP", "Averest", "AWK", "Axum", "Active Server Pages", "ASP.NET", "B", "Babbage", "Bash", "BASIC", "bc", "BCPL", "BeanShell", "Batch (Windows/Dos)", "Bertrand", "BETA", "Bigwig", "Bistro", "BitC", "BLISS", "Blockly", "BlooP", "Blue", "Boo", "Boomerang", "Bourne shell (including bash and ksh)", "BREW", "BPEL", "B", "C--", "C++ – ISO/IEC 14882", "C# – ISO/IEC 23270", "C/AL", "Caché ObjectScript", "C Shell", "Caml", "Cayenne", "CDuce", "Cecil", "Cesil", "Céu", "Ceylon", "CFEngine", "CFML", "Cg", "Ch", "Chapel", "Charity", "Charm", "Chef", "CHILL", "CHIP-8", "chomski", "ChucK", "CICS", "Cilk", "Citrine (programming language)", "CL (IBM)", "Claire", "Clarion", "Clean", "Clipper", "CLIPS", "CLIST", "Clojure", "CLU", "CMS-2", "COBOL – ISO/IEC 1989", "CobolScript – COBOL Scripting language", "Cobra", "CODE", "CoffeeScript", "ColdFusion", "COMAL", "Combined Programming Language (CPL)", "COMIT", "Common Intermediate Language (CIL)", "Common Lisp (also known as CL)", "COMPASS", "Component Pascal", "Constraint Handling Rules (CHR)", "COMTRAN", "Converge", "Cool", "Coq", "Coral 66", "Corn", "CorVision", "COWSEL", "CPL", "CPL", "Cryptol", "csh", "Csound", "CSP", "CUDA", "Curl", "Curry", "Cybil", "Cyclone", "Cython", "Java", "Javascript", "M2001", "M4", "M#", "Machine code", "MAD (Michigan Algorithm Decoder)", "MAD/I", "Magik", "Magma", "make", "Maple", "MAPPER now part of BIS", "MARK-IV now VISION:BUILDER", "Mary", "MASM Microsoft Assembly x86", "MATH-MATIC", "Mathematica", "MATLAB", "Maxima (see also Macsyma)", "Max (Max Msp – Graphical Programming Environment)", "Maya (MEL)", "MDL", "Mercury", "Mesa", "Metafont", "Microcode", "MicroScript", "MIIS", "Milk (programming language)", "MIMIC", "Mirah", "Miranda", "MIVA Script", "ML", "Model 204", "Modelica", "Modula", "Modula-2", "Modula-3", "Mohol", "MOO", "Mortran", "Mouse", "MPD", "Mathcad", "MSIL – deprecated name for CIL", "MSL", "MUMPS", "Mystic Programming L"],
+        dropdown: {
+            position: "manual",
+            maxItems: Infinity,
+            enabled: 0,
+            classname: "customSuggestionsList"
+        },
+        enforceWhitelist: true
+    })
+
+
+</script>
+          <!-- <script>
+            function Editproject(projectName) {
+              $.ajax({
+                url: '/api/method/frappe.desk.form.load.getdoc',
+
+                data: {
+                  doctype: 'Project',
+                  name: projectName
+                },
+                method: 'GET',
+
+                success: function (res) {
+                  console.log(res)
+
+                }
+              })
+
+
+
+            }
+
+          </script> -->
+
+          {% endblock %}

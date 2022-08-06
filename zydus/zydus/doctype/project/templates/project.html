@@ -1,7 +1,7 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Project{% endblock %}
 {% block content%}
-
+<form id="project-form">
 <div class="row">
   <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
     style="max-height: unset; overflow: auto;">
@@ -166,15 +166,15 @@
             Delete
           </button>
           <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
-            type="button" onclick="location.href">
+            type="button" onclick="location.href='/editproject?edit={{doc.name}}'" data-project-id="">
             Edit
           </button>
-          <button class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#saveModal"
+          <button id="rejectedProject" class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#saveModal"
             type="button">
             Reject
           </button>
-          <button class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
-            data-bs-target="#successModal" type="button">
+          <button id="approvedProject" class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
+            data-bs-target="#successModal" type="button" {% if doc.workflow_state == "Approved" %} disabled {% endif %}>
             Approve
           </button>
         </div>
@@ -182,6 +182,7 @@
     </div>
   </div>
 </div>
+</form>
 <script>
   $.ajax({
     url: '/api/method/frappe.desk.form.load.getdoc',
@@ -192,5 +193,58 @@
     },
     method: 'GET'
   })
+
+
+  $("#approvedProject").click(function(){
+        $.ajax({
+            url: '/api/resource/Project/{{name}}',
+            method: 'PUT',
+            async: false,
+            data: JSON.stringify({workflow_state : "Approved"}),
+            headers: {
+                'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+          success:function(res){
+            location.reload()
+            // $('#project-form [name=workflow_state]').val("Approved");
+
+          }
+        })
+    }
+  )
+
+
+   $("#rejectedProject").click(function(){
+        $.ajax({
+            url: '/api/resource/Project/{{name}}',
+            method: 'PUT',
+            async: false,
+            data: JSON.stringify({workflow_state : "Rejected"}),
+            headers: {
+                'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+          success:function(res){
+            location.reload()
+          }
+        })
+    }
+  )
+
+  $("#approvedProject").click(function(){
+        $.ajax({
+            url: '/api/resource/Project/{{name}}',
+            method: 'PUT',
+            async: false,
+            data: JSON.stringify({workflow_state : "Approved"}),
+            headers: {
+                'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+          success:function(res){
+            location.reload()
+          }
+        })
+    }
+  )
 </script>
+
 {% endblock %}
