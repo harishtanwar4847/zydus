@@ -3,8 +3,6 @@ import frappe
 from frappe.utils import pretty_date, now, add_to_date
 
 def get_context(context): 
-    # context.doc._user_tags= context.doc._user_tags.split(",")
-    # print(context.doc._user_tags)
     context['no_cache'] = 1
     context['roles'] =  frappe.get_roles(frappe.session.user)
     context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
@@ -14,9 +12,13 @@ def get_context(context):
 
     if context['access_allowed']:
         context.doc=frappe.get_doc("Project",frappe.form_dict.edit)
+        context.user_tag=str(context.doc._user_tags).split(",")[1:]
+        context.market=[i.city for i in context.doc.markets]
         context.color=frappe.get_value("Brand",{"name":context.doc.brand},"color")
         context.username=frappe.get_value("User",{"email":context.doc.owner},"full_name")
+        print( context.username)
         context.image=frappe.get_value("User",{"email":context.doc.owner},"user_image")
+        print( context.image)
         context['brands'] = [brand.name for brand in frappe.get_all('Brand')]
         context['agencies'] = [agency.name for agency in frappe.get_all('Agency')]
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
