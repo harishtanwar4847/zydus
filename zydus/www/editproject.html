@@ -22,7 +22,7 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
             aria-labelledby="nav-project-link">
-            <form class="custom-form project-form" id="edit-project-form">
+            <forRm class="custom-form project-form" id="edit-project-form">
               <div class="row gx-3 gy-3 mt-md-3">
                 <div class="col-12 col-lg-6 col-xl-4">
                   <div class="">
@@ -38,19 +38,35 @@
                           </a>
                         </div>
                         {% endfor %}
-                        <div>
+                        
+                          <div class="dropzone dropzone1" id="save-project-dropzone" style= "min-height:10px">
+                              <span class="dz-message drop-zone__prompt">
+                                <small class="text-muted">
+                                  <i class="bi bi-plus-lg me-1"></i>drag or
+                                  <u class="btn btn-link p-0" >browse</u>
+                                  another document
+                                  </small>
+                              </span>
+                          </div>
+                      
+                        <!-- <div class="dropzone" id="save-project-dropzone">
                           <small class="text-muted">
                             <i class="bi bi-plus-lg me-1"></i>drag or
-                            <u class="btn btn-link p-0">browse</u>
-                            another document</small>
-                        </div>
+                            <a href="#" class="text-primary">browse</a>
+                            another document
+                          </small>
+                        </div> -->
+                      </div>
+                      <div class="d-flex justify-content-end py-5">
+                        <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" type="button" style="margin-top: 50px;"
+                          class="btn btn-lg btn-secondary me-2 px-3 py-2">Download All</button>
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-end py-5">
-                    <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" type="button" style="margin-top: 240px;"
+                  <!-- <div class="d-flex justify-content-end py-5">
+                    <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" type="button" style="margin-top: 50px;"
                       class="btn btn-lg btn-secondary me-2 px-3 py-2">Download All</button>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-12 col-lg-6 col-xl-8">
                   <div
@@ -254,7 +270,7 @@
                   </button>
                 </div>
               </div>
-            </form>
+            </forRm>
           </div>
           <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
 
@@ -274,7 +290,7 @@
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
             onclick="location.reload()">Cancel</button>
-          <button class="btn btn-link text-white" style="border-bottom: none;" id="saveChanges">Save</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="saveChanges">Yes</button>
         </div>
       </div>
     </div>
@@ -326,7 +342,7 @@
   </div>
 </div>
 
-
+<script src="/assets/zydus/js/dropzone.min.js"></script>
 <script src="./assets/zydus/js/bootstrap.bundle.min.js"></script>
 <script src="./assets/zydus/js/tagify.min.js"></script>
 <script src="./assets/zydus/js/tagify.polyfills.min.js"></script>
@@ -353,7 +369,7 @@
     input.forEach(x => {
       new Tagify(x, {
         whitelist: {{ cities }},
-      dropdown: {
+      dropdown :{
       maxItems: 20,           // <- mixumum allowed rendered suggestions
       classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
       enabled: 0,             // <- show suggestions on focus
@@ -364,6 +380,47 @@
         });
     }
 
+        Dropzone.options.saveProjectDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 50, // MB
+        url: '/api/method/upload_file',
+        addRemoveLinks: true,
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        },
+        init: function() {
+            console.log(this, 'init')
+            this.on('removedfile', function(file) {
+                console.log(this, file, 'removed')
+                $('#edit-project-form').append('<input name="remove_file[]" type="hidden" value="'+file.id+'">')
+            })
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
+        }
+    };
 
     
   $("#saveChanges").click(function () {
@@ -385,7 +442,12 @@
       "sample_size": document.getElementById("sample_size").value,
 
     }
-   
+    var dropzone = Dropzone.forElement('#save-project-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            // if($('#edit-project-form [name=workflow_state]').val() != "Saved" &&  uploaded_files.length == 0) {
+            //     alert('Files are mandatory')
+            //     return
+            // }
             
     var marketsArr = JSON.parse(document.getElementById("markets").value || '[]')
     if (marketsArr.length > 0) {
@@ -424,6 +486,30 @@
             }
           })
         }
+        // adding attachments to created document
+        var dropzone = Dropzone.forElement('#save-project-dropzone')
+                    var uploaded_files = dropzone.getAcceptedFiles()
+                    var uploaded_file_names = uploaded_files.map(x => {
+                        // returning name of File Document created
+                        var a = JSON.parse(x.xhr.response)
+                        return a.message.name
+                    })
+                    $.ajax({
+                        url: '/api/method/frappe.utils.file_manager.add_attachments',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            doctype: 'Project',
+                            name: res.data.name,
+                            attachments: JSON.stringify(uploaded_file_names)
+                        }
+                      })
+                      // form house keeping
+                    $('#save-project-dropzone').trigger('reset')
+                    Dropzone.forElement('#save-project-dropzone').removeAllFiles()
          
         location.reload()
 
