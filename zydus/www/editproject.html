@@ -28,28 +28,28 @@
                   <div class="">
                     <div class="file-list-wrapper">
                       <div class="file-list">
+                        {% for file in attachments %}
                         <div class="file-list-item">
-                          <img src="./assets/zydus/images/pdf.png" class="img-fluid" />
-                          <span class="file-name">name.pdf</span>
-                          <button class="btn btn-link">view</button>
-                          <button class="btn btn-link p-0">
-                            <img src="./assets/zydus/images/download.svg" class="img-fluid" />
-                          </button>
+                          <img src="/assets/zydus/images/file-ext/{{file['ext']}}.png" class="img-fluid">
+                          <span class="file-name">{{file.file_name}}</span>
+                          <a href="{{file.file_url}}" target="_blank" class="btn btn-link">view</a>
+                          <a href="{{file.file_url}}" download class="btn btn-link p-0">
+                            <img src="/assets/zydus/images/download.svg" class="img-fluid">
+                          </a>
                         </div>
+                        {% endfor %}
                         <div>
                           <small class="text-muted">
                             <i class="bi bi-plus-lg me-1"></i>drag or
-                            <a href="#" class="text-primary">browse</a>
+                            <u class="btn btn-link p-0">browse</u>
                             another document</small>
                         </div>
                       </div>
                     </div>
                   </div>
-
                   <div class="d-flex justify-content-end py-5">
-                    <button class=" btn btn-secondary me-2 px-3 py-2" type="button" style="margin-top: 275px;">
-                      Download All
-                    </button>
+                    <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" type="button" style="margin-top: 240px;"
+                      class="btn btn-lg btn-secondary me-2 px-3 py-2">Download All</button>
                   </div>
                 </div>
                 <div class="col-12 col-lg-6 col-xl-8">
@@ -58,9 +58,6 @@
                     <h2 class="title">Project Details</h2>
                     <div class="text-pending">{{doc.workflow_state}}</div>
                     <div class="text-primary">
-                      <!-- <small class="me-2">
-                  **mandatory to fill to save
-                </small> -->
                       <small class="me-2"> **mandatory to fill to save *mandatory to fill to submit </small>
                     </div>
                   </div>
@@ -84,8 +81,8 @@
                         Project name
                         <sup class="text-primary">**</sup>
                       </label>
-                      <input name="p_title" id="p_title" class="form-control" placeholder="Enter the title of the project"
-                        value="{{doc.p_title}}" required>
+                      <input name="p_title" id="p_title" class="form-control"
+                        placeholder="Enter the title of the project" value="{{doc.p_title}}" required>
                     </div>
                     <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                       <label>
@@ -174,7 +171,7 @@
                     </div>
                     <div class="col-12 col-md-6 col-lg-12 col-xl-7">
                       <label> Tags </label>
-                      <input class="form-control" value="" name="tags" data-type="tags"
+                      <input class="form-control" value="" name="tags" id="tags" data-type="tags"
                         placeholder="Add tags for the project" />
                     </div>
                     <div class="col-12">
@@ -194,25 +191,26 @@
                     Markets
                     <sup class="text-primary">*</sup>
                   </label>
-                  <input name="markets" value="" data-type="tags-whitelisted" class="form-control"
+                  <input name="markets" value="" id="markets" data-type="tags-whitelisted" class="form-control"
                     placeholder="Mention markets with sample sizes">
                 </div>
                 <div class="col-12">
                   <label>Sample Size</label>
-                  <input value="{{doc.sample_size}}" id="sample_size" name="sample_size" class="form-control" maxlength="5"
-                    placeholder="Enter the market size" type="text" onkeypress="return onlyNumberKey(event)">
+                  <input value="{{doc.sample_size}}" id="sample_size" name="sample_size" class="form-control"
+                    maxlength="5" placeholder="Enter the market size" type="text"
+                    onkeypress="return onlyNumberKey(event)">
                   <label id="samplesize-error" class="is-invalid" style="display:none;" for="sample_size">Enter only
                     numeric value.</label>
                 </div>
                 <div class="col-12">
                   <label> Business Problems </label>
-                  <input value="{{doc.business_problems}}" id="business_problems" name="business_problems" class="form-control"
-                    placeholder="Enter a short description of the business issue to be solved">
+                  <input value="{{doc.business_problems}}" id="business_problems" name="business_problems"
+                    class="form-control" placeholder="Enter a short description of the business issue to be solved">
                 </div>
                 <div class="col-12">
                   <label> Research Objective </label>
-                  <input value="{{doc.research_objectives}}" id="research_objectives" name="research_objectives" class="form-control"
-                    placeholder="Mention what we need from the research">
+                  <input value="{{doc.research_objectives}}" id="research_objectives" name="research_objectives"
+                    class="form-control" placeholder="Mention what we need from the research">
                 </div>
                 <div class="col-12">
                   <label> Result </label>
@@ -243,19 +241,20 @@
                     Cancel
                   </button>
                   <button class="btn btn-secondary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModal"
-                    type="button" >
+                    type="button">
                     Save Changes
                   </button>
-                  <button class="btn btn-primary-red px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalReject"
-                    type="button">
+                  <button class="btn btn-primary-red px-3 py-2" data-bs-toggle="modal"
+                    data-bs-target="#successModalReject" type="button">
                     Reject
                   </button>
-                  <button class="btn btn-primary-green  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalApprove"
-                    type="button">
+                  <button class="btn btn-primary-green  px-3 py-2" data-bs-toggle="modal"
+                    data-bs-target="#successModalApprove" type="button">
                     Approve
                   </button>
                 </div>
               </div>
+            </form>
           </div>
           <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
 
@@ -266,87 +265,65 @@
     </div>
   </div>
 </div>
-</form>
-</div>
-<div
-class="modal fade"
-id="successModal"
-tabindex="-1"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-sm modal-dialog-centered">
-  <div class="modal-content bg-primary">
-    <div class="modal-body ">
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
 
-      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to make the changes?</div>
-      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
-        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
-        <button class="btn btn-link text-white" style="border-bottom: none;" id="saveChanges">Edit</button>
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to make the changes?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="saveChanges">Save</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div
-class="modal fade"
-id="successModalApprove"
-tabindex="-1"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-sm modal-dialog-centered">
-  <div class="modal-content bg-primary">
-    <div class="modal-body ">
+<div class="modal fade" id="successModalApprove" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
 
-      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to approve the File?</div>
-      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
-        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
-        <button class="btn btn-link text-white" style="border-bottom: none;" id="approvedProject" >Approve</button>
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to approve the File?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="approvedProject">Approve</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div
-class="modal fade"
-id="successModalReject"
-tabindex="-1"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-sm modal-dialog-centered">
-  <div class="modal-content bg-primary">
-    <div class="modal-body ">
+<div class="modal fade" id="successModalReject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
 
-      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to reject the File?</div>
-      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
-        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
-        <button class="btn btn-link text-white" style="border-bottom: none;" id="rejectedProject" >Reject</button>
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to reject the File?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="rejectedProject">Reject</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div
-class="modal fade"
-id="successModalDelete"
-tabindex="-1"
-aria-labelledby="exampleModalLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-sm modal-dialog-centered">
-  <div class="modal-content bg-primary">
-    <div class="modal-body ">
+<div class="modal fade" id="successModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
 
-      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to delete the File?</div>
-      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
-        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
-        <button class="btn btn-link text-white" style="border-bottom: none;" id="deleteProject" >Delete</button>
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to delete the File?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="deleteProject">Delete</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 
@@ -365,10 +342,10 @@ aria-hidden="true"
     $('select[name=year]').append('<option value="' + i + '">' + i + '</option>');
   }
   document.getElementById("year").value = edityear
-var usertag={{user_tag}}
-$('#edit-project-form [data-type=tags]').val(JSON.stringify(usertag.map(x => {return {value:x}})))
-var market = {{market}}
-$('#edit-project-form [name=markets]').val(JSON.stringify(market.map(x => {return {value:x}})))
+  var usertag = {{ user_tag }}
+  $('#edit-project-form [data-type=tags]').val(JSON.stringify(usertag.map(x => { return { value: x } })))
+  var market = {{ market }}
+  $('#edit-project-form [name=markets]').val(JSON.stringify(market.map(x => { return { value: x } })))
 
   // tagify markets input
   var input = document.querySelectorAll("input[name=markets]");
@@ -388,95 +365,130 @@ $('#edit-project-form [name=markets]').val(JSON.stringify(market.map(x => {retur
     }
 
 
-    $("#saveChanges").click(function(){
-      var req_data={ 
-        "brand":document.getElementById("brand").value,
-        "project_type":document.getElementById("project_type").value,
-        "agency":document.getElementById("agency").value,
-        "actions":document.getElementById("actions").value,
-        "business_problems":document.getElementById("business_problems").value,
-        "description":document.getElementById("description").value,
-        "learnings":document.getElementById("learnings").value,
-        "month":document.getElementById("month").value,
-        "research_objectives":document.getElementById("research_objectives").value,
-        "result":document.getElementById("result").value,
-        "target_group":document.getElementById("target_group").value,
-        "p_title":document.getElementById("p_title").value,
-        "year":document.getElementById("year").value,
-        "sample_size":document.getElementById("sample_size").value,
-      }
-        $.ajax({
-            url: '/api/resource/Project/{{doc.name}}',
-            type: 'PUT',
-            async: false,
-            headers: {
-                'X-Frappe-CSRF-Token': frappe.csrf_token
-            },
-            data:JSON.stringify(req_data),
-          success:function(res){
-            location.reload()
-            console.log(res)
-           
-          }
-        })
+    
+  $("#saveChanges").click(function () {
+
+    var req_data = {
+      "brand": document.getElementById("brand").value,
+      "project_type": document.getElementById("project_type").value,
+      "agency": document.getElementById("agency").value,
+      "actions": document.getElementById("actions").value,
+      "business_problems": document.getElementById("business_problems").value,
+      "description": document.getElementById("description").value,
+      "learnings": document.getElementById("learnings").value,
+      "month": document.getElementById("month").value,
+      "research_objectives": document.getElementById("research_objectives").value,
+      "result": document.getElementById("result").value,
+      "target_group": document.getElementById("target_group").value,
+      "p_title": document.getElementById("p_title").value,
+      "year": document.getElementById("year").value,
+      "sample_size": document.getElementById("sample_size").value,
+
     }
-  )
-
-
-  $("#approvedProject").click(function(){
-        $.ajax({
-            url: '/api/resource/Project/{{doc.name}}',
-            method: 'PUT',
-            async: false,
-            data: JSON.stringify({workflow_state : "Approved"}),
-            headers: {
-                'X-Frappe-CSRF-Token': frappe.csrf_token
-            },
-          success:function(res){
-            // location.reload()
-            location.href='/{{doc.route}}'
+   
             
-
-          }
-        })
+    var marketsArr = JSON.parse(document.getElementById("markets").value || '[]')
+    if (marketsArr.length > 0) {
+      var markets = marketsArr.map(x => x.value)
+      var markets_ = markets.map(x => {
+        return { 'city': x }
+      })
+      req_data['markets'] = markets_
     }
-  )
-
-
-   $("#rejectedProject").click(function(){
-        $.ajax({
-            url: '/api/resource/Project/{{doc.name}}',
-            method: 'PUT',
-            async: false,
-            data: JSON.stringify({workflow_state : "Rejected"}),
-            headers: {
-                'X-Frappe-CSRF-Token': frappe.csrf_token
-            },
-          success:function(res){
-            // location.reload()
-            location.href='/{{doc.route}}'
-          }
-        })
-    }
-  )
-
- 
   
-  $("#deleteProject").click(function(){
-        $.ajax({
-            url: '/api/resource/Project/{{doc.name}}',
-            type: 'DELETE',
+
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      type: 'PUT',
+      async: false,
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      data: JSON.stringify(req_data),
+      success: function (res) {      
+        console.log(res)     
+        var tagsArr = JSON.parse($('#edit-project-form [data-type=tags]').val() || '[]')
+        if (tagsArr.length > 0) {
+          var tags = tagsArr.map(x => x.value)
+          $.ajax({
+            url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+            method: 'POST',
             async: false,
             headers: {
-                'X-Frappe-CSRF-Token': frappe.csrf_token
+              'X-Frappe-CSRF-Token': frappe.csrf_token
             },
-          success:function(res){
-            // location.reload()
-            console.log(res)
-            window.location="/home"
-          }
-        })
-    }
+            data: {
+              tags: JSON.stringify(tags),
+              dt: 'Project',
+              docs: JSON.stringify([res.data.name])
+            }
+          })
+        }
+         
+        location.reload()
+
+      }
+    })
+  }
+)
+
+
+
+
+  $("#approvedProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      method: 'PUT',
+      async: false,
+      data: JSON.stringify({ workflow_state: "Approved" }),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        location.href = '/{{doc.route}}'
+
+
+      }
+    })
+  }
+  )
+
+
+  $("#rejectedProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      method: 'PUT',
+      async: false,
+      data: JSON.stringify({ workflow_state: "Rejected" }),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        location.href = '/{{doc.route}}'
+      }
+    })
+  }
+  )
+
+
+
+  $("#deleteProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      type: 'DELETE',
+      async: false,
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        console.log(res)
+        window.location = "/home"
+      }
+    })
+  }
   )
 
 </script>

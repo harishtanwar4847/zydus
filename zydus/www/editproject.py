@@ -16,16 +16,18 @@ def get_context(context):
         context.market=[i.city for i in context.doc.markets]
         context.color=frappe.get_value("Brand",{"name":context.doc.brand},"color")
         context.username=frappe.get_value("User",{"email":context.doc.owner},"full_name")
-        print( context.username)
         context.image=frappe.get_value("User",{"email":context.doc.owner},"user_image")
-        print( context.image)
+        context['attachments'] = frappe.desk.form.load.get_attachments('Project', frappe.form_dict.edit)
+        for attachment in context['attachments']:
+            file_ext=attachment['file_name']
+            attachment['ext']=file_ext.rsplit('.', 1)[1]
+
         context['brands'] = [brand.name for brand in frappe.get_all('Brand')]
         context['agencies'] = [agency.name for agency in frappe.get_all('Agency')]
         context['project_types'] = [project_type.name for project_type in frappe.get_all('Project Type')]
         context['data_types'] = [data_type.name for data_type in frappe.get_all('Data Type')]
         context['cities'] = [city.name for city in frappe.get_all('City')]
         context["edit_projects"]=frappe.db.get_list("Project",fields=["name","p_title","brand"],filters={"owner":frappe.session.user})
-        # context["edit_projects"]=frappe.db.sql(""" select name from `tabProject` where name = %s""",(self.name),debug=1,as_dict=1)
         context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
 
         for notification in context['notifications']:
