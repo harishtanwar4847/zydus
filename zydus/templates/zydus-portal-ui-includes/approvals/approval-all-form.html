@@ -7,7 +7,7 @@
     <div class="subtitle">{{ all.type}}</div>
     <div class="subtitle">{{ all.agency}}</div>
     <div class="subtitle">{{ all.month_year}}</div>
-    <div  class="text-approved" >{{all.workflow_state}}</div>
+    <div id ="workflow" class="text-approved" >{{all.workflow_state}}</div>
     <div class="subtitle">{{ all.full_name}}</div>
     <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
@@ -16,8 +16,11 @@
       data-bs-toggle="dropdown" aria-expanded="false">
       Actions
     </button>
+
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">View</a></li>
+      <li><a class="dropdown-item" href="/{{all.route}}">View</a></li>
+      <li><a class="dropdown-item" onclick="location.href='/editproject?edit={{all.name}}'" {% if all.doctype == 'Datasheet'%}  hidden  {% endif %}>Edit </a></li>
+      <li><button class="dropdown-item" onclick="deleteProject1()" {% if all.doctype == 'Datasheet'%} hidden  {% endif %}>Delete</button></li>
       <li>
           <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
           {% for file in all.attachments %}
@@ -26,4 +29,21 @@
       </li>
     </ul>
   </div>
+  <script>
+     function deleteProject1() {
+    $.ajax({
+      url: '/api/resource/Project/{{all.name}}',
+      type: 'DELETE',
+      async: false,
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        console.log(res)
+        location.href='/approvals?all'
+        // location.reload()
+      }
+    })
+  }
   
+  </script>

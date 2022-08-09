@@ -17,7 +17,7 @@
       Actions
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">View</a></li>
+      <li><a class="dropdown-item"  href="/{{approved.route}}">View</a></li>
       <li>
         <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
         {% for file in approved.attachments %}

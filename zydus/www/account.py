@@ -1,4 +1,5 @@
-
+from datetime import datetime
+from urllib import response
 import frappe
 import zydus
 import json
@@ -39,7 +40,7 @@ def get_context(context):
         # due_by calculation for users
 		for User in context['Users']:
 			User['creation'] = pretty_date(User['creation'])
-
+		
 		context['Employees'] = frappe.get_all('User',fields="full_name,name")
 	
 
@@ -165,4 +166,19 @@ def edit_profile():
 	frappe.logger().info(user)
 
 	return 1, _('Updated Successfully')
+
+@frappe.whitelist()
+def update_Roles(**kwargs):
+	data = kwargs
+	roles=kwargs.get("roles").split(',')[0:-1]
+	user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
+	user=frappe.set_value('User',data.get("name"),"roles",user_roles)
+	frappe.db.commit()
+	response = {
+		"message":"success",
+	}
+
+
+	return response
+
 
