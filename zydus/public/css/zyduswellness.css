@@ -667,6 +667,15 @@ body {
   padding: 30px !important;
   width: 100%;
 }
+.dropzone1 {
+  background:none  !important;
+  border: 1px dashed #16171708 !important;
+  border-radius: 8px;
+  padding: 10px !important;
+  text-align: center;
+  /* padding: 30px !important; */
+  /* width: 100%; */
+}
 
 .drop-zone {
   width: 100%;

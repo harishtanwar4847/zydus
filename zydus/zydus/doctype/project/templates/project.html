@@ -1,7 +1,7 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Project{% endblock %}
 {% block content%}
-
+<form id="project-form">
 <div class="row">
   <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area"
     style="max-height: unset; overflow: auto;">
@@ -40,7 +40,8 @@
               <div class="col col-lg-7 col-md-12 col-12">
                 <div class="d-flex justify-content-between align-items-center">
                   <h2 class="brand">{{doc.brand}}</h2>
-                  <div class="text-approved">{{doc.workflow_state}}</div>
+                  <div  id ="workflow" style="font-style: italic; font-size: 9px; line-height: 14px;
+                  text-align: right; text-transform: lowercase; text-align: center;">{{doc.workflow_state}}</div>
                 </div>
                 <div>
                   <h3 class="me-3 file-title">
@@ -49,16 +50,16 @@
                 </div>
               </div>
               <div class="col col-lg-5 col-md-12 col-12">
-                {% for data in userinfo %}
+                  {% for data in userinfo %}
                 <div class="employee-details d-flex align-items-center user-profile">
                   <div class="profile-pic">
-                  <img src="{{ data.user_image}}" alt="" class="img-fluid">
+                  <img src="{{data.user_image}}" alt="" class="img-fluid">
                   </div>
                   <div class="upload-date-time">
                     {{data.full_name}}
                   </div>
                 </div>
-                {% endfor %}
+                   {% endfor %}
                 <div class="upload-date-time text-start mt-3">
                   Uploaded on {{frappe.format_date(doc.modified)}}
                 </div>
@@ -156,25 +157,26 @@
           {% endif %}
         </div>
         </div>
+        
         <div class="col-lg-7  ms-auto details">
-          <label> Comments </label>
-          <textarea class="form-control" placeholder="Add a comment here" rows="4"></textarea>
+          <label {% if (doc.workflow_state == "Rejected")  %} hidden   {% endif %}> Comments  </label>
+          <textarea class="form-control" placeholder="Add a comment here" rows="4" {% if (doc.workflow_state == "Rejected")  %} hidden {% endif %}></textarea>
           </div>
         <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
-          <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#saveModal"
-            type="button">
+          <button  class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalDelete"
+            type="button" {% if (doc.workflow_state == "Approved")  %} hidden {% endif %}>
             Delete
           </button>
           <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
-            type="button" onclick="location.href">
+            type="button" {% if (doc.workflow_state == "Approved")  %} hidden {% elif (doc.workflow_state == "Rejected") %} hidden {% endif %} >
             Edit
           </button>
-          <button class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#saveModal"
-            type="button">
+          <button  class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModalReject"
+            type="button" {% if (doc.workflow_state == "Approved")  %} hidden {% elif (doc.workflow_state == "Rejected") %} hidden {% endif %}>
             Reject
           </button>
-          <button class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
-            data-bs-target="#successModal" type="button">
+          <button  class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
+            data-bs-target="#successModalApprove" type="button" {% if (doc.workflow_state == "Approved")  %} hidden {% elif (doc.workflow_state == "Rejected") %} hidden {% endif %}>
             Approve
           </button>
         </div>
@@ -182,6 +184,83 @@
     </div>
   </div>
 </div>
+</form>
+<div
+class="modal fade"
+id="successModalApprove"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-sm modal-dialog-centered">
+  <div class="modal-content bg-primary">
+    <div class="modal-body ">
+
+      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to approve the File?</div>
+      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
+        <button class="btn btn-link text-white" style="border-bottom: none;" id="approvedProject" >Approve</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div
+class="modal fade"
+id="successModalReject"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-sm modal-dialog-centered">
+  <div class="modal-content bg-primary">
+    <div class="modal-body ">
+
+      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to reject the File?</div>
+      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
+        <button class="btn btn-link text-white" style="border-bottom: none;" id="rejectedProject" >Reject</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div
+class="modal fade"
+id="successModalDelete"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-sm modal-dialog-centered">
+  <div class="modal-content bg-primary">
+    <div class="modal-body ">
+
+      <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to delete the File?</div>
+      <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+        <button class="btn btn-link text-white" style="border-bottom: none;" onclick="location.reload()">Cancel</button>
+        <button class="btn btn-link text-white" style="border-bottom: none;" id="deleteProject" >Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
+
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to make the changes?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;"  onclick="location.href='/editproject?edit={{doc.name}}'">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   $.ajax({
     url: '/api/method/frappe.desk.form.load.getdoc',
@@ -192,5 +271,72 @@
     },
     method: 'GET'
   })
+
+
+  $("#approvedProject").click(function(){
+        $.ajax({
+            url: '/api/resource/Project/{{name}}',
+            method: 'PUT',
+            async: false,
+            data: JSON.stringify({workflow_state : "Approved"}),
+            headers: {
+                'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+          success:function(res){
+            location.reload()
+            // $('#project-form [name=workflow_state]').val("Approved");
+
+          }
+        })
+    }
+  )
+
+
+   $("#rejectedProject").click(function(){
+        $.ajax({
+            url: '/api/resource/Project/{{name}}',
+            method: 'PUT',
+            async: false,
+            data: JSON.stringify({workflow_state : "Rejected"}),
+            headers: {
+                'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+          success:function(res){
+            location.reload()
+          }
+        })
+    }
+  )
+
+ 
+  // api for delete project
+  $("#deleteProject").click(function(){
+        $.ajax({
+            url: '/api/resource/Project/{{name}}',
+            type: 'DELETE',
+            async: false,
+            headers: {
+                'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+          success:function(res){
+            // location.reload()
+            console.log(res)
+            window.location="/home"
+          }
+        })
+    }
+  )
+  //for workflow text color change
+  if(document.getElementById('workflow').textContent == 'Pending'){
+    document.getElementById('workflow').style.color='#E4BB07';
+  }
+  else if(document.getElementById('workflow').textContent == 'Rejected'){
+    document.getElementById('workflow').style.color='#C7121D';
+  }else{
+    document.getElementById('workflow').style.color='#127846';
+  }
+
+  
 </script>
+
 {% endblock %}

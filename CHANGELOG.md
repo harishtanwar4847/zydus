@@ -1,3 +1,6 @@
+# [v1.2.0-dev]  - 2022-08-10
+-[View Project:- Shown Buttons Edit, Delete, Approve, Reject done & If Chooses option as Edit then, Shown Buttons Delete, Save Changes, Approve, Reject & If Rejected file then only delete option will be there done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/85}
+
 # [v1.1.0-dev]  - 2022-08-01
 -[In To do pending project display done , Reminders card fixed, view project profile pic and name done,Sample size field added in project,Approval tab pagination adjusted to left done,Approval tab grid done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/84}
 
