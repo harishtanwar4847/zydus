@@ -7,7 +7,7 @@
     <div class="subtitle">{{ all.type}}</div>
     <div class="subtitle">{{ all.agency}}</div>
     <div class="subtitle">{{ all.month_year}}</div>
-    <div id ="workflow" class="text-approved" >{{all.workflow_state}}</div>
+    <div class="text-approved">{{all.workflow_state}}</div>
     <div class="subtitle">{{ all.full_name}}</div>
     <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
@@ -19,8 +19,8 @@
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item" href="/{{all.route}}">View</a></li>
-      <li><a class="dropdown-item" onclick="location.href='/editproject?edit={{all.name}}'" {% if all.doctype == 'Datasheet'%}  hidden  {% endif %}>Edit </a></li>
-      <li><button class="dropdown-item" onclick="deleteProject1()" {% if all.doctype == 'Datasheet'%} hidden  {% endif %}>Delete</button></li>
+      <li><a class="dropdown-item" onclick="location.href='/editproject?edit={{all.name}}'" {% if all.doctype == 'Datasheet'%}  hidden {% elif(all.workflow_state == 'Rejected') %} hidden {% elif (all.workflow_state == 'Approved') %} hidden {% endif %}>Edit </a></li>
+      <li><button class="dropdown-item" onclick="deleteProject1()" {% if all.doctype == 'Datasheet'%} hidden {% elif(all.workflow_state == 'Rejected') %} hidden {% elif (all.workflow_state == 'Approved') %} hidden {% endif %}>Delete</button></li>
       <li>
           <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
           {% for file in all.attachments %}
@@ -45,5 +45,6 @@
       }
     })
   }
-  
+
+
   </script>
