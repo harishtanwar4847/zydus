@@ -296,9 +296,10 @@
                     <sup class="text-primary"></sup>
                   </label>
                   <select name="Employee" class="form-select">
-                    <option selected="" name="" disabled="" value="">
-                      Choose the Employee
-                    </option>
+                    <option selected="" >Choose the Employee </option>
+                    {% for Employee in Employees %}
+                    <option value="{{ Employee.name}}" >{{Employee.full_name}}</option>
+                    {% endfor %}
                   </select>
                 </div>
                 <div class="col-12 text-end action-btns mb-4">
@@ -670,11 +671,11 @@
 
 
     // populating employee names
-    var Employees = {{ Employees }}
-    for (var i = 0; i < Employees.length; i++) {
-      // var Employee= Employees[i]       
-      $('select[name=Employee]').append('<option value="' + Employees[i]["name"] + '">' + Employees[i]["full_name"] + '</option>')
-    }
+    // var Employees = {{ Employees }}
+    // for (var i = 0; i < Employees.length; i++) {
+    //   // var Employee= Employees[i]       
+    //   $('select[name=Employee]').append('<option value="' + Employees[i]["name"] + '">' + Employees[i]["full_name"] + '</option>')
+    // }
 
 
 
