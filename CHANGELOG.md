@@ -1,3 +1,6 @@
+# [v1.3.0-dev]  - 2022-08-11
+-[Account page error fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/86}
+
 # [v1.2.0-dev]  - 2022-08-10
 -[View Project:- Shown Buttons Edit, Delete, Approve, Reject done & If Chooses option as Edit then, Shown Buttons Delete, Save Changes, Approve, Reject & If Rejected file then only delete option will be there done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/85}
 
