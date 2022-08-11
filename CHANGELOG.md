@@ -1,4 +1,4 @@
-# [v1.3.0-dev]  - 2022-08-11
+# [v1.2.1-dev]  - 2022-08-11
 -[Account page error fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/86}
 
 # [v1.2.0-dev]  - 2022-08-10
