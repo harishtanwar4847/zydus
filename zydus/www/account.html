@@ -63,6 +63,7 @@
                     {{my_uploads_page_from}}-{{my_uploads_page_to}} of {{my_uploads_count}}
                   </small>
                 </li>
+                {% if my_uploads_page %}
                 <li class="list-inline-item">
                   <button {% if my_uploads_page> 1 %} onclick="load_accounts_page('my_uploads', {{my_uploads_page -
                     1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_uploads_page == 1 else
@@ -77,6 +78,7 @@
                     <i class="bi bi-chevron-right"></i>
                   </button>
                 </li>
+                {% endif %}
               </ul>
             </div>
             <!-- start -->
@@ -205,6 +207,7 @@
                   {{favourites_page_from}}-{{favourites_page_to}} of {{favourites_count}}
                 </small>
               </li>
+              {% if favourites_page %}
               <li class="list-inline-item">
                 <button {% if favourites_page> 1 %} onclick="load_accounts_page('favourites', {{favourites_page - 1}})"
                   {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if favourites_page == 1 else '' }}">
@@ -218,6 +221,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </button>
               </li>
+              {% endif %}
             </ul>
           </div>
           <!-- start -->
@@ -382,6 +386,7 @@
                     {{my_notifications_page_from}}-{{my_notifications_page_to}} of {{my_notifications_count}}
                   </small>
                 </li>
+                {% if my_notifications_page %}
                 <li class="list-inline-item">
                   <button type="button" {% if my_notifications_page> 1 %} onclick="load_accounts_page('notifications',
                     {{my_notifications_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if
@@ -396,6 +401,7 @@
                     <i class="bi bi-chevron-right"></i>
                   </button>
                 </li>
+                {% endif %}
               </ul>
             </form>
           </div>
