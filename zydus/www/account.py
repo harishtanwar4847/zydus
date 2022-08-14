@@ -173,6 +173,11 @@ def update_Roles(**kwargs):
 	roles=kwargs.get("roles").split(',')[0:-1]
 	user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
 	user=frappe.set_value('User',data.get("name"),"roles",user_roles)
+	user=frappe.set_value('User',data.get("name"),"is_updated",1)
+	
+	frappe.db.sql(""" 
+	delete from `tabHas Role` where parent='{}', role IN ({})
+	""".format(data.get("name"),data.get("removeroles")))
 	frappe.db.commit()
 	response = {
 		"message":"success",
@@ -181,4 +186,18 @@ def update_Roles(**kwargs):
 
 	return response
 
+
+@frappe.whitelist()
+def remove_Roles(**kwargs):
+	data = kwargs
+	frappe.db.sql(""" 
+	delete from `tabHas Role` where parent='{}'
+	""".format(data.get("name")))
+	frappe.db.commit()
+	response = {
+		"message":"success",
+	}
+
+
+	return response
 

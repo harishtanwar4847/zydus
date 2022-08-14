@@ -139,8 +139,8 @@
 
             <div id="tickcollapse">
               {% for User in Users %}
-              <form id="access-{{User.email}}">
-                <div class="employee  d-flex justify-content-between align-items-center user-profile">
+              <form id="access-{{User.email}}"  >
+                <div class="employee  d-flex justify-content-between align-items-center user-profile" {% if User.is_updated %} style="background-color:Grey ;" {% endif %}>
                   <div class="profile-pic">
                     <img src="{{User.user_image}}" alt="" class="img-fluid">
                   </div>
@@ -831,15 +831,23 @@
       // var kms_admin=0
       // var kms_downloader=0
       let update=""
+      let remove=""
       if(document.querySelector("[name='KMS-Uploader-"+id+"']").value == "on"){
         update+="KMS Uploader,"
         // kms_uploader=1
-      } if(document.querySelector("[name='KMS-Downloader-"+id+"']").value == "on"){
+      } else{
+        remove+="KMS Uploader,"
+      }
+      if(document.querySelector("[name='KMS-Downloader-"+id+"']").value == "on"){
         update+="KMS Downloader,"
         // kms_downloader=1
-      } if(document.querySelector("[name='KMS-Admin-"+id+"']").value == "on"){
+      } else{
+        remove+="KMS Downloader,"
+      }if(document.querySelector("[name='KMS-Admin-"+id+"']").value == "on"){
         update+="KMS Admin,"
         // kms_admin=1
+      }else{
+        remove+="KMS Admin,"
       }
       console.log(update)
                     
@@ -850,6 +858,7 @@
         data: {
           "name":id,
           "roles":update,
+          "removeroles":remove,
         },
         headers: {
           'X-Frappe-CSRF-Token': frappe.csrf_token
