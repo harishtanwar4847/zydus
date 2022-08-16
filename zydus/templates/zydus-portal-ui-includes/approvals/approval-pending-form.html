@@ -18,8 +18,9 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item"  href="/{{pending.route}}" >View</a></li>
-      <li><a class="dropdown-item" onclick="location.href='/editproject?edit={{pending.name}}'" {% if pending.doctype == 'Datasheet'%} hidden {% endif %}>Edit </a></li>
-      <li><button class="dropdown-item" onclick="deleteProject()" {% if pending.doctype == 'Datasheet'%} hidden {% endif %}>Delete</button></li>
+      <!-- <li><a class="dropdown-item" onclick="location.href='/editproject?edit={{pending.name}}'"; id="edit">Edit </a></li> -->
+      <li><a class="dropdown-item" onclick="location.href='{{pending.edit_url}}{{pending.name}}'"; id="edit">Edit </a></li>
+      <li><button class="dropdown-item" onclick="deleteProject()" >Delete</button></li>
       <li> 
         <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
         {% for file in pending.attachments %}
@@ -33,7 +34,7 @@
   // $("#deleteProject").click(function ()
   function deleteProject() {
     $.ajax({
-      url: '/api/resource/Project/{{pending.name}}',
+      url: '/api/resource/{{pending.doctype}}/{{pending.name}}',
       type: 'DELETE',
       async: false,
       headers: {
@@ -45,6 +46,6 @@
       }
     })
   }
-  
+   
  
   </script>
