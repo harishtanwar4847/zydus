@@ -29,12 +29,7 @@ def get_context(context):
 		for trending_now in context['trending_now_list']:
 			trending_now['number_of_files'] = len(get_attachments("Project",trending_now.name))
 			
-		# context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
-		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 10 """,as_dict=1,debug=1)
-		# due_by calculation for reminders
-		for reminder in context['reminders']:
-			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
-        
+		
 
 		context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation"],debug=1,limit_page_length=15)
         # due_by calculation for users
@@ -88,6 +83,12 @@ def get_context(context):
 		for notification in context['notifications']:
 			notification['creations'] = pretty_date(notification['creation'])
 
+		# context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
+		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 10 """,as_dict=1,debug=1)
+		# due_by calculation for reminders
+		for reminder in context['reminders']:
+			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
+        
 @frappe.whitelist()
 def notification_read_unread(docnames, mark_as_read):
 	notifs = (docnames or '').split(',')
@@ -170,15 +171,17 @@ def edit_profile():
 @frappe.whitelist()
 def update_Roles(**kwargs):
 	data = kwargs
-	roles=kwargs.get("roles").split(',')[0:-1]
-	user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
-	user=frappe.set_value('User',data.get("name"),"roles",user_roles)
-	user=frappe.set_value('User',data.get("name"),"is_updated",1)
+	# roles=kwargs.get("roles").split(',')[0:-1]
+	# user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
+	# user=frappe.set_value('User',data.get("name"),"roles",user_roles)
+	# user=frappe.set_value('User',data.get("name"),"access_given",1)
 	
-	frappe.db.sql(""" 
+	sql=""" 
 	delete from `tabHas Role` where parent='{}', role IN ({})
-	""".format(data.get("name"),data.get("removeroles")))
-	frappe.db.commit()
+	""".format(data.get("name"),data.get("removeroles"))
+	print(sql)
+	print(type(data.get("removeroles")))
+	# frappe.db.commit()
 	response = {
 		"message":"success",
 	}
