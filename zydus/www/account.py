@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlite3 import sqlite_version
 from urllib import response
 import frappe
 import zydus
@@ -20,6 +21,7 @@ def get_context(context):
 	
 	
 	context['roles'] =  frappe.get_roles(frappe.session.user)
+	
 	context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
 	# Sauce: https://stackoverflow.com/a/50633946/9403680
 	context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
@@ -31,10 +33,13 @@ def get_context(context):
 			
 		
 
-		context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation"],debug=1,limit_page_length=15)
+		context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation","enabled","access_given"],debug=1,limit_page_length=15)
         # due_by calculation for users
 		for User in context['Users']:
 			User['creation'] = pretty_date(User['creation'])
+			User['UID']="-".join(User["email"].split('@'))
+			roles=frappe.db.get_values("Has Role",{"parent":User["email"]},"role",as_dict=1)
+			User["roles"]=[i.get("role") for i in roles]
 		
 		context['Employees'] = frappe.get_all('User',fields="full_name,name")
 	
@@ -171,36 +176,22 @@ def edit_profile():
 @frappe.whitelist()
 def update_Roles(**kwargs):
 	data = kwargs
-	# roles=kwargs.get("roles").split(',')[0:-1]
-	# user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
-	# user=frappe.set_value('User',data.get("name"),"roles",user_roles)
-	# user=frappe.set_value('User',data.get("name"),"access_given",1)
+	name="@".join(data.get("name").split('-'))
+	roles=kwargs.get("roles").split(',')[0:-1]
+	user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
+	user=frappe.set_value('User',name,"roles",user_roles)
+	user=frappe.set_value('User',name,"access_given",1)
+	sql=(""" 
+	delete from `tabHas Role` where parent='{}', role IN {}
+	""".format(name,tuple(data.get("removeroles").split(','))))
 	
-	sql=""" 
-	delete from `tabHas Role` where parent='{}', role IN ({})
-	""".format(data.get("name"),data.get("removeroles"))
-	print(sql)
-	print(type(data.get("removeroles")))
+	print("tuplee",tuple(data.get("removeroles").split(',')))
 	# frappe.db.commit()
 	response = {
 		"message":"success",
+		"User":frappe.get_doc("User",name),
 	}
-
-
 	return response
 
 
-@frappe.whitelist()
-def remove_Roles(**kwargs):
-	data = kwargs
-	frappe.db.sql(""" 
-	delete from `tabHas Role` where parent='{}'
-	""".format(data.get("name")))
-	frappe.db.commit()
-	response = {
-		"message":"success",
-	}
-
-
-	return response
 

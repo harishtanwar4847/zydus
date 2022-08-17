@@ -63,7 +63,7 @@
                     {{my_uploads_page_from}}-{{my_uploads_page_to}} of {{my_uploads_count}}
                   </small>
                 </li>
-                {% if my_uploads_page %}
+               
                 <li class="list-inline-item">
                   <button {% if my_uploads_page> 1 %} onclick="load_accounts_page('my_uploads', {{my_uploads_page -
                     1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_uploads_page == 1 else
@@ -78,7 +78,6 @@
                     <i class="bi bi-chevron-right"></i>
                   </button>
                 </li>
-                {% endif %}
               </ul>
             </div>
             <!-- start -->
@@ -128,15 +127,11 @@
           <!--------------------->
 
 
-          <div class="tab-pane fade account-nav-access-blk" id="v-pills-access" role="tabpanel"
+          <!-- <div class="tab-pane fade account-nav-access-blk" id="v-pills-access" role="tabpanel"
             aria-labelledby="v-pills-access-tab">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h2 class="section-title">Access</h2>
             </div>
-
-
-
-
             <div id="tickcollapse">
               {% for User in Users %}
               <form id="access-{{User.email}}"  >
@@ -185,7 +180,71 @@
               {% endfor %}
             </div>
           </div>
-        
+         -->
+
+         <div class="tab-pane fade account-nav-access-blk" id="v-pills-access" role="tabpanel"
+         aria-labelledby="v-pills-access-tab">
+         <div class="d-flex align-items-center justify-content-between mb-3">
+           <h2 class="section-title">Access</h2>
+         </div>
+         <div id="tickcollapse" >
+           {% for User in Users %}
+           <form id="access-{{User.UID}}" >
+             <div class="employee  d-flex justify-content-between align-items-center user-profile"  {% if  User.access_given %} style="background: rgba(196, 196, 196, 0.2);" {% endif %} {% if not User.enabled %} style="background: rgba(196, 196, 196, 0.2);" {% endif %}> 
+               <div class="profile-pic">
+                 <img src="{{User.user_image}}" alt="" class="img-fluid">
+               </div>
+               <div class="title text-black">{{User.full_name}}</div>
+               <div class="subtitle">{{User.designation}}</div>
+               <div class="subtitle">{{User.email}}</div>
+               <div class="subtitle">{{User.creation}}</div>
+               <div class="buttons">
+                 <button style="display:none" class="btn btn-tick" type="button" onclick="updateRole(this.id)" id="{{User.UID}}">
+                   <i class='bi bi-check'></i>
+                 </button>
+                 <button class="btn btn-cross"  type="button" onclick="disableUser(this.id)" id="cross_{{User.email}}" >
+                   <i class='bi bi-x'></i>
+                 </button>
+                 
+                 <button class="btn btn-tick" data-bs-toggle="collapse" id="tick_{{User.UID}}" onclick="showDrop(this.id)" data-bs-target="#User-{{User.username}}"
+                   role="button" aria-expanded="false" aria-controls="#User-{{User.username}}" type="button">
+                   <i class='bi bi-check'></i>
+                 </button>
+                 <button class="btn btn-down" style="display:none;" data-bs-toggle="collapse" id="down_{{User.UID}}" data-bs-target="#User-{{User.username}}"
+                   role="button" aria-expanded="false" aria-controls="#User-{{User.username}}" type="button">
+                   <i class='bi bi-chevron-up'></i>
+                 </button>
+               </div>
+             
+             </div>
+             <div class="collapse m-0" data-bs-parent="#tickcollapse" id="User-{{User.username}}"
+               aria-labelledby="User-{{User.username}}">
+               <div class="card card-body">
+                 <div class="d-flex justify-content-around">
+                   <div class="form-check">
+                     <input type="checkbox"  class="form-check-input" name="KMS-Uploader-{{User.UID}}" name="customCheck"
+                       id="uploader" {% if "KMS Uploader" in User.roles %} checked {% endif %} >
+                     <label class="form-check-label" for="uploader" >Uploader</label>
+                   </div>
+                   
+                   <div class="checkbox">
+                     <input class="form-check-input" name="KMS-Downloader-{{User.UID}}" type="checkbox" 
+                       id="downloader"  {% if "KMS Downloader" in User.roles %} checked {% endif %}>
+                     <label class="form-check-label" for="downloader">Downloader</label>
+                   </div>
+                   <div class="checkbox">
+                     <input class="form-check-input"  name="KMS-Admin-{{User.UID}}" type="checkbox" 
+                      id="admin"  {% if "KMS Admin" in User.roles %} checked {% endif %}>
+                     <label class="form-check-label" for="admin">KMS Admin</label>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </form>
+           {% endfor %}
+         </div>
+       </div>
+     
 
 
 
@@ -207,7 +266,7 @@
                   {{favourites_page_from}}-{{favourites_page_to}} of {{favourites_count}}
                 </small>
               </li>
-              {% if favourites_page %}
+              
               <li class="list-inline-item">
                 <button {% if favourites_page> 1 %} onclick="load_accounts_page('favourites', {{favourites_page - 1}})"
                   {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if favourites_page == 1 else '' }}">
@@ -221,7 +280,7 @@
                   <i class="bi bi-chevron-right"></i>
                 </button>
               </li>
-              {% endif %}
+              
             </ul>
           </div>
           <!-- start -->
@@ -387,7 +446,7 @@
                     {{my_notifications_page_from}}-{{my_notifications_page_to}} of {{my_notifications_count}}
                   </small>
                 </li>
-                {% if my_notifications_page %}
+               
                 <li class="list-inline-item">
                   <button type="button" {% if my_notifications_page> 1 %} onclick="load_accounts_page('notifications',
                     {{my_notifications_page - 1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if
@@ -402,7 +461,7 @@
                     <i class="bi bi-chevron-right"></i>
                   </button>
                 </li>
-                {% endif %}
+               
               </ul>
             </form>
           </div>
@@ -825,32 +884,43 @@
         }
       })
     }
+    function showDrop(tick_id){
+      document.getElementById(tick_id).style.display="none"
 
+      var id = tick_id.slice(5)
+      document.getElementById("cross_" + id).style.display="none"
+      document.getElementById("down_" + id).style.display="inline-block"
+      document.getElementById(id).style.display="inline-block"
+
+    }
+   
+
+    
     function updateRole(id) {
-      // var kms_uploader=0
-      // var kms_admin=0
-      // var kms_downloader=0
+      
       let update=""
       let remove=""
-      if(document.querySelector("[name='KMS-Uploader-"+id+"']").value == "on"){
+      // let select="#access-"+(123).toString()
+      // console.log($(select))
+      console.log($("[name='KMS-Uploader-"+id+"']").prop("checked"))
+      if($("[name='KMS-Uploader-"+id+"']").prop("checked") == true){
         update+="KMS Uploader,"
-        // kms_uploader=1
-      } else{
+      } 
+      else{
         remove+="KMS Uploader,"
       }
-      if(document.querySelector("[name='KMS-Downloader-"+id+"']").value == "on"){
+      if($("[name='KMS-Downloader-"+id+"']").prop("checked") == true){
         update+="KMS Downloader,"
-        // kms_downloader=1
       } else{
         remove+="KMS Downloader,"
-      }if(document.querySelector("[name='KMS-Admin-"+id+"']").value == "on"){
+      }if($("[name='KMS-Admin-"+id+"']").prop("checked") == true){
         update+="KMS Admin,"
-        // kms_admin=1
       }else{
         remove+="KMS Admin,"
       }
+      console.log("remove",remove)
       console.log(update)
-                    
+   
       $.ajax({
         url: '/api/method/zydus.www.account.update_Roles',
         method: 'POST',
@@ -866,12 +936,33 @@
         success: function (res) {
           console.log(res)
           if(res && res.message.message == "success"){
-            location.reload()
-            console.log("data")
+            // location.reload()
+            // console.log("data")
           }
         }
       })
     }
+    
+    
+    function disableUser(cross_id) {
+      var id = cross_id.slice(6)
+      var obj = {"enabled":0}
+      $.ajax({
+                url: '/api/resource/User/'+ id,
+                method: 'PUT',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+                  
+                     
+                }
+                
+    })
+  }
+    
     
  
 
