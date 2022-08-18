@@ -190,7 +190,7 @@
          <div id="tickcollapse" >
            {% for User in Users %}
            <form id="access-{{User.UID}}" >
-             <div class="employee  d-flex justify-content-between align-items-center user-profile"  {% if  User.access_given %} style="background: rgba(196, 196, 196, 0.2);" {% endif %} {% if not User.enabled %} style="background: rgba(196, 196, 196, 0.2);" {% endif %}> 
+             <div class="employee  d-flex justify-content-between align-items-center user-profile"  {% if  User.access_given %} style="background: rgba(196, 196, 196, 0.2);" {% endif %} > 
                <div class="profile-pic">
                  <img src="{{User.user_image}}" alt="" class="img-fluid">
                </div>
@@ -202,7 +202,7 @@
                  <button style="display:none" class="btn btn-tick" type="button" onclick="updateRole(this.id)" id="{{User.UID}}">
                    <i class='bi bi-check'></i>
                  </button>
-                 <button class="btn btn-cross"  type="button"  id="cross_{{User.email}}" >
+                 <button class="btn btn-cross"  type="button"  id="cross_{{User.UID}}" >
                    <i class='bi bi-x'></i>
                  </button>
                  
