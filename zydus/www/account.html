@@ -202,7 +202,7 @@
                  <button style="display:none" class="btn btn-tick" type="button" onclick="updateRole(this.id)" id="{{User.UID}}">
                    <i class='bi bi-check'></i>
                  </button>
-                 <button class="btn btn-cross"  type="button" onclick="disableUser(this.id)" id="cross_{{User.email}}" >
+                 <button class="btn btn-cross"  type="button"  id="cross_{{User.email}}" >
                    <i class='bi bi-x'></i>
                  </button>
                  
@@ -900,9 +900,7 @@
       
       let update=""
       let remove=""
-      // let select="#access-"+(123).toString()
-      // console.log($(select))
-      console.log($("[name='KMS-Uploader-"+id+"']").prop("checked"))
+
       if($("[name='KMS-Uploader-"+id+"']").prop("checked") == true){
         update+="KMS Uploader,"
       } 
@@ -918,9 +916,7 @@
       }else{
         remove+="KMS Admin,"
       }
-      console.log("remove",remove)
-      console.log(update)
-   
+    
       $.ajax({
         url: '/api/method/zydus.www.account.update_Roles',
         method: 'POST',
@@ -936,32 +932,15 @@
         success: function (res) {
           console.log(res)
           if(res && res.message.message == "success"){
-            // location.reload()
-            // console.log("data")
+            location.reload()
+           
           }
         }
       })
     }
     
     
-    function disableUser(cross_id) {
-      var id = cross_id.slice(6)
-      var obj = {"enabled":0}
-      $.ajax({
-                url: '/api/resource/User/'+ id,
-                method: 'PUT',
-                data: JSON.stringify(obj),
-                headers: {
-                    'X-Frappe-CSRF-Token': frappe.csrf_token
-                },
-                success: function(res) {
-                    console.log(res)
-                  
-                     
-                }
-                
-    })
-  }
+    
     
     
  
