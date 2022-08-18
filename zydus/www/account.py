@@ -179,8 +179,11 @@ def update_Roles(**kwargs):
 	name="@".join(data.get("name").split('-'))
 	roles=kwargs.get("roles").split(',')[0:-1]
 	user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
-	user=frappe.set_value('User',name,"roles",user_roles)
-	user=frappe.set_value('User',name,"access_given",1)
+	frappe.set_value('User',name,"roles",user_roles)
+	if user_roles:
+		frappe.set_value('User',name,"access_given",1)
+	else:
+		frappe.set_value('User',name,"access_given",0)
 	sql=(""" 
 	delete from `tabHas Role` where parent='{}', role IN {}
 	""".format(name,tuple(data.get("removeroles").split(','))))

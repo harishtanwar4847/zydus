@@ -1,6 +1,7 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Account{% endblock %}
 {% block content%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
 <div id="like-button-parent">
   <div class="row" id="like-button">
     <div class="col-xl-3 line-on-left reminders-column pt-5">
@@ -190,7 +191,7 @@
          <div id="tickcollapse" >
            {% for User in Users %}
            <form id="access-{{User.UID}}" >
-             <div class="employee  d-flex justify-content-between align-items-center user-profile"  {% if  User.access_given %} style="background: rgba(196, 196, 196, 0.2);" {% endif %} > 
+             <div class="employee  d-flex justify-content-between align-items-center user-profile"  {% if  User.access_given  %} style="background: rgba(196, 196, 196, 0.2);" {% elif not User.enabled  %} style="background: rgba(196, 196, 196, 0.2);"  {% endif %} > 
                <div class="profile-pic">
                  <img src="{{User.user_image}}" alt="" class="img-fluid">
                </div>
@@ -198,23 +199,62 @@
                <div class="subtitle">{{User.designation}}</div>
                <div class="subtitle">{{User.email}}</div>
                <div class="subtitle">{{User.creation}}</div>
-               <div class="buttons">
-                 <button style="display:none" class="btn btn-tick" type="button" onclick="updateRole(this.id)" id="{{User.UID}}">
-                   <i class='bi bi-check'></i>
-                 </button>
-                 <button class="btn btn-cross"  type="button"  id="cross_{{User.UID}}" >
+               {% if User.enabled %}
+               <div class="buttons btn-group">
+                 {% if User.access_given %}
+                
+                  <div class="dropdown">
+                    <button class="btn btn-tick dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" type="button" onclick="addDrop(this.id)" id="{{User.UID}}">
+                      <i class='bi bi-check'></i>
+                    </button>
+                    
+                    <ul class="dropdown-menu" style="width:50px !important;">
+                      <li><button class="btn btn-tick dropdown-item" onclick="updateRole(this.id)" id="{{User.UID}}" type="button"><i class="bi bi-check"></i></button>
+                      </li>
+                      <li><button class="btn btn-cross dropdown-item"  onclick="disableUser(this.id)" id="cross_{{User.UID}}" type="button"><i class="bi bi-x"></i></button>
+                      </li>
+                    </ul>
+                  
+                 </div>
+                 {% else %}
+                 <button class="btn btn-tick mx-1" type="button" onclick="updateRole(this.id)" id="{{User.UID}}">
+                  <i class='bi bi-check'></i>
+                </button>
+                {% endif %}
+                 <button class="btn btn-cross mx-1" 
+                  type="button"  onclick="disableUser(this.id);crossBtn(this.id)" id="cross_{{User.UID}}"  {% if User.access_given %} hidden {% endif %}>
                    <i class='bi bi-x'></i>
                  </button>
-                 
-                 <button class="btn btn-tick" data-bs-toggle="collapse" id="tick_{{User.UID}}" onclick="showDrop(this.id)" data-bs-target="#User-{{User.username}}"
-                   role="button" aria-expanded="false" aria-controls="#User-{{User.username}}" type="button">
+
+                
+                 <!-- <button class="btn btn-tick" data-bs-toggle="collapse" id="tick_{{User.UID}}"  data-bs-target="#User-{{User.username}}"
+                   role="button" aria-expanded="false" aria-controls="#User-{{User.username}}" type="button"  {% if not User.enabled %} hidden {% endif %}>
                    <i class='bi bi-check'></i>
+                 </button> -->
+                 
+        
+                
+                 <button class="btn btn-down" data-bs-toggle="collapse" id="down_{{User.UID}}" onclick="showDrop(this.id)" data-bs-target="#User-{{User.username}}"
+                   role="button" aria-expanded="false" aria-controls="#User-{{User.username}}" type="button"  {% if not User.access_given  %} style="display:none;" {% endif %}>
+                   <i class='bi bi-chevron-down'></i>
                  </button>
-                 <button class="btn btn-down" style="display:none;" data-bs-toggle="collapse" id="down_{{User.UID}}" data-bs-target="#User-{{User.username}}"
-                   role="button" aria-expanded="false" aria-controls="#User-{{User.username}}" type="button">
-                   <i class='bi bi-chevron-up'></i>
-                 </button>
-               </div>
+            
+                 
+                </div>
+                {% else %}
+                <div class="buttons1"  >
+                  <div class="dropdown">
+                    <button class="btn btn-cross dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" type="button"><i class="bi bi-x"></i></button>
+                    
+                    <ul class="dropdown-menu">
+                      <li><button class="btn btn-tick dropdown-item" onclick="enableUser(this.id)" id="enable_{{User.UID}}" type="button"><i class="bi bi-check"></i></button>
+                      </li>
+                    </ul>
+                  </div>
+                 </div>
+                 {% endif %}
+    
+               
              
              </div>
              <div class="collapse m-0" data-bs-parent="#tickcollapse" id="User-{{User.username}}"
@@ -595,7 +635,9 @@
   </div>
   </div>
   <script src="/assets/zydus/js/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
   <script>
+    
     $(document).ready(function () {
       $(document).on('click', "#set-add-button", function () {
         $("#set-new-reminder").show();
@@ -894,6 +936,15 @@
 
     }
    
+    function crossBtn(cross_id){
+      var id = cross_id.slice(6)
+      // document.getElementById("down_" + id).style.display ='none'
+      document.getElementById("tick_"+id).style.display = 'none'
+      document.getElementById(id).style.display="none"
+
+
+    }
+    
 
     
     function updateRole(id) {
@@ -938,11 +989,54 @@
         }
       })
     }
-    
-    
-    
-    
-    
+
+
+    function disableUser(cross_id) {
+      var id = cross_id.slice(6)
+      var email=id.split('-').join("@")
+      var obj = {"enabled":0}
+      $.ajax({
+                url: '/api/resource/User/'+ email,
+                method: 'PUT',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+                    window.location.reload()
+                  
+                }
+                
+    })
+  }
+
+  function enableUser(enable_id) {
+      var id = enable_id.slice(7)
+      var email=id.split('-').join("@")
+      var obj = {"enabled":1}
+      $.ajax({
+                url: '/api/resource/User/'+ email,
+                method: 'PUT',
+                data: JSON.stringify(obj),
+                headers: {
+                    'X-Frappe-CSRF-Token': frappe.csrf_token
+                },
+                success: function(res) {
+                    console.log(res)
+                    window.location.reload()
+                  
+                }
+                
+    })
+  }
+ 
+  function addDrop(id){
+    $('#'+id).attr("onclick","updateRole(this.id,drop=true)")
+
+  }
+
+
  
 
   </script>
