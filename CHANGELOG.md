@@ -1,3 +1,6 @@
+# [v1.2.3-dev]  - 2022-08-19
+-[Account:-Access tab functionality completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/88}
+
 # [v1.2.2-dev]  - 2022-08-11
 -[Account page fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/87}
 
