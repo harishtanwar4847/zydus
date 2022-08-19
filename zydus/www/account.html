@@ -950,10 +950,15 @@
         'X-Frappe-CSRF-Token': frappe.csrf_token
       },
       success: function (res) {
-       var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
+        console.log(res)
+        if(res && res.message.message == "success"){
+        var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
         $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
           setJqueryValidateOnAllForms()
         })
+
+
+        }
       }
     })
   }
@@ -993,7 +998,7 @@
         'X-Frappe-CSRF-Token': frappe.csrf_token
       },
       success: function (res) {
-        var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
+          var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
           $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
             setJqueryValidateOnAllForms()
           })

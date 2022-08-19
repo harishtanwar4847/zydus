@@ -943,10 +943,11 @@ li {
   background: white;
   padding: 5px 15px 5px 15px;
   border-radius: 8px;
-  display: grid;
-  grid-template-columns: 25px 3fr 4fr 2fr 1fr 25px;
+  display: grid !important;
+  grid-template-columns: 25px 0.5fr 0.5fr 0.5fr 0.5fr 100px;
   vertical-align: middle;
   margin-bottom: 5px;
+  text-align: center;
 }
 .employee h3.brand {
   font-size: 20px;
