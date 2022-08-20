@@ -4,7 +4,7 @@
       <img src="{% if reminder.due_by == 'Today' %} /assets/zydus/images/reminder-filled.svg {% else %} /assets/zydus/images/reminder-outline.svg {% endif %}">
     </div>
     <div>
-      <span class="reminder-sender">{% if reminder.owner == "Administrator" %} me {% else %} {% endif %}:</span>  
+      <span class="reminder-sender">{% if reminder.owner == "Administrator" %} me: {% else %} {% endif %}</span>  
         <div class="employee-details d-flex align-items-center justify-content-between user-profile">
           {% if reminder.owner != "Administrator" %} 
           <div class="profile-pic">
