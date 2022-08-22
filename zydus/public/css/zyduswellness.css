@@ -590,7 +590,7 @@ body {
 .user-profile {
   color: inherit;
   text-decoration: none;
-  text-align: right;
+  text-align: left;
 }
 .user-profile::after {
   display: none;
@@ -802,10 +802,7 @@ li {
 .text-primary {
     color: rgba(0, 156, 164, 0.5) !important;
 }
-.text-primary {
-    --bs-text-opacity: 1;
-    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important;
-}
+
 
 /**** End :: Common ****/
 /**** Start :: Utils ****/
@@ -1029,8 +1026,9 @@ color: rgba(0, 156, 164, 0.5);
   line-height: 18px;
   color: rgba(0, 0, 0, 0.7);
   margin-right: 0.25rem!important;
-  margin-left: 0.25rem!important;
+  margin-left: 0.45rem!important;
 }
+
 .my-upload.teal {
   border-color: #01acc8;
 }

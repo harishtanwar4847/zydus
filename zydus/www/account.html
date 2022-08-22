@@ -95,7 +95,8 @@
               <div class="subtitle">{{my_upload.month_year}}</div>
               <div class="subtitle">{{my_upload.attachments | len}} {% if my_upload.attachments | len > 1%} files {%
                 else %} file {% endif %}</div>
-              <div id="workflow" class="green-status">{{my_upload.workflow_state}}</div>
+              <!-- <div id="workflow" class="green-status">{{my_upload.workflow_state}}</div> -->
+              <div {% if my_upload.workflow_state == "Rejected"%}  style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#e70918;" {% elif my_upload.workflow_state == "Pending" %} style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color: #FFD600;" {% else %} style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#30cb0d;" {% endif %}>{{my_upload.workflow_state}}</div>
               <div class="comment-icon">
                 <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
               </div>
@@ -932,9 +933,9 @@
     } else {
       remove += "KMS Downloader,"
     } if ($("[name='KMS-Admin-" + id + "']").prop("checked") == true) {
-      update += "KMS Admin,"
+      update += "KMS Admin,System Manager,"
     } else {
-      remove += "KMS Admin,"
+      remove += "KMS Admin,System Manager,"
     }
 
     $.ajax({

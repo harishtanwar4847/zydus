@@ -7,7 +7,7 @@
     <div class="subtitle">{{ all.type}}</div>
     <div class="subtitle">{{ all.agency}}</div>
     <div class="subtitle">{{ all.month_year}}</div>
-    <div class="text-approved">{{all.workflow_state}}</div>
+    <div {% if all.workflow_state == "Rejected"%}  style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#C7121D;" {% elif all.workflow_state == "Pending" %} style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#E4BB07;" {% else %} style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#127846;" {% endif %}>{{all.workflow_state}}</div>
     <div class="subtitle">{{ all.full_name}}</div>
     <button type="button" class="btn btn-link p-0 comment-icon" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="/assets/zydus/images/comment-filled.svg" alt="icon" class="img-fluid">
