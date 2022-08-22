@@ -1,4 +1,4 @@
-# [v1.2.4-dev]  - 2022-08-21
+# [v1.2.4-dev]  - 2022-08-22
 -[Dev new issues fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/89}
 
 # [v1.2.3-dev]  - 2022-08-19
