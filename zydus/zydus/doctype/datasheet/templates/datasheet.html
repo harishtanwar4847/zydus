@@ -255,7 +255,7 @@ aria-hidden="true"
             url: '/api/resource/Datasheet/{{name}}',
             method: 'PUT',
             async: false,
-            data: JSON.stringify({workflow_state : "Approved"}),
+            data: JSON.stringify({workflow_state : "Approved",docstatus: 1}),
             headers: {
                 'X-Frappe-CSRF-Token': frappe.csrf_token
             },

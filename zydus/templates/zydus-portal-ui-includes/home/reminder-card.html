@@ -8,16 +8,14 @@
             <div>
                 <div>
                     <div class="d-flex align-items-center">
-                        <!-- <img src="/assets/zydus/images/employee-small.png" alt="" class="img-fluid"> -->
                         <span class="reminder-sender">{% if reminder.owner == reminder.modified_by %} me:  {% else %} {%
                             endif %}</span>
                         <div>
                             <div
-                                class="employee-details d-flex align-items-center justify-content-between user-profile">
+                                class="d-flex align-items-center">
                                 {% if reminder.owner != reminder.modified_by %}
-                                <div class="profile-pic">
-                                    <img src="{{reminder.user_image}}" alt="" class="img-fluid">
-                                </div>                               
+                                    <img src="{{reminder.user_image}}" alt=" " class="img-fluid1">
+                                &nbsp;                          
                                 <div class="reminder-sender">
                                     {{reminder.full_name}}
                                 </div>                               
