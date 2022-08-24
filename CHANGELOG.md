@@ -1,3 +1,6 @@
+# [v1.2.7-dev]  - 2022-08-24
+-[Develop latest to uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/93}
+
 # [v1.2.6-dev]  - 2022-08-24
 -[Dev UI changes:- home todo view all logo done & home and account reminder Ui done & search like functionality done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/91}
 
@@ -38,13 +41,13 @@
 -[Add FAQ and home page To Do list]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72}
 
 # [v0.4.4-dev]  - 2022-06-21
-- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69}
+- [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69)
 
 # [v0.4.3-dev]  - 2022-06-21
-- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68}
+- [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68)
 
 # [v0.4.2-dev] - 2022-06-21
-- [new user access notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66}
+- [new user access notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66)
 
 # [v0.4.1-uat] - 2022-06-10
 - [uat issues fixed-completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/65)

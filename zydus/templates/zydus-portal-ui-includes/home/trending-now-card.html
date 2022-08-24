@@ -1,5 +1,5 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
-    <div class="trending-product-card" style="border-color: {{trending_now.color}}">
+    <div class="trending-product-card" id="trending-now" style="border-color: {{trending_now.color}}">
         <div class="d-flex align-items-start justify-content-between">
             <div>  
               <button onclick="toggleLike('{{trending_now.doctype}}', '{{trending_now.name}}', {% if trending_now.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
