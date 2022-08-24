@@ -1,3 +1,6 @@
+# [v1.2.6-dev]  - 2022-08-24
+-[Dev UI changes:- home todo view all logo done & home and account reminder Ui done & search like functionality done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/91}
+
 # [v1.2.5-dev]  - 2022-08-23
 -[Dev Fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/90}
 
