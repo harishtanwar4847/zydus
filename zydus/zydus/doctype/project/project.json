@@ -23,6 +23,7 @@
   "amended_from",
   "route",
   "is_approved",
+  "sample_size",
   "sample_size"
  ],
  "fields": [
@@ -46,7 +47,7 @@
   },
   {
    "fieldname": "description",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Description"
   },
   {
@@ -63,7 +64,7 @@
   },
   {
    "fieldname": "target_group",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Target Group"
   },
   {
@@ -74,12 +75,12 @@
   },
   {
    "fieldname": "business_problems",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Business Problems"
   },
   {
    "fieldname": "result",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Result"
   },
   {
@@ -98,12 +99,12 @@
   },
   {
    "fieldname": "learnings",
-   "fieldtype": "Long Text",
+   "fieldtype": "Text Editor",
    "label": "Learnings"
   },
   {
    "fieldname": "research_objectives",
-   "fieldtype": "Text",
+   "fieldtype": "Text Editor",
    "label": "Research objectives"
   },
   {

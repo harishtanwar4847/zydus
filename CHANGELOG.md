@@ -38,13 +38,13 @@
 -[Add FAQ and home page To Do list]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72}
 
 # [v0.4.4-dev]  - 2022-06-21
-- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69}
+- [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69)
 
 # [v0.4.3-dev]  - 2022-06-21
-- [admin rejected datasheet notification created] {https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68}
+- [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/68)
 
 # [v0.4.2-dev] - 2022-06-21
-- [new user access notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66}
+- [new user access notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/66)
 
 # [v0.4.1-uat] - 2022-06-10
 - [uat issues fixed-completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/65)
