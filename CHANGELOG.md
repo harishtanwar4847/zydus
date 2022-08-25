@@ -1,3 +1,7 @@
+# [v1.2.8-uat]  - 2022-08-25
+# [v1.2.8-dev]  - 2022-08-25
+-[Dev fixes:- sample size field deleted & all approval delete button fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/96}
+
 # [v1.2.7-uat]  - 2022-08-25
 # [v1.2.7-dev+1]  - 2022-08-25
 -[Dev :-changelogmd updated]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/95}

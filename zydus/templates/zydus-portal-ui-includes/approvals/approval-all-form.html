@@ -20,7 +20,7 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li><a class="dropdown-item" href="/{{all.route}}">View</a></li>
       <li><a class="dropdown-item" onclick="location.href='{{all.edit_url}}{{all.name}}'"; {% if(all.workflow_state == 'Rejected') %} hidden {% elif (all.workflow_state == 'Approved') %} hidden {% endif %}>Edit </a></li>
-      <li><button class="dropdown-item" onclick="deleteProject1()"  {% if(all.workflow_state == 'Rejected') %} hidden {% elif (all.workflow_state == 'Approved') %} hidden {% endif %}>Delete</button></li>
+      <li><button class="dropdown-item" id="{{all.doctype}}" name="{{all.name}}" onclick="deleteProject1(this.id,this.name)"  {% if(all.workflow_state == 'Rejected') %} hidden {% elif (all.workflow_state == 'Approved') %} hidden {% endif %}>Delete</button></li>
       <li>
           <a onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="dropdown-item" href="#">Download</a>
           {% for file in all.attachments %}
@@ -30,9 +30,10 @@
     </ul>
   </div>
   <script>
-  function deleteProject1() {
+
+  function deleteProject1(doctype,name) {
     $.ajax({
-      url: '/api/resource/{{all.doctype}}/{{all.name}}',
+      url: '/api/resource/'+doctype+'/'+name,
       type: 'DELETE',
       async: false,
       headers: {
