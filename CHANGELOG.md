@@ -25,6 +25,25 @@
 # [v1.1.0-dev]  - 2022-08-01
 -[In To do pending project display done , Reminders card fixed, view project profile pic and name done,Sample size field added in project,Approval tab pagination adjusted to left done,Approval tab grid done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/84}
 
+# [v1.0.0] - 2022-07-30
+# [v0.5.0-uat]  - 2022-07-29
+- [redirected to login page after update password done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/82)
+
+# [v0.4.9-uat]  - 2022-07-28
+- [User UAT: maxlength 5 added in sample size field](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/81)
+
+# [v0.4.8-uat]  - 2022-07-25
+- [card onclick view project/datasheet done in search tab](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/80)
+
+# [v0.4.7-uat]  - 2022-07-22
+- [User:-Uat-fixes , samplesize field number validation added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/79)
+
+# [v0.4.6-uat]  - 2022-07-21
+- [User:-sample size added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/78)
+
+# [v0.4.5-uat]  - 2022-07-20
+- [Uat : Project and Datasheet file upload max size set to 100Mb, Like feature enabled on view project page, search filter like and refresh functionality issue fixes done, New field added in project doctype(Sample Size),Field type changed as text editor](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/77)
+
 # [v0.4.9-dev]  - 2022-07-14
 -[Admin panel reminder tab completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/76}
 
