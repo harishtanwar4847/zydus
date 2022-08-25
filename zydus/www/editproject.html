@@ -1,0 +1,578 @@
+{% extends "templates/zydus-portal-ui.html" %}
+{% block title%}Editproject{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="/assets/zydus/css/dropzone.min.css" type="text/css" />
+<link href="/assets/zydus/css/tagify.css" rel="stylesheet" />
+
+<div class="row">
+  <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <div class="d-flex aling-items-baseline">
+        <a href="/home" class="btn ps-0 btn-link view-all-link me-1">
+          <i class="bi bi-chevron-left"></i>
+          back
+        </a>
+      </div>
+    </div>
+    <div class="file-contet" style="border-color: {{color}};">
+    </div>
+    <div class="row ">
+      <div class="col-lg-12 ">
+
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
+            aria-labelledby="nav-project-link">
+            <forRm class="custom-form project-form" id="edit-project-form">
+              <div class="row gx-3 gy-3 mt-md-3">
+                <div class="col-12 col-lg-6 col-xl-4">
+                  <div class="">
+                    <div class="file-list-wrapper">
+                      <div class="file-list">
+                        {% for file in attachments %}
+                        <div class="file-list-item">
+                          <img src="/assets/zydus/images/file-ext/{{file['ext']}}.png" class="img-fluid">
+                          <span class="file-name">{{file.file_name}}</span>
+                          <a href="{{file.file_url}}" target="_blank" class="btn btn-link">view</a>
+                          <a href="{{file.file_url}}" download class="btn btn-link p-0">
+                            <img src="/assets/zydus/images/download.svg" class="img-fluid">
+                          </a>
+                        </div>
+                        {% endfor %}
+                        
+                          <div class="dropzone dropzone1" id="save-project-dropzone" style= "min-height:10px">
+                              <span class="dz-message drop-zone__prompt">
+                                <small class="text-muted">
+                                  <i class="bi bi-plus-lg me-1"></i>drag or
+                                  <u class="btn btn-link p-0" >browse</u>
+                                  another document
+                                  </small>
+                              </span>
+                          </div>
+                    
+                      </div>
+                      <div class="d-flex justify-content-end py-5">
+                        <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" type="button" style="margin-top: 50px;"
+                          class="btn btn-lg btn-secondary me-2 px-3 py-2">Download All</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="d-flex justify-content-end py-5">
+                    <button onclick="document.querySelectorAll('.btn.btn-link.p-0[download]').forEach(x => x.click())" type="button" style="margin-top: 50px;"
+                      class="btn btn-lg btn-secondary me-2 px-3 py-2">Download All</button>
+                  </div> -->
+                </div>
+                <div class="col-12 col-lg-6 col-xl-8">
+                  <div
+                    class="d-flex flex-column flex-md-row flex-lg-column flex-xl-row align-items-baseline justify-content-between mb-3">
+                    <h2 class="title">Project Details</h2>
+                    
+                    <div class="text-pending">{{doc.workflow_state}}</div>
+                    <div class="text-primary">
+                      <small class="me-2"> **mandatory to fill to save *mandatory to fill to submit </small>
+                    </div>
+                  </div>
+                  <div class="row gx-3 gy-3">
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                      <label>
+                        Brand
+                        <sup class="text-primary">**</sup>
+                      </label>
+                      <select name="brand" id="brand" class="form-select" required>
+                        <option selected="" disabled="">
+                          Choose the brand name
+                        </option>
+                        {% for brand in brands %}
+                        <option value="{{brand}}" {% if doc.brand==brand %} selected {% endif %}>{{brand}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                      <label>
+                        Project name
+                        <sup class="text-primary">**</sup>
+                      </label>
+                      <input name="p_title" id="p_title" class="form-control"
+                        placeholder="Enter the title of the project" value="{{doc.p_title}}" required>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                      <label>
+                        Uploaded By
+
+                      </label>
+                      <div class="employee-details d-flex align-items-center  user-profile">
+                        <div class="profile-pic"><img src="{{image}}" alt="" class="img-fluid"></div>
+                        <div class="upload-date-time">
+                          {{username}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                      <label>
+                        Uploaded On
+
+                      </label>
+                      <div class="upload-date-time text-start mt-2">
+                        {{frappe.format_date(doc.creation)}}
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                      <label>
+                        Date of Project
+                        <sup>*</sup>
+                      </label>
+                      <div class="row gx-3 gy-3">
+                        <div class="col-6 col-xxl-8">
+                          <select name="month" id="month" class="form-select">
+                            <option selected disabled>Month</option>
+                            <option {% if doc.month=="January" %} selected {% endif %} value="January">January</option>
+                            <option {% if doc.month=="February" %} selected {% endif %} value="February">February
+                            </option>
+                            <option {% if doc.month=="March" %} selected {% endif %} value="March">March</option>
+                            <option {% if doc.month=="April" %} selected {% endif %} value="April">April</option>
+                            <option {% if doc.month=="May" %} selected {% endif %} value="May">May</option>
+                            <option {% if doc.month=="June" %} selected {% endif %} value="June">June</option>
+                            <option {% if doc.month=="July" %} selected {% endif %} value="July">July</option>
+                            <option {% if doc.month=="August" %} selected {% endif %} value="August">August</option>
+                            <option {% if doc.month=="September" %} selected {% endif %} value="September">September
+                            </option>
+                            <option {% if doc.month=="October" %} selected {% endif %} value="October">October</option>
+                            <option {% if doc.month=="November" %} selected {% endif %} value="November">November
+                            </option>
+                            <option {% if doc.month=="December" %} selected {% endif %} value="December">December
+                            </option>
+                          </select>
+                        </div>
+                        <div class="col-6 col-xxl-4">
+                          <select id="year" name="year" class="form-select">
+                            <option selected disabled value="0"> Year</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                      <label>
+                        Agency
+                        <sup class="text-primary"> * </sup>
+                      </label>
+                      <select name="agency" id="agency" class="form-select">
+                        <option selected="" disabled="" value="">
+                          Choose the agency
+                        </option>
+                        {% for agency in agencies %}
+                        <option value="{{agency}}" {% if doc.agency==agency %} selected {% endif %}>{{agency}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                      <label>
+                        Project Type
+                        <sup>*</sup>
+                      </label>
+                      <select name="project_type" id="project_type" class="form-select">
+                        <option selected="" disabled="" value="">
+                          Choose the project type
+                        </option>
+                        {% for project_type in project_types %}
+                        <option value="{{project_type}}" {% if doc.project_type==project_type %} selected {% endif %}>
+                          {{project_type}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                      <label> Tags </label>
+                      <input class="form-control" value="" name="tags" id="tags" data-type="tags"
+                        placeholder="Add tags for the project" />
+                    </div>
+                    <div class="col-12">
+                      <label>Description</label>
+                      <input name="description" id="description" class="form-control" value="{{doc.description}}"
+                        placeholder="Enter one liner description of the project">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label>Target Group</label>
+                  <input name="target_group" id="target_group" class="form-control" value="{{doc.target_group}}"
+                    placeholder="Include demographic, usage and attitudinal target group">
+                </div>
+                <div class="col-12 col-md-6">
+                  <label>
+                    Markets
+                    <sup class="text-primary">*</sup>
+                  </label>
+                  <input name="markets" value="" id="markets" data-type="tags-whitelisted" class="form-control"
+                    placeholder="Mention markets with sample sizes">
+                </div>
+                <div class="col-12">
+                  <label>Sample Size</label>
+                  <input value="{{doc.sample_size}}" id="sample_size" name="sample_size" class="form-control"
+                    maxlength="5" placeholder="Enter the market size" type="text"
+                    onkeypress="return onlyNumberKey(event)">
+                  <label id="samplesize-error" class="is-invalid" style="display:none;" for="sample_size">Enter only
+                    numeric value.</label>
+                </div>
+                <div class="col-12">
+                  <label> Business Problems </label>
+                  <input value="{{doc.business_problems}}" id="business_problems" name="business_problems"
+                    class="form-control" placeholder="Enter a short description of the business issue to be solved">
+                </div>
+                <div class="col-12">
+                  <label> Research Objective </label>
+                  <input value="{{doc.research_objectives}}" id="research_objectives" name="research_objectives"
+                    class="form-control" placeholder="Mention what we need from the research">
+                </div>
+                <div class="col-12">
+                  <label> Result </label>
+                  <input name="result" class="form-control" value="{{doc.result}}" id="result"
+                    placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
+                </div>
+                <div class="col-12">
+                  <label> Learnings </label>
+                  <textarea class="form-control" id="learnings"
+                    placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
+                    rows="10">{{doc.learnings}}</textarea>
+                </div>
+                <div class="col-12">
+                  <label> Actions </label>
+                  <input name="actions" id="actions" class="form-control" value="{{doc.actions}}"
+                    placeholder="Mention the business decisions/actions taken basis insights from the study">
+                </div>
+                <div class="col-5">
+
+                </div>
+                <div class="col-7">
+                  <label> Comments </label>
+                  <textarea class="form-control" placeholder="Add a comment here" rows="6"></textarea>
+                </div>
+                <div class="col-12 text-end action-btns mt-5 mb-4">
+                  <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#saveModal"
+                    type="button" onclick="location.reload()">
+                    Cancel
+                  </button>
+                  <button class="btn btn-secondary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModal"
+                    type="button">
+                    Save Changes
+                  </button>
+                  <button class="btn btn-primary-red px-3 py-2" data-bs-toggle="modal"
+                    data-bs-target="#successModalReject" type="button">
+                    Reject
+                  </button>
+                  <button class="btn btn-primary-green  px-3 py-2" data-bs-toggle="modal"
+                    data-bs-target="#successModalApprove" type="button">
+                    Approve
+                  </button>
+                </div>
+              </div>
+            </forRm>
+          </div>
+          <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
+
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to make the changes?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="saveChanges">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="successModalApprove" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
+
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to approve the File?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="approvedProject">Approve</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="successModalReject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
+
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to reject the File?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="rejectedProject">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="successModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content bg-primary">
+      <div class="modal-body ">
+
+        <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to delete the File?</div>
+        <div class="mt-4 d-flex justify-content-between modal-action-btns ">
+          <button class="btn btn-link text-white" style="border-bottom: none;"
+            onclick="location.reload()">Cancel</button>
+          <button class="btn btn-link text-white" style="border-bottom: none;" id="deleteProject">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/zydus/js/dropzone.min.js"></script>
+<script src="./assets/zydus/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/zydus/js/tagify.min.js"></script>
+<script src="./assets/zydus/js/tagify.polyfills.min.js"></script>
+<script src="./assets/zydus/js/jquery.min.js"></script>
+<script src="./assets/zydus/js/zyduswellness.js"></script>
+<script>
+
+  // creating options for 25 years in the past
+  var currentYear = new Date().getFullYear();
+  var edityear = {{ doc.year }};
+  var selectedStr = "";
+  for (var i = 2000; i <= currentYear; i++) {
+    $('select[name=year]').append('<option value="' + i + '">' + i + '</option>');
+  }
+  document.getElementById("year").value = edityear
+  var usertag = {{ user_tag }}
+  $('#edit-project-form [data-type=tags]').val(JSON.stringify(usertag.map(x => { return { value: x } })))
+  var market = {{ market }}
+  $('#edit-project-form [name=markets]').val(JSON.stringify(market.map(x => { return { value: x } })))
+
+  // tagify markets input
+  var input = document.querySelectorAll("input[name=markets]");
+  if (typeof Tagify !== "undefined") {
+    input.forEach(x => {
+      new Tagify(x, {
+        whitelist: {{ cities }},
+      dropdown :{
+      maxItems: 20,           // <- mixumum allowed rendered suggestions
+      classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+      enabled: 0,             // <- show suggestions on focus
+      closeOnSelect: false    // <- do not hide the suggestions dropdown once an item has been selected
+    },
+      enforceWhitelist: true
+            })
+        });
+    }
+
+        Dropzone.options.saveProjectDropzone = { // camelized version of the `id`
+        paramName: "file", // The name that will be used to transfer the file
+        headers: {
+            "X-Frappe-CSRF-Token": frappe.csrf_token
+        },
+        maxFilesize: 50, // MB
+        url: '/api/method/upload_file',
+        addRemoveLinks: true,
+        params(files, xhr, chunk) {
+            return {
+                // make all uploaded files private in File DocType 
+                is_private: 1
+            }
+        },
+        init: function() {
+            console.log(this, 'init')
+            this.on('removedfile', function(file) {
+                console.log(this, file, 'removed')
+                $('#edit-project-form').append('<input name="remove_file[]" type="hidden" value="'+file.id+'">')
+            })
+
+            this.on('complete', function(file) {
+                console.log(file, 'complete')
+                
+                if(!($(file.previewElement).find('.dz-image img').attr('src') || '').startsWith('data')) {
+                    var thumbnail_img = $(file.previewElement).find('.dz-image img').attr('src') || file.name
+                    console.log(thumbnail_img, 'thumbnail_img')
+                    var thumbnail_img_ext = thumbnail_img.split('.').pop().toLowerCase()
+                    var src = ''
+                    if(!['png', 'jpg', 'jpeg', 'gif'].includes(thumbnail_img_ext)) {
+                        src = '/assets/zydus/images/file-ext/'+thumbnail_img_ext+'.png'
+                    }
+                    console.log(src, 'src 1')
+                    if(src) {
+                        $(file.previewElement).find('.dz-image img').attr('src', src).css('height', '120px').css('width', '120px')
+                    }
+                }
+                
+            })
+        }
+    };
+
+    
+  $("#saveChanges").click(function () {
+
+    var req_data = {
+      "brand": document.getElementById("brand").value,
+      "project_type": document.getElementById("project_type").value,
+      "agency": document.getElementById("agency").value,
+      "actions": document.getElementById("actions").value,
+      "business_problems": document.getElementById("business_problems").value,
+      "description": document.getElementById("description").value,
+      "learnings": document.getElementById("learnings").value,
+      "month": document.getElementById("month").value,
+      "research_objectives": document.getElementById("research_objectives").value,
+      "result": document.getElementById("result").value,
+      "target_group": document.getElementById("target_group").value,
+      "p_title": document.getElementById("p_title").value,
+      "year": document.getElementById("year").value,
+      "sample_size": document.getElementById("sample_size").value,
+
+    }
+    var dropzone = Dropzone.forElement('#save-project-dropzone')
+            var uploaded_files = dropzone.getAcceptedFiles()
+            // if($('#edit-project-form [name=workflow_state]').val() != "Saved" &&  uploaded_files.length == 0) {
+            //     alert('Files are mandatory')
+            //     return
+            // }
+            
+    var marketsArr = JSON.parse(document.getElementById("markets").value || '[]')
+    if (marketsArr.length > 0) {
+      var markets = marketsArr.map(x => x.value)
+      var markets_ = markets.map(x => {
+        return { 'city': x }
+      })
+      req_data['markets'] = markets_
+    }
+  
+
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      type: 'PUT',
+      async: false,
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      data: JSON.stringify(req_data),
+      success: function (res) {      
+        console.log(res)     
+        var tagsArr = JSON.parse($('#edit-project-form [data-type=tags]').val() || '[]')
+        if (tagsArr.length > 0) {
+          var tags = tagsArr.map(x => x.value)
+          $.ajax({
+            url: '/api/method/frappe.desk.doctype.tag.tag.add_tags',
+            method: 'POST',
+            async: false,
+            headers: {
+              'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+            data: {
+              tags: JSON.stringify(tags),
+              dt: 'Project',
+              docs: JSON.stringify([res.data.name])
+            }
+          })
+        }
+        // adding attachments to created document
+        var dropzone = Dropzone.forElement('#save-project-dropzone')
+                    var uploaded_files = dropzone.getAcceptedFiles()
+                    var uploaded_file_names = uploaded_files.map(x => {
+                        // returning name of File Document created
+                        var a = JSON.parse(x.xhr.response)
+                        return a.message.name
+                    })
+                    $.ajax({
+                        url: '/api/method/frappe.utils.file_manager.add_attachments',
+                        method: 'POST',
+                        async: false,
+                        headers: {
+                            'X-Frappe-CSRF-Token': frappe.csrf_token
+                        },
+                        data: {
+                            doctype: 'Project',
+                            name: res.data.name,
+                            attachments: JSON.stringify(uploaded_file_names)
+                        }
+                      })
+                      // form house keeping
+                    $('#save-project-dropzone').trigger('reset')
+                    Dropzone.forElement('#save-project-dropzone').removeAllFiles()
+         
+        location.reload()
+
+      }
+    })
+  }
+)
+
+
+
+
+  $("#approvedProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      method: 'PUT',
+      async: false,
+      data: JSON.stringify({ workflow_state: "Approved",docstatus: 1 }),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        location.href = '/{{doc.route}}'
+
+
+      }
+    })
+  }
+  )
+
+
+  $("#rejectedProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      method: 'PUT',
+      async: false,
+      data: JSON.stringify({ workflow_state: "Rejected" }),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        location.href = '/{{doc.route}}'
+      }
+    })
+  }
+  )
+
+
+
+  $("#deleteProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{doc.name}}',
+      type: 'DELETE',
+      async: false,
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        console.log(res)
+        window.location = "/home"
+      }
+    })
+  }
+  )
+
+  
+
+</script>
+
+{% endblock %}

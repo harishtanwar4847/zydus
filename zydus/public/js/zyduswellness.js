@@ -59,3 +59,22 @@ function Done(ReminderName) {
     }   
 })
 }
+
+// $(document).ready(function() {
+//   var data = [{
+//     id: 0,
+//     html: '<button class="btn btn-cross" type="button"><i class="bi bi-x"></i></button>',
+//     selected: true
+//   },
+//   {
+//     id: 1,
+//     html: '<button class="btn btn-tick" type="button"><i class="bi bi-check"></i></button>',
+    
+//   }];
+//   $(".js-example-basic-single").select2({
+//     data: data,
+//     minimumResultsForSearch: -1,
+//     templateResult: function (d) { return $(d.html); },
+//       templateSelection: function (d) { return $(d.html); },
+//   })
+// });

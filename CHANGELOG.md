@@ -1,3 +1,34 @@
+# [v1.2.7-uat]  - 2022-08-25
+# [v1.2.7-dev+1]  - 2022-08-25
+-[Dev :-changelogmd updated]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/95}
+
+# [v1.2.7-dev]  - 2022-08-24
+-[Develop latest to uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/93}
+
+# [v1.2.6-dev]  - 2022-08-24
+-[Dev UI changes:- home todo view all logo done & home and account reminder Ui done & search like functionality done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/91}
+
+# [v1.2.5-dev]  - 2022-08-23
+-[Dev Fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/90}
+
+# [v1.2.4-dev]  - 2022-08-22
+-[Dev new issues fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/89}
+
+# [v1.2.3-dev]  - 2022-08-19
+-[Account:-Access tab functionality completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/88}
+
+# [v1.2.2-dev]  - 2022-08-11
+-[Account page fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/87}
+
+# [v1.2.1-dev]  - 2022-08-11
+-[Account page error fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/86}
+
+# [v1.2.0-dev]  - 2022-08-10
+-[View Project:- Shown Buttons Edit, Delete, Approve, Reject done & If Chooses option as Edit then, Shown Buttons Delete, Save Changes, Approve, Reject & If Rejected file then only delete option will be there done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/85}
+
+# [v1.1.0-dev]  - 2022-08-01
+-[In To do pending project display done , Reminders card fixed, view project profile pic and name done,Sample size field added in project,Approval tab pagination adjusted to left done,Approval tab grid done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/84}
+
 # [v1.0.0] - 2022-07-30
 # [v0.5.0-uat]  - 2022-07-29
 - [redirected to login page after update password done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/82)
@@ -16,6 +47,21 @@
 
 # [v0.4.5-uat]  - 2022-07-20
 - [Uat : Project and Datasheet file upload max size set to 100Mb, Like feature enabled on view project page, search filter like and refresh functionality issue fixes done, New field added in project doctype(Sample Size),Field type changed as text editor](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/77)
+
+# [v0.4.9-dev]  - 2022-07-14
+-[Admin panel reminder tab completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/76}
+
+# [v0.4.8-dev]  - 2022-07-06
+-[approval pagination done| like functionality done| access tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/75}
+
+# [v0.4.7-dev]  - 2022-06-30
+-[Account page access tab integration and partially functionality done | approval like button]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/74}
+
+# [v0.4.6-dev]  - 2022-06-29
+-[Admin panel Approval tab done | todo css fixes donet]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/73}
+
+# [v0.4.5-dev]  - 2022-06-28
+-[Add FAQ and home page To Do list]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72}
 
 # [v0.4.4-dev]  - 2022-06-21
 - [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69)

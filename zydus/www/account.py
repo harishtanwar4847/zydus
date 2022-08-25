@@ -1,8 +1,11 @@
+from datetime import datetime
+from sqlite3 import sqlite_version
+from urllib import response
 import frappe
 import zydus
 import json
 from frappe.desk.form.load import get_attachments
-from frappe.utils import pretty_date, now, add_to_date
+from frappe.utils import pretty_date,now,add_to_date
 import json 
 import frappe
 from frappe.website.utils import is_signup_enabled
@@ -18,6 +21,7 @@ def get_context(context):
 	
 	
 	context['roles'] =  frappe.get_roles(frappe.session.user)
+	
 	context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
 	# Sauce: https://stackoverflow.com/a/50633946/9403680
 	context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
@@ -27,11 +31,18 @@ def get_context(context):
 		for trending_now in context['trending_now_list']:
 			trending_now['number_of_files'] = len(get_attachments("Project",trending_now.name))
 			
-		context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
+		
 
-		# due_by calculation
-		for reminder in context['reminders']:
-			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
+		context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation","enabled","access_given"],debug=1,limit_page_length=15)
+        # due_by calculation for users
+		for User in context['Users']:
+			User['creation'] = pretty_date(User['creation'])
+			User['UID']="-".join(User["email"].split('@'))
+			roles=frappe.db.get_values("Has Role",{"parent":User["email"]},"role",as_dict=1)
+			User["roles"]=[i.get("role") for i in roles]
+		
+		context['Employees'] = frappe.get_all('User',fields="full_name,name")
+	
 
 		context['favourites_page_length'] = 12
 		context['favourites_page'] = int(frappe.form_dict.favourites) if frappe.form_dict.favourites else 1
@@ -50,7 +61,7 @@ def get_context(context):
 		context['my_uploads_page'] = int(frappe.form_dict.my_uploads) if frappe.form_dict.my_uploads else 1
 		context['my_uploads_page_offset'] = (context['my_uploads_page'] - 1) * context['my_uploads_page_length']
 		context['my_uploads_page_from'] = context['my_uploads_page_offset'] + 1
-		context['my_uploads'] = frappe.db.sql("""  select T.modified,T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand,T.workflow_state from (select modified,docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.p_title as title,concat(P.month," ",P.year) as month_year,P.workflow_state from `tabProject` as P where owner= %(owner)s        union         select modified,docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.d_title as title ,concat(D.month," ",D.year) as month_year,D.workflow_state  from `tabDatasheet`as D where owner = %(owner)s) as T left join `tabBrand` as B on T.brand = B.name order by modified desc limit %(limit)s offset %(offset)s """, {'owner': frappe.session.user, 'limit': context['my_uploads_page_length'], 'offset': context['my_uploads_page_offset']} ,as_dict=1,debug=1)
+		context['my_uploads'] = frappe.db.sql("""  select T.modified,T.doctype,T.owner,T.route,T.liked_by,T.name,T.title,T.month_year,B.color,T.brand,T.workflow_state from (select modified,docstatus, owner, "Project" as doctype, P.route,P._liked_by as liked_by,P.brand,P.name,P.p_title as title,concat(P.month," ",P.year) as month_year,P.workflow_state from `tabProject` as P where owner= %(owner)s        union         select modified,docstatus, owner, "Datasheet" as doctype, D.route, D._liked_by as liked_by,D.brand,D.name,D.d_title as title ,concat(D.month," ",D.year) as month_year,D.workflow_state  from `tabDatasheet`as D where owner = %(owner)s) as T left join `tabBrand` as B on T.brand = B.name where T.workflow_state IN ("approved","rejected","pending") order by modified desc limit %(limit)s offset %(offset)s """, {'owner': frappe.session.user, 'limit': context['my_uploads_page_length'], 'offset': context['my_uploads_page_offset']} ,as_dict=1,debug=1)
 		context['my_uploads_count'] = frappe.db.sql("""  select count(T.name) as count from (select P.name from `tabProject` as P where owner= %s        union         select D.name from `tabDatasheet` as D where owner = %s) as T""", (frappe.session.user,frappe.session.user),as_dict=1,debug=1)[0]['count']
 		context['my_uploads_page_to'] = context['my_uploads_page'] * context['my_uploads_page_length']
 		if context['my_uploads_page_to'] > context['my_uploads_count']:
@@ -77,6 +88,12 @@ def get_context(context):
 		for notification in context['notifications']:
 			notification['creations'] = pretty_date(notification['creation'])
 
+		# context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
+		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 10 """,as_dict=1,debug=1)
+		# due_by calculation for reminders
+		for reminder in context['reminders']:
+			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
+        
 @frappe.whitelist()
 def notification_read_unread(docnames, mark_as_read):
 	notifs = (docnames or '').split(',')
@@ -155,4 +172,29 @@ def edit_profile():
 	frappe.logger().info(user)
 
 	return 1, _('Updated Successfully')
+
+@frappe.whitelist()
+def update_Roles(**kwargs):
+	data = kwargs
+	name="@".join(data.get("name").split('-'))
+	roles=kwargs.get("roles").split(',')[0:-1]
+	user_roles = [{"doctype": "Has Role", "role": i } for i in roles]
+	frappe.set_value('User',name,"roles",user_roles)
+	if user_roles:
+		frappe.set_value('User',name,"access_given",1)
+	else:
+		frappe.set_value('User',name,"access_given",0)
+	sql=(""" 
+	delete from `tabHas Role` where parent='{}', role IN {}
+	""".format(name,tuple(data.get("removeroles").split(','))))
+	
+	print("tuplee",tuple(data.get("removeroles").split(',')))
+	# frappe.db.commit()
+	response = {
+		"message":"success",
+		"User":frappe.get_doc("User",name),
+	}
+	return response
+
+
 

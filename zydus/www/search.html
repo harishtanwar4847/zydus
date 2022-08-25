@@ -14,19 +14,20 @@
           <select name="brand" class="form-select" aria-label="Default select example" id="brandSelect">
             <option selected="" disabled="" value="">
               Choose the brand name
-          </option>
+            </option>
           </select>
         </div>
         <div class="col-12 col-md-6">
           <label for="projectName" class="form-label">Project/ Datasheet Name</label>
-          <input name="project_name" type="text" class="form-control" placeholder="Enter the title of the project" id="projectName" />
+          <input name="project_name" type="text" class="form-control" placeholder="Enter the title of the project"
+            id="projectName" />
         </div>
         <div class="col-12 col-md-6 col-xl-3">
           <label for="agency" class="form-label">Agency</label>
           <select name="agency" class="form-select" aria-label="Default select example" id="agency">
             <option selected="" disabled="" value="">
               Choose the agency name
-          </option>
+            </option>
           </select>
         </div>
         <div class="col-12 col-md-6 col-xl-3">
@@ -47,7 +48,7 @@
                 <option value="October">October</option>
                 <option value="November">November</option>
                 <option value="December">December</option>
-            </select>
+              </select>
             </div>
             <div class="col-6 col-xxl-4">
               <select name="year" class="form-select">
@@ -58,7 +59,8 @@
         </div>
         <div class="col-6 col-xl-5">
           <label for="type" class="form-label">Project/ Data Types</label>
-          <input type="text" name="type" data-type="tags-whitelisted" class='form-control' placeholder="Choose Project / Data type " />
+          <input type="text" name="type" data-type="tags-whitelisted" class='form-control'
+            placeholder="Choose Project / Data type " />
           <!-- <select name="project_type" class="form-select" aria-label="Default select example" id="projectType">
             <option selected="" disabled="" value="">
               Choose the Project Type
@@ -76,8 +78,9 @@
       </div>
     </form>
     <div id="like-button-parent" class="search-results-parent">
-      <div id="like-button" class="search-results" {% if search_results | len == 0 %} style="display: none" {% endif %}>
-        <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3 search-result-tags">
+      <div id="like-button" class="search-results" {% if search_results | len==0 %} style="display: none" {% endif %}>
+        <div
+          class="d-flex flex-column flex-lg-row align-items-baseline justify-content-start mt-5 mb-3 search-result-tags">
           <h2 class="section-title">Search Results</h2>
           <div class="d-block d-lg-inline">
             <span class="text-muted m-1 m-lg-2">for</span>
@@ -95,41 +98,41 @@
     </div>
   </div>
 </div>
-<script src="/assets/zydus/js/jquery.validate.min.js" ></script>
+<script src="/assets/zydus/js/jquery.validate.min.js"></script>
 <script src="/assets/zydus/js/tagify.min.js"></script>
 <script>
   // search form submit handler
   $('#search-form').validate({
-    submitHandler: function(form) {
-      
+    submitHandler: function (form) {
+
       var dataArr = $(form).serializeArray()
       var obj = {}
       dataArr.forEach(x => {
-          if(x.name == 'tags') {
-            x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
-          }
-          if(x.name == 'type') {
-            x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
-          }
-          if(x.value.length > 0) {
-            obj[x.name] = x.value
-          }
+        if (x.name == 'tags') {
+          x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
+        }
+        if (x.name == 'type') {
+          x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
+        }
+        if (x.value.length > 0) {
+          obj[x.name] = x.value
+        }
       })
 
-      if(Object.keys(obj).length == 0) {
+      if (Object.keys(obj).length == 0) {
         return
       }
 
       $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
-      
+
     }
   })
 
   // creating options for 25 years in the past
   var currentYear = new Date().getFullYear()
-  for(var i = 1; i <= 25; i++) {
-      $('select[name=year]').append('<option value="'+currentYear+'">'+currentYear+'</option>')
-      currentYear--;
+  for (var i = 1; i <= 25; i++) {
+    $('select[name=year]').append('<option value="' + currentYear + '">' + currentYear + '</option>')
+    currentYear--;
   }
 
   // populating brands
@@ -155,64 +158,63 @@
 
   // tagify project_type and data_type input
   var input = document.querySelectorAll("[name=type]");
-    if (typeof Tagify !== "undefined") {
-        input.forEach(x => {
-            new Tagify(x, {
-                whitelist : {{types}},
-                enforceWhitelist: true,
-                mode: "select",
+  if (typeof Tagify !== "undefined") {
+    input.forEach(x => {
+      new Tagify(x, {
+        whitelist: {{ types }},
+      enforceWhitelist: true,
+      mode: "select",
             })
         });
     }
 
-function toggleLikeB(dt, dn, add) {
-  $.ajax({
-    url: '/api/method/frappe.desk.like.toggle_like',
-    method: 'POST',
-    data: {
-      doctype: dt, 
-      name: dn,
-      add: add
-    },
-    headers: {
-      'X-Frappe-CSRF-Token': frappe.csrf_token
-    },
-    success: function() {
-      var dataArr = $("#search-form").serializeArray()
-      console.log(dataArr)
-      var obj = {}
-      dataArr.forEach(x => {
-          if(x.name == 'tags') {
+
+  function toggleLikeB(dt, dn, add) {
+    $.ajax({
+      url: '/api/method/frappe.desk.like.toggle_like',
+      method: 'POST',
+      data: {
+        doctype: dt,
+        name: dn,
+        add: add
+      },
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function () {
+        var dataArr = $("#search-form").serializeArray()
+        console.log(dataArr)
+        var obj = {}
+        dataArr.forEach(x => {
+          if (x.name == 'tags') {
             x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
           }
-          if(x.name == 'type') {
+          if (x.name == 'type') {
             x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
           }
-          if(x.value.length > 0) {
+          if (x.value.length > 0) {
             obj[x.name] = x.value
           }
-      })
-      $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
-    }
-  })
-}
-
-
-    
-  setTimeout(function() {
-      // Sauce: https://stackoverflow.com/a/50147341/9403680
-      const params = Object.fromEntries(new URLSearchParams(location.search));
-      console.log(params)
-      
-      $('[name=brand]').val(params.brand || '')
-      $('[name=agency]').val(params.agency || '')
-      $('[name=type]').val(params.type || '')
-      $('[name=project_name]').val(params.project_name || '')
-      $('[name=month]').val(params.month || '')
-      $('[name=year]').val(params.year || '')
-      if((params.tags || '').length > 0) {
-        $('[name=tags]').val(JSON.stringify(params.tags.split(',').map(x => { return {value: x} })))
+        })
+        $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
       }
+    })
+  }
+
+  setTimeout(function () {
+    // Sauce: https://stackoverflow.com/a/50147341/9403680
+    const params = Object.fromEntries(new URLSearchParams(location.search));
+    console.log(params)
+
+    $('[name=brand]').val(params.brand || '')
+    $('[name=agency]').val(params.agency || '')
+    $('[name=type]').val(params.type || '')
+    $('[name=project_name]').val(params.project_name || '')
+    $('[name=month]').val(params.month || '')
+    $('[name=year]').val(params.year || '')
+    if ((params.tags || '').length > 0) {
+      $('[name=tags]').val(JSON.stringify(params.tags.split(',').map(x => { return { value: x } })))
+    }
 
   }, 500)
 </script>

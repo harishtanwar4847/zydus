@@ -20,7 +20,7 @@ class Datasheet(WebsiteGenerator):
 			context['attachments'] = frappe.desk.form.load.get_attachments('Datasheet', self.name)
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 
-		context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Datasheet', self.name, ['_liked_by']) or "[]"))
+		context['userinfo']=frappe.db.sql(""" select D.name,U.user_image,U.full_name from `tabUser` as U  left join `tabDatasheet` as D on  U.name = D.owner where D.name = %s """,(self.name),as_dict=1,debug=1)
 
 	def before_submit(self):
 		frappe.db.delete("View Log",{"reference_doctype": "Datasheet", "reference_name":self.name})
