@@ -1,32 +1,36 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 {% if trending_now.four_columns or False %} col-xl-3 {% endif %}">
-    <div class="trending-product-card" id="trending-now" style="border-color: {{trending_now.color}}">
-        <div class="d-flex align-items-start justify-content-between">
-            <div>  
-              <button onclick="toggleLike('{{trending_now.doctype}}', '{{trending_now.name}}', {% if trending_now.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
-                    <i class="bi {% if trending_now.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if trending_now.is_liked %}style="color: #000;"{% endif %}></i>
-                </button>
-                <div class="text-pending">{{trending_now.workflow_state}}</div>
-            </div>
-            <div class="brand-logo-wrap">
-                <img src="{{trending_now.brand_logo}}" class="img-fluid" />
-            </div>
-        </div>
-        <div class="title-wrap">
-            <h3>{{trending_now.title}}</h3>
-
-        </div>
-        <div class="subtitle">{{trending_now.month_year}}</div>
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="employee-details d-flex align-items-center justify-content-between user-profile">
-              <div class="profile-pic"><img src="{{trending_now.user_image}}" alt="" class="img-fluid"></div>
-              <div class="employee-name">{{trending_now.full_name}}</div>
-            </div>
-            <div class="dropdown">
-              <button  onclick="location.href='/{{trending_now.route}}';" class="btn btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Actions
-            </button>
-          </div>
-        </div>
+  <div class="trending-product-card" id="trending-now" style="border-color: {{trending_now.color}}">
+    <div class="d-flex align-items-start justify-content-between">
+      <div>
+        <button
+          onclick="toggleLike('{{trending_now.doctype}}', '{{trending_now.name}}', {% if trending_now.is_liked %}'No'{% else %}'Yes'{% endif %})"
+          type="button" class="btn btn-link p-0 fav-button">
+          <i class="bi {% if trending_now.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if
+            trending_now.is_liked %}style="color: #000;" {% endif %}></i>
+        </button>
+        <div class="text-pending">{{trending_now.workflow_state}}</div>
+      </div>
+      <div class="brand-logo-wrap">
+        <img src="{{trending_now.brand_logo}}" class="img-fluid" />
+      </div>
     </div>
+    <div onclick="location.href='/{{trending_now.route}}';">
+      <div class="title-wrap">
+        <h3>{{trending_now.title}}</h3>
+      </div>
+      <div class="subtitle">{{trending_now.month_year}}</div>
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="employee-details d-flex align-items-center justify-content-between user-profile">
+          <div class="profile-pic"><img src="{{trending_now.user_image}}" alt="" class="img-fluid"></div>
+          <div class="employee-name">{{trending_now.full_name}}</div>
+        </div>
+        <div class="dropdown">
+          <button onclick="location.href='/{{trending_now.route}}';" class="btn btn-action dropdown-toggle"
+            type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Actions
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
