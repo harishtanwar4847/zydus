@@ -30,8 +30,10 @@
           <a class="nav-link {{ 'active' if 'my_uploads' in frappe.form_dict  else '' }}" id="my_uploads"
             data-bs-toggle="pill" href="#v-pills-uploads" role="tab" aria-controls="v-pills-uploads"
             aria-selected="true">My Uploads</a>
+            {% if admin_access_allowed %}
           <a class="nav-link {{ 'active' if 'Users' in frappe.form_dict  else '' }}" id="Users" data-bs-toggle="pill"
             href="#v-pills-access" role="tab" aria-controls="v-pills-access" aria-selected="true">Access</a>
+            {% endif %}
           <a class="nav-link {{ 'active' if 'favourites' in frappe.form_dict  else '' }}" id="favourites"
             data-bs-toggle="pill" href="#v-pills-favourites" role="tab" aria-controls="v-pills-favourites"
             aria-selected="false">Favourites</a>
@@ -358,6 +360,7 @@
                     </label>
                     <input type="date" name="date" class="form-control " placeholder="DD/MM/YYYY">
                   </div>
+                  {% if admin_access_allowed %}
                   <div class="col-12 col-md-6">
                     <label>
                       Employee Name
@@ -370,6 +373,7 @@
                       {% endfor %}
                     </select>
                   </div>
+                  {% endif %}
                   <div class="col-12 text-end action-btns mb-4">
                     <button class="btn btn-secondary me-2 remind-btn-cancel" type="reset" onclick="CancelReminder()">
                       Cancel

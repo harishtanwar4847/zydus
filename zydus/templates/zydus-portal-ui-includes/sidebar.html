@@ -24,6 +24,7 @@
         <span class="d-none d-md-inline-block">Upload</span>
       </a>
     </li>
+    {% if admin_access_allowed %}
     <li class="nav-item">
       <a class="nav-link" href="/approvals?all">
         <span class="nav-link-icon">
@@ -33,6 +34,7 @@
        <span class="d-none d-md-inline-block">Approvals</span>
      </a>
    </li>  
+   {% endif %}
     <li class="nav-item">
       <a class="nav-link" href="/search">
         <span class="nav-link-icon">
