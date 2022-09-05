@@ -1,7 +1,6 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Editproject{% endblock %}
 {% block content %}
-{{access_allowed}}
 <link rel="stylesheet" href="/assets/zydus/css/dropzone.min.css" type="text/css" />
 <link href="/assets/zydus/css/tagify.css" rel="stylesheet" />
 
@@ -95,28 +94,27 @@
                       <input name="p_title" id="p_title" class="form-control"
                         placeholder="Enter the title of the project" value="{{doc.p_title}}" required>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-12 col-xl-5">
+                    {% if admin_access_allowed %}
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-5">                     
                       <label>
                         Uploaded By
-
                       </label>
                       <div class="employee-details d-flex align-items-center  user-profile">
                         <div class="profile-pic"><img src="{{image}}" alt="" class="img-fluid"></div>
                         <div class="upload-date-time">
                           {{username}}
                         </div>
-                      </div>
+                      </div>  
                     </div>
-                    <div class="col-12 col-md-6 col-lg-12 col-xl-7">
+                    <div class="col-12 col-md-6 col-lg-12 col-xl-7">   
                       <label>
                         Uploaded On
-
                       </label>
                       <div class="upload-date-time text-start mt-2">
                         {{frappe.format_date(doc.creation)}}
-                      </div>
+                      </div> 
                     </div>
-
+                    {% endif %}
                     <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                       <label>
                         Date of Project

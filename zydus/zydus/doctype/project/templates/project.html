@@ -58,16 +58,18 @@
                   </div>
                 </div>
                 <div class="col col-lg-5 col-md-12 col-12">
-                  {% for data in userinfo %}
+                 {% if acces_admin_allowed %}
                   <div class="employee-details d-flex align-items-center user-profile">
+                    {% for data in userinfo %}
                     <div class="profile-pic">
                       <img src="{{data.user_image}}" alt="" class="img-fluid">
                     </div>
                     <div class="upload-date-time">
                       {{data.full_name}}
                     </div>
+                    {% endfor %}
                   </div>
-                  {% endfor %}
+                  {% endif %}
                   <div class="upload-date-time text-start mt-3">
                     Uploaded on {{frappe.format_date(doc.modified)}}
                   </div>
