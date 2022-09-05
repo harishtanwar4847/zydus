@@ -1,6 +1,7 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}Editproject{% endblock %}
 {% block content %}
+{{access_allowed}}
 <link rel="stylesheet" href="/assets/zydus/css/dropzone.min.css" type="text/css" />
 <link href="/assets/zydus/css/tagify.css" rel="stylesheet" />
 
@@ -254,6 +255,7 @@
                     type="button">
                     Save Changes
                   </button>
+                  {% if admin_access_allowed %}
                   <button class="btn btn-primary-red px-3 py-2" data-bs-toggle="modal"
                     data-bs-target="#successModalReject" type="button">
                     Reject
@@ -262,6 +264,7 @@
                     data-bs-target="#successModalApprove" type="button">
                     Approve
                   </button>
+                 {% endif %}
                 </div>
               </div>
             </forRm>
