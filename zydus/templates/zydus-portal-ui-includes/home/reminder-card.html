@@ -1,5 +1,6 @@
 <div class="reminders-container">
     <div class="reminders-wrapper">
+        {% if admin_access_allowed %}
         <div class="reminder {% if reminder.due_by == 'Today' %} active {% endif %}">
             <div>
                 <img src="{% if reminder.due_by == 'Today' %} /assets/zydus/images/reminder-filled.svg {% else %} /assets/zydus/images/reminder-outline.svg {% endif %}" />
@@ -56,5 +57,49 @@
 
             </div>
         </div>
+        {% endif %}
+        {% if not admin_access_allowed %}
+        <div class="reminder {% if reminder.due_by == 'Today' %} active {% endif %}">
+            <div>
+                <img src="{% if reminder.due_by == 'Today' %} /assets/zydus/images/reminder-filled.svg {% else %} /assets/zydus/images/reminder-outline.svg {% endif %}" />
+            </div>
+            <div>
+                <div>
+                    <span class="reminder-sender">{% if reminder.modified_by != reminder.owner %} admin {% else %} me {% endif %}:</span>
+                    <span class="reminder-title">{{reminder.title}}</span>
+                </div>
+                <div class="reminder-content mt-2">{{reminder.description}}</div>
+            </div>
+            <div class="reminder-time">{{ reminder.due_by }}</div>
+            <div class="reminder-actions mt-3">
+                {% if reminder.due_by == 'Today' %}
+                {% if reminder.owner == reminder.modified_by %}
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Snooze
+                    </button>
+                    <div class="dropdown-menu">
+                        <ul class="list-unstyled" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',1,'{{reminder.name}}')" href="#">Tomorrow </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',2,'{{reminder.name}}')" href="#">in 2 days</button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" onclick="SnoozeReminder('{{reminder.date}}',3,'{{reminder.name}}')" href="#">in 3 days</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                <button class="btn" onclick="Done('{{reminder.name}}')">Done</button>
+                {% endif %}
+        
+            </div>
+        </div>
+        {% endif %}
+
     </div>
 </div>

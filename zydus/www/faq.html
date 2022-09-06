@@ -16,6 +16,7 @@
             <label for="projectName" class="form-label">Answer</label>
             <textarea class="form-control" name="answer" placeholder="add the answer to the above question here" rows="6"></textarea>
           </div>
+          
           <div class="col-lg-10 col-12 text-end search-action-buttons">
             <button class="btn btn-outline-secondary m-1" onclick="location.href='/faq'">Cancel</button>
             <button class="btn btn-secondary m-1" onclick="AddFaq()">Add</button>
@@ -54,11 +55,13 @@
                 </div>
             </div>
         </div>
+        {% if admin_access_allowed %}
         <div class="add-missing-btn">
             <button class="btn btn-primary" id="set-add-faq-button" type="button" >
               <img src="/assets/zydus/images/plus-icn.png" class="img-fluid">
             </button>
         </div>
+        {% endif %}
     </div>
     <!-- <div id="content-wrapper"   class="main" id="add-new-faq">
         <div class="container-fluid"  >

@@ -1,6 +1,7 @@
 {% extends "templates/zydus-portal-ui.html" %}
 {% block title%}EditDatasheet{% endblock %}
 {% block content %}
+
 <link rel="stylesheet" href="/assets/zydus/css/dropzone.min.css" type="text/css" />
 <link href="/assets/zydus/css/tagify.css" rel="stylesheet" />
 <div class="col-xl-12 px-md-3 px-lg-5 px-xl-4 px-xxl-5 pt-5 main-scroll-area">
@@ -91,10 +92,10 @@
                     <input name="d_title" id="d_title" class="form-control"
                     placeholder="Enter the title of the datasheet" value="{{doc.d_title}}" required>
                 </div>
+                {% if admin_access_allowed %}
                 <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                     <label>
                       Uploaded By
-
                     </label>
                     <div class="employee-details d-flex align-items-center  user-profile">
                       <div class="profile-pic"><img src="{{image}}" alt="" class="img-fluid"></div>
@@ -106,12 +107,12 @@
                   <div class="col-12 col-md-6 col-lg-12 col-xl-7">
                     <label>
                       Uploaded On
-
                     </label>
                     <div class="upload-date-time text-start mt-2">
                       {{frappe.format_date(doc.creation)}}
                     </div>
                   </div>
+                  {% endif %}
                 <div class="col-12 col-md-6 col-lg-12 col-xl-5">
                     <label>
                       Date of Project
@@ -204,6 +205,7 @@
       type="button">
       Save Changes
     </button>
+    {% if admin_access_allowed  %}
     <button class="btn btn-primary-red px-3 py-2" data-bs-toggle="modal"
       data-bs-target="#successModalReject" type="button">
       Reject
@@ -212,6 +214,7 @@
       data-bs-target="#successModalApprove" type="button">
       Approve
     </button>
+    {% endif %}
   </div>
 </div>
 </form>
