@@ -65,7 +65,7 @@
             </div>
             <div>
                 <div>
-                    <span class="reminder-sender">{% if reminder.modified_by == "Administrator" %} admin {% else %} me {% endif %}:</span>
+                    <span class="reminder-sender">{% if reminder.modified_by != reminder.owner %} admin {% else %} me {% endif %}:</span>
                     <span class="reminder-title">{{reminder.title}}</span>
                 </div>
                 <div class="reminder-content mt-2">{{reminder.description}}</div>

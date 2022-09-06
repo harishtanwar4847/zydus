@@ -689,8 +689,11 @@
         dataArr.forEach(x => {
           obj[x.name] = x.value
         })
-        // obj['owner'] = '{{frappe.session.user}}'
-        obj['owner'] = $("select[name=Employee]").val();
+        {% if user_access_allowed %}
+          obj['owner'] = '{{frappe.session.user}}'
+        {% else %}
+          obj['owner'] = $("select[name=Employee]").val();
+        {% endif %}
         console.log(obj)
         $.ajax({
           url: '/api/resource/ToDo',
