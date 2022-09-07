@@ -7,11 +7,12 @@ from frappe.utils import pretty_date, now, add_to_date
 def get_context(context):
     context['no_cache'] = 1
     context['roles'] =  frappe.get_roles(frappe.session.user)
-    context['allowed_roles'] = ['KMS Uploader', 'KMS Downloader', 'KMS Admin']
+    context['user_allowed_roles'] = ['KMS Uploader', 'KMS Downloader']
+    context['admin_allowed_roles'] = ['KMS Admin']
     # Sauce: https://stackoverflow.com/a/50633946/9403680
-    context['access_allowed'] = any(role in context['roles'] for role in context['allowed_roles'])
-
-    if context['access_allowed']:
+    context['user_access_allowed'] = any(role in context['roles'] for role in context['user_allowed_roles'])
+    context['admin_access_allowed'] = any(role in context['roles'] for role in context['admin_allowed_roles'])
+    if context['admin_access_allowed'] or context['user_access_allowed']:
          context['helpdesk_entries'] = frappe.get_all('Help Desk', fields=['full_name', 'designation', 'email', 'mobile_number'])
 
          context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
