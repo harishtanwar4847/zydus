@@ -691,8 +691,10 @@
         })
         {% if user_access_allowed %}
           obj['owner'] = '{{frappe.session.user}}'
+          obj['created_by'] = '{{frappe.session.user}}'
         {% else %}
           obj['owner'] = $("select[name=Employee]").val();
+          obj['created_by'] = '{{frappe.session.user}}'
         {% endif %}
         console.log(obj)
         $.ajax({
@@ -735,6 +737,7 @@
     $('#set-reminder-form [name=title]').attr('required', true)
     $('#set-reminder-form [name=description]').attr('required', true)
     $('#set-reminder-form [name=Employee]').attr('required', true)
+    
 
   }
   function CancelReminder() {

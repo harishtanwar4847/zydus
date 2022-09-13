@@ -157,14 +157,7 @@
               Delete
             </button>
             {% endif %}
-            {% if admin_access_allowed %}
-            <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
-              type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" )
-              %} hidden {% endif %}>
-              Edit
-            </button>
-            {% endif %}
-            {% if user_access_allowed and doc.owner == frappe.session.user and doc.workflow_state == "Pending" %}
+            {% if admin_access_allowed or user_access_allowed and doc.owner == frappe.session.user and doc.workflow_state == "Pending" %}
             <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
               type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" )
               %} hidden {% endif %}>

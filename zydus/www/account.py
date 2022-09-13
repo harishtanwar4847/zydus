@@ -82,7 +82,7 @@ def get_context(context):
 			notification['creations'] = pretty_date(notification['creation'])
 
 		# context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
-		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 10 """,as_dict=1,debug=1)
+		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and (T.created_by = %s or T.owner = %s) order by date asc limit 5 """,(frappe.session.user,frappe.session.user),as_dict=1,debug=1)
 		# due_by calculation for reminders
 		for reminder in context['reminders']:
 			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
@@ -147,7 +147,7 @@ def get_context(context):
 			notification['creations'] = pretty_date(notification['creation'])
 
 		# context["reminders"]=frappe.db.get_list("ToDo",fields=["name","title","description","owner","modified_by","date"], order_by ='date asc',debug=1,filters={"owner":frappe.session.user,"status":"open"},limit_page_length=10)
-		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and T.owner = %s order by date asc limit 10 """,(frappe.session.user),as_dict=1,debug=1)
+		context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and T.owner = %s order by date asc limit 5 """,(frappe.session.user),as_dict=1,debug=1)
 		# due_by calculation for reminders
 		for reminder in context['reminders']:
 			reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
