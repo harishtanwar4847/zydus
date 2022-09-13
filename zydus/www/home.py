@@ -29,7 +29,7 @@ def get_context(context):
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
         
      
-        context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and (T.created_by = %s or T.owner = %s)order by date asc limit 5 """,(frappe.session.user,frappe.session.user),as_dict=1,debug=1)
+        context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and (T.created_by = %s or T.owner = %s) order by date asc limit 5 """,(frappe.session.user,frappe.session.user),as_dict=1,debug=1)
        
         
 

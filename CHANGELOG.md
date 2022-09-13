@@ -1,5 +1,5 @@
 # [v1.3.2-dev]  - 2022-09-08
--[dev issues fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/103}
+-[dev issues fixed: trending now and reminder and notifications]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/103}
 
 # [v1.3.1-dev]  - 2022-09-07
 -[sidebar issue fixed admin]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/102}
