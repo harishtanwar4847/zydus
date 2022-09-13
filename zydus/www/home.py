@@ -1,3 +1,4 @@
+from distutils.log import debug
 import frappe
 import zydus
 from frappe.desk.form.load import get_attachments
@@ -27,16 +28,17 @@ def get_context(context):
             my_upload['attachments'] = get_attachments(my_upload.doctype,my_upload.name)
             my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
         
-    
-        context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" order by date asc limit 5 """,as_dict=1,debug=1)
-      
+     
+        context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and (T.created_by = %s or T.owner = %s)order by date asc limit 5 """,(frappe.session.user,frappe.session.user),as_dict=1,debug=1)
+       
+        
+
         # due_by calculation
         for reminder in context['reminders']:
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
         
-        
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
-
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc",debug=True)
+      
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
 
@@ -62,7 +64,14 @@ def get_context(context):
             reminder['due_by'] = zydus.pretty_date_future(reminder['date'].strftime("%Y-%m-%d"))
         
         
-        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
+        context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc",debug=True)
+        # context["notifications"]=frappe.db.sql("""select subject, creation,owner,for_user from 
+        # `tabNotification Log` 
+        # where (owner = %s and for_user = %s and subject LIKE 'you%%') 
+        # OR (owner <> %s and for_user = %s and subject LIKE 'Admin%%') 
+        # order by modified desc limit 5""",
+        # (frappe.session.user,frappe.session.user,frappe.session.user,frappe.session.user),debug=True)
+
 
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
