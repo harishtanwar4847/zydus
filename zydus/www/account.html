@@ -96,6 +96,7 @@
               <div class="subtitle">{{my_upload.month_year}}</div>
               <div class="subtitle">{{my_upload.attachments | len}} {% if my_upload.attachments | len > 1%} files {%
                 else %} file {% endif %}</div>
+              <!-- <div id="workflow" class="green-status">{{my_upload.workflow_state}}</div> -->
               <div {% if my_upload.workflow_state=="Rejected" %}
                 style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#e70918;"
                 {% elif my_upload.workflow_state=="Pending" %}
@@ -203,6 +204,11 @@
                       </ul>
                     </div>
                   </div>
+                  <!-- <div class="buttons1">
+                  <select class="js-example-basic-single"></select>
+                  <button class="btn btn-blank disabled">
+                  </button>
+                </div> -->
                   {% endif %}
                 </div>
                 <div class="collapse m-0" data-bs-parent="#tickcollapse" id="User-{{User.username}}"
@@ -238,8 +244,7 @@
           <!--------------------->
           <!-- Favourite Tab Start -->
           <!--------------------->
-          <div
-            class="tab-pane fade account-nav-favourites-blk {{ 'show active' if 'favourites' in frappe.form_dict  else '' }}"
+          <div class="tab-pane fade account-nav-favourites-blk {{ 'show active' if 'favourites' in frappe.form_dict  else '' }}"
             id="v-pills-favourites" role="tabpanel" aria-labelledby="favourites">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h2 class="section-title">Favourites</h2>
@@ -304,8 +309,7 @@
           <!--------------------->
           <!-- Reminder Tab Start -->
           <!--------------------->
-          <div
-            class="tab-pane fade account-nav-reminders-blk {{ 'show active' if 'reminders' in frappe.form_dict  else '' }}"
+          <div class="tab-pane fade account-nav-reminders-blk {{ 'show active' if 'reminders' in frappe.form_dict  else '' }}"
             id="v-pills-reminders" role="tabpanel" aria-labelledby="reminders">
             <div class="set-reminders-wrapper" style="display:none;" id="set-new-reminder">
               <div class="d-flex align-items-center justify-content-between mb-3">
@@ -376,7 +380,7 @@
               </button>
             </div>
           </div>
-          <!--------------------->
+        <!--------------------->
           <!-- Reminder Tab End -->
           <!--------------------->
           <!--------------------->
@@ -465,7 +469,6 @@
                 <div class="notification-item-time"><i>{{my_notification.creations}}</i></div>
               </a>
               {% endfor %}
-              <!-- End -->
             </div>
           </div>
           <!--------------------->
@@ -477,7 +480,8 @@
           <!-- <div class="col-xl-9  tab-pane fade account-edit-profile-blk"  id="v-pills-edit-profile" role="tabpanel" -->
           <!-- aria-labelledby="v-pills-edit-profile"> -->
           <!-- <div class="edit-profile-wrapper" id="edit-profile" > -->
-          <div class="account-nav-main-blk tab-pane fade account-edit-profile-blk {{ 'show active' if 'profile' in frappe.form_dict  else '' }}"
+          <div
+            class="account-nav-main-blk tab-pane fade account-edit-profile-blk {{ 'show active' if 'profile' in frappe.form_dict  else '' }}"
             id="v-pills-edit-profile" role="tabpanel" aria-labelledby="v-pills-edit-profile">
             <form id="edit_profile">
               <h2 class="section-title">Profile</h2>
@@ -607,6 +611,7 @@
             if (res.message[0] == 0) {
               alert(res.message[1])
               return
+
             }
             //  show modal
             alert("Profile updated successfully!")
@@ -620,6 +625,7 @@
         })
       }
     })
+
     $('#set-reminder-form').validate({
       submitHandler: function (form) {
         var dataArr = $(form).serializeArray()
@@ -632,8 +638,9 @@
         obj['created_by'] = '{{frappe.session.user}}'
         {% else %}
           obj['owner'] = $("select[name=Employee]").val();
-          obj['created_by'] = '{{frappe.session.user}}'
-        {% endif %}
+    obj['created_by'] = '{{frappe.session.user}}'
+    {% endif %}
+    console.log(obj)
     $.ajax({
       url: '/api/resource/ToDo',
       method: 'POST',
@@ -653,11 +660,14 @@
       }
     })
   }
-}) 
+  })
+  }
   setJqueryValidateOnAllForms()
   function AddReminder() {
     console.log('Add Reminder Called')
+    //  alert("reminder")
     $('#set-reminder-form').validate().resetForm()
+
     // setting submit inputs as required
     $('#set-reminder-form [name=date]').attr('required', true)
     $('#set-reminder-form [name=title]').attr('required', true)
@@ -701,7 +711,6 @@
             setJqueryValidateOnAllForms()
           })
         }
-
       })
     })
   })
@@ -777,6 +786,7 @@
       }
     })
   }
+
   function SnoozeReminderA(date, days, ReminderName) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
@@ -809,6 +819,7 @@
         $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
           setJqueryValidateOnAllForms()
         })
+
       }
     })
   }
@@ -818,6 +829,7 @@
     document.getElementById("cross_" + id).style.display = "none"
     document.getElementById("down_" + id).style.display = "inline-block"
     document.getElementById(id).style.display = "inline-block"
+
   }
   function crossBtn(cross_id) {
     var id = cross_id.slice(6)
