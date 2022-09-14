@@ -104,7 +104,6 @@
   // search form submit handler
   $('#search-form').validate({
     submitHandler: function (form) {
-
       var dataArr = $(form).serializeArray()
       var obj = {}
       dataArr.forEach(x => {
@@ -118,44 +117,36 @@
           obj[x.name] = x.value
         }
       })
-
       if (Object.keys(obj).length == 0) {
         return
       }
-
       $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
-
     }
   })
-
   // creating options for 25 years in the past
   var currentYear = new Date().getFullYear()
   for (var i = 1; i <= 25; i++) {
     $('select[name=year]').append('<option value="' + currentYear + '">' + currentYear + '</option>')
     currentYear--;
   }
-
   // populating brands
   var brands = {{ brands }}
   for (var i = 0; i < brands.length; i++) {
     var brand = brands[i]
     $('select[name=brand]').append('<option value="' + brand + '">' + brand + '</option>')
   }
-
   // populating agencies
   var agencies = {{ agencies }}
   for (var i = 0; i < agencies.length; i++) {
     var agency = agencies[i]
     $('select[name=agency]').append('<option value="' + agency + '">' + agency + '</option>')
   }
-
   // populating project_types
   var project_types = {{ project_types }}
   for (var i = 0; i < project_types.length; i++) {
     var project_type = project_types[i]
     $('select[name=project_type]').append('<option value="' + project_type + '">' + project_type + '</option>')
   }
-
   // tagify project_type and data_type input
   var input = document.querySelectorAll("[name=type]");
   if (typeof Tagify !== "undefined") {
@@ -167,8 +158,6 @@
             })
         });
     }
-
-
   function toggleLikeB(dt, dn, add) {
     $.ajax({
       url: '/api/method/frappe.desk.like.toggle_like',
@@ -200,12 +189,10 @@
       }
     })
   }
-
   setTimeout(function () {
     // Sauce: https://stackoverflow.com/a/50147341/9403680
     const params = Object.fromEntries(new URLSearchParams(location.search));
     console.log(params)
-
     $('[name=brand]').val(params.brand || '')
     $('[name=agency]').val(params.agency || '')
     $('[name=type]').val(params.type || '')
@@ -215,7 +202,6 @@
     if ((params.tags || '').length > 0) {
       $('[name=tags]').val(JSON.stringify(params.tags.split(',').map(x => { return { value: x } })))
     }
-
   }, 500)
 </script>
 {% endblock %}
