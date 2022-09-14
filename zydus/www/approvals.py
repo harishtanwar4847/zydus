@@ -6,14 +6,12 @@ import json
 from frappe.utils import (cint, flt, has_gravatar, escape_html, format_datetime,
 	now_datetime, get_formatted_email, today)
 
-
 def get_context(context):
     context['no_cache'] = 1
     context['roles'] =  frappe.get_roles(frappe.session.user)
     context['admin_allowed_roles'] = ['KMS Admin']
     # Sauce: https://stackoverflow.com/a/50633946/9403680
     context['admin_access_allowed'] = any(role in context['roles'] for role in context['admin_allowed_roles'])
-
     if context['admin_access_allowed']:
         context['all_page_length'] = 12
         context['all_page'] = int(frappe.form_dict.all) if frappe.form_dict.all else 1
@@ -27,9 +25,6 @@ def get_context(context):
         for all in context['all']:
             all['attachments'] = get_attachments(all.doctype,all.name)
             all['is_liked'] = frappe.session.user in json.loads(all['liked_by'] or '[]')
-
-        
-
         context['approved_page_length'] = 12
         context['approved_page'] = int(frappe.form_dict.approved) if frappe.form_dict.approved else 1
         context['approved_page_offset'] = (context['approved_page'] - 1) * context['approved_page_length']
@@ -42,9 +37,6 @@ def get_context(context):
         for approved in context['approved']:
             approved['attachments'] = get_attachments(approved.doctype,approved.name)
             approved['is_liked'] = frappe.session.user in json.loads(approved['liked_by'] or '[]')
-
-        
-
         context['pending_page_length'] = 12
         context['pending_page'] = int(frappe.form_dict.pending) if frappe.form_dict.pending else 1
         context['pending_page_offset'] = (context['pending_page'] - 1) * context['pending_page_length']
@@ -61,9 +53,6 @@ def get_context(context):
         for pending in context['pending']:
             pending['attachments'] = get_attachments(pending.doctype,pending.name)
             pending['is_liked'] = frappe.session.user in json.loads(pending['liked_by'] or '[]')
-
-        
-
         context['rejected_page_length'] = 12
         context['rejected_page'] = int(frappe.form_dict.rejected) if frappe.form_dict.rejected else 1
         context['rejected_page_offset'] = (context['rejected_page'] - 1) * context['rejected_page_length']
@@ -76,11 +65,7 @@ def get_context(context):
         for rejected in context['rejected']:
             rejected['attachments'] = get_attachments(rejected.doctype,rejected.name)
             rejected['is_liked'] = frappe.session.user in json.loads(rejected['liked_by'] or '[]')
-            
-
-
         context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
-
         for notification in context['notifications']:
             notification['creations'] = pretty_date(notification['creation'])
             

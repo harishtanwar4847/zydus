@@ -1,3 +1,6 @@
+# [v1.3.2-dev+1]  - 2022-09-14
+-[all page code redundant done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/104}
+
 # [v1.3.2-dev]  - 2022-09-08
 -[dev issues fixed: trending now and reminder and notifications]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/103}
 

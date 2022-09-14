@@ -12,10 +12,8 @@ def get_context(context):
     # Sauce: https://stackoverflow.com/a/50633946/9403680
     context['user_access_allowed'] = any(role in context['roles'] for role in context['user_allowed_roles'])
     context['admin_access_allowed'] = any(role in context['roles'] for role in context['admin_allowed_roles'])
-    if context['admin_access_allowed'] or context['user_access_allowed']:
-         context['helpdesk_entries'] = frappe.get_all('Help Desk', fields=['full_name', 'designation', 'email', 'mobile_number'])
-
-         context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
-         for notification in context['notifications']:
-            notification['creations'] = pretty_date(notification['creation'])
+    context['helpdesk_entries'] = frappe.get_all('Help Desk', fields=['full_name', 'designation', 'email', 'mobile_number'])
+    context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
+    for notification in context['notifications']:
+        notification['creations'] = pretty_date(notification['creation'])
              
