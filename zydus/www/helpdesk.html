@@ -7,9 +7,8 @@
         <div class="d-flex align-items-center justify-content-between mb-3">
             <h2 class="section-title">Help Desk</h2>
         </div>
-
         <div>
-            {% for helpdesk in helpdesk_entries %}
+        {% for helpdesk in helpdesk_entries %}
 	    {% set index = loop.index % 4 %}
             <div class="heldesk-{{ 4 if index == 0 else index }}">
                 <div class="row">
@@ -27,7 +26,6 @@
                             <img src="/assets/zydus/images/mail.svg" alt="" class="img-fluid me-2">
                             {{helpdesk.email}}
                         </div>
-
                         <div class="contact-number  d-flex  mb-3">
                             <img src="/assets/zydus/images/phone.svg" alt="" class="img-fluid me-2">
                             {{helpdesk.mobile_number}}
