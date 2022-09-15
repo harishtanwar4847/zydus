@@ -30,8 +30,10 @@
           <a class="nav-link {{ 'active' if 'my_uploads' in frappe.form_dict  else '' }}" id="my_uploads"
             data-bs-toggle="pill" href="#v-pills-uploads" role="tab" aria-controls="v-pills-uploads"
             aria-selected="true">My Uploads</a>
+          {% if admin_access_allowed %}
           <a class="nav-link {{ 'active' if 'Users' in frappe.form_dict  else '' }}" id="Users" data-bs-toggle="pill"
             href="#v-pills-access" role="tab" aria-controls="v-pills-access" aria-selected="true">Access</a>
+          {% endif %}
           <a class="nav-link {{ 'active' if 'favourites' in frappe.form_dict  else '' }}" id="favourites"
             data-bs-toggle="pill" href="#v-pills-favourites" role="tab" aria-controls="v-pills-favourites"
             aria-selected="false">Favourites</a>
@@ -64,7 +66,6 @@
                     {{my_uploads_page_from}}-{{my_uploads_page_to}} of {{my_uploads_count}}
                   </small>
                 </li>
-
                 <li class="list-inline-item">
                   <button {% if my_uploads_page> 1 %} onclick="load_accounts_page('my_uploads', {{my_uploads_page -
                     1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if my_uploads_page == 1 else
@@ -96,7 +97,13 @@
               <div class="subtitle">{{my_upload.attachments | len}} {% if my_upload.attachments | len > 1%} files {%
                 else %} file {% endif %}</div>
               <!-- <div id="workflow" class="green-status">{{my_upload.workflow_state}}</div> -->
-              <div {% if my_upload.workflow_state == "Rejected"%}  style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#e70918;" {% elif my_upload.workflow_state == "Pending" %} style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color: #FFD600;" {% else %} style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#30cb0d;" {% endif %}>{{my_upload.workflow_state}}</div>
+              <div {% if my_upload.workflow_state=="Rejected" %}
+                style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#e70918;"
+                {% elif my_upload.workflow_state=="Pending" %}
+                style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color: #FFD600;"
+                {% else %}
+                style="font-style: italic; font-size: 9px; line-height: 14px;text-align: right; text-transform: lowercase; text-align: center;color:#30cb0d;"
+                {% endif %}>{{my_upload.workflow_state}}</div>
               <div class="comment-icon">
                 <img src="/assets/zydus/images/comment.svg" alt="icon" class="img-fluid">
               </div>
@@ -117,17 +124,13 @@
             </div>
             {% endfor%}
           </div>
-
           <!-- End -->
-
           <!--------------------->
           <!-- Upload Tab End -->
           <!--------------------->
-
           <!--------------------->
           <!-- Access Tab Start -->
           <!--------------------->
-
           <div class="tab-pane fade account-nav-access-blk  {{ 'show active' if 'Users' in frappe.form_dict  else '' }}"
             id="v-pills-access" role="tabpanel" aria-labelledby="Users">
             <div class="d-flex align-items-center justify-content-between mb-3">
@@ -149,13 +152,11 @@
                   {% if User.enabled %}
                   <div class="buttons btn-group">
                     {% if User.access_given %}
-
                     <div class="dropdown">
                       <button class="btn btn-tick dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
                         type="button" onclick="addDrop(this.id)" id="{{User.UID}}">
                         <i class='bi bi-check'></i>
                       </button>
-
                       <ul class="dropdown-menu" style="min-width:10% !important;height: 120px !important;">
                         <li><button class="btn btn-tick dropdown-item"
                             style="width: 50px !important;height: 50px !important; " onclick="updateRole(this.id)"
@@ -166,7 +167,6 @@
                             id="cross_{{User.UID}}" type="button"><i class="bi bi-x"></i></button>
                         </li>
                       </ul>
-
                     </div>
                     {% else %}
                     <button class="btn btn-tick mx-1" style="display: none;" type="button" onclick="updateRole(this.id)"
@@ -178,32 +178,24 @@
                       id="cross_{{User.UID}}" {% if User.access_given %} hidden {% endif %}>
                       <i class='bi bi-x'></i>
                     </button>
-
-
                     <button class="btn btn-tick" onclick="showDrop(this.id)" data-bs-toggle="collapse"
                       id="tick_{{User.UID}}" data-bs-target="#User-{{User.username}}" role="button"
                       aria-expanded="false" aria-controls="#User-{{User.username}}" type="button" {% if
                       User.access_given %} hidden {% endif %} {% if not User.enabled %} hidden {% endif %}>
                       <i class='bi bi-check'></i>
                     </button>
-
-
-
                     <button class="btn btn-down" data-bs-toggle="collapse" id="down_{{User.UID}}"
                       onclick="showDrop(this.id)" data-bs-target="#User-{{User.username}}" role="button"
                       aria-expanded="false" aria-controls="#User-{{User.username}}" type="button" {% if not
                       User.access_given %} style="display:none;" {% endif %}>
                       <i class='bi bi-chevron-down'></i>
                     </button>
-
-
                   </div>
                   {% else %}
                   <div class="buttons1">
                     <div class="dropdown">
                       <button class="btn btn-cross dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
                         type="button"><i class="bi bi-x"></i></button>
-
                       <ul class="dropdown-menu" style="min-width:10% !important;height: 70px !important;">
                         <li><button class="btn btn-tick dropdown-item"
                             style="width: 50px !important;height: 50px !important;" onclick="enableUser(this.id)"
@@ -218,9 +210,6 @@
                   </button>
                 </div> -->
                   {% endif %}
-
-
-
                 </div>
                 <div class="collapse m-0" data-bs-parent="#tickcollapse" id="User-{{User.username}}"
                   aria-labelledby="User-{{User.username}}">
@@ -232,7 +221,6 @@
                           name="customCheck" id="uploader" {% if "KMS Uploader" in User.roles %} checked {% endif %}>
                         <label class="form-check-label" for="uploader">Uploader</label>
                       </div>
-
                       <div class="checkbox">
                         <input class="form-check-input" name="KMS-Downloader-{{User.UID}}" type="checkbox"
                           id="downloader" {% if "KMS Downloader" in User.roles %} checked {% endif %}>
@@ -250,19 +238,13 @@
               {% endfor %}
             </div>
           </div>
-
-
-
-
           <!--------------------->
           <!-- Access Tab End -->
           <!--------------------->
-
           <!--------------------->
           <!-- Favourite Tab Start -->
           <!--------------------->
-          <div
-            class="tab-pane fade account-nav-favourites-blk {{ 'show active' if 'favourites' in frappe.form_dict  else '' }}"
+          <div class="tab-pane fade account-nav-favourites-blk {{ 'show active' if 'favourites' in frappe.form_dict  else '' }}"
             id="v-pills-favourites" role="tabpanel" aria-labelledby="favourites">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h2 class="section-title">Favourites</h2>
@@ -272,7 +254,6 @@
                     {{favourites_page_from}}-{{favourites_page_to}} of {{favourites_count}}
                   </small>
                 </li>
-
                 <li class="list-inline-item">
                   <button {% if favourites_page> 1 %} onclick="load_accounts_page('favourites', {{favourites_page -
                     1}})"
@@ -288,7 +269,6 @@
                     <i class="bi bi-chevron-right"></i>
                   </button>
                 </li>
-
               </ul>
             </div>
             <!-- start -->
@@ -322,17 +302,14 @@
               </ul>
             </div>
             {% endfor%}
-
           </div>
-
           <!--------------------->
           <!-- Favourite Tab End -->
           <!--------------------->
           <!--------------------->
           <!-- Reminder Tab Start -->
           <!--------------------->
-          <div
-            class="tab-pane fade account-nav-reminders-blk {{ 'show active' if 'reminders' in frappe.form_dict  else '' }}"
+          <div class="tab-pane fade account-nav-reminders-blk {{ 'show active' if 'reminders' in frappe.form_dict  else '' }}"
             id="v-pills-reminders" role="tabpanel" aria-labelledby="reminders">
             <div class="set-reminders-wrapper" style="display:none;" id="set-new-reminder">
               <div class="d-flex align-items-center justify-content-between mb-3">
@@ -358,6 +335,7 @@
                     </label>
                     <input type="date" name="date" class="form-control " placeholder="DD/MM/YYYY">
                   </div>
+                  {% if admin_access_allowed %}
                   <div class="col-12 col-md-6">
                     <label>
                       Employee Name
@@ -370,6 +348,7 @@
                       {% endfor %}
                     </select>
                   </div>
+                  {% endif %}
                   <div class="col-12 text-end action-btns mb-4">
                     <button class="btn btn-secondary me-2 remind-btn-cancel" type="reset" onclick="CancelReminder()">
                       Cancel
@@ -401,9 +380,6 @@
               </button>
             </div>
           </div>
-          <!-----
-          
-          
         <!--------------------->
           <!-- Reminder Tab End -->
           <!--------------------->
@@ -475,21 +451,14 @@
                 </ul>
               </form>
             </div>
-
-
             <div class="notification-wrapper">
               {% for my_notification in my_notifications %}
-
-
               <!-- Start -->
-
               <a class="notification-item {% if not my_notification.read %}unread{% endif %}" href="#">
-
                 <div class="notification-item-content d-flex">
                   <div class="me-2">
                     <input class="form-check-input" name="notifications" type="checkbox"
                       value="{{my_notification.name}}" id="flexCheckDefault">
-
                   </div>
                   <div class="d-inline-block">
                     <div>
@@ -500,18 +469,11 @@
                 <div class="notification-item-time"><i>{{my_notification.creations}}</i></div>
               </a>
               {% endfor %}
-
-              <!-- End -->
-              <!-- Start -->
-
-
-
             </div>
           </div>
           <!--------------------->
           <!-- Notification Tab End -->
           <!--------------------->
-
           <!---------------->
           <!--- edit profile start --->
           <!---------------->
@@ -527,9 +489,7 @@
                 <div class=" col-lg-6 mx-auto signup-box">
                   <div class=" mb-4 d-flex align-items-center justify-content-center flex-column py-3">
                     <div class="profile-pic online">
-
                       <img src="{{frappe.db.get_value('User', frappe.session.user, 'user_image')}}" class="img-fluid">
-
                     </div>
                     <div class="profile-upload-btn pt-2">
                       <input type="file" name="user_image" id="user_image" style="display: none;">
@@ -544,7 +504,6 @@
                         value="{{frappe.get_fullname()}}">
                     </div>
                   </div>
-
                   <div class="form-group  mt-4">
                     <label>Designation</label>
                     <div class="email-field">
@@ -552,7 +511,6 @@
                         value="{{frappe.db.get_value('User', frappe.session.user,'designation')}}">
                     </div>
                   </div>
-
                   <div class="form-group  mt-4">
                     <label>Email</label>
                     <div class="email-field">
@@ -561,7 +519,6 @@
                         disabled>
                     </div>
                   </div>
-
                   <div class="form-group mt-4">
                     <label>New password</label>
                     <div class="password-field">
@@ -569,7 +526,6 @@
                         placeholder="Enter your password here">
                     </div>
                   </div>
-
                   <div class="form-group mt-4">
                     <label>Confirm Password</label>
                     <div class="password-field">
@@ -577,7 +533,6 @@
                         placeholder="Enter the same password as above">
                     </div>
                   </div>
-
                   <div class="row mt-5 mb-4">
                     <div class="col-lg-6">
                       <button class="btn btn-secondary px-3 py-2   my-2 w-100" data-bs-toggle="modal"
@@ -592,7 +547,6 @@
                       </button>
                     </div>
                   </div>
-
                 </div>
               </div>
             </form>
@@ -607,7 +561,6 @@
 <script src="/assets/zydus/js/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
-
   $(document).ready(function () {
     $(document).on('click', "#set-add-button", function () {
       $("#set-new-reminder").show();
@@ -619,7 +572,6 @@
       $("#edit-profile").show();
     });
   });
-
   function setJqueryValidateOnAllForms() {
     console.log('jquery validate added')
     $.validator.setDefaults({
@@ -668,8 +620,6 @@
             //   $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button',function() {
             //     setJqueryValidateOnAllForms()
             //   }
-
-
             // )
           }
         })
@@ -678,46 +628,41 @@
 
     $('#set-reminder-form').validate({
       submitHandler: function (form) {
-
-
         var dataArr = $(form).serializeArray()
         var obj = {}
         dataArr.forEach(x => {
           obj[x.name] = x.value
         })
-        // obj['owner'] = '{{frappe.session.user}}'
-        obj['owner'] = $("select[name=Employee]").val();
-        console.log(obj)
-        $.ajax({
-          url: '/api/resource/ToDo',
-          method: 'POST',
-          data: JSON.stringify(obj),
-          headers: {
-            'X-Frappe-CSRF-Token': frappe.csrf_token
-          },
-          success: function (res) {
-            console.log(res)
-            $(form).trigger('reset')
-            $("#set-new-reminder").hide();
-            // $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
-            var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
-            $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
-              setJqueryValidateOnAllForms()
-            })
-
-
-
-          }
-
-
+        {% if user_access_allowed %}
+        obj['owner'] = '{{frappe.session.user}}'
+        obj['created_by'] = '{{frappe.session.user}}'
+        {% else %}
+          obj['owner'] = $("select[name=Employee]").val();
+    obj['created_by'] = '{{frappe.session.user}}'
+    {% endif %}
+    console.log(obj)
+    $.ajax({
+      url: '/api/resource/ToDo',
+      method: 'POST',
+      data: JSON.stringify(obj),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        console.log(res)
+        $(form).trigger('reset')
+        $("#set-new-reminder").hide();
+        // $('#like-button-parent').load(location.pathname + location.search + ' #like-button')
+        var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
+        $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
+          setJqueryValidateOnAllForms()
         })
-
       }
     })
   }
-
+  })
+  }
   setJqueryValidateOnAllForms()
-
   function AddReminder() {
     console.log('Add Reminder Called')
     //  alert("reminder")
@@ -728,28 +673,21 @@
     $('#set-reminder-form [name=title]').attr('required', true)
     $('#set-reminder-form [name=description]').attr('required', true)
     $('#set-reminder-form [name=Employee]').attr('required', true)
-
   }
   function CancelReminder() {
     $("#set-new-reminder").hide();
   }
-
   function load_accounts_page(tab, page) {
     $('#like-button-parent').load('/account?' + tab + '=' + page + ' #like-button', function () {
       setJqueryValidateOnAllForms()
     })
   }
-
-
     // populating employee names
     // var Employees = {{ Employees }}
     // for (var i = 0; i < Employees.length; i++) {
     //   // var Employee= Employees[i]
     //   $('select[name=Employee]').append('<option value="' + Employees[i]["name"] + '">' + Employees[i]["full_name"] + '</option>')
     // }
-
-
-
 </script>
 <script>
   $(document).ready(function () {
@@ -758,8 +696,6 @@
       var notif_ids = []
       document.querySelectorAll('input:checked[name=notifications]').forEach(x => notif_ids.push(x.value))
       var docnames = notif_ids.join(',')
-
-
       $.ajax({
         url: '/api/method/zydus.www.account.notification_read_unread',
         method: 'POST',
@@ -775,12 +711,10 @@
             setJqueryValidateOnAllForms()
           })
         }
-
       })
     })
   })
 </script>
-
 <script>
   $(document).ready(function () {
     $(document).on("click", "#mark_as_unread-btn", function () {
@@ -788,8 +722,6 @@
       var notif_ids = []
       document.querySelectorAll('input:checked[name=notifications]').forEach(x => notif_ids.push(x.value))
       var docnames = notif_ids.join(',')
-
-
       $.ajax({
         url: '/api/method/zydus.www.account.notification_read_unread',
         method: 'POST',
@@ -805,12 +737,10 @@
             setJqueryValidateOnAllForms()
           })
         }
-
       })
     })
   })
 </script>
-
 <script>
   $(document).ready(function () {
     $(document).on("click", "#mark_all_as_read-btn", function () {
@@ -832,13 +762,10 @@
       })
     })
   })
-
-
 </script>
 <!-- edit profile -->
 <script>
   // Jquery Validator Defaults
-
   function toggleLikeA(dt, dn, add) {
     $.ajax({
       url: '/api/method/frappe.desk.like.toggle_like',
@@ -898,30 +825,21 @@
   }
   function showDrop(tick_id) {
     document.getElementById(tick_id).style.display = "none"
-
     var id = tick_id.slice(5)
     document.getElementById("cross_" + id).style.display = "none"
     document.getElementById("down_" + id).style.display = "inline-block"
     document.getElementById(id).style.display = "inline-block"
 
   }
-
   function crossBtn(cross_id) {
     var id = cross_id.slice(6)
     // document.getElementById("down_" + id).style.display ='none'
     document.getElementById("tick_" + id).style.display = 'none'
     document.getElementById(id).style.display = "none"
-
-
   }
-
-
-
   function updateRole(id) {
-
     let update = ""
     let remove = ""
-
     if ($("[name='KMS-Uploader-" + id + "']").prop("checked") == true) {
       update += "KMS Uploader,"
     }
@@ -937,7 +855,6 @@
     } else {
       remove += "KMS Admin,System Manager,"
     }
-
     $.ajax({
       url: '/api/method/zydus.www.account.update_Roles',
       method: 'POST',
@@ -952,19 +869,15 @@
       },
       success: function (res) {
         console.log(res)
-        if(res && res.message.message == "success"){
-        var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
-        $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
-          setJqueryValidateOnAllForms()
-        })
-
-
+        if (res && res.message.message == "success") {
+          var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
+          $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
+            setJqueryValidateOnAllForms()
+          })
         }
       }
     })
   }
-
-
   function disableUser(cross_id) {
     var id = cross_id.slice(6)
     var email = id.split('-').join("@")
@@ -981,12 +894,9 @@
         $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
           setJqueryValidateOnAllForms()
         })
-
       }
-
     })
   }
-
   function enableUser(enable_id) {
     var id = enable_id.slice(7)
     var email = id.split('-').join("@")
@@ -999,24 +909,15 @@
         'X-Frappe-CSRF-Token': frappe.csrf_token
       },
       success: function (res) {
-          var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
-          $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
-            setJqueryValidateOnAllForms()
-          })
-
+        var curr_tab = $('#v-pills-tab .nav-link.active').attr('id')
+        $('#like-button-parent').load(location.pathname + '?' + curr_tab + ' #like-button', function () {
+          setJqueryValidateOnAllForms()
+        })
       }
-
     })
   }
-
   function addDrop(id) {
     $('#' + id).attr("onclick", "updateRole(this.id,drop=true)")
-
   }
-
-
-
-
 </script>
-
 {% endblock %}

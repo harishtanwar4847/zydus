@@ -8,7 +8,9 @@
           <i class="bi {% if trending_now.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if
             trending_now.is_liked %}style="color: #000;" {% endif %}></i>
         </button>
+        {% if admin_access_allowed %}
         <div class="text-pending">{{trending_now.workflow_state}}</div>
+        {% endif %}
       </div>
       <div class="brand-logo-wrap">
         <img src="{{trending_now.brand_logo}}" class="img-fluid" />
@@ -20,6 +22,19 @@
       </div>
       <div class="subtitle">{{trending_now.month_year}}</div>
       <div class="d-flex align-items-center justify-content-between">
+        {% if not admin_access_allowed %}
+        <div class="subtitle">{{trending_now.attachments | len}} {% if trending_now.attachments | len > 1%} files {% else %} file {% endif %}</div>
+                <div class="d-flex align-items-center justify-content-end actions">
+                    <a href="/{{trending_now.route}}" class="btn btn-link">view</a>
+                    <button onclick="this.parentElement.querySelectorAll('a[download]').forEach(x => x.click());event.preventDefault()" class="btn btn-link p-0">
+                        <img src="/assets/zydus/images/download.svg" class="img-fluid" />
+                    </button>
+                    {% for file in trending_now.attachments %}
+                    <a href="{{file.file_url}}" download></a>
+                    {% endfor %}
+                </div>
+        {% endif %}
+        {% if admin_access_allowed %}
         <div class="employee-details d-flex align-items-center justify-content-between user-profile">
           <div class="profile-pic"><img src="{{trending_now.user_image}}" alt="" class="img-fluid"></div>
           <div class="employee-name">{{trending_now.full_name}}</div>
@@ -30,6 +45,7 @@
             Actions
           </button>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

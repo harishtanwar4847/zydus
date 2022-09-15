@@ -1,3 +1,16 @@
+# [v1.3.2-uat]  - 2022-09-15
+# [v1.3.2-dev+1]  - 2022-09-14
+-[all page code redundant done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/104}
+
+# [v1.3.2-dev]  - 2022-09-08
+-[dev issues fixed: trending now and reminder and notifications]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/103}
+
+# [v1.3.1-dev]  - 2022-09-07
+-[sidebar issue fixed admin]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/102}
+
+# [v1.3.0-dev]  - 2022-09-06
+-[User and admin access permissions]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/101}
+
 # [v1.2.9-uat]  - 2022-08-26
 # [v1.2.9-dev]  - 2022-08-26
 -[Dev issues Fixed;- todo card onclick view done & like feature added on view project/datasheet]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/99}

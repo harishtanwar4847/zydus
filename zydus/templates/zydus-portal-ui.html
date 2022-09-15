@@ -34,7 +34,7 @@
 
 <body>
   <script src="/assets/zydus/js/jquery.min.js"></script>
-  {% if access_allowed %}
+  {% if user_access_allowed or admin_access_allowed or access_allowed %}
   <div class="page-wrapper" id="wrapper">
     {% include "templates/zydus-portal-ui-includes/sidebar.html" %}
 

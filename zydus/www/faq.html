@@ -15,7 +15,7 @@
           <div class="col-lg-10 col-12 ">
             <label for="projectName" class="form-label">Answer</label>
             <textarea class="form-control" name="answer" placeholder="add the answer to the above question here" rows="6"></textarea>
-          </div>
+          </div> 
           <div class="col-lg-10 col-12 text-end search-action-buttons">
             <button class="btn btn-outline-secondary m-1" onclick="location.href='/faq'">Cancel</button>
             <button class="btn btn-secondary m-1" onclick="AddFaq()">Add</button>
@@ -28,7 +28,6 @@
         <div class="d-flex align-items-center justify-content-between mb-3">
             <h2 class="section-title">FAQs</h2>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 ">
@@ -54,48 +53,32 @@
                 </div>
             </div>
         </div>
+        {% if admin_access_allowed %}
         <div class="add-missing-btn">
             <button class="btn btn-primary" id="set-add-faq-button" type="button" >
               <img src="/assets/zydus/images/plus-icn.png" class="img-fluid">
             </button>
         </div>
+        {% endif %}
     </div>
-    <!-- <div id="content-wrapper"   class="main" id="add-new-faq">
-        <div class="container-fluid"  >
-         
-        </div>
-      </div>
-     -->
-    
 </div>
-
-
-<script src="/assets/zydus/js/jquery.validate.min.js" ></script>
-
-
-    
+<script src="/assets/zydus/js/jquery.validate.min.js" ></script>  
 <script>
-
   $(document).ready(function(){
     $("#set-add-faq-button").click(function(){
       $("#add-new-faq").show();
       $("#faq-list").hide()
     });
   });
-
 </script>
 <script>
-
     $('#set-add-faqs').validate({
-        submitHandler: function(form) {
-            
-            
+        submitHandler: function(form) { 
             var dataArr = $(form).serializeArray()
             var obj = {}
             dataArr.forEach(x => {
                 obj[x.name] = x.value
             })
-
             $.ajax({
                 url: '/api/resource/FAQ',
                 method: 'POST',
@@ -107,27 +90,17 @@
                     console.log(res)
                     $(form).trigger('reset')
                     //$("#set-add-faqs").hide(); 
-                    location.href='/faq'
-                     
-                }
-
-                
-                })
-          
+                    location.href='/faq'     
+                } 
+              })
         }
     });
-  
-
     function AddFaq(){
       console.log('Add faq Called')
-    //  alert("reminder")
      $('#set-add-faqs').validate().resetForm()
-        
         // setting submit inputs as required
         $('#set-add-faqs [name=question]').attr('required', true)
-        $('#set-add-faqs [name=answer]').attr('required',true)
-       
+        $('#set-add-faqs [name=answer]').attr('required',true)    
   }       
-
 </script>
 {% endblock %}

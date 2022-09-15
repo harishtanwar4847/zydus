@@ -58,16 +58,18 @@
                   </div>
                 </div>
                 <div class="col col-lg-5 col-md-12 col-12">
-                  {% for data in userinfo %}
+                 {% if admin_access_allowed %}
                   <div class="employee-details d-flex align-items-center user-profile">
+                    {% for data in userinfo %}
                     <div class="profile-pic">
                       <img src="{{data.user_image}}" alt="" class="img-fluid">
                     </div>
                     <div class="upload-date-time">
                       {{data.full_name}}
                     </div>
+                    {% endfor %}
                   </div>
-                  {% endfor %}
+                  {% endif %}
                   <div class="upload-date-time text-start mt-3">
                     Uploaded on {{frappe.format_date(doc.modified)}}
                   </div>
@@ -172,25 +174,33 @@
               (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea>
           </div>
           <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
+            {% if admin_access_allowed %}
             <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalDelete"
               type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% endif %}>
               Delete
             </button>
+            {% endif %}
+            {% if admin_access_allowed or user_access_allowed and doc.owner == frappe.session.user and doc.workflow_state == "Pending" %}
             <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
               type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" )
               %} hidden {% endif %}>
               Edit
             </button>
+            {% endif %}
+            {% if admin_access_allowed %}
             <button class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal"
               data-bs-target="#successModalReject" type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {%
               elif (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>
               Reject
             </button>
+            {% endif %}
+            {% if admin_access_allowed %}
             <button class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
               data-bs-target="#successModalApprove" type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {%
               elif (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>
               Approve
             </button>
+            {% endif %}
           </div>
         </div>
       </div>

@@ -7,3 +7,5 @@ zydus.patches.project_type #
 zydus.patches.create_designation_field_in_user_doctype
 zydus.patches.project_workflow
 zydus.patches.datasheet_workflow
+zydus.patches.import_workflow3
+zydus.patches.datasheet_workflow1 ***
