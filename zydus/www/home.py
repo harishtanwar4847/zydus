@@ -58,7 +58,7 @@ def get_context(context):
     for my_upload in context['my_uploads']:
         my_upload['attachments'] = get_attachments(my_upload.doctype,my_upload.name)
         my_upload['is_liked'] = frappe.session.user in json.loads(my_upload['liked_by'] or '[]')
-    context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc",debug=True) 
+    context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc") 
     for notification in context['notifications']:
         notification['creations'] = pretty_date(notification['creation'])
             
