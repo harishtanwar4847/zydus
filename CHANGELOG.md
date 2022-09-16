@@ -1,3 +1,6 @@
+# [v1.3.2-uat+1]  - 2022-09-16
+-[workflow master action submit added]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/106}
+
 # [v1.3.2-uat]  - 2022-09-15
 # [v1.3.2-dev+1]  - 2022-09-14
 -[all page code redundant done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/104}
