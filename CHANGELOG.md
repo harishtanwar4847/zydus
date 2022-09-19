@@ -1,3 +1,6 @@
+# [v1.3.3-uat]  - 2022-09-20
+-[debugs removed from all py file and pagination added in access and reminder tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/108}
+
 # [v1.3.2-uat+1]  - 2022-09-16
 -[workflow master action submit added]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/106}
 
