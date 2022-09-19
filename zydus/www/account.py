@@ -44,9 +44,7 @@ def get_context(context):
 	context['Users_page'] = int(frappe.form_dict.Users) if frappe.form_dict.Users else 1
 	context['Users_page_offset'] = (context['Users_page'] - 1) * context['Users_page_length']
 	context['Users_page_from'] = context['Users_page_offset']
-	print("********user******")
 	context["Users"] = frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation","enabled","access_given"],order_by ='creation desc', limit_page_length=context['Users_page_length'], limit_start=context['Users_page_from'])
-	print(context["Users"])
 	context["Users_count"] = frappe.db.get_list("User",fields=["count(name) as count"])[0]['count']
 	context['Users_page_to'] = context['Users_page'] * context['Users_page_length']
 	if context['Users_page_to'] > context['Users_count']:
