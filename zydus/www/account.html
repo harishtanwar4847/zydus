@@ -135,6 +135,28 @@
             id="v-pills-access" role="tabpanel" aria-labelledby="Users">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h2 class="section-title">Access</h2>
+              <ul class="list-inline text-primary mb-0">
+                <li class="list-inline-item">
+                  <small>
+                    {{Users_page_from}}-{{Users_page_to}} of {{Users_count}}
+                  </small>
+                </li>
+                <li class="list-inline-item">
+                  <button {% if Users_page> 1 %} onclick="load_accounts_page('Users', {{Users_page -
+                    1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if Users_page == 1 else
+                    '' }}">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                </li>
+                <li class="list-inline-item">
+                  <button {% if Users_page_to < Users_count %}
+                    onclick="load_accounts_page('Users', {{Users_page + 1}})" {% endif %}
+                    class="btn btn-link view-all-link ps-0 {{ '' if Users_page_to < Users_count  else 'disabled' }}">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </li>
+              </ul>
+    
             </div>
             <div id="tickcollapse">
               {% for User in Users %}
@@ -364,6 +386,27 @@
               <div class="all-reminders-class" id="all-reminder">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                   <h2 class="section-title">All Reminders</h2>
+                  <ul class="list-inline text-primary mb-0">
+                    <li class="list-inline-item">
+                      <small>
+                        {{reminders_page_from}}-{{reminders_page_to}} of {{reminders_count}}
+                      </small>
+                    </li>
+                    <li class="list-inline-item">
+                      <button {% if reminders_page> 1 %} onclick="load_accounts_page('reminders', {{reminders_page -
+                        1}})" {% endif %} class="btn btn-link view-all-link ps-0 {{ 'disabled' if reminders_page == 1 else
+                        '' }}">
+                        <i class="bi bi-chevron-left"></i>
+                      </button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button {% if reminders_page_to < reminders_count %}
+                        onclick="load_accounts_page('reminders', {{reminders_page + 1}})" {% endif %}
+                        class="btn btn-link view-all-link ps-0 {{ '' if reminders_page_to < reminders_count  else 'disabled' }}">
+                        <i class="bi bi-chevron-right"></i>
+                      </button>
+                    </li>
+                  </ul>
                 </div>
                 <div class="reminders-wrapper">
                   <!-- Start -->

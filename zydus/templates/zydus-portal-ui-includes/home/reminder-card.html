@@ -12,7 +12,7 @@
                             <img src="{{reminder.user_image}}" alt=" " class="img-fluid1">
                             &nbsp;
                         {% endif %}
-                        <div class="reminder-sender"> {% if reminder.owner == reminder.modified_by %} me: {% else %}  {{reminder.full_name}} {% endif %}</div>
+                        <div class="reminder-sender"> {% if reminder.owner == reminder.modified_by %} me: {% elif reminder.owner == reminder.created_by %} admin {% else %}  {{reminder.full_name}} {% endif %}</div>
                         &nbsp;
                         <div class="reminder-title" >{% if reminder.owner == reminder.modified_by %} {{reminder.title}}{% endif %}</div>
                     </div>
