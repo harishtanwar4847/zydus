@@ -13,6 +13,7 @@ def get_context(context):
     context.color=frappe.get_value("Brand",{"name":context.doc.brand},"color")
     context.username=frappe.get_value("User",{"email":context.doc.owner},"full_name")
     context.image=frappe.get_value("User",{"email":context.doc.owner},"user_image")
+    context.var =frappe.db.get_value("User",frappe.session.user,"full_name")
     context['attachments'] = frappe.desk.form.load.get_attachments('Project', frappe.form_dict.edit)
     for attachment in context['attachments']:
         file_ext=attachment['file_name']
@@ -26,6 +27,8 @@ def get_context(context):
     context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5)
     for notification in context['notifications']:
         notification['creations'] = pretty_date(notification['creation'])
-   
+    context["comments"]=frappe.db.sql(""" select C.content,C.reference_name,C.reference_doctype from `tabComment` as C left join `tabProject`  as P on reference_name = P.name where C.reference_name = %s
+     and C.content is NOT NULL order by C.creation desc limit 10""",(context.doc.name),as_dict=True,debug=1)
+    
         
     

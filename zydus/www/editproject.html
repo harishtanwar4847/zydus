@@ -22,7 +22,7 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-project-content" role="tabpanel"
             aria-labelledby="nav-project-link">
-            <forRm class="custom-form project-form" id="edit-project-form">
+            <form class="custom-form project-form" id="edit-project-form">
               <div class="row gx-3 gy-3 mt-md-3">
                 <div class="col-12 col-lg-6 col-xl-4">
                   <div class="">
@@ -228,21 +228,21 @@
                 <div class="col-12">
                   <label> Actions </label>
                   <input name="actions" id="actions" class="form-control" value="{{doc.actions}}"
-                    placeholder="Mention the business decisions/actions taken basis insights from the study">
+                    placeholder="Mention the business decisions/actions taken basis insights from the study" >
                 </div>
                 <div class="col-5">
 
                 </div>
                 <div class="col-7">
                   <label> Comments </label>
-                  <textarea class="form-control" placeholder="Add a comment here" rows="6"></textarea>
+                  <textarea id="comments" class="form-control" value="" name = "comments" placeholder="Add a comment here" rows="6"></textarea>
                 </div>
                 <div class="col-12 text-end action-btns mt-5 mb-4">
                   <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#saveModal"
                     type="button" onclick="location.reload()">
                     Cancel
                   </button>
-                  <button class="btn btn-secondary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModal"
+                  <button class="btn btn-secondary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModal" 
                     type="button">
                     Save Changes
                   </button>
@@ -258,8 +258,16 @@
                  {% endif %}
                 </div>
               </div>
-            </forRm>
+            </form>
           </div>
+            {% for comment in comments %}
+                 <div class="card" style="width: 100rem; ">
+                  <div class="card-body">
+                    <h5 class="card-title">Comments by owner </h5>
+                    <p class="card-text">{{comment.content}}</p>
+                  </div>
+                </div>
+                {% endfor %}
           <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
           </div>
         </div>
@@ -330,6 +338,7 @@
 <script src="./assets/zydus/js/jquery.min.js"></script>
 <script src="./assets/zydus/js/zyduswellness.js"></script>
 <script>
+    
   // creating options for 25 years in the past
   var currentYear = new Date().getFullYear();
   var edityear = {{ doc.year }};
@@ -412,7 +421,9 @@
       "p_title": document.getElementById("p_title").value,
       "year": document.getElementById("year").value,
       "sample_size": document.getElementById("sample_size").value,
+      "comments":document.getElementById("comments").value,
     }
+    
     var dropzone = Dropzone.forElement('#save-project-dropzone')
             var uploaded_files = dropzone.getAcceptedFiles()
             // if($('#edit-project-form [name=workflow_state]').val() != "Saved" &&  uploaded_files.length == 0) {
@@ -423,6 +434,7 @@
     if (marketsArr.length > 0) {
       var markets = marketsArr.map(x => x.value)
       var markets_ = markets.map(x => {
+
         return { 'city': x }
       })
       req_data['markets'] = markets_
@@ -436,7 +448,28 @@
       },
       data: JSON.stringify(req_data),
       success: function (res) {      
-        console.log(res)     
+        console.log(res)  
+
+        //  adding comments
+        // var myContent = tinymce.get("comments").getContent();
+        // console.log(myContent)
+        var myContent=document.getElementById("comments").value;
+      $.ajax({
+            url: '/api/method/frappe.desk.form.utils.add_comment',
+            method: 'POST',
+            async: false,
+            headers: {
+              'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+            data: {
+              reference_doctype: 'Project',
+              reference_name:"{{doc.name}}",
+              content :myContent,
+              comment_email:frappe.session.user,
+              comment_by:"{{var}}",
+            }
+          }) 
+
         var tagsArr = JSON.parse($('#edit-project-form [data-type=tags]').val() || '[]')
         if (tagsArr.length > 0) {
           var tags = tagsArr.map(x => x.value)
@@ -454,6 +487,10 @@
             }
           })
         }
+         
+        
+
+
         // adding attachments to created document
         var dropzone = Dropzone.forElement('#save-project-dropzone')
                     var uploaded_files = dropzone.getAcceptedFiles()
@@ -531,5 +568,47 @@
     })
   }
 )
+
+
 </script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#',
+        height : "300",
+        width : "700",
+  // setup: function (ed) {
+  //   ed.on('keydown',function(e) {
+  //       if(e.keyCode >= 65 && e.keyCode <= 90){
+  //         var search = tinymce.get("comments").getContent().replace(/(&nbsp;)*/g, "").replace(/(<p>)*/g, "").replace(/<(\/)?p[^>]*>/g, "");
+  //           console.log(search)
+  //           // alert("CTRL + ENTER PRESSED");
+  //           $.ajax({
+  //           url: '/api/method/frappe.desk.search.get_name_for_mentions',
+  //           method: 'POST',
+  //           async: false,
+  //           headers: {
+  //             'X-Frappe-CSRF-Token': frappe.csrf_tokenss
+  //           },
+  //           data: {
+  //             search_term:search,
+  //           }
+  //       }) 
+  //           console.log("@ helllo @")
+  //           // e.preventDefault();
+  //       }
+  //   });
+  // },
+        plugins: [
+          'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+          'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+          'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+        ],
+        toolbar: 'undo redo | formatpainter casechange blocks | bold italic | ' +
+          'alignleft aligncenter alignright alignjustify | ' +
+          'bullist numlist checklist  |  help'
+          
+      });
+    </script>
 {% endblock %}
