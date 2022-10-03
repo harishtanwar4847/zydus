@@ -149,7 +149,7 @@
           <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
           <textarea id="comments" class="form-control" value="" name="comments" placeholder="Add a comment here"
             rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea><br>
-          <button type="button" id="addComment" class="btn btn-outline-primary">Comment</button>
+          <button type="button" id="addComment" style="float: right;font-size: 10px;margin: 10px;" class="btn btn-outline-primary">Comment</button>
         </div>
         <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
           {% if admin_access_allowed %}
