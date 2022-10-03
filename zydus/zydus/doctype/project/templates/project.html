@@ -58,7 +58,7 @@
                   </div>
                 </div>
                 <div class="col col-lg-5 col-md-12 col-12">
-                 {% if admin_access_allowed %}
+                  {% if admin_access_allowed %}
                   <div class="employee-details d-flex align-items-center user-profile">
                     {% for data in userinfo %}
                     <div class="profile-pic">
@@ -170,8 +170,9 @@
 
           <div class="col-lg-7  ms-auto details">
             <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
-            <textarea class="form-control" placeholder="Add a comment here" rows="4" {% if
-              (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea>
+            <textarea id="comments" class="form-control" value="" name="comments" placeholder="Add a comment here"
+              rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea><br>
+            <button type="button" id="addComment" class="btn btn-outline-primary">Comment</button>
           </div>
           <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
             {% if admin_access_allowed %}
@@ -180,7 +181,8 @@
               Delete
             </button>
             {% endif %}
-            {% if admin_access_allowed or user_access_allowed and doc.owner == frappe.session.user and doc.workflow_state == "Pending" %}
+            {% if admin_access_allowed or user_access_allowed and doc.owner == frappe.session.user and
+            doc.workflow_state == "Pending" %}
             <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
               type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" )
               %} hidden {% endif %}>
@@ -238,6 +240,20 @@
     </div>
   </div>
 </div>
+<div>
+  {% if comments | len > 0%}
+  <h5 class="card-title"> Comments </h5> <br>
+  {% endif %}
+  {% for comment in comments %}
+     <div class="card" style="width:80rem; ">
+      <!-- <h5 class="card-title"> comments </h5> -->
+      <div class="card-body">
+        <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+        <p class="card-text">{{comment.content}}</p>
+      </div>
+    </div>
+    {% endfor %}
+</div>
 <div class="modal fade" id="successModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
@@ -268,84 +284,107 @@
       </div>
     </div>
   </div>
-  <<<<<<< HEAD=======</div>
+</div>
+<script src="./assets/zydus/js/bootstrap.bundle.min.js"></script>
+<script>
+  $.ajax({
+    url: '/api/method/frappe.desk.form.load.getdoc',
 
-    <script>
+    data: {
+      doctype: 'Project',
+      name: '{{name}}'
+    },
+    method: 'GET'
+  })
+
+
+  $("#approvedProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{name}}',
+      method: 'PUT',
+      async: false,
+      data: JSON.stringify({ workflow_state: "Approved", docstatus: 1 }),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        location.reload()
+        // $('#project-form [name=workflow_state]').val("Approved");
+
+      }
+    })
+  }
+  )
+
+
+  $("#rejectedProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{name}}',
+      method: 'PUT',
+      async: false,
+      data: JSON.stringify({ workflow_state: "Rejected" }),
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        location.reload()
+      }
+    })
+  }
+  )
+
+
+  // api for delete project
+  $("#deleteProject").click(function () {
+    $.ajax({
+      url: '/api/resource/Project/{{name}}',
+      type: 'DELETE',
+      async: false,
+      headers: {
+        'X-Frappe-CSRF-Token': frappe.csrf_token
+      },
+      success: function (res) {
+        // location.reload()
+        console.log(res)
+        window.location = "/home"
+      }
+    })
+  }
+  )
+  //for workflow text color change
+  if (document.getElementById('workflow').textContent == 'Pending') {
+    document.getElementById('workflow').style.color = '#E4BB07';
+  }
+  else if (document.getElementById('workflow').textContent == 'Rejected') {
+    document.getElementById('workflow').style.color = '#C7121D';
+  } else {
+    document.getElementById('workflow').style.color = '#127846';
+  }
+
+
+  $("#addComment").click(function () {
+    var myContent=document.getElementById("comments").value;
       $.ajax({
-        url: '/api/method/frappe.desk.form.load.getdoc',
+            url: '/api/method/frappe.desk.form.utils.add_comment',
+            method: 'POST',
+            async: false,
+            headers: {
+              'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+            data: {
+              reference_doctype: 'Project',
+              reference_name:"{{doc.name}}",
+              content :myContent,
+              comment_email:frappe.session.user,
+              comment_by:"{{var}}",
+            },
+            success: function (res) {
+              location.reload()
+            }
+          }) 
+  }
+  )
 
-        data: {
-          doctype: 'Project',
-          name: '{{name}}'
-        },
-        method: 'GET'
-      })
+</script>
 
-
-      $("#approvedProject").click(function () {
-        $.ajax({
-          url: '/api/resource/Project/{{name}}',
-          method: 'PUT',
-          async: false,
-          data: JSON.stringify({ workflow_state: "Approved", docstatus: 1 }),
-          headers: {
-            'X-Frappe-CSRF-Token': frappe.csrf_token
-          },
-          success: function (res) {
-            location.reload()
-            // $('#project-form [name=workflow_state]').val("Approved");
-
-          }
-        })
-      }
-      )
-
-
-      $("#rejectedProject").click(function () {
-        $.ajax({
-          url: '/api/resource/Project/{{name}}',
-          method: 'PUT',
-          async: false,
-          data: JSON.stringify({ workflow_state: "Rejected" }),
-          headers: {
-            'X-Frappe-CSRF-Token': frappe.csrf_token
-          },
-          success: function (res) {
-            location.reload()
-          }
-        })
-      }
-      )
-
-
-      // api for delete project
-      $("#deleteProject").click(function () {
-        $.ajax({
-          url: '/api/resource/Project/{{name}}',
-          type: 'DELETE',
-          async: false,
-          headers: {
-            'X-Frappe-CSRF-Token': frappe.csrf_token
-          },
-          success: function (res) {
-            // location.reload()
-            console.log(res)
-            window.location = "/home"
-          }
-        })
-      }
-      )
-      //for workflow text color change
-      if (document.getElementById('workflow').textContent == 'Pending') {
-        document.getElementById('workflow').style.color = '#E4BB07';
-      }
-      else if (document.getElementById('workflow').textContent == 'Rejected') {
-        document.getElementById('workflow').style.color = '#C7121D';
-      } else {
-        document.getElementById('workflow').style.color = '#127846';
-      }
-
-
-    </script>
-
-    {% endblock %}
+{% endblock %}
