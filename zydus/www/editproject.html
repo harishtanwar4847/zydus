@@ -260,12 +260,14 @@
               </div>
             </form>
           </div>
+              {% if comments | len > 0%}
               <h5 class="card-title"> Comments </h5> <br>
+              {% endif %}
               {% for comment in comments %}
                  <div class="card" style="width:75rem; ">
                   <!-- <h5 class="card-title"> comments </h5> -->
                   <div class="card-body">
-                    <p class="card-title"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+                    <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
                     <p class="card-text">{{comment.content}}</p>
                   </div>
                 </div>
@@ -454,7 +456,6 @@
 
         //  adding comments
         // var myContent = tinymce.get("comments").getContent();
-        // console.log(myContent)
         var myContent=document.getElementById("comments").value;
       $.ajax({
             url: '/api/method/frappe.desk.form.utils.add_comment',
@@ -575,33 +576,33 @@
 </script>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
-    <script>
+    <!-- <script>
       tinymce.init({
         selector: '#',
         height : "300",
         width : "700",
-  // setup: function (ed) {
-  //   ed.on('keydown',function(e) {
-  //       if(e.keyCode >= 65 && e.keyCode <= 90){
-  //         var search = tinymce.get("comments").getContent().replace(/(&nbsp;)*/g, "").replace(/(<p>)*/g, "").replace(/<(\/)?p[^>]*>/g, "");
-  //           console.log(search)
-  //           // alert("CTRL + ENTER PRESSED");
-  //           $.ajax({
-  //           url: '/api/method/frappe.desk.search.get_name_for_mentions',
-  //           method: 'POST',
-  //           async: false,
-  //           headers: {
-  //             'X-Frappe-CSRF-Token': frappe.csrf_tokenss
-  //           },
-  //           data: {
-  //             search_term:search,
-  //           }
-  //       }) 
-  //           console.log("@ helllo @")
-  //           // e.preventDefault();
-  //       }
-  //   });
-  // },
+  setup: function (ed) {
+    ed.on('keydown',function(e) {
+        if(e.keyCode >= 65 && e.keyCode <= 90){
+          var search = tinymce.get("comments").getContent().replace(/(&nbsp;)*/g, "").replace(/(<p>)*/g, "").replace(/<(\/)?p[^>]*>/g, "");
+            console.log(search)
+            // alert("CTRL + ENTER PRESSED");
+            $.ajax({
+            url: '/api/method/frappe.desk.search.get_name_for_mentions',
+            method: 'POST',
+            async: false,
+            headers: {
+              'X-Frappe-CSRF-Token': frappe.csrf_tokenss
+            },
+            data: {
+              search_term:search,
+            }
+        }) 
+            console.log("@ helllo @")
+            // e.preventDefault();
+        }
+    });
+  },
         plugins: [
           'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
           'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
@@ -612,5 +613,5 @@
           'bullist numlist checklist  |  help'
           
       });
-    </script>
+    </script> -->
 {% endblock %}
