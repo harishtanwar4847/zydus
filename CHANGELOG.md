@@ -1,3 +1,6 @@
+# [v1.3.4-dev]  - 2022-10-03
+-[comment box -done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/110}
+
 # [v1.3.3-dev]  - 2022-10-03
 -[comment box implementation on View project/datasheet and edit project/datasheet done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/109}
 
