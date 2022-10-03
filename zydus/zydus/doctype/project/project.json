@@ -1,4 +1,6 @@
 {
+ "_comments": "[{\"comment\": \"<div class=\\\"ql-editor read-mode\\\"><p><span class=\\\"mention\\\" data-denotation-char=\\\"@\\\" data-id=\\\"manju...\", \"by\": \"Administrator\", \"name\": \"86d0783b26\"}]",
+ "_liked_by": "[\"Administrator\"]",
  "actions": [],
  "autoname": "format:P-{YYYY}-{MM}-{####}",
  "creation": "2022-03-11 14:32:25.451219",
@@ -23,7 +25,6 @@
   "amended_from",
   "route",
   "is_approved",
-  "sample_size",
   "sample_size"
  ],
  "fields": [
@@ -47,7 +48,7 @@
   },
   {
    "fieldname": "description",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Text",
    "label": "Description"
   },
   {
@@ -64,7 +65,7 @@
   },
   {
    "fieldname": "target_group",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Text",
    "label": "Target Group"
   },
   {
@@ -75,12 +76,12 @@
   },
   {
    "fieldname": "business_problems",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Text",
    "label": "Business Problems"
   },
   {
    "fieldname": "result",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Text",
    "label": "Result"
   },
   {
@@ -99,12 +100,12 @@
   },
   {
    "fieldname": "learnings",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Long Text",
    "label": "Learnings"
   },
   {
    "fieldname": "research_objectives",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Text",
    "label": "Research objectives"
   },
   {
@@ -135,7 +136,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-29 14:04:25.824330",
+ "modified": "2022-09-30 10:39:04.562073",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Project",
