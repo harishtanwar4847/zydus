@@ -1,0 +1,27 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "creation": "2022-09-30 11:27:06.072967",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Project",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "{% if comments %}\r\nLast comment: {{ comments[-1].comment }} by {{ comments[-1].by }}\r\n{% endif %}",
+ "modified": "2022-09-30 11:29:41.297280",
+ "modified_by": "manjunath.raikar@atriina.com",
+ "module": "Zydus",
+ "name": "Admin comment reminder",
+ "owner": "manjunath.raikar@atriina.com",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Admin has commented on your project {{ doc.name}}"
+}

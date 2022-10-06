@@ -181,7 +181,8 @@
   </div>
   <div class="col-7" style="margin-left: auto;">
     <label> Comments </label>
-    <textarea class="form-control" placeholder="Add a comment here" rows="6"></textarea>
+    <textarea id="comments" class="form-control" value="" name="comments" placeholder="Add a comment here"
+      rows="6"></textarea>
   </div>
   <div class="col-12 text-end action-btns mt-5 mb-4">
     <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#saveModal" type="button"
@@ -205,6 +206,19 @@
 </div>
 </form>
 </div>
+{% if comments | len > 0%}
+<h5 class="card-title"> Comments </h5> <br>
+{% endif %}
+{% for comment in comments %}
+<div class="card" style="width:80rem; ">
+ <!-- <h5 class="card-title"> comments </h5> -->
+ <div class="card-body">
+   <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+   <p class="card-text">{{comment.content}}</p>
+ </div>
+</div>
+{% endfor %}
+
 <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
 </div>
 </div>
@@ -344,7 +358,23 @@
       },
       data: JSON.stringify(req_data),
       success: function (res) {
-        console.log(res)
+        // adding comments
+        var myContent = document.getElementById("comments").value;
+        $.ajax({
+          url: '/api/method/frappe.desk.form.utils.add_comment',
+          method: 'POST',
+          async: false,
+          headers: {
+            'X-Frappe-CSRF-Token': frappe.csrf_token
+          },
+          data: {
+            reference_doctype: 'Datasheet',
+            reference_name: "{{doc.name}}",
+            content: myContent,
+            comment_email: frappe.session.user,
+            comment_by: "{{var}}",
+          }
+        })
         var tagsArr = JSON.parse($('#edit-datasheet-form [data-type=tags]').val() || '[]')
         if (tagsArr.length > 0) {
           var tags = tagsArr.map(x => x.value)
@@ -390,7 +420,7 @@
       }
     })
   }
-)
+  )
   $("#approvedDatasheet").click(function () {
     $.ajax({
       url: '/api/resource/Datasheet/{{doc.name}}',
@@ -406,7 +436,7 @@
       }
     })
   }
-)
+  )
   $("#rejectedDatasheet").click(function () {
     $.ajax({
       url: '/api/resource/Datasheet/{{doc.name}}',
@@ -422,7 +452,7 @@
       }
     })
   }
-)
+  )
   $("#deleteDatasheet").click(function () {
     $.ajax({
       url: '/api/resource/Datasheet/{{doc.name}}',
@@ -438,6 +468,6 @@
       }
     })
   }
-)
+  )
 </script>
 {% endblock %}

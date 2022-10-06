@@ -89,11 +89,11 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"User": {
-# 		"before_insert": "zydus.add_default_image_in_user_before_insert"
-# 	}
-# }
+doc_events = {
+	"Comment": {
+		"before_insert": "zydus.utils.before_insert"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
