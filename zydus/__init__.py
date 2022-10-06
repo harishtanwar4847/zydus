@@ -3,7 +3,7 @@ import datetime
 from frappe.utils.data import DATE_FORMAT, nowdate
 import frappe
 
-__version__ = '1.3.5-dev+1'
+__version__ = '1.3.6-uat'
 
 # Sauce: frappe.utils.data.pretty_date
 def pretty_date_future(iso_datetime):
