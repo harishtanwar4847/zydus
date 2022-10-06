@@ -1,3 +1,6 @@
+# [v1.3.6-uat]  - 2022-10-06
+-[Dev to Uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/115}
+
 # [v1.3.5-dev+1]  - 2022-10-04
 -[comment fixes - removed blank spaces and liked from comment]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/112}
 
