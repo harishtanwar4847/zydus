@@ -456,22 +456,24 @@
       success: function (res) {       
         //  adding comments
         // var myContent = tinymce.get("comments").getContent();
-        var myContent=document.getElementById("comments").value;
-      $.ajax({
-            url: '/api/method/frappe.desk.form.utils.add_comment',
-            method: 'POST',
-            async: false,
-            headers: {
-              'X-Frappe-CSRF-Token': frappe.csrf_token
-            },
-            data: {
-              reference_doctype: 'Project',
-              reference_name:"{{doc.name}}",
-              content :myContent,
-              comment_email:frappe.session.user,
-              comment_by:"{{var}}",
-            }
-          }) 
+      //   var comment=document.getElementById("comments").value;
+      // $.ajax({
+      //       url: '/api/method/frappe.desk.form.utils.add_comment',
+      //       method: 'POST',
+      //       async: false,
+      //       headers: {
+      //         'X-Frappe-CSRF-Token': frappe.csrf_token
+      //       },
+      //       data: {
+      //         reference_doctype: 'Project',
+      //         reference_name:"{{doc.name}}",
+      //         content :comment,
+      //         comment_email:frappe.session.user,
+      //         comment_by:"{{userfullname}}",
+      //       }
+      //     }) 
+       /* --------------------- common function to save comment written in zydus-portal-ui.htmk --------------------- */
+        addComment("Project","{{doc.name}}")
         var tagsArr = JSON.parse($('#edit-project-form [data-type=tags]').val() || '[]')
         if (tagsArr.length > 0) {
           var tags = tagsArr.map(x => x.value)

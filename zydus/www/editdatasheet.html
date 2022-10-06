@@ -359,22 +359,24 @@
       data: JSON.stringify(req_data),
       success: function (res) {
         // adding comments
-        var myContent = document.getElementById("comments").value;
-        $.ajax({
-          url: '/api/method/frappe.desk.form.utils.add_comment',
-          method: 'POST',
-          async: false,
-          headers: {
-            'X-Frappe-CSRF-Token': frappe.csrf_token
-          },
-          data: {
-            reference_doctype: 'Datasheet',
-            reference_name: "{{doc.name}}",
-            content: myContent,
-            comment_email: frappe.session.user,
-            comment_by: "{{var}}",
-          }
-        })
+        // var myContent = document.getElementById("comments").value;
+        // $.ajax({
+        //   url: '/api/method/frappe.desk.form.utils.add_comment',
+        //   method: 'POST',
+        //   async: false,
+        //   headers: {
+        //     'X-Frappe-CSRF-Token': frappe.csrf_token
+        //   },
+        //   data: {
+        //     reference_doctype: 'Datasheet',
+        //     reference_name: "{{doc.name}}",
+        //     content: myContent,
+        //     comment_email: frappe.session.user,
+        //     comment_by: "{{userfullname}}",
+        //   }
+        // })
+        /* --------------------- common function to save comment written in zydus-portal-ui.htmk --------------------- */
+        addComment("Datasheet","{{doc.name}}")
         var tagsArr = JSON.parse($('#edit-datasheet-form [data-type=tags]').val() || '[]')
         if (tagsArr.length > 0) {
           var tags = tagsArr.map(x => x.value)

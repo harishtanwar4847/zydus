@@ -172,7 +172,7 @@
             <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
             <textarea id="comments" class="form-control" value="" name="comments" placeholder="Add a comment here"
               rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea> 
-            <button type="button" id="addComment" style="float: right;font-size: 10px; margin: 10px;" class="btn btn-outline-primary">Comment</button>
+            <button type="button" id="comment" onclick="addComment('Project','{{doc.name}}'),location.reload()"   style="float: right;font-size: 10px; margin: 10px;" class="btn btn-outline-primary">Comment</button>
           </div><br>
           <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
             {% if admin_access_allowed %}
@@ -214,7 +214,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to approve the File?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -229,7 +228,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to reject the File?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -258,7 +256,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to delete the File?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -273,7 +270,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to make the changes?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -296,8 +292,6 @@
     },
     method: 'GET'
   })
-
-
   $("#approvedProject").click(function () {
     $.ajax({
       url: '/api/resource/Project/{{name}}',
@@ -315,8 +309,6 @@
     })
   }
   )
-
-
   $("#rejectedProject").click(function () {
     $.ajax({
       url: '/api/resource/Project/{{name}}',
@@ -332,8 +324,6 @@
     })
   }
   )
-
-
   // api for delete project
   $("#deleteProject").click(function () {
     $.ajax({
@@ -360,31 +350,27 @@
   } else {
     document.getElementById('workflow').style.color = '#127846';
   }
-
-
-  $("#addComment").click(function () {
-    var myContent=document.getElementById("comments").value;
-      $.ajax({
-            url: '/api/method/frappe.desk.form.utils.add_comment',
-            method: 'POST',
-            async: false,
-            headers: {
-              'X-Frappe-CSRF-Token': frappe.csrf_token
-            },
-            data: {
-              reference_doctype: 'Project',
-              reference_name:"{{doc.name}}",
-              content :myContent,
-              comment_email:frappe.session.user,
-              comment_by:"{{var}}",
-            },
-            success: function (res) {
-              location.reload()
-            }
-          }) 
-  }
-  )
-
+  // $("#addComment").click(function () {
+  //   var myContent=document.getElementById("comments").value;
+  //     $.ajax({
+  //           url: '/api/method/frappe.desk.form.utils.add_comment',
+  //           method: 'POST',
+  //           async: false,
+  //           headers: {
+  //             'X-Frappe-CSRF-Token': frappe.csrf_token
+  //           },
+  //           data: {
+  //             reference_doctype: 'Project',
+  //             reference_name:"{{doc.name}}",
+  //             content :myContent,
+  //             comment_email:frappe.session.user,
+  //             comment_by:"{{userfullname}}",
+  //           },
+  //           success: function (res) {
+  //             location.reload()
+  //           }
+  //         }) 
+  // }
+  // )
 </script>
-
 {% endblock %}

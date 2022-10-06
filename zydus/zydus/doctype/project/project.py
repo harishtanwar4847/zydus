@@ -29,7 +29,7 @@ class Project(WebsiteGenerator):
 		context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Project', self.name, ['_liked_by']) or "[]"))	
 		context['userinfo']=frappe.db.sql(""" select P.name,U.user_image,U.full_name from `tabUser` as U  left join `tabProject` as P on  U.name = P.owner where P.name = %s """,(self.name),as_dict=1,debug=1)
 		context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
-		context.var =frappe.db.get_value("User",frappe.session.user,"full_name")
+		context.userfullname =frappe.db.get_value("User",frappe.session.user,"full_name")
 		context["comments"]=frappe.db.sql(""" select C.content,C.reference_name,C.reference_doctype,C.comment_by,C.creation from `tabComment` as C left join `tabProject`  as P on reference_name = P.name where C.reference_name = %s and C.content != "" and C.comment_type="Comment" order by C.creation desc limit 10""",(context.doc.name),as_dict=True)
 		for comment in context['comments']:
 			comment['creations'] = pretty_date(comment['creation'])
