@@ -1,3 +1,6 @@
+# [v1.3.6-dev]  - 2022-10-06
+-[Merge Uat(v1.3.3.-uat) fixes to dev]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/115}
+
 # [v1.3.5-dev+1]  - 2022-10-04
 -[comment fixes - removed blank spaces and liked from comment]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/112}
 
@@ -9,6 +12,12 @@
 
 # [v1.3.3-dev]  - 2022-10-03
 -[comment box implementation on View project/datasheet and edit project/datasheet done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/109}
+
+# [v1.3.3-uat]  - 2022-09-20
+-[debugs removed from all py file and pagination added in access and reminder tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/108}
+
+# [v1.3.2-uat+1]  - 2022-09-16
+-[workflow master action submit added]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/106}
 
 # [v1.3.2-uat]  - 2022-09-15
 # [v1.3.2-dev+1]  - 2022-09-14

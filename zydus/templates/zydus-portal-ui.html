@@ -67,6 +67,26 @@
   <script type="text/javascript" src="/assets/js/frappe-web.min.js?ver={{ build_version }}"></script>
   <script src="/assets/zydus/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/zydus/js/zyduswellness.js"></script>
+  <script> 
+    function addComment( reference_doctype,reference_name){
+      var comment=document.getElementById("comments").value;
+      $.ajax({
+            url: '/api/method/frappe.desk.form.utils.add_comment',
+            method: 'POST',
+            async: false,
+            headers: {
+              'X-Frappe-CSRF-Token': frappe.csrf_token
+            },
+            data: {
+              reference_doctype:reference_doctype,
+              reference_name:reference_name,
+              content :comment,
+              comment_email:frappe.session.user,
+              comment_by:"{{userfullname}}",
+            }
+          }) 
+    }
+  </script>
 </body>
 
 </html>

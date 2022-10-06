@@ -27,12 +27,30 @@ def get_context(context):
 		where_clause= "(T.created_by = '{session_user}' or T.owner = '{session_user}')".format(session_user=frappe.session.user)
 	else:
 		where_clause= "(T.owner = '{session_user}')".format(session_user=frappe.session.user)
-	context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and {} order by date asc limit 5 """.format(where_clause),as_dict=1)
+	context['reminders_page_length'] = 8
+	context['reminders_page'] = int(frappe.form_dict.reminders) if frappe.form_dict.reminders else 1
+	context['reminders_page_offset'] = (context['reminders_page'] - 1) * context['reminders_page_length']
+	context['reminders_page_from'] = context['reminders_page_offset'] + 1
+	context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and {} order by date asc limit %(limit)s offset %(offset)s""".format(where_clause),{'owner': frappe.session.user, 'limit': context['reminders_page_length'], 'offset': context['reminders_page_offset']} ,as_dict=1)
+	context['reminders_count'] = frappe.db.sql("""  select count(T.name) as count from `tabToDo` as T where status = "open" and {} """.format(where_clause),as_dict=1)[0]['count']
+	context['reminders_page_to'] = context['reminders_page'] * context['reminders_page_length']
+	if context['reminders_page_to'] > context['reminders_count']:
+		context['reminders_page_to'] = context['reminders_count']
+	# context["reminders"] = frappe.db.sql(""" select U.user_image,U.full_name,T.name,T.title,T.description,T.owner,T.modified_by,T.date from `tabToDo` as T left join `tabUser` as U on T.owner = U.name where status = "open" and {} order by date asc limit 5 """.format(where_clause),as_dict=1)
 	context['trending_now_list'] = frappe.db.sql("""select B.color,P.name,B.brand_logo,P.p_title as title,count(V.reference_name) as view,concat(P.month," ",P.year) as month_year from `tabProject` as P  left join `tabBrand` as B on P.brand = B.name left join `tabView Log` as V on V.reference_name=P.name and V.reference_doctype="Project" group by P.name order by count(V.reference_name) desc limit 6 """,as_dict=True)
 	for trending_now in context['trending_now_list']:
 		trending_now['number_of_files'] = len(get_attachments("Project",trending_now.name))
-	context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation","enabled","access_given"],debug=1,limit_page_length=15)
-        # due_by calculation for users
+	context['Users_page_length'] = 12
+	context['Users_page'] = int(frappe.form_dict.Users) if frappe.form_dict.Users else 1
+	context['Users_page_offset'] = (context['Users_page'] - 1) * context['Users_page_length']
+	context['Users_page_from'] = context['Users_page_offset']
+	context["Users"] = frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation","enabled","access_given"],order_by ='creation desc', limit_page_length=context['Users_page_length'], limit_start=context['Users_page_from'])
+	context["Users_count"] = frappe.db.get_list("User",fields=["count(name) as count"])[0]['count']
+	context['Users_page_to'] = context['Users_page'] * context['Users_page_length']
+	if context['Users_page_to'] > context['Users_count']:
+		context['Users_page_to'] = context['Users_count']
+	# context["Users"]=frappe.db.get_list("User",fields=["username","user_image","full_name","designation","email","creation","enabled","access_given"],limit_page_length=15)
+    #due_by calculation for users
 	for User in context['Users']:
 		User['creation'] = pretty_date(User['creation'])
 		User['UID']="-".join(User["email"].split('@'))

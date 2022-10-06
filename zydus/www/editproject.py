@@ -15,7 +15,7 @@ def get_context(context):
     context.color=frappe.get_value("Brand",{"name":context.doc.brand},"color")
     context.username=frappe.get_value("User",{"email":context.doc.owner},"full_name")
     context.image=frappe.get_value("User",{"email":context.doc.owner},"user_image")
-    context.var =frappe.db.get_value("User",frappe.session.user,"full_name")
+    context.userfullname =frappe.db.get_value("User",frappe.session.user,"full_name")
     context['attachments'] = frappe.desk.form.load.get_attachments('Project', frappe.form_dict.edit)
     for attachment in context['attachments']:
         file_ext=attachment['file_name']

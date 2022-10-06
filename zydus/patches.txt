@@ -9,3 +9,4 @@ zydus.patches.project_workflow
 zydus.patches.datasheet_workflow
 zydus.patches.import_workflow3
 zydus.patches.datasheet_workflow1 ***
+zydus.patches.workflow_action_master_submit
