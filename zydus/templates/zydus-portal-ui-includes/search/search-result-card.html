@@ -1,4 +1,4 @@
-<div class="search-result"  style="border-color: {{search_result.color}}">
+<div class="search-result" style="border-color: {{search_result.color}}">
     <button onclick="toggleLikeB('{{search_result.doctype}}', '{{search_result.name}}', {% if search_result.is_liked %}'No'{% else %}'Yes'{% endif %})" type="button" class="btn btn-link p-0 fav-button">
         <i class="bi {% if search_result.is_liked %}bi-heart-fill{% else %}bi-heart{% endif %}" {% if search_result.is_liked %}style="color: #000;"{% endif %}></i>
     </button>

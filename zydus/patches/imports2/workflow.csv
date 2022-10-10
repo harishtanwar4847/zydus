@@ -1,0 +1,6 @@
+Workflow Name,Document Type,Workflow State Field,Is Active,Don't Override Status,Send Email Alert,ID (Document States),State (Document States),Only Allow Edit For (Document States),Doc Status (Document States),Update Field (Document States),Update Value (Document States),Is Optional State (Document States),Next Action Email Template (Document States),Message (Document States),ID (Transitions),State (Transitions),Action (Transitions),Next State (Transitions),Allowed (Transitions),Allow Self Approval (Transitions),Condition (Transitions)
+New Project Approval 2,Project,workflow_state,1,0,1,9e7f622d61,Saved,KMS Uploader,0,,,0,,,360e12e6ae,Saved,Submit,Pending,KMS Uploader,1,
+,,,,,,4789b1de04,Saved,KMS Admin,0,,,0,,,25f7981c62,Saved,Submit,Pending,KMS Admin,1,
+,,,,,,74946d8c2a,Pending,KMS Admin,0,,,0,,,0adc8c0ee2,Pending,Approve,Approved,KMS Admin,1,
+,,,,,,b08e053b03,Approved,KMS Admin,1,,,0,,,675d4047f3,Pending,Reject,Rejected,KMS Admin,1,
+,,,,,,7275e08f86,Rejected,KMS Admin,0,,,0,,,,,,,,,

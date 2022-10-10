@@ -1,6 +1,7 @@
 {
  "attach_print": 0,
  "channel": "System Notification",
+ "condition": "doc.created_by == doc.owner",
  "creation": "2022-06-21 16:50:24.003919",
  "days_in_advance": 0,
  "docstatus": 0,
@@ -11,7 +12,7 @@
  "idx": 0,
  "is_standard": 1,
  "message": "Add your message here",
- "modified": "2022-06-21 16:50:24.003919",
+ "modified": "2022-09-13 12:59:39.387317",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "user reminder",
