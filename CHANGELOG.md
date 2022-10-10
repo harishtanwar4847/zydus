@@ -1,3 +1,6 @@
+# [v1.3.3-uat+1]  - 2022-10-10
+-[In Project extra field added action standards]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/116}
+
 # [v1.3.3-uat]  - 2022-09-20
 -[debugs removed from all py file and pagination added in access and reminder tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/108}
 
