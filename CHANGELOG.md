@@ -1,3 +1,6 @@
+# [v1.3.3-uat+2]  - 2022-10-10
+-[Fix: extra files removed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/118}
+
 # [v1.3.3-uat+1]  - 2022-10-10
 -[In Project extra field added action standards]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/116}
 
