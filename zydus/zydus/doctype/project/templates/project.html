@@ -152,6 +152,13 @@
               </p>
               {% endif %}
 
+              {% if action_standards | len > 0%}
+              <label> Action Standards</label>
+              <p>
+                {{doc.action_standards}}
+              </p>
+              {% endif %}
+
               {% if learnings | len > 0%}
               <label>Learnings</label>
               <p>
