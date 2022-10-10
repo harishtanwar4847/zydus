@@ -220,6 +220,11 @@
                     placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
                 </div>
                 <div class="col-12">
+                  <label>  Action Standards</label>
+                  <input name="action_standards" class="form-control" value="{{doc.action_standards}}" id="action_standards"
+                      placeholder="Mention Action Standards">
+                </div>
+                <div class="col-12">
                   <label> Learnings </label>
                   <textarea class="form-control" id="learnings"
                     placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
@@ -412,6 +417,7 @@
       "p_title": document.getElementById("p_title").value,
       "year": document.getElementById("year").value,
       "sample_size": document.getElementById("sample_size").value,
+      "action_standards":document.getElementById("action_standards").value
     }
     var dropzone = Dropzone.forElement('#save-project-dropzone')
             var uploaded_files = dropzone.getAcceptedFiles()
