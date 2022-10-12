@@ -158,37 +158,37 @@
             })
         });
     }
-  function toggleLikeB(dt, dn, add) {
-    $.ajax({
-      url: '/api/method/frappe.desk.like.toggle_like',
-      method: 'POST',
-      data: {
-        doctype: dt,
-        name: dn,
-        add: add
-      },
-      headers: {
-        'X-Frappe-CSRF-Token': frappe.csrf_token
-      },
-      success: function () {
-        var dataArr = $("#search-form").serializeArray()
-        console.log(dataArr)
-        var obj = {}
-        dataArr.forEach(x => {
-          if (x.name == 'tags') {
-            x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
-          }
-          if (x.name == 'type') {
-            x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
-          }
-          if (x.value.length > 0) {
-            obj[x.name] = x.value
-          }
-        })
-        $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
-      }
-    })
-  }
+  // function toggleLikeB(dt, dn, add) {
+  //   $.ajax({
+  //     url: '/api/method/frappe.desk.like.toggle_like',
+  //     method: 'POST',
+  //     data: {
+  //       doctype: dt,
+  //       name: dn,
+  //       add: add
+  //     },
+  //     headers: {
+  //       'X-Frappe-CSRF-Token': frappe.csrf_token
+  //     },
+  //     success: function () {
+  //       var dataArr = $("#search-form").serializeArray()
+  //       console.log(dataArr)
+  //       var obj = {}
+  //       dataArr.forEach(x => {
+  //         if (x.name == 'tags') {
+  //           x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
+  //         }
+  //         if (x.name == 'type') {
+  //           x.value = JSON.parse(x.value || '[]').map(x => x.value).join(',')
+  //         }
+  //         if (x.value.length > 0) {
+  //           obj[x.name] = x.value
+  //         }
+  //       })
+  //       $('.search-results-parent').load(location.pathname + '?' + $.param(obj) + ' .search-results')
+  //     }
+  //   })
+  // }
   setTimeout(function () {
     // Sauce: https://stackoverflow.com/a/50147341/9403680
     const params = Object.fromEntries(new URLSearchParams(location.search));
