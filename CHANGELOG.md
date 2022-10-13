@@ -1,3 +1,6 @@
+# [v1.3.4-uat]  - 2022-10-13
+-[Fix: like functionality of search navbar]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/119}
+
 # [v1.3.3]  - 2022-10-10
 
 # Added
