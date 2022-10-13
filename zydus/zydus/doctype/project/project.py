@@ -6,7 +6,7 @@ import frappe
 import os
 from frappe.website.website_generator import WebsiteGenerator
 import json
-
+from frappe.utils import pretty_date, now, add_to_date
 
 class Project(WebsiteGenerator):
 	def get_context(self, context):
@@ -16,37 +16,20 @@ class Project(WebsiteGenerator):
 		context['admin_allowed_roles'] = ['KMS Admin']
 		context['user_access_allowed'] = any(role in context['roles'] for role in context['user_allowed_roles'])
 		context['admin_access_allowed'] = any(role in context['roles'] for role in context['admin_allowed_roles'])
-		
-		if context['admin_access_allowed']:
-			context['_user_tags'] = (frappe.db.get_value('Project', self.name, '_user_tags') or "").split(',')
-			if len(context['_user_tags']) > 1:
-				context['_user_tags'] = context['_user_tags'][1:]
-			context['markets'] = ','.join([market.city for market in self.markets])
-			context['attachments'] = frappe.desk.form.load.get_attachments('Project', self.name)
-			for attachment in context['attachments']:
-				file_ext=attachment['file_name']
-				attachment['ext']=file_ext.rsplit('.', 1)[1]
-				 
+		context['_user_tags'] = (frappe.db.get_value('Project', self.name, '_user_tags') or "").split(',')
+		if len(context['_user_tags']) > 1:
+			context['_user_tags'] = context['_user_tags'][1:]
+		context['markets'] = ','.join([market.city for market in self.markets])
+		context['attachments'] = frappe.desk.form.load.get_attachments('Project', self.name)
+		for attachment in context['attachments']:
+			file_ext=attachment['file_name']
+			attachment['ext']=file_ext.rsplit('.', 1)[1]	 
 			context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Project', self.name, ['_liked_by']) or "[]"))
-			
 			context['userinfo']=frappe.db.sql(""" select P.name,U.user_image,U.full_name from `tabUser` as U  left join `tabProject` as P on  U.name = P.owner where P.name = %s """,(self.name),as_dict=1,debug=1)
-		
 			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
-		else:
-			context['_user_tags'] = (frappe.db.get_value('Project', self.name, '_user_tags') or "").split(',')
-			if len(context['_user_tags']) > 1:
-				context['_user_tags'] = context['_user_tags'][1:]
-			context['markets'] = ','.join([market.city for market in self.markets])
-			context['attachments'] = frappe.desk.form.load.get_attachments('Project', self.name)
-			for attachment in context['attachments']:
-				file_ext=attachment['file_name']
-				attachment['ext']=file_ext.rsplit('.', 1)[1]
-				 
-			context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Project', self.name, ['_liked_by']) or "[]"))
-			
-			context['userinfo']=frappe.db.sql(""" select P.name,U.user_image,U.full_name from `tabUser` as U  left join `tabProject` as P on  U.name = P.owner where P.name = %s """,(self.name),as_dict=1,debug=1)
-		
-			context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
+		context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
+		for notification in context['notifications']:
+			notification['creations'] = pretty_date(notification['creation'])
 
 	def before_submit(self):
 		frappe.db.delete("View Log",{"reference_doctype": "Project", "reference_name":self.name})
