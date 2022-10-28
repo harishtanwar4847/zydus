@@ -174,12 +174,12 @@
               {% endif %}
             </div>
           </div>
-
           <div class="col-lg-7  ms-auto details">
             <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
-            <textarea class="form-control" placeholder="Add a comment here" rows="4" {% if
-              (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea>
-          </div>
+            <textarea id="comment" class="form-control" value="" name="comment" placeholder="Add a comment here"
+              rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea> 
+            <button type="button" onclick="saveComment('Project','{{doc.name}}'),location.reload()"  style="float: right;font-size: 10px; margin: 10px;" class="btn btn-outline-primary">Comment</button>
+          </div><br>
           <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
             {% if admin_access_allowed %}
             <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalDelete"
@@ -214,6 +214,20 @@
     </div>
 </div>
 </form>
+</div>
+<div>
+  {% if all_comments | len > 0%}
+  <h5 class="card-title"> Comments </h5> <br>
+  {% endif %}
+  {% for comment in all_comments %}
+     <div class="card" style="width:80rem; ">
+      <!-- <h5 class="card-title"> comments </h5> -->
+      <div class="card-body">
+        <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+        <p class="card-text">{{comment.content}}</p>
+      </div>
+    </div>
+    {% endfor %}
 </div>
 <div class="modal fade" id="successModalApprove" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -275,7 +289,7 @@
       </div>
     </div>
   </div>
-  <<<<<<< HEAD=======</div>
+  </div>
 
     <script>
       $.ajax({
