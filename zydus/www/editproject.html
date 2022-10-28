@@ -220,6 +220,11 @@
                     placeholder="Enter one line outcome of the study ( also include performance vs. action standards here)">
                 </div>
                 <div class="col-12">
+                  <label>  Action Standards</label>
+                  <input name="action_standards" class="form-control" value="{{doc.action_standards}}" id="action_standards"
+                      placeholder="Mention Action Standards">
+                </div>
+                <div class="col-12">
                   <label> Learnings </label>
                   <textarea class="form-control" id="learnings"
                     placeholder="Mention the key insights  and learnings from the study in short sentences (not more than 10)"
@@ -235,7 +240,7 @@
                 </div>
                 <div class="col-7">
                   <label> Comments </label>
-                  <textarea id="comments" class="form-control" value="" name = "comments" placeholder="Add a comment here" rows="6"></textarea>
+                  <textarea class="form-control" id="comment" name="comment" placeholder="Add a comment here" rows="6"></textarea>
                 </div>
                 <div class="col-12 text-end action-btns mt-5 mb-4">
                   <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#saveModal"
@@ -274,6 +279,21 @@
                 </div>
                 {% endfor %}
           </div>
+          <div>
+            {% if all_comments | len > 0%}
+            <h5 class="card-title"> Comments </h5> <br>
+            {% endif %}
+            {% for comment in all_comments %}
+               <div class="card" style="width:75rem; ">
+                <!-- <h5 class="card-title"> comments </h5> -->
+                <div class="card-body">
+                  <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+                  <p class="card-text">{{comment.content}}</p>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+
           <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
           </div>
         </div>
@@ -427,7 +447,8 @@
       "p_title": document.getElementById("p_title").value,
       "year": document.getElementById("year").value,
       "sample_size": document.getElementById("sample_size").value,
-      "comments":document.getElementById("comments").value,
+      "action_standards":document.getElementById("action_standards").value,
+      "comment":document.getElementById("comment").value,
     }
     
     var dropzone = Dropzone.forElement('#save-project-dropzone')
@@ -453,27 +474,9 @@
         'X-Frappe-CSRF-Token': frappe.csrf_token
       },
       data: JSON.stringify(req_data),
-      success: function (res) {       
-        //  adding comments
-        // var myContent = tinymce.get("comments").getContent();
-      //   var comment=document.getElementById("comments").value;
-      // $.ajax({
-      //       url: '/api/method/frappe.desk.form.utils.add_comment',
-      //       method: 'POST',
-      //       async: false,
-      //       headers: {
-      //         'X-Frappe-CSRF-Token': frappe.csrf_token
-      //       },
-      //       data: {
-      //         reference_doctype: 'Project',
-      //         reference_name:"{{doc.name}}",
-      //         content :comment,
-      //         comment_email:frappe.session.user,
-      //         comment_by:"{{userfullname}}",
-      //       }
-      //     }) 
-       /* --------------------- common function to save comment written in zydus-portal-ui.htmk --------------------- */
-        addComment("Project","{{doc.name}}")
+      success: function (res) {      
+        /* --------------------- common function to save comment written in zydus-portal-ui.html --------------------- */
+        saveComment("Project","{{doc.name}}")     
         var tagsArr = JSON.parse($('#edit-project-form [data-type=tags]').val() || '[]')
         if (tagsArr.length > 0) {
           var tags = tagsArr.map(x => x.value)

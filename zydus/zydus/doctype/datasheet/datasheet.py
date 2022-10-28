@@ -22,13 +22,9 @@ class Datasheet(WebsiteGenerator):
 		context['brand_color'] = frappe.db.get_value('Brand', self.brand, 'color')
 		context['is_liked'] = frappe.session.user in json.loads((frappe.db.get_value('Datasheet', self.name, ['_liked_by']) or "[]"))
 		context['userinfo']=frappe.db.sql(""" select D.name,U.user_image,U.full_name from `tabUser` as U  left join `tabDatasheet` as D on  U.name = D.owner where D.name = %s """,(self.name),as_dict=1)
-		context.userfullname =frappe.db.get_value("User",frappe.session.user,"full_name")
-		context["comments"]=frappe.db.sql(""" select C.content,C.reference_name,C.reference_doctype,C.comment_by,C.creation from `tabComment` as C left join `tabDatasheet`  as D on reference_name = D.name where C.reference_name = %s and C.content != ""
-		and C.comment_type="Comment" order by C.creation desc limit 10""",(context.doc.name),as_dict=True)
-		for comment in context['comments']:
-			comment['creations'] = pretty_date(comment['creation'])
-
-			
+		context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
+		for notification in context['notifications']:
+			notification['creations'] = pretty_date(notification['creation'])
 
 	def before_submit(self):
 		frappe.db.delete("View Log",{"reference_doctype": "Datasheet", "reference_name":self.name})

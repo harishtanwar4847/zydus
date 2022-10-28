@@ -1,3 +1,30 @@
+# [v1.3.7-dev]  - 2022-10-28
+
+## Fixed
+
+-[Fix: Dev v1.3.6 changes revert]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/122}
+
+# [v1.3.4]  - 2022-10-13
+
+## Fixed
+
+-[Fix: Uat to master]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/120}
+
+# [v1.3.4-uat]  - 2022-10-13
+-[Fix: like functionality of search navbar]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/119}
+
+# [v1.3.3]  - 2022-10-10
+
+## Added
+
+-[Feat: Uat to master]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/117}
+
+# [v1.3.3-uat+2]  - 2022-10-10
+-[Fix: extra files removed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/118}
+
+# [v1.3.3-uat+1]  - 2022-10-10
+-[In Project extra field added action standards]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/116}
+
 # [v1.3.6-dev]  - 2022-10-06
 -[Merge Uat(v1.3.3.-uat) fixes to dev]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/115}
 
