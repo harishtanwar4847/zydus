@@ -1,3 +1,9 @@
+# [v1.3.7-dev]  - 2022-10-28
+
+## Fixed
+
+-[Fix: Dev v1.3.6 changes revert]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/122}
+
 # [v1.3.4]  - 2022-10-13
 
 ## Fixed
