@@ -240,7 +240,7 @@
                 </div>
                 <div class="col-7">
                   <label> Comments </label>
-                  <textarea class="form-control" placeholder="Add a comment here" rows="6"></textarea>
+                  <textarea class="form-control" id="comment" name="comment" placeholder="Add a comment here" rows="6"></textarea>
                 </div>
                 <div class="col-12 text-end action-btns mt-5 mb-4">
                   <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#saveModal"
@@ -265,6 +265,21 @@
               </div>
             </forRm>
           </div>
+          <div>
+            {% if all_comments | len > 0%}
+            <h5 class="card-title"> Comments </h5> <br>
+            {% endif %}
+            {% for comment in all_comments %}
+               <div class="card" style="width:75rem; ">
+                <!-- <h5 class="card-title"> comments </h5> -->
+                <div class="card-body">
+                  <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+                  <p class="card-text">{{comment.content}}</p>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+
           <div class="tab-pane fade" id="nav-data-content" role="tabpanel" aria-labelledby="nav-data-link">
           </div>
         </div>
@@ -417,7 +432,8 @@
       "p_title": document.getElementById("p_title").value,
       "year": document.getElementById("year").value,
       "sample_size": document.getElementById("sample_size").value,
-      "action_standards":document.getElementById("action_standards").value
+      "action_standards":document.getElementById("action_standards").value,
+      "comment":document.getElementById("comment").value,
     }
     var dropzone = Dropzone.forElement('#save-project-dropzone')
             var uploaded_files = dropzone.getAcceptedFiles()
@@ -442,7 +458,8 @@
       },
       data: JSON.stringify(req_data),
       success: function (res) {      
-        console.log(res)     
+        /* --------------------- common function to save comment written in zydus-portal-ui.html --------------------- */
+        saveComment("Project","{{doc.name}}")     
         var tagsArr = JSON.parse($('#edit-project-form [data-type=tags]').val() || '[]')
         if (tagsArr.length > 0) {
           var tags = tagsArr.map(x => x.value)
