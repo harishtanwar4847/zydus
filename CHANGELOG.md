@@ -1,4 +1,8 @@
+# [v1.3.7-dev+1]  - 2022-10-31
+
+
 # [v1.3.7-dev]  - 2022-10-28
+-[Fix : Comment box functionality added in datasheet and condition added in utils.py]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/123}
 
 ## Fixed
 
