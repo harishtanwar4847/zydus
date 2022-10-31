@@ -144,9 +144,9 @@
 </div> -->
         <div class="col-lg-7  ms-auto details">
           <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
-          <textarea id="comments" class="form-control" value="" name="comments" placeholder="Add a comment here"
+          <textarea id="comment" class="form-control" value="" name="comment" placeholder="Add a comment here"
             rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea>
-          <button type="button" id="comment" onclick="addComment('Datasheet','{{doc.name}}'),location.reload()" style="float: right;font-size: 10px;margin:8px" class="btn btn-outline-primary">Comment</button>
+          <button type="button"  onclick="saveComment('Datasheet','{{doc.name}}'),location.reload()" style="float: right;font-size: 10px;margin:8px" class="btn btn-outline-primary">Comment</button>
         </div>
         <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
           {% if admin_access_allowed %}
@@ -184,10 +184,10 @@
 </div>
 </form>
 <div>
-  {% if comments | len > 0%}
+  {% if all_comments | len > 0%}
   <h5 class="card-title"> Comments </h5> <br>
   {% endif %}
-  {% for comment in comments %}
+  {% for comment in all_comments %}
   <div class="card" style="width:80rem; ">
     <!-- <h5 class="card-title"> comments </h5> -->
     <div class="card-body">
