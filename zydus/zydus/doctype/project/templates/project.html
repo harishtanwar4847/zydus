@@ -178,7 +178,7 @@
             <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
             <textarea id="comment" class="form-control" value="" name="comment" placeholder="Add a comment here"
               rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea> 
-            <button type="button" onclick="saveComment('Project','{{doc.name}}'),location.reload()"  style="float: right;font-size: 10px; margin: 10px;" class="btn btn-outline-primary">Comment</button>
+            <button type="button" onclick="saveComment('Project','{{doc.name}}'),location.reload()"  style="float: right;font-size: 10px; margin: 10px;" class="btn btn-outline-primary" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>Comment</button>
           </div><br>
           <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
             {% if admin_access_allowed %}
