@@ -1,3 +1,9 @@
+# [v1.3.8-uat]  - 2022-11-02
+
+## Added
+
+-[Feat: Develop to Uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/125}
+
 # [v1.3.8-dev+1]  - 2022-11-02
 -[Fix : Code review fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/126}
 
