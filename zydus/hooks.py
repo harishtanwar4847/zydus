@@ -91,7 +91,7 @@ app_license = "MIT"
 
 doc_events = {
 	"Comment": {
-		"before_insert": "zydus.utils.before_insert"
+		"before_insert": "zydus.utils.before_insert_comment"
 	}
 }
 
