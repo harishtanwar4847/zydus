@@ -119,21 +119,18 @@
               {{doc.business_problems}}
             </p>
             {% endif %}
-
             {% if research_objectives | len > 0%}
             <label>Research Objectives</label>
             <p>
               {{doc.research_objectives}}
             </p>
             {% endif %}
-
             {% if result | len > 0%}
             <label>Results</label>
             <p>
               {{doc.result}}
             </p>
             {% endif %}
-
             {% if learnings | len > 0%}
             <label>Learnings</label>
             <p>
@@ -147,48 +144,63 @@
 </div> -->
         <div class="col-lg-7  ms-auto details">
           <label {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}> Comments </label>
-          <textarea class="form-control" placeholder="Add a comment here" rows="4" {% if (doc.workflow_state=="Rejected"
-            ) %} hidden {% endif %}></textarea>
+          <textarea id="comment" class="form-control" value="" name="comment" placeholder="Add a comment here"
+            rows="4" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}></textarea>
+          <button type="button"  onclick="saveComment('Datasheet','{{doc.name}}'),location.reload()" style="float: right;font-size: 10px;margin:8px" class="btn btn-outline-primary" {% if (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>Comment</button>
         </div>
         <div class="col-12 text-end action-btns mt-5 mb-4 ms-2">
-            {% if admin_access_allowed %}
-            <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalDelete"
-              type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% endif %}>
-              Delete
-            </button>
-            {% endif %}
-            {% if admin_access_allowed or user_access_allowed and doc.owner == frappe.session.user and doc.workflow_state == "Pending" %}
-            <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
-              type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" )
-              %} hidden {% endif %}>
-              Edit
-            </button>
-            {% endif %}
-            {% if admin_access_allowed %}
-            <button class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal"
-              data-bs-target="#successModalReject" type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {%
-              elif (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>
-              Reject
-            </button>
-            {% endif %}
-            {% if admin_access_allowed %}
-            <button class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
-              data-bs-target="#successModalApprove" type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {%
-              elif (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>
-              Approve
-            </button>
-            {% endif %}
-          </div>
+          {% if admin_access_allowed %}
+          <button class="btn btn-primary-2  px-3 py-2" data-bs-toggle="modal" data-bs-target="#successModalDelete"
+            type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% endif %}>
+            Delete
+          </button>
+          {% endif %}
+          {% if admin_access_allowed or user_access_allowed and doc.owner == frappe.session.user and doc.workflow_state
+          == "Pending" %}
+          <button class="btn btn-secondary-2  px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModal"
+            type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" ) %}
+            hidden {% endif %}>
+            Edit
+          </button>
+          {% endif %}
+          {% if admin_access_allowed %}
+          <button class="btn btn-primary-red px-3 py-2 ms-2" data-bs-toggle="modal" data-bs-target="#successModalReject"
+            type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {% elif (doc.workflow_state=="Rejected" ) %}
+            hidden {% endif %}>
+            Reject
+          </button>
+          {% endif %}
+          {% if admin_access_allowed %}
+          <button class="btn btn-primary-green  px-3 py-2 ms-2" data-bs-toggle="modal"
+            data-bs-target="#successModalApprove" type="button" {% if (doc.workflow_state=="Approved" ) %} hidden {%
+            elif (doc.workflow_state=="Rejected" ) %} hidden {% endif %}>
+            Approve
+          </button>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
 </div>
 </form>
+<div>
+  {% if all_comments | len > 0%}
+  <h5 class="card-title"> Comments </h5> <br>
+  {% endif %}
+  {% for comment in all_comments %}
+  <div class="card" style="width:80rem; ">
+    <!-- <h5 class="card-title"> comments </h5> -->
+    <div class="card-body">
+      <p class="card-subtitle mb-2 text-muted"> {{comment.comment_by}} commented &nbsp;&nbsp; {{comment.creations}} </p>
+      <p class="card-text">{{comment.content}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 <div class="modal fade" id="successModalApprove" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to approve the File?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -203,7 +215,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to reject the File?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -218,7 +229,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to delete the File?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -233,7 +243,6 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-primary">
       <div class="modal-body ">
-
         <div class="text-white mt-1" style="text-align: justify;">Are you sure you want to make the changes?</div>
         <div class="mt-4 d-flex justify-content-between modal-action-btns ">
           <button class="btn btn-link text-white" style="border-bottom: none;"
@@ -245,7 +254,6 @@
     </div>
   </div>
 </div>
-
 <script>
   $.ajax({
     url: '/api/method/frappe.desk.form.load.getdoc',
@@ -256,8 +264,6 @@
     },
     method: 'GET'
   })
-
-
   $("#approvedDatasheet").click(function () {
     $.ajax({
       url: '/api/resource/Datasheet/{{name}}',
@@ -270,12 +276,10 @@
       success: function (res) {
         location.reload()
         // $('#project-form [name=workflow_state]').val("Approved");
-
       }
     })
   }
   )
-
   $("#rejectedDatasheet").click(function () {
     $.ajax({
       url: '/api/resource/Datasheet/{{name}}',
@@ -291,8 +295,6 @@
     })
   }
   )
-
-
   // api for delete project
   $("#deleteDatasheet").click(function () {
     $.ajax({

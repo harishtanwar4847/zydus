@@ -1,0 +1,28 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.reference_doctype == \"Datasheet\" and doc.comment_type == \"Comment\"",
+ "creation": "2022-10-03 12:32:44.310845",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Comment",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p><h3>New Mention on {{doc.reference_name}}</h3><p>\n<b>Administrator</b> mentioned you in a comment in <b>{{doc.reference_name}}</b><br>\n<b>Comment:</b>{{doc.content}}",
+ "modified": "2022-11-01 12:26:39.226318",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Admin Datasheet commented",
+ "owner": "manjunath.raikar@atriina.com",
+ "recipients": [
+  {
+   "receiver_by_document_field": "reference_owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": " Administrator mentioned you in a comment in Datasheet : {{doc.datasheet_name}}"
+}

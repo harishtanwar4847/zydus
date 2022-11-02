@@ -7,6 +7,8 @@ import os
 from frappe.website.website_generator import WebsiteGenerator
 import json
 from frappe.utils import pretty_date, now, add_to_date
+import zydus
+
 
 class Project(WebsiteGenerator):
 	def get_context(self, context):
@@ -30,6 +32,11 @@ class Project(WebsiteGenerator):
 		context["notifications"] = frappe.db.get_all("Notification Log",fields=["subject","creation"], filters={'for_user': frappe.session.user}, limit_page_length=5,order_by="modified desc")
 		for notification in context['notifications']:
 			notification['creations'] = pretty_date(notification['creation'])
+		context.userfullname =frappe.db.get_value("User",frappe.session.user,"full_name")
+		context["all_comments"]=frappe.db.sql(""" select C.content,C.reference_name,C.reference_doctype,C.comment_by,C.creation from `tabComment` as C left join `tabProject`  as P on reference_name = P.name where C.reference_name = %s and C.content != "" and C.comment_type="Comment" order by C.creation desc limit 10""",(context.doc.name),as_dict=True)
+		for comment in context['all_comments']:
+			comment['creations'] = pretty_date(comment['creation'])
+
 
 	def before_submit(self):
 		frappe.db.delete("View Log",{"reference_doctype": "Project", "reference_name":self.name})
