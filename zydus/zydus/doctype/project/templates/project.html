@@ -370,27 +370,5 @@
   } else {
     document.getElementById('workflow').style.color = '#127846';
   }
-  // $("#addComment").click(function () {
-  //   var myContent=document.getElementById("comments").value;
-  //     $.ajax({
-  //           url: '/api/method/frappe.desk.form.utils.add_comment',
-  //           method: 'POST',
-  //           async: false,
-  //           headers: {
-  //             'X-Frappe-CSRF-Token': frappe.csrf_token
-  //           },
-  //           data: {
-  //             reference_doctype: 'Project',
-  //             reference_name:"{{doc.name}}",
-  //             content :myContent,
-  //             comment_email:frappe.session.user,
-  //             comment_by:"{{userfullname}}",
-  //           },
-  //           success: function (res) {
-  //             location.reload()
-  //           }
-  //         }) 
-  // }
-  // )
 </script>
 {% endblock %}
