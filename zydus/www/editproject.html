@@ -572,43 +572,4 @@
   }
 )
 </script>
-<!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> -->
-    <!-- <script>
-      tinymce.init({
-        selector: '#',
-        height : "300",
-        width : "700",
-  setup: function (ed) {
-    ed.on('keydown',function(e) {
-        if(e.keyCode >= 65 && e.keyCode <= 90){
-          var search = tinymce.get("comments").getContent().replace(/(&nbsp;)*/g, "").replace(/(<p>)*/g, "").replace(/<(\/)?p[^>]*>/g, "");
-            console.log(search)
-            // alert("CTRL + ENTER PRESSED");
-            $.ajax({
-            url: '/api/method/frappe.desk.search.get_name_for_mentions',
-            method: 'POST',
-            async: false,
-            headers: {
-              'X-Frappe-CSRF-Token': frappe.csrf_tokenss
-            },
-            data: {
-              search_term:search,
-            }
-        }) 
-            console.log("@ helllo @")
-            // e.preventDefault();
-        }
-    });
-  },
-        plugins: [
-          'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
-          'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
-          'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
-        ],
-        toolbar: 'undo redo | formatpainter casechange blocks | bold italic | ' +
-          'alignleft aligncenter alignright alignjustify | ' +
-          'bullist numlist checklist  |  help'
-          
-      });
-    </script> -->
 {% endblock %}

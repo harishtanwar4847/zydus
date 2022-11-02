@@ -1,3 +1,6 @@
+# [v1.3.8-dev+1]  - 2022-11-02
+-[Fix : Code review fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/126}
+
 # [v1.3.8-dev]  - 2022-11-01
 -[Fix: In view project/datasheet after rejected delete button hidden | changes in comment box notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/124}
 
