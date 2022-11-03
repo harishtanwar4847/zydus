@@ -1,3 +1,30 @@
+# [v1.3.8]  - 2022-11-03
+
+## Added
+
+-[Feat: Uat to Master]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/127}
+
+# [v1.3.8-uat]  - 2022-11-02
+
+## Added
+
+-[Feat: Develop to Uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/125}
+
+# [v1.3.8-dev+1]  - 2022-11-02
+-[Fix : Code review fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/126}
+
+# [v1.3.8-dev]  - 2022-11-01
+-[Fix: In view project/datasheet after rejected delete button hidden | changes in comment box notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/124}
+
+# [v1.3.7-dev+1]  - 2022-10-31
+-[Fix : Comment box functionality added in datasheet and condition added in utils.py]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/123}
+
+# [v1.3.7-dev]  - 2022-10-28
+
+## Fixed
+
+-[Fix: Dev v1.3.6 changes revert]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/122}
+
 # [v1.3.4]  - 2022-10-13
 
 ## Fixed
@@ -18,6 +45,21 @@
 
 # [v1.3.3-uat+1]  - 2022-10-10
 -[In Project extra field added action standards]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/116}
+
+# [v1.3.6-dev]  - 2022-10-06
+-[Merge Uat(v1.3.3.-uat) fixes to dev]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/115}
+
+# [v1.3.5-dev+1]  - 2022-10-04
+-[comment fixes - removed blank spaces and liked from comment]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/112}
+
+# [v1.3.5-dev]  - 2022-10-04
+-[view project comment functionality fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/111}
+
+# [v1.3.4-dev]  - 2022-10-03
+-[comment box -done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/110}
+
+# [v1.3.3-dev]  - 2022-10-03
+-[comment box implementation on View project/datasheet and edit project/datasheet done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/109}
 
 # [v1.3.3-uat]  - 2022-09-20
 -[debugs removed from all py file and pagination added in access and reminder tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/108}

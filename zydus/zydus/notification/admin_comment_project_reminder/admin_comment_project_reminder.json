@@ -1,0 +1,28 @@
+{
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition": "doc.reference_doctype == \"Project\" and doc.comment_type == \"Comment\"",
+ "creation": "2022-11-01 11:23:08.561172",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Comment",
+ "enabled": 1,
+ "event": "New",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "",
+ "modified": "2022-11-01 12:21:21.045792",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Admin comment project reminder",
+ "owner": "manjunath.raikar@atriina.com",
+ "recipients": [
+  {
+   "receiver_by_document_field": "reference_owner"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Admin has commented on your Project {{ doc.project_name }}"
+}
