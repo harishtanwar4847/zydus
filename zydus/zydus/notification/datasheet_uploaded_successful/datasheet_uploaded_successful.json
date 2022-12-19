@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.workflow_state == \"Pending\"",
+ "creation": "2022-11-08 10:09:10.876417",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Datasheet",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Hello Everyone, \n<br>\n<br>\n{{doc.owner}} have uploaded a datasheet <b>{{doc.d_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.\n<br>\n<br>\nTo view it click on below link\n<br>\n<br>\n{{frappe.utils.get_url()}}/datasheets/{{doc.name}}",
+ "modified": "2022-12-19 14:51:22.929074",
+ "modified_by": "manjunath.raikar@atriina.com",
+ "module": "Zydus",
+ "name": "Datasheet uploaded successful",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "KMS Admin"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "User has uploaded Datasheet ",
+ "value_changed": "workflow_state"
+}
