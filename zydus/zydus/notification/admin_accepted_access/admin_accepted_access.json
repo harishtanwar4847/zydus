@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.access_given == 1",
+ "creation": "2022-11-07 11:28:08.206106",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "User",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Hello {{doc.first_name}},\n<br></br>\nAdmin have provided you following access Uploader & Downloader with certain limitations",
+ "modified": "2022-12-19 14:35:45.712025",
+ "modified_by": "manjunath.raikar@atriina.com",
+ "module": "Zydus",
+ "name": "admin accepted access",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "email"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "subject": "Admin has given access",
+ "value_changed": "access_given"
+}
