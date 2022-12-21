@@ -1,3 +1,6 @@
+# [v1.3.9-dev+1]  - 2022-11-21
+-[Fix: Changelog and init merge conflits resolved]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/130}
+
 # [v1.3.9-dev]  - 2022-11-19
 -[Feat: Three user email notifications added | Max file_size set to 300 MB]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/128}
 
