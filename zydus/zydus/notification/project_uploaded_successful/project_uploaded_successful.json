@@ -1,0 +1,29 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.workflow_state == \"Pending\"",
+ "creation": "2022-11-07 11:01:59.707345",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Project",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Hello Everyone, \n<br>\n<br>\n{{doc.owner}} have uploaded a project <b>{{doc.p_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.\n<br>\n<br>\nTo view it click on below link\n<br>\n<br>\n{{frappe.utils.get_url()}}/projects/{{doc.name}}",
+ "modified": "2022-12-19 14:52:47.869971",
+ "modified_by": "manjunath.raikar@atriina.com",
+ "module": "Zydus",
+ "name": "Project uploaded successful",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "KMS Admin"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "subject": "User has uploaded Project ",
+ "value_changed": "workflow_state"
+}

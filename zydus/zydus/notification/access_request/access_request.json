@@ -1,6 +1,7 @@
 {
  "attach_print": 0,
  "channel": "Email",
+ "condition": "",
  "creation": "2022-06-21 16:33:33.329289",
  "days_in_advance": 0,
  "docstatus": 0,
@@ -10,8 +11,8 @@
  "event": "New",
  "idx": 0,
  "is_standard": 1,
- "message": "Hello Admin,\r\n<br></br>\r\n<br></br>\r\nYou have received a request for KMS portal access from {{doc.email}}.\r\n<br></br>\r\n<br></br>\r\nKindly login to <a href =\"https://zydus.uat.atriina.com/\"> https://zydus.uat.atriina.com/</a> for the approval process.",
- "modified": "2022-06-21 16:33:33.329289",
+ "message": "Hello Admin,\n<br></br>\n<br></br>\nYou have received a request for KMS portal access from {{doc.email}}.\n<br></br>\n<br></br>\nKindly login to <a href =\"https://zyduswellnesskms.atriina.com/\"> https://zyduswellnesskms.atriina.com/</a> for the approval process.",
+ "modified": "2022-12-19 11:58:37.422651",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Access request",
