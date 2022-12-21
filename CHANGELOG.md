@@ -1,3 +1,22 @@
+# [v1.3.9]  - 2022-12-21
+
+## Added
+
+-[Feat:Uat to Master](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/132)
+
+
+# [v1.3.9-uat]  - 2022-12-21
+
+## Added
+
+-[Feat: Develop to Uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/131}
+
+# [v1.3.9-dev+1]  - 2022-11-21
+-[Fix: Changelog and init merge conflits resolved]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/130}
+
+# [v1.3.9-dev]  - 2022-11-19
+-[Feat: Three user email notifications added | Max file_size set to 300 MB]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/128}
+
 # [v1.3.8]  - 2022-11-03
 
 ## Added
