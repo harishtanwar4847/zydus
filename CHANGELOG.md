@@ -1,3 +1,10 @@
+# [v1.3.9]  - 2022-12-21
+
+## Added
+
+-[Feat:Uat to Master](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/132)
+
+
 # [v1.3.9-uat]  - 2022-12-21
 
 ## Added
