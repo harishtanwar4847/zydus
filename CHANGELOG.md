@@ -1,4 +1,13 @@
+# [v1.4.0-uat]  - 2022-12-28
+
+## Fixed
+
+-[Fix: Develop to Uat](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/134)
+
 # [v1.4.0-dev]  - 2022-12-28
+
+## Fixed
+
 -[Fix:In user upload project/datasheet notifications recipients added KMS uploader and KMS downloader](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/133)
 
 # [v1.3.9]  - 2022-12-21
