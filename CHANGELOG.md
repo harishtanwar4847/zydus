@@ -1,135 +1,145 @@
+# [v1.4.0-dev]  - 2022-12-28
+-[Fix:In user upload project/datasheet notifications recipients added KMS uploader and KMS downloader](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/133)
+
+# [v1.3.9]  - 2022-12-21
+
+## Added
+
+-[Feat:Uat to Master](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/132)
+
+
 # [v1.3.9-uat]  - 2022-12-21
 
 ## Added
 
--[Feat: Develop to Uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/131}
+-[Feat: Develop to Uat](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/131)
 
 # [v1.3.9-dev+1]  - 2022-11-21
--[Fix: Changelog and init merge conflits resolved]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/130}
+-[Fix: Changelog and init merge conflits resolved](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/130)
 
 # [v1.3.9-dev]  - 2022-11-19
--[Feat: Three user email notifications added | Max file_size set to 300 MB]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/128}
+-[Feat: Three user email notifications added | Max file_size set to 300 MB](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/128)
 
 # [v1.3.8]  - 2022-11-03
 
 ## Added
 
--[Feat: Uat to Master]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/127}
+-[Feat: Uat to Master](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/127)
 
 # [v1.3.8-uat]  - 2022-11-02
 
 ## Added
 
--[Feat: Develop to Uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/125}
+-[Feat: Develop to Uat](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/125)
 
 # [v1.3.8-dev+1]  - 2022-11-02
--[Fix : Code review fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/126}
+-[Fix : Code review fixes](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/126)
 
 # [v1.3.8-dev]  - 2022-11-01
--[Fix: In view project/datasheet after rejected delete button hidden | changes in comment box notification]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/124}
+-[Fix: In view project/datasheet after rejected delete button hidden | changes in comment box notification](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/124)
 
 # [v1.3.7-dev+1]  - 2022-10-31
--[Fix : Comment box functionality added in datasheet and condition added in utils.py]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/123}
+-[Fix : Comment box functionality added in datasheet and condition added in utils.py](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/123)
 
 # [v1.3.7-dev]  - 2022-10-28
 
 ## Fixed
 
--[Fix: Dev v1.3.6 changes revert]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/122}
+-[Fix: Dev v1.3.6 changes revert](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/122)
 
 # [v1.3.4]  - 2022-10-13
 
 ## Fixed
 
--[Fix: Uat to master]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/120}
+-[Fix: Uat to master](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/120)
 
 # [v1.3.4-uat]  - 2022-10-13
--[Fix: like functionality of search navbar]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/119}
+-[Fix: like functionality of search navbar](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/119)
 
 # [v1.3.3]  - 2022-10-10
 
 ## Added
 
--[Feat: Uat to master]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/117}
+-[Feat: Uat to master](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/117)
 
 # [v1.3.3-uat+2]  - 2022-10-10
--[Fix: extra files removed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/118}
+-[Fix: extra files removed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/118)
 
 # [v1.3.3-uat+1]  - 2022-10-10
--[In Project extra field added action standards]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/116}
+-[In Project extra field added action standards](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/116)
 
 # [v1.3.6-dev]  - 2022-10-06
--[Merge Uat(v1.3.3.-uat) fixes to dev]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/115}
+-[Merge Uat(v1.3.3.-uat) fixes to dev](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/115)
 
 # [v1.3.5-dev+1]  - 2022-10-04
--[comment fixes - removed blank spaces and liked from comment]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/112}
+-[comment fixes - removed blank spaces and liked from comment](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/112)
 
 # [v1.3.5-dev]  - 2022-10-04
--[view project comment functionality fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/111}
+-[view project comment functionality fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/111)
 
 # [v1.3.4-dev]  - 2022-10-03
--[comment box -done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/110}
+-[comment box -done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/110)
 
 # [v1.3.3-dev]  - 2022-10-03
--[comment box implementation on View project/datasheet and edit project/datasheet done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/109}
+-[comment box implementation on View project/datasheet and edit project/datasheet done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/109)
 
 # [v1.3.3-uat]  - 2022-09-20
--[debugs removed from all py file and pagination added in access and reminder tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/108}
+-[debugs removed from all py file and pagination added in access and reminder tab](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/108)
 
 # [v1.3.2-uat+1]  - 2022-09-16
--[workflow master action submit added]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/106}
+-[workflow master action submit added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/106)
 
 # [v1.3.2-uat]  - 2022-09-15
 # [v1.3.2-dev+1]  - 2022-09-14
--[all page code redundant done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/104}
+-[all page code redundant done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/104)
 
 # [v1.3.2-dev]  - 2022-09-08
--[dev issues fixed: trending now and reminder and notifications]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/103}
+-[dev issues fixed: trending now and reminder and notifications](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/103)
 
 # [v1.3.1-dev]  - 2022-09-07
--[sidebar issue fixed admin]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/102}
+-[sidebar issue fixed admin](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/102)
 
 # [v1.3.0-dev]  - 2022-09-06
--[User and admin access permissions]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/101}
+-[User and admin access permissions](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/101)
 
 # [v1.2.9-uat]  - 2022-08-26
 # [v1.2.9-dev]  - 2022-08-26
--[Dev issues Fixed;- todo card onclick view done & like feature added on view project/datasheet]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/99}
+-[Dev issues Fixed;- todo card onclick view done & like feature added on view project/datasheet](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/99)
 
 # [v1.2.8-uat]  - 2022-08-25
 # [v1.2.8-dev]  - 2022-08-25
--[Dev fixes:- sample size field deleted & all approval delete button fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/96}
+-[Dev fixes:- sample size field deleted & all approval delete button fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/96)
 
 # [v1.2.7-uat]  - 2022-08-25
 # [v1.2.7-dev+1]  - 2022-08-25
--[Dev :-changelogmd updated]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/95}
+-[Dev :-changelogmd updated](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/95)
 
 # [v1.2.7-dev]  - 2022-08-24
--[Develop latest to uat]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/93}
+-[Develop latest to uat](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/93)
 
 # [v1.2.6-dev]  - 2022-08-24
--[Dev UI changes:- home todo view all logo done & home and account reminder Ui done & search like functionality done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/91}
+-[Dev UI changes:- home todo view all logo done & home and account reminder Ui done & search like functionality done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/91)
 
 # [v1.2.5-dev]  - 2022-08-23
--[Dev Fixes]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/90}
+-[Dev Fixes](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/90)
 
 # [v1.2.4-dev]  - 2022-08-22
--[Dev new issues fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/89}
+-[Dev new issues fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/89)
 
 # [v1.2.3-dev]  - 2022-08-19
--[Account:-Access tab functionality completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/88}
+-[Account:-Access tab functionality completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/88)
 
 # [v1.2.2-dev]  - 2022-08-11
--[Account page fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/87}
+-[Account page fixed](https://gitlab.com/atri-tFixedech/atri-maintainers/zydus/-/merge_requests/87)
 
 # [v1.2.1-dev]  - 2022-08-11
--[Account page error fixed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/86}
+-[Account page error fixed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/86)
 
 # [v1.2.0-dev]  - 2022-08-10
--[View Project:- Shown Buttons Edit, Delete, Approve, Reject done & If Chooses option as Edit then, Shown Buttons Delete, Save Changes, Approve, Reject & If Rejected file then only delete option will be there done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/85}
+-[View Project:- Shown Buttons Edit, Delete, Approve, Reject done & If Chooses option as Edit then, Shown Buttons Delete, Save Changes, Approve, Reject & If Rejected file then only delete option will be there done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/85)
 
 # [v1.1.0-dev]  - 2022-08-01
--[In To do pending project display done , Reminders card fixed, view project profile pic and name done,Sample size field added in project,Approval tab pagination adjusted to left done,Approval tab grid done]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/84}
+-[In To do pending project display done , Reminders card fixed, view project profile pic and name done,Sample size field added in project,Approval tab pagination adjusted to left done,Approval tab grid done](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/84)
 
 # [v1.0.0] - 2022-07-30
 # [v0.5.0-uat]  - 2022-07-29
@@ -151,19 +161,19 @@
 - [Uat : Project and Datasheet file upload max size set to 100Mb, Like feature enabled on view project page, search filter like and refresh functionality issue fixes done, New field added in project doctype(Sample Size),Field type changed as text editor](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/77)
 
 # [v0.4.9-dev]  - 2022-07-14
--[Admin panel reminder tab completed]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/76}
+-[Admin panel reminder tab completed](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/76)
 
 # [v0.4.8-dev]  - 2022-07-06
--[approval pagination done| like functionality done| access tab]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/75}
+-[approval pagination done| like functionality done| access tab](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/75)
 
 # [v0.4.7-dev]  - 2022-06-30
--[Account page access tab integration and partially functionality done | approval like button]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/74}
+-[Account page access tab integration and partially functionality done | approval like button](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/74)
 
 # [v0.4.6-dev]  - 2022-06-29
--[Admin panel Approval tab done | todo css fixes donet]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/73}
+-[Admin panel Approval tab done | todo css fixes donet](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/73)
 
 # [v0.4.5-dev]  - 2022-06-28
--[Add FAQ and home page To Do list]{https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72}
+-[Add FAQ and home page To Do list](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/72)
 
 # [v0.4.4-dev]  - 2022-06-21
 - [admin rejected datasheet notification created](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/69)
