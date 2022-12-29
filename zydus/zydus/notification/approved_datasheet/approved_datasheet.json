@@ -1,0 +1,35 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.workflow_state == \"Approved\"",
+ "creation": "2022-12-29 12:57:47.140592",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Datasheet",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Hello Team, \n<br>\n<br>\nWe have uploaded a {{doc.d_title}} report for {{doc.brand}} brand on KMS\n<br>\n<br>\nplease click on below mentioned link to view the report\n<br>\n<br>\n{{frappe.utils.get_url()}}/projects/{{doc.name}}",
+ "modified": "2022-12-29 16:32:37.423072",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Approved datasheet",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "KMS Admin"
+  },
+  {
+   "receiver_by_role": "KMS Uploader"
+  },
+  {
+   "receiver_by_role": "KMS Downloader"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "{{ doc.d_title }} project  for {{ doc.brand }} has been uploaded in KMS",
+ "value_changed": "workflow_state"
+}
