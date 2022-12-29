@@ -11,8 +11,8 @@
  "event": "Value Change",
  "idx": 0,
  "is_standard": 1,
- "message": "Hello Everyone, \n<br>\n<br>\nAdmin has Approved a project <b>{{doc.p_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.\n<br>\n<br>\nTo view it click on below link\n<br>\n<br>\n{{frappe.utils.get_url()}}/projects/{{doc.name}}",
- "modified": "2022-12-29 12:50:03.215032",
+ "message": "Hello Team, \n<br>\n<br>\nWe have uploaded a {{doc.p_title}} report for {{doc.brand}} brand on KMS\n<br>\n<br>\nplease click on below mentioned link to view the report\n<br>\n<br>\n{{frappe.utils.get_url()}}/projects/{{doc.name}}",
+ "modified": "2022-12-29 16:30:47.299785",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Approved project",
@@ -30,6 +30,6 @@
  ],
  "send_system_notification": 0,
  "send_to_all_assignees": 0,
- "subject": "Admin approved project {{ doc.p_title }}  for {{ doc.brand }}",
+ "subject": "{{ doc.p_title }} project  for {{ doc.brand }} has been uploaded in KMS",
  "value_changed": "workflow_state"
 }
