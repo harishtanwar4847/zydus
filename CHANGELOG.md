@@ -1,3 +1,9 @@
+# [v1.4.1-uat] - 2022-12-29
+
+## Fixed
+
+-[Fix: Develop to Uat](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/138)
+
 # [v1.4.1-dev+1]  - 2022-12-29
 -[Fix: User uploads notification for project/datasheet message modified](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/137)
 
