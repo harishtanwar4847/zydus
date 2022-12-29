@@ -1,0 +1,35 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.workflow_state == \"Approved\"",
+ "creation": "2022-12-29 12:47:47.426553",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Project",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Hello Everyone, \n<br>\n<br>\nAdmin has Approved a project <b>{{doc.p_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.\n<br>\n<br>\nTo view it click on below link\n<br>\n<br>\n{{frappe.utils.get_url()}}/projects/{{doc.name}}",
+ "modified": "2022-12-29 12:50:03.215032",
+ "modified_by": "Administrator",
+ "module": "Zydus",
+ "name": "Approved project",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "KMS Admin"
+  },
+  {
+   "receiver_by_role": "KMS Uploader"
+  },
+  {
+   "receiver_by_role": "KMS Downloader"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Admin approved project {{ doc.p_title }}  for {{ doc.brand }}",
+ "value_changed": "workflow_state"
+}
