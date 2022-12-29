@@ -1,10 +1,10 @@
-Hello Everyone, 
+Hello Team, 
 <br>
 <br>
-Admin has Approved a project <b>{{doc.p_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.
+We have uploaded a {{doc.p_title}} report for {{doc.brand}} brand on KMS.
 <br>
 <br>
-To view it click on below link
+please click on below mentioned link to view the report.
 <br>
 <br>
 {{frappe.utils.get_url()}}/projects/{{doc.name}}
