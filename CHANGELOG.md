@@ -1,4 +1,4 @@
-# [v1.4.1-uat+1]  - 2022-12-30
+# [v1.4.1]  - 2022-12-30
 -[Fix: User datasheet notification title modified](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/139)
 
 # [v1.4.1-uat] - 2022-12-29
