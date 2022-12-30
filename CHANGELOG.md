@@ -1,3 +1,18 @@
+# [v1.4.1]  - 2022-12-30
+-[Fix: User datasheet notification title modified](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/139)
+
+# [v1.4.1-uat] - 2022-12-29
+
+## Fixed
+
+-[Fix: Develop to Uat](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/138)
+
+# [v1.4.1-dev+1]  - 2022-12-29
+-[Fix: User uploads notification for project/datasheet message modified](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/137)
+
+# [v1.4.1-dev]  - 2022-12-29
+-[Fix: user upload project/datasheet recipients removed KMS Uploader/Downloader | admin approved project/datasheet notifications added](https://gitlab.com/atri-tech/atri-maintainers/zydus/-/merge_requests/136)
+
 # [v1.4.0]  - 2022-12-28
 
 ## Fixed

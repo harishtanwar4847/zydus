@@ -11,8 +11,8 @@
  "event": "Value Change",
  "idx": 0,
  "is_standard": 1,
- "message": "Hello Everyone, \n<br>\n<br>\n{{doc.owner}} have uploaded a datasheet <b>{{doc.d_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.\n<br>\n<br>\nTo view it click on below link\n<br>\n<br>\n{{frappe.utils.get_url()}}/datasheets/{{doc.name}}",
- "modified": "2022-12-28 12:13:22.272371",
+ "message": "Hello Admin, \n<br>\n<br>\n{{doc.owner}} have uploaded a datasheet <b>{{doc.d_title}}</b> for <b>{{doc.brand}}</b> Brand, track report here.\n<br>\n<br>\nTo view it click on below link\n<br>\n<br>\n{{frappe.utils.get_url()}}/datasheets/{{doc.name}}",
+ "modified": "2022-12-29 15:16:02.187562",
  "modified_by": "Administrator",
  "module": "Zydus",
  "name": "Datasheet uploaded successful",
@@ -20,12 +20,6 @@
  "recipients": [
   {
    "receiver_by_role": "KMS Admin"
-  },
-  {
-   "receiver_by_role": "KMS Uploader"
-  },
-  {
-   "receiver_by_role": "KMS Downloader"
   }
  ],
  "send_system_notification": 0,
